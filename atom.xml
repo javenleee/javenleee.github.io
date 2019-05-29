@@ -5,9 +5,9 @@
   <subtitle>云淡风轻</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.snc2019.club/"/>
   <updated>2019-05-29T00:48:40.434Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.snc2019.club/</id>
   
   <author>
     <name>李泽祥</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>PHP学习笔记</title>
-    <link href="http://yoursite.com/2019/05/29/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/05/29/PHP学习笔记/</id>
+    <link href="http://www.snc2019.club/2019/05/29/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://www.snc2019.club/2019/05/29/PHP学习笔记/</id>
     <published>2019-05-29T00:45:54.000Z</published>
     <updated>2019-05-29T00:48:40.434Z</updated>
     
@@ -46,8 +46,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/05/28/hello-world/"/>
-    <id>http://yoursite.com/2019/05/28/hello-world/</id>
+    <link href="http://www.snc2019.club/2019/05/28/hello-world/"/>
+    <id>http://www.snc2019.club/2019/05/28/hello-world/</id>
     <published>2019-05-28T15:34:52.593Z</published>
     <updated>2019-05-28T15:34:52.595Z</updated>
     
