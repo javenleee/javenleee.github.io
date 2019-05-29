@@ -1266,7 +1266,7 @@ pre .javascript .function {
   margin-right: 5px;
 }
 .use-motion .menu-item {
-  opacity: 1;
+  opacity: 0;
 }
 .github-corner :hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
@@ -1416,7 +1416,7 @@ pre .javascript .function {
 .use-motion .post-block,
 .use-motion .pagination,
 .use-motion .comments {
-  opacity: 1;
+  opacity: 0;
 }
 .use-motion .post-header {
   opacity: 0;
@@ -2129,7 +2129,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #a6da12;
+  background: #8affff;
 }
 .links-of-blogroll {
   font-size: 13px;
