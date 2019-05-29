@@ -1,0 +1,46 @@
+<h1 id="Pace"><a href="#Pace" class="headerlink" title="Pace"></a>Pace</h1><p>A node.js module that outputs a progress bar and other metrics to the command-line.<br>It was originally conceived to help measure the ‘pace’ of long running scripts.<br>We’ve used it to optimize scripts that would have taken hours to complete down<br>to minutes, without having to wait the hours before knowing that the script<br>could use some optimization.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><pre><code>$ npm install pace
+</code></pre><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Running the following code:</p>
+<pre><code class="js"><span class="keyword">var</span> total = <span class="number">50000</span>,
+    count = <span class="number">0</span>,
+    pace = <span class="built_in">require</span>(<span class="string">'pace'</span>)(total);
+
+<span class="keyword">while</span> (count++ <span class="xml"><span class="tag">&lt; <span class="attr">total</span>) {</span></span>
+<span class="xml">  pace.op();</span>
+<span class="xml"></span>
+<span class="xml">  // Cause some work to be done.</span>
+<span class="xml">  for (var i = 0; i <span class="tag">&lt; <span class="attr">1000000</span>; <span class="attr">i</span>++) {</span></span>
+<span class="xml">    count = count;</span>
+<span class="xml">  }</span>
+<span class="xml">}</span>
+</code></pre>
+<p>Will cause output to your console similar to:</p>
+<p><img src="https://github.com/cpsubrian/pace/raw/master/screenshot.png" alt="Sample progress bar output"></p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Pace-object"><a href="#Pace-object" class="headerlink" title="Pace object"></a><code>Pace</code> object</h3><p>The module exports a factory function to generate instances of <code>Pace</code> objects.<br>So <code>require(&#39;pace&#39;)(&lt;options&gt;)</code> creates an instance of <code>Pace</code>, passing<br><code>options</code> to the constructor.</p>
+<h3 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h3><p>Options can either be an object literal, or an integer.  If its an integer then<br>it is the same as passing options with only the <code>total</code> specified.</p>
+<pre><code class="js"><span class="built_in">require</span>(<span class="string">'pace'</span>)(<span class="number">100</span>);
+
+<span class="comment">// Same as</span>
+
+<span class="built_in">require</span>(<span class="string">'pace'</span>)({<span class="attr">total</span>: <span class="number">100</span>});
+</code></pre>
+<p>Supported Options:</p>
+<ul>
+<li><code>total</code> - The total number of operations that <em>YOUR</em> script will execute.</li>
+<li><code>maxBurden</code> - The maximum ‘burden’ that the progress bar should incur. See more about burden below.</li>
+<li><code>showBurden</code> - Mostly for debugging.  Show the current burden / skipped steps with the other metrics.</li>
+</ul>
+<h3 id="pace-op-count"><a href="#pace-op-count" class="headerlink" title="pace.op([count])"></a>pace.op([count])</h3><p>Signal to pace that an operation was completed in your script by calling<br><code>pace.op()</code>.</p>
+<p>If you would rather track the progress in your own logic, you can call<br><code>pace.op(&lt;count&gt;)</code> where <code>&lt;count&gt;</code> is the current operation interation<br>(for example step # 50 of a 100 step process).</p>
+<h3 id="pace-total"><a href="#pace-total" class="headerlink" title="pace.total"></a>pace.total</h3><p>If your script has a dynamic amount of work to do (for example, depending on the<br>results of previous operation there may be more steps to complete), you can<br>freely change the value of pace.total.  Just set the value like: <code>pace.total = 200</code>.</p>
+<h2 id="Burden"><a href="#Burden" class="headerlink" title="Burden"></a>Burden</h2><p>Depending on how intensive your operations are, calculating, formatting, and<br>printing the progress bar might be much more expensive than the work you<br>are doing.  It would be silly if printing a progress bar caused your<br>job to take significantly longer than it would have otherwise. <em>Pace</em> tracks<br>a stat called ‘burden’, which is basically a percentage of the overall<br>execution time that is being spent inside the progress bar logic itself.</p>
+<p>The default <code>maxBurden</code> is <code>0.5</code>, which translates to <code>0.5% of the total execution
+time</code>.  If this low burden is causing you to see progress reported less<br>often than you would prefer, you can raise it to something like <code>20</code> (20%) via<br>the <code>maxBurden</code> option.</p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>The <code>test/</code> folder contains some simple test scripts you can run to see the<br>progress bar in action.</p>
+<hr>
+<h3 id="Developed-by-Terra-Eclipse"><a href="#Developed-by-Terra-Eclipse" class="headerlink" title="Developed by Terra Eclipse"></a>Developed by <a href="http://www.terraeclipse.com">Terra Eclipse</a></h3><p>Terra Eclipse, Inc. is a nationally recognized political technology and<br>strategy firm located in Aptos, CA and Washington, D.C.</p>
+<hr>
+<h3 id="License-MIT"><a href="#License-MIT" class="headerlink" title="License: MIT"></a>License: MIT</h3><p>Copyright (C) 2012 Terra Eclipse, Inc. (<a href="http://www.terraeclipse.com">http://www.terraeclipse.com</a>)</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy<br>of this software and associated documentation files (the “Software”), to deal<br>in the Software without restriction, including without limitation the rights<br>to use, copy, modify, merge, publish, distribute, sublicense, and/or sell<br>copies of the Software, and to permit persons to whom the Software is furnished<br>to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in<br>all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR<br>IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,<br>FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE<br>AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER<br>LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,<br>OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE<br>SOFTWARE.</p>
