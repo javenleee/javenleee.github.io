@@ -1667,9 +1667,6 @@ pre .javascript .function {
   border-bottom: 1px dashed #999;
   cursor: help;
 }
-.post-symbolscount {
-  display: inline-block;
-}
 .post-meta-divider {
   margin: 0 0.5em;
 }
@@ -2115,7 +2112,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #88ff83;
+  background: #ff127c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3455,7 +3452,7 @@ input {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 input:focus {
-  border-color: #66afe9;
+  border-color: #f00;
   outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px;
 rgba(102,175,233,0.6)
