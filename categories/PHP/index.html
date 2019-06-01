@@ -324,23 +324,6 @@
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404.html" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
-
-  </li>
 
       
       
@@ -434,9 +417,6 @@
             
 
     
-    
-      
-      
     
       
       
@@ -623,7 +603,7 @@
                   
                     
                   
-                  <a href="https://weibo.com/liahao" title="微博 &rarr; https://weibo.com/liahao" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                  <a href="https://weibo.com/zosien" title="微博 &rarr; https://weibo.com/zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
                 </span>
               
                 <span class="links-of-author-item">
@@ -972,6 +952,31 @@ document.body.addEventListener('input', POWERMODE);
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'nBqcJNgT4JDUb4G29LREPoiY-gzGzoHsz',
+        appKey: '3GRto2sfPhCf8DQnPl68r3RI',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'15' || 10,
+        visitor: true
+    });
+  </script>
 
 
 
