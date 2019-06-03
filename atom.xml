@@ -6,15 +6,65 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.snc2019.club/"/>
-  <updated>2019-05-30T13:55:19.511Z</updated>
+  <updated>2019-06-03T16:47:34.357Z</updated>
   <id>https://www.snc2019.club/</id>
   
   <author>
-    <name>李泽祥</name>
+    <name>Zosien</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quartus II安装破解及基础操作</title>
+    <link href="https://www.snc2019.club/2019/06/03/Quartus-II%E5%AE%89%E8%A3%85%E7%A0%B4%E8%A7%A3%E5%8F%8A%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/"/>
+    <id>https://www.snc2019.club/2019/06/03/Quartus-II安装破解及基础操作/</id>
+    <published>2019-06-03T15:18:29.000Z</published>
+    <updated>2019-06-03T16:47:34.357Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Quartus-II安装破解及基础操作&quot;&gt;&lt;a href=&quot;#Quartus-II安装破解及基础操作&quot; class=&quot;headerlink&quot; title=&quot;Quartus II安装破解及基础操作&quot;&gt;&lt;/a&gt;Quartus II安装破解及基础操作&lt;/h1&gt;&lt;p&gt;安装
+      
+    
+    </summary>
+    
+      <category term="Quartus" scheme="https://www.snc2019.club/categories/Quartus/"/>
+    
+    
+      <category term="笔记" scheme="https://www.snc2019.club/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Quartus" scheme="https://www.snc2019.club/tags/Quartus/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信公众号爬虫之旅</title>
+    <link href="https://www.snc2019.club/2019/06/02/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%88%AC%E8%99%AB%E4%B9%8B%E8%B7%AF/"/>
+    <id>https://www.snc2019.club/2019/06/02/公众号爬虫之路/</id>
+    <published>2019-06-01T16:28:54.000Z</published>
+    <updated>2019-06-01T16:30:00.420Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;微信公众号爬虫之旅&quot;&gt;&lt;a href=&quot;#微信公众号爬虫之旅&quot; class=&quot;headerlink&quot; title=&quot;微信公众号爬虫之旅&quot;&gt;&lt;/a&gt;微信公众号爬虫之旅&lt;/h1&gt;&lt;p&gt;上次手机没电关机，再次开机发现，微信竟然背着我更新了，看到新版本微信公众号，我懵逼了
+      
+    
+    </summary>
+    
+      <category term="爬虫" scheme="https://www.snc2019.club/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="python" scheme="https://www.snc2019.club/tags/python/"/>
+    
+      <category term="爬虫" scheme="https://www.snc2019.club/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP学习笔记</title>
