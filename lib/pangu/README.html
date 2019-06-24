@@ -32,8 +32,7 @@
 </ul>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><pre><code class="bash">$ npm install pangu --save
 <span class="comment"># or</span>
-$ yarn add pangu
-</code></pre>
+$ yarn add pangu</code></pre>
 <h3 id="Browser"><a href="#Browser" class="headerlink" title="Browser"></a>Browser</h3><p>Files are located in <code>./node_modules/pangu/dist/browser/</code>.</p>
 <pre><code class="html"><span class="tag">&lt;<span class="name">head</span>&gt;</span>
   <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"pangu.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
@@ -50,15 +49,13 @@ $ yarn add pangu
 <span class="javascript">    <span class="comment">// listen to any DOM change and automatically perform spacing via MutationObserver()</span></span>
 <span class="undefined">    pangu.autoSpacingPage();</span>
 <span class="undefined">  });</span>
-<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
 <p><code>pangu.js</code> is also available on <a href="https://www.jsdelivr.com/package/npm/pangu">jsDelivr</a> and <a href="https://cdnjs.com/libraries/pangu">cdnjs</a>:</p>
 <pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
 
 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
 <h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><p>Learn more on <a href="https://www.npmjs.com/package/pangu">npm</a>.</p>
 <pre><code class="js"><span class="keyword">const</span> pangu = <span class="built_in">require</span>(<span class="string">'pangu'</span>);
 
@@ -77,8 +74,7 @@ pangu.spacingFile(<span class="string">'/path/to/text.txt'</span>)
     <span class="built_in">console</span>.error(err);
   });
 
-<span class="keyword">const</span> data = pangu.spacingFileSync(<span class="string">'/path/to/text.txt'</span>);
-</code></pre>
+<span class="keyword">const</span> data = pangu.spacingFileSync(<span class="string">'/path/to/text.txt'</span>);</code></pre>
 <p>You <strong>SHOULD NOT</strong> use <code>pangu.js</code> directly to spacing Markdown documents, this library is specially designed for HTML webpages and plain texts without any markup language. See <a href="https://github.com/vinta/pangu.js/issues/127">issue #127</a>.</p>
 <h3 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h3><pre><code class="console"><span class="meta">$</span><span class="bash"> pangu <span class="string">"不能信任那些Terminal或Editor用白底的人"</span></span>
 不能信任那些 Terminal 或 Editor 用白底的人
@@ -96,13 +92,11 @@ optional arguments:
   -h, --help     show this help message and exit
   -v, --version  show program's version number and exit
   -t, --text     specify the input value is a text
-  -f, --file     specify the input value is a file path
-</code></pre>
+  -f, --file     specify the input value is a file path</code></pre>
 <h2 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h2><p>You need to install <a href="https://vinta.ws/code/install-node-js-via-nvm.html">Node.js</a>.</p>
 <pre><code class="bash">$ git <span class="built_in">clone</span> git@github.com:vinta/pangu.js.git &amp;&amp; <span class="built_in">cd</span> pangu.js
 $ npm install
-$ npm run <span class="built_in">test</span>
-</code></pre>
+$ npm run <span class="built_in">test</span></code></pre>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Released under the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
 <h2 id="Author"><a href="#Author" class="headerlink" title="Author"></a>Author</h2><ul>
 <li>GitHub: <a href="https://github.com/vinta">@vinta</a></li>

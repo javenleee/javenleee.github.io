@@ -1,6 +1,5 @@
 <h1 id="Pace"><a href="#Pace" class="headerlink" title="Pace"></a>Pace</h1><p>A node.js module that outputs a progress bar and other metrics to the command-line.<br>It was originally conceived to help measure the ‘pace’ of long running scripts.<br>We’ve used it to optimize scripts that would have taken hours to complete down<br>to minutes, without having to wait the hours before knowing that the script<br>could use some optimization.</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><pre><code>$ npm install pace
-</code></pre><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Running the following code:</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><pre><code>$ npm install pace</code></pre><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Running the following code:</p>
 <pre><code class="js"><span class="keyword">var</span> total = <span class="number">50000</span>,
     count = <span class="number">0</span>,
     pace = <span class="built_in">require</span>(<span class="string">'pace'</span>)(total);
@@ -12,8 +11,7 @@
 <span class="xml">  for (var i = 0; i <span class="tag">&lt; <span class="attr">1000000</span>; <span class="attr">i</span>++) {</span></span>
 <span class="xml">    count = count;</span>
 <span class="xml">  }</span>
-<span class="xml">}</span>
-</code></pre>
+<span class="xml">}</span></code></pre>
 <p>Will cause output to your console similar to:</p>
 <p><img src="https://github.com/cpsubrian/pace/raw/master/screenshot.png" alt="Sample progress bar output"></p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Pace-object"><a href="#Pace-object" class="headerlink" title="Pace object"></a><code>Pace</code> object</h3><p>The module exports a factory function to generate instances of <code>Pace</code> objects.<br>So <code>require(&#39;pace&#39;)(&lt;options&gt;)</code> creates an instance of <code>Pace</code>, passing<br><code>options</code> to the constructor.</p>
@@ -22,8 +20,7 @@
 
 <span class="comment">// Same as</span>
 
-<span class="built_in">require</span>(<span class="string">'pace'</span>)({<span class="attr">total</span>: <span class="number">100</span>});
-</code></pre>
+<span class="built_in">require</span>(<span class="string">'pace'</span>)({<span class="attr">total</span>: <span class="number">100</span>});</code></pre>
 <p>Supported Options:</p>
 <ul>
 <li><code>total</code> - The total number of operations that <em>YOUR</em> script will execute.</li>
