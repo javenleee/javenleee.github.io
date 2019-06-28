@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.snc2019.club/"/>
-  <updated>2019-06-27T15:52:02.106Z</updated>
+  <updated>2019-06-28T08:13:27.432Z</updated>
   <id>https://www.snc2019.club/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>黑客攻防技术宝典Web实战篇学习笔记(第三章)</title>
+    <link href="https://www.snc2019.club/2019/06/28/%E9%BB%91%E5%AE%A2%E6%94%BB%E9%98%B2%E6%8A%80%E6%9C%AF%E5%AE%9D%E5%85%B8Web%E5%AE%9E%E6%88%98%E7%AF%87%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E7%AC%AC%E4%B8%89%E7%AB%A0/"/>
+    <id>https://www.snc2019.club/2019/06/28/黑客攻防技术宝典Web实战篇学习笔记-第三章/</id>
+    <published>2019-06-28T07:06:22.000Z</published>
+    <updated>2019-06-28T08:13:27.432Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Web应用程序技术&quot;&gt;&lt;a href=&quot;#Web应用程序技术&quot; class=&quot;headerlink&quot; title=&quot;Web应用程序技术&quot;&gt;&lt;/a&gt;Web应用程序技术&lt;/h1&gt;&lt;h2 id=&quot;HTTP&quot;&gt;&lt;a href=&quot;#HTTP&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="安全" scheme="https://www.snc2019.club/categories/%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="笔记" scheme="https://www.snc2019.club/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="安全" scheme="https://www.snc2019.club/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>黑客攻防技术宝典Web实战篇学习笔记(第二章).md</title>
