@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="Web应用程序技术HTTPHTTP(HyperText Transfer Protocol，超文本传输协议)是访问互联网使用的核心通信协议，也是今天所有Web应用程序使用的通信协议。最初，HTTP只是一个为获取基于文本的静态资源而开发的简单协议，后来人们以各种形式扩展和利用他，使其能够支持如今常见的复杂分布式应用程序。 HTTP使用的是一种基于消息的模型：客户端送出一条请求消息，而后由服务器返回一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-28T16:59:55.209Z">
+<meta property="og:updated_time" content="2019-06-29T14:52:06.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="黑客攻防技术宝典Web实战篇学习笔记(第三章)">
 <meta name="twitter:description" content="Web应用程序技术HTTPHTTP(HyperText Transfer Protocol，超文本传输协议)是访问互联网使用的核心通信协议，也是今天所有Web应用程序使用的通信协议。最初，HTTP只是一个为获取基于文本的静态资源而开发的简单协议，后来人们以各种形式扩展和利用他，使其能够支持如今常见的复杂分布式应用程序。 HTTP使用的是一种基于消息的模型：客户端送出一条请求消息，而后由服务器返回一">
@@ -617,7 +617,30 @@
 <li>几乎所有的HTTP响应在消息头后的空白行下面都包含消息主体，Content-Type消息头表示这个消息主体中包含一个HTML文档。</li>
 <li>Content-Length消息头规定消息主体的字节长度。</li>
 </ul>
-<h3 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h3>
+<h3 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h3><h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>GET方法的作用在于获取资源，他可以用于URL查询字符串的形式向所请求的资源发送参数。这使用户可以将一个包含动态资源的URL标注为标签。URL显示在屏幕上，还可以用Referer消息头将他们传送到其他站点，所以，请勿使用查询字符串传送任何敏感信息。</p>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>POST方法的主要作用是执行操作，POST方法发送的参数在body中，而不是在URL中。</p>
+<p>后面会整理一片更详细的GET和POST区别。</p>
+<p>除了GET和POST外，HTTP协议还支持许多其他因特殊目的而建立的方法如下：</p>
+<ul>
+<li>HEAD。这个方法的功能与GET相似，不同之处在于服务器不会在其响应中返回消息主体，服务器返回的消息头应与对应GET请求返回的消息头相同，因此，这种方法可用于检查某一资源在向其提交GET请求前是否存在。</li>
+<li>TRACE。这种方法主要用于诊断，服务器应在响应主体中返回其收到的请求消息的具体内容。这种方法用于检测服务器和客户端之间是否存在任何操纵请求的代理服务器。</li>
+<li>OPTIONS。这种方法要求服务器报告对某一特殊资源有效的HTTP方法。服务器通常返回一个包含Allow消息头的响应，并在其中列出所有有效的方法。</li>
+<li>PUT。这个方法试图使用包含在消息请求主体中的内容，向服务器上传指定的资源。如果激活这个方法，渗透测试员就可以利用他来攻击应用程序。例如上传任意脚本并在服务器上执行。</li>
+</ul>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>URL（Uniform Resource Locator，统一资源定位符）是标识Web资源的唯一标识符，通过他即可获取其标识的资源。最常用的URL格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protocol://hostname[:port]/[path/]file[?param=value]</span><br></pre></td></tr></table></figure>
+
+<p>如果端口号和相关协议使用的默认值不同，则只包含端口号即可，用于生成前面的HTTP请求的URL如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mdsex.net/auth/488/YourDetails.ashx?uid=129</span><br></pre></td></tr></table></figure>
+
+<p>除这种形式外，还可以相对某一特殊主机或主机上的特殊路径指定URL，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/auth/488/YourDetails.ashx?uid=129</span><br><span class="line">YourDetails.ashx?uid=129</span><br></pre></td></tr></table></figure>
+
+<p>Web页面常常使用这种相对形式描述Web站点或应用程序中的导航。</p>
+<blockquote>
+<p>URL正确的技术术语应该是URI(Uniform Resource Identifer，统一资源标识符)，但这一术语仅用于正式规范中，或被那些希望炫耀学识的人所使用。</p>
+</blockquote>
+<h3 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h3><h3 id="HTTP消息头"><a href="#HTTP消息头" class="headerlink" title="HTTP消息头"></a>HTTP消息头</h3><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><h3 id="HTTP代理"><a href="#HTTP代理" class="headerlink" title="HTTP代理"></a>HTTP代理</h3><h2 id="Web功能"><a href="#Web功能" class="headerlink" title="Web功能"></a>Web功能</h2><h3 id="服务器端功能"><a href="#服务器端功能" class="headerlink" title="服务器端功能"></a>服务器端功能</h3><h3 id="客户端功能"><a href="#客户端功能" class="headerlink" title="客户端功能"></a>客户端功能</h3><h3 id="状态与会话"><a href="#状态与会话" class="headerlink" title="状态与会话"></a>状态与会话</h3><h2 id="编码方案"><a href="#编码方案" class="headerlink" title="编码方案"></a>编码方案</h2><h3 id="URL编码"><a href="#URL编码" class="headerlink" title="URL编码"></a>URL编码</h3><h3 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h3><h3 id="HTML编码"><a href="#HTML编码" class="headerlink" title="HTML编码"></a>HTML编码</h3><h3 id="Base64编码"><a href="#Base64编码" class="headerlink" title="Base64编码"></a>Base64编码</h3><h3 id="十六进制编码"><a href="#十六进制编码" class="headerlink" title="十六进制编码"></a>十六进制编码</h3><h3 id="远程和序列化框架"><a href="#远程和序列化框架" class="headerlink" title="远程和序列化框架"></a>远程和序列化框架</h3><h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2>
       
     </div>
 
@@ -670,7 +693,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2019-06-29 00:59:55</li>
+  <strong>修改时间： </strong>2019-06-29 22:52:06</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.snc2019.club/2019/06/28/黑客攻防技术宝典Web实战篇学习笔记-第三章/" title="黑客攻防技术宝典Web实战篇学习笔记(第三章)">https://www.snc2019.club/2019/06/28/黑客攻防技术宝典Web实战篇学习笔记-第三章/</a>
@@ -943,7 +966,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web应用程序技术"><span class="nav-number">1.</span> <span class="nav-text">Web应用程序技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求"><span class="nav-number">1.1.1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP响应"><span class="nav-number">1.1.2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">HTTP方法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Web应用程序技术"><span class="nav-number">1.</span> <span class="nav-text">Web应用程序技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求"><span class="nav-number">1.1.1.</span> <span class="nav-text">HTTP请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP响应"><span class="nav-number">1.1.2.</span> <span class="nav-text">HTTP响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP方法"><span class="nav-number">1.1.3.</span> <span class="nav-text">HTTP方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GET"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">GET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#POST"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">POST</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">1.1.4.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST"><span class="nav-number">1.1.5.</span> <span class="nav-text">REST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP消息头"><span class="nav-number">1.1.6.</span> <span class="nav-text">HTTP消息头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie"><span class="nav-number">1.1.7.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态码"><span class="nav-number">1.1.8.</span> <span class="nav-text">状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS"><span class="nav-number">1.1.9.</span> <span class="nav-text">HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP代理"><span class="nav-number">1.1.10.</span> <span class="nav-text">HTTP代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web功能"><span class="nav-number">1.2.</span> <span class="nav-text">Web功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端功能"><span class="nav-number">1.2.1.</span> <span class="nav-text">服务器端功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端功能"><span class="nav-number">1.2.2.</span> <span class="nav-text">客户端功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态与会话"><span class="nav-number">1.2.3.</span> <span class="nav-text">状态与会话</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码方案"><span class="nav-number">1.3.</span> <span class="nav-text">编码方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL编码"><span class="nav-number">1.3.1.</span> <span class="nav-text">URL编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode编码"><span class="nav-number">1.3.2.</span> <span class="nav-text">Unicode编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML编码"><span class="nav-number">1.3.3.</span> <span class="nav-text">HTML编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64编码"><span class="nav-number">1.3.4.</span> <span class="nav-text">Base64编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十六进制编码"><span class="nav-number">1.3.5.</span> <span class="nav-text">十六进制编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程和序列化框架"><span class="nav-number">1.3.6.</span> <span class="nav-text">远程和序列化框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下一步"><span class="nav-number">1.4.</span> <span class="nav-text">下一步</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -993,7 +1016,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">18.1k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">18.8k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
