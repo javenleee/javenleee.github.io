@@ -4,21 +4,35 @@
 <p><a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="commitizen"></a><br><a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs"></a><br><a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/LICENSE"><img src="https://img.shields.io/github/license/EYHN/hexo-helper-live2d.svg" alt="license"></a></p>
 <p><a href="#backers"><img src="https://opencollective.com/hexo-helper-live2d/backers/badge.svg" alt="Backers on Open Collective"></a><br> <a href="#sponsors"><img src="https://opencollective.com/hexo-helper-live2d/sponsors/badge.svg" alt="Sponsors on Open Collective"></a> </p>
 <p>Read this in other languages: <a href="README.md">English</a>, <a href="README.zh-CN.md">简体中文</a>.</p>
-<p><br></p>
+<br>
+
 <p>Add the Sseexxyyy live2d to your hexo!</p>
 <p>Demo: <a href="https://l2dwidget.js.org/dev.html">https://l2dwidget.js.org/dev.html</a></p>
 <p>Author’s original Blog: <a href="https://huaji8.top/post/live2d-plugin-2.0/">https://huaji8.top/post/live2d-plugin-2.0/</a></p>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>Install module:</p>
 <pre><code class="bash">
 npm install --save hexo-helper-live2d
-
 </code></pre>
 <blockquote>
 <p>try <code>yarn add hexo-helper-live2d</code> for better installation experience.<br><a href="https://yarnpkg.com/en/">Yarn</a></p>
 </blockquote>
-<details><summary>Still using legacy version?</summary><br><br><br>- If you want to use new injector, which will inject to all pages:<br><br>Please delete <code>{{ live2d() }}</code> or <code>&lt;%- live2d() %&gt;</code> before <code>&lt;/body&gt;</code> in<br><code>layout/layout.ejs</code> or <code>layout/_layout.swig</code>.<br><br>- If you want to use the old replace mode, which only replace <code>live2d</code> tag:<br><br>Keep <code>{{ live2d() }}</code> or <code>&lt;%- live2d() %&gt;</code>, and turn the <code>tagMode</code> config to <code>true</code>.<br><br>We recommend you to use <code>npm install --save hexo-helper-live2d@3.x</code> to force<br>install the latest version.<br><br></details>
+<details><summary>Still using legacy version?</summary><br>
 
-<details><summary>Tag mode</summary><br><br><br>Please insert <code>{{ live2d() }}</code>(swig) or <code>&lt;%- live2d() %&gt;</code>(ejs) before <code>&lt;/body&gt;</code> in whichever pages you want to insert. And turn <code>tagMode</code> config to <code>true</code>, and then live2dwidget will only be on those who have <code>live2d</code> tag.<br><br></details>
+<ul>
+<li>If you want to use new injector, which will inject to all pages:</li>
+</ul>
+<p>Please delete <code>{{ live2d() }}</code> or <code>&lt;%- live2d() %&gt;</code> before <code>&lt;/body&gt;</code> in<br><code>layout/layout.ejs</code> or <code>layout/_layout.swig</code>.</p>
+<ul>
+<li>If you want to use the old replace mode, which only replace <code>live2d</code> tag:</li>
+</ul>
+<p>Keep <code>{{ live2d() }}</code> or <code>&lt;%- live2d() %&gt;</code>, and turn the <code>tagMode</code> config to <code>true</code>.</p>
+<p>We recommend you to use <code>npm install --save hexo-helper-live2d@3.x</code> to force<br>install the latest version.</p>
+</details>
+
+<details><summary>Tag mode</summary><br>
+
+<p>Please insert <code>{{ live2d() }}</code>(swig) or <code>&lt;%- live2d() %&gt;</code>(ejs) before <code>&lt;/body&gt;</code> in whichever pages you want to insert. And turn <code>tagMode</code> config to <code>true</code>, and then live2dwidget will only be on those who have <code>live2d</code> tag.</p>
+</details>
 
 <h3 id="Others-for-jekyll-wordpress-etc"><a href="#Others-for-jekyll-wordpress-etc" class="headerlink" title="Others, for jekyll, wordpress, etc"></a>Others, for jekyll, wordpress, etc</h3><p>See <a href="https://github.com/xiazeyu/live2d-widget.js">live2d-widget.js</a> WIP.</p>
 <h2 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h2><p>Add configuration in hexo’s <code>_config.yml</code> file or theme’s <code>_config.yml</code>.</p>
@@ -38,8 +52,7 @@ npm install --save hexo-helper-live2d
 <span class="attr">    width:</span> <span class="number">150</span>
 <span class="attr">    height:</span> <span class="number">300</span>
 <span class="attr">  mobile:</span>
-<span class="attr">    show:</span> <span class="literal">true</span>
-</code></pre>
+<span class="attr">    show:</span> <span class="literal">true</span></code></pre>
 <h2 id="Detail-settings"><a href="#Detail-settings" class="headerlink" title="Detail settings"></a>Detail settings</h2><p>Settings is divided into helper-specific ones and general ones,<br>You can merge these two into your <code>_config.yml</code> file.</p>
 <h3 id="Helper-specific"><a href="#Helper-specific" class="headerlink" title="Helper-specific"></a>Helper-specific</h3><pre><code class="yml"><span class="comment"># Live2D</span>
 <span class="comment">## https://github.com/EYHN/hexo-helper-live2d</span>
@@ -59,8 +72,7 @@ npm install --save hexo-helper-live2d
 <span class="attr">    use:</span> <span class="string">live2d-widget-model-wanko</span> <span class="comment"># npm-module package name</span>
     <span class="comment"># use: wanko # folder name in (hexo base dir)/live2d_models/</span>
     <span class="comment"># use: ./wives/wanko # folder path relative to hexo base dir</span>
-    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # Your custom url</span>
-</code></pre>
+    <span class="comment"># use: https://cdn.jsdelivr.net/npm/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json # Your custom url</span></code></pre>
 <blockquote>
 <p>To see Chinese explainations, please have a look at <a href="README.zh-CN.md">Chinese document</a>.</p>
 </blockquote>
@@ -87,8 +99,7 @@ npm install --save hexo-helper-live2d
 <span class="attr">    scale:</span> <span class="number">0.5</span>
 <span class="attr">  react:</span>
 <span class="attr">    opacityDefault:</span> <span class="number">0.7</span>
-<span class="attr">    opacityOnHover:</span> <span class="number">0.2</span>
-</code></pre>
+<span class="attr">    opacityOnHover:</span> <span class="number">0.2</span></code></pre>
 <h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><p>There are many ways to use different models:</p>
 <h3 id="a-live2d-models’s-subfolder-name"><a href="#a-live2d-models’s-subfolder-name" class="headerlink" title="a. live2d_models’s subfolder name"></a>a. live2d_models’s subfolder name</h3><ol>
 <li><p>Create a <code>live2d_models</code> folder at your blog’s root directory.</p>
@@ -100,12 +111,47 @@ npm install --save hexo-helper-live2d
 <li><p>Type the folder name into <code>model.use</code> in <code>_config.yml</code>.</p>
 </li>
 </ol>
-<details><summary>An Example:</summary><br><br><br>Your model is named <code>mymiku</code>.<br><br>Then, create a folder at  <code>/</code> (Which should exists <code>_config.yml</code>, <code>sources</code>,<br> <code>themes</code> ) named <code>mymiku</code>.<br><br>Copy your model to <code>/live2d_models/mymiku/</code>.<br><br>Up to now, there should be an <code>.model.json</code> file (for example, <code>mymiku.model.json</code>)<br><br>in the directory of <code>/live2d_models/mymiku/</code>.<br><br>Type <code>mymiku</code> into <code>model.use</code> in <code>_config.yml</code>.<br><br></details>
+<details><summary>An Example:</summary><br>
+
+<p>Your model is named <code>mymiku</code>.</p>
+<p>Then, create a folder at  <code>/</code> (Which should exists <code>_config.yml</code>, <code>sources</code>,
+ <code>themes</code> ) named <code>mymiku</code>.</p>
+<p>Copy your model to <code>/live2d_models/mymiku/</code>.</p>
+<p>Up to now, there should be an <code>.model.json</code> file (for example, <code>mymiku.model.json</code>)</p>
+<p>in the directory of <code>/live2d_models/mymiku/</code>.</p>
+<p>Type <code>mymiku</code> into <code>model.use</code> in <code>_config.yml</code>.</p>
+</details>
 
 <h3 id="b-custom-path-relative-to-hexo-base-dir"><a href="#b-custom-path-relative-to-hexo-base-dir" class="headerlink" title="b. custom path relative to hexo base dir"></a>b. custom path relative to hexo base dir</h3><p>You can just type your model folder’s path which is <strong>relative to hexo base dir</strong>.</p>
 <p>An example: <code>./wives/wanko</code></p>
 <h3 id="c-npm-module’s-name"><a href="#c-npm-module’s-name" class="headerlink" title="c. npm module’s name"></a>c. npm module’s name</h3><h4 id="use-exist-ones"><a href="#use-exist-ones" class="headerlink" title="use exist ones"></a>use exist ones</h4><p>We alreday have tons of models, <a href="https://github.com/xiazeyu/live2d-widget-models">check this out</a></p>
-<details><summary>Click me if you are lazy</summary><br><br><br>- <code>live2d-widget-model-chitose</code><br>- <code>live2d-widget-model-epsilon2_1</code><br>- <code>live2d-widget-model-gf</code><br>- <code>live2d-widget-model-haru/01</code> (use <code>npm install --save live2d-widget-model-haru</code>)<br>- <code>live2d-widget-model-haru/02</code> (use <code>npm install --save live2d-widget-model-haru</code>)<br>- <code>live2d-widget-model-haruto</code><br>- <code>live2d-widget-model-hibiki</code><br>- <code>live2d-widget-model-hijiki</code><br>- <code>live2d-widget-model-izumi</code><br>- <code>live2d-widget-model-koharu</code><br>- <code>live2d-widget-model-miku</code><br>- <code>live2d-widget-model-ni-j</code><br>- <code>live2d-widget-model-nico</code><br>- <code>live2d-widget-model-nietzsche</code><br>- <code>live2d-widget-model-nipsilon</code><br>- <code>live2d-widget-model-nito</code><br>- <code>live2d-widget-model-shizuku</code><br>- <code>live2d-widget-model-tororo</code><br>- <code>live2d-widget-model-tsumiki</code><br>- <code>live2d-widget-model-unitychan</code><br>- <code>live2d-widget-model-wanko</code><br>- <code>live2d-widget-model-z16</code><br><br></details>
+<details><summary>Click me if you are lazy</summary><br>
+
+<ul>
+<li><code>live2d-widget-model-chitose</code></li>
+<li><code>live2d-widget-model-epsilon2_1</code></li>
+<li><code>live2d-widget-model-gf</code></li>
+<li><code>live2d-widget-model-haru/01</code> (use <code>npm install --save live2d-widget-model-haru</code>)</li>
+<li><code>live2d-widget-model-haru/02</code> (use <code>npm install --save live2d-widget-model-haru</code>)</li>
+<li><code>live2d-widget-model-haruto</code></li>
+<li><code>live2d-widget-model-hibiki</code></li>
+<li><code>live2d-widget-model-hijiki</code></li>
+<li><code>live2d-widget-model-izumi</code></li>
+<li><code>live2d-widget-model-koharu</code></li>
+<li><code>live2d-widget-model-miku</code></li>
+<li><code>live2d-widget-model-ni-j</code></li>
+<li><code>live2d-widget-model-nico</code></li>
+<li><code>live2d-widget-model-nietzsche</code></li>
+<li><code>live2d-widget-model-nipsilon</code></li>
+<li><code>live2d-widget-model-nito</code></li>
+<li><code>live2d-widget-model-shizuku</code></li>
+<li><code>live2d-widget-model-tororo</code></li>
+<li><code>live2d-widget-model-tsumiki</code></li>
+<li><code>live2d-widget-model-unitychan</code></li>
+<li><code>live2d-widget-model-wanko</code></li>
+<li><code>live2d-widget-model-z16</code></li>
+</ul>
+</details>
 
 <p>You can use <code>npm install {your model&#39;s package name}</code> to install,</p>
 <p>and type it into <code>model.use</code> in <code>_config.yml</code> to use it.</p>
@@ -126,7 +172,8 @@ npm install --save hexo-helper-live2d
 </ul>
 <p>and you can just type your package name(<code>live2d-widget-model-wanko</code>) into <code>model.use</code></p>
 <h3 id="d-Your-own-CDN"><a href="#d-Your-own-CDN" class="headerlink" title="d. Your own CDN"></a>d. Your own CDN</h3><p>If you are disappointed without CDN, you can just type your own <code>.model.json</code><br>url into <code>model.use</code>.</p>
-<p><br></p>
+<br>
+
 <p>Enjoy!:beer:</p>
 <p>Cheer for the 3.0 version and the new year!~</p>
 <blockquote>
@@ -143,11 +190,12 @@ npm install --save hexo-helper-live2d
 <li><p><a href="http://sites.cybernoids.jp/cubism-sdk2_e/webgl2-1">Cubism SDK WebGL 2.1</a></p>
 </li>
 </ul>
-<h2 id="Contributors"><a href="#Contributors" class="headerlink" title="Contributors"></a>Contributors</h2><p><img src="https://opencollective.com/hexo-helper-live2d/contributors.svg?width=890&amp;button=true" alt="contributors"></p>
-<h2 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h2><p><a href="https://delusion.coding.me/"><img src="https://img.shields.io/badge/author-cneyhn-green.svg" alt="author"></a><br><a href="tencent://message/?uin=1106996185&amp;Site=Senlon.Net&amp;Menu=yes"><img src="https://img.shields.io/badge/QQ-1106996185-blue.svg" alt="author QQ"></a><br><a href="mailto:cneyhn@gmail.com"><img src="https://img.shields.io/badge/Emali%20me-cneyhn@gmail.com-green.svg" alt="author email"></a></p>
-<p><a href="https://xiazeyu.coding.me/"><img src="https://img.shields.io/badge/collaborator-xiazeyu-green.svg" alt="collaborator0"></a><br><a href="tencent://message/?uin=2320732807&amp;Site=Senlon.Net&amp;Menu=yes"><img src="https://img.shields.io/badge/QQ-2320732807-blue.svg" alt="collaborator0 QQ"></a><br><a href="mailto:xiazeyu_2011@126.com"><img src="https://img.shields.io/badge/Emali%20me-xiazeyu_2011@126.com-green.svg" alt="collaborator0 email"></a></p>
+<h2 id="Contributors"><a href="#Contributors" class="headerlink" title="Contributors"></a>Contributors</h2><p><img src="https://opencollective.com/hexo-helper-live2d/contributors.svg?width=890&button=true" alt="contributors"></p>
+<h2 id="About-me"><a href="#About-me" class="headerlink" title="About me"></a>About me</h2><p><a href="https://delusion.coding.me/"><img src="https://img.shields.io/badge/author-cneyhn-green.svg" alt="author"></a><br><a href="tencent://message/?uin=1106996185&Site=Senlon.Net&Menu=yes"><img src="https://img.shields.io/badge/QQ-1106996185-blue.svg" alt="author QQ"></a><br><a href="mailto:cneyhn@gmail.com"><img src="https://img.shields.io/badge/Emali%20me-cneyhn@gmail.com-green.svg" alt="author email"></a></p>
+<p><a href="https://xiazeyu.coding.me/"><img src="https://img.shields.io/badge/collaborator-xiazeyu-green.svg" alt="collaborator0"></a><br><a href="tencent://message/?uin=2320732807&Site=Senlon.Net&Menu=yes"><img src="https://img.shields.io/badge/QQ-2320732807-blue.svg" alt="collaborator0 QQ"></a><br><a href="mailto:xiazeyu_2011@126.com"><img src="https://img.shields.io/badge/Emali%20me-xiazeyu_2011@126.com-green.svg" alt="collaborator0 email"></a></p>
 <h2 id="Imported"><a href="#Imported" class="headerlink" title="Imported"></a>Imported</h2><p><a href="https://github.com/matthewhudson/current-device"><img src="https://img.shields.io/npm/v/current-device.svg?label=current-device" alt="current-device"></a></p>
-<p><br></p>
+<br>
+
 <p>Open sourced under the GPL v2.0 license.</p>
 <h2 id="Contributors-1"><a href="#Contributors-1" class="headerlink" title="Contributors"></a>Contributors</h2><p>This project exists thanks to all the people who contribute.<br><a href="https://github.com/EYHN/hexo-helper-live2d/graphs/contributors"><img src="https://opencollective.com/hexo-helper-live2d/contributors.svg?width=890&button=false"></a></p>
 <h2 id="Backers"><a href="#Backers" class="headerlink" title="Backers"></a>Backers</h2><p>Thank you to all our backers! 🙏 [<a href="https://opencollective.com/hexo-helper-live2d#backer">Become a backer</a>]</p>

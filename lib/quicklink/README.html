@@ -1,4 +1,11 @@
-<p align="center"><br>  <img src="https://i.imgur.com/NVRZLHv.png" width="640" alt="quicklink"><br>  <br><br>  <a href="https://www.npmjs.org/package/quicklink"><img src="https://img.shields.io/npm/v/quicklink.svg?style=flat" alt="npm"></a><br>  <a href="https://unpkg.com/quicklink"><img src="https://img.badgesize.io/https://unpkg.com/quicklink/dist/quicklink.js?compression=gzip" alt="gzip size"></a><br>  <a href="https://www.npmjs.com/package/quicklink"><img src="https://img.shields.io/npm/dt/quicklink.svg" alt="downloads"></a><br>  <a href="https://travis-ci.org/GoogleChromeLabs/quicklink"><img src="https://travis-ci.org/GoogleChromeLabs/quicklink.svg?branch=master" alt="travis"></a><br></p>
+<p align="center">
+  <img src="https://i.imgur.com/NVRZLHv.png" width="640" alt="quicklink">
+  <br>
+  <a href="https://www.npmjs.org/package/quicklink"><img src="https://img.shields.io/npm/v/quicklink.svg?style=flat" alt="npm"></a>
+  <a href="https://unpkg.com/quicklink"><img src="https://img.badgesize.io/https://unpkg.com/quicklink/dist/quicklink.js?compression=gzip" alt="gzip size"></a>
+  <a href="https://www.npmjs.com/package/quicklink"><img src="https://img.shields.io/npm/dt/quicklink.svg" alt="downloads"></a>
+  <a href="https://travis-ci.org/GoogleChromeLabs/quicklink"><img src="https://travis-ci.org/GoogleChromeLabs/quicklink.svg?branch=master" alt="travis"></a>
+</p>
 
 <h1 id="quicklink"><a href="#quicklink" class="headerlink" title="quicklink"></a>quicklink</h1><blockquote>
 <p>Faster subsequent page-loads by prefetching in-viewport links during idle time</p>
@@ -12,8 +19,7 @@
 </ul>
 <h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>This project aims to be a drop-in solution for sites to prefetch links based on what is in the user’s viewport. It also aims to be small (<strong>&lt; 1KB minified/gzipped</strong>).</p>
 <h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>For use with <a href="http://nodejs.org">node</a> and <a href="https://npmjs.com">npm</a>:</p>
-<pre><code class="sh">npm install --save quicklink
-</code></pre>
+<pre><code class="sh">npm install --save quicklink</code></pre>
 <p>You can also grab <code>quicklink</code> from <a href="https://unpkg.com/quicklink">unpkg.com/quicklink</a>.</p>
 <h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Once initialized, <code>quicklink</code> will automatically prefetch URLs for links that are in-viewport during idle time.</p>
 <p>Quickstart:</p>
@@ -22,19 +28,16 @@
 <span class="comment">&lt;!-- Initialize (you can do this whenever you want) --&gt;</span>
 <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span>
 <span class="undefined">quicklink();</span>
-<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
 <p>For example, you can initialize after the <code>load</code> event fires:</p>
 <pre><code class="html"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span>
 <span class="javascript"><span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, () =&gt;{</span>
 <span class="undefined">   quicklink();</span>
 <span class="undefined">});</span>
-<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
 <p>ES Module import:</p>
 <pre><code class="js"><span class="keyword">import</span> quicklink <span class="keyword">from</span> <span class="string">"dist/quicklink.mjs"</span>;
-quicklink();
-</code></pre>
+quicklink();</code></pre>
 <p>The above options are best for multi-page sites. Single-page apps have a few options available for using quicklink with a router:</p>
 <ul>
 <li>Call <code>quicklink()</code> once a navigation to a new route has completed</li>
@@ -61,32 +64,27 @@ quicklink();
 <li>Includes a very small fallback for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback">requestIdleCallback</a></li>
 <li>Requires <code>IntersectionObserver</code> to be supported (see <a href="https://caniuse.com/#feat=intersectionobserver">CanIUse</a>). We recommend conditionally polyfilling this feature with a service like Polyfill.io:</li>
 </ul>
-<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
+<pre><code class="html"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
 <p>Alternatively, see the <a href="https://github.com/w3c/IntersectionObserver/tree/master/polyfill">Intersection Observer polyfill</a>.</p>
 <h2 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h2><p><strong>Set a custom timeout for prefetching resources</strong></p>
 <p>Defaults to 2 seconds (via <code>requestIdleCallback</code>). Here we override it to 4 seconds:</p>
 <pre><code class="js">quicklink({
   timeout: <span class="number">4000</span>
-});
-</code></pre>
+});</code></pre>
 <p><strong>Set the DOM element to observe for in-viewport links</strong></p>
 <p>Defaults to <code>document</code> otherwise.</p>
 <pre><code class="js"><span class="keyword">const</span> elem = <span class="built_in">document</span>.getElementById(<span class="string">'carousel'</span>);
 quicklink({
   el: elem
-});
-</code></pre>
+});</code></pre>
 <p><strong>Set a custom array of URLs to be prefetched</strong></p>
 <p>If you would prefer to provide a static list of URLs to be prefetched, instead of detecting those in-viewport, customizing URLs is supported.</p>
 <pre><code class="js">quicklink({
    urls: [<span class="string">'2.html'</span>,<span class="string">'3.html'</span>, <span class="string">'4.js'</span>]
-});
-</code></pre>
+});</code></pre>
 <p><strong>Set the request priority for prefetches</strong></p>
 <p>Defaults to low-priority (<code>rel=prefetch</code> or XHR). For high-priority (<code>priority: true</code>), attempts to use <code>fetch()</code> or falls back to XHR.</p>
-<pre><code class="js">quicklink({ <span class="attr">priority</span>: <span class="literal">true</span> });
-</code></pre>
+<pre><code class="js">quicklink({ <span class="attr">priority</span>: <span class="literal">true</span> });</code></pre>
 <p><strong>Specify a custom list of allowed origins</strong></p>
 <p>Provide a list of hostnames that should be prefetch-able. Only the same origin is allowed by default.</p>
 <blockquote>
@@ -102,8 +100,7 @@ quicklink({
     <span class="string">'example.com'</span>,
     <span class="comment">// ...</span>
   ]
-});
-</code></pre>
+});</code></pre>
 <p><strong>Allow all origins</strong></p>
 <p>Enables all cross-origin requests to be made.</p>
 <blockquote>
@@ -113,8 +110,7 @@ quicklink({
   origins: <span class="literal">true</span>,
   <span class="comment">// or</span>
   origins: []
-});
-</code></pre>
+});</code></pre>
 <p><strong>Custom Ignore Patterns</strong></p>
 <p>These filters run <em>after</em> the <code>origins</code> matching has run. Ignores can be useful for avoiding large file downloads or for responding to DOM attributes dynamically.</p>
 <pre><code class="js"><span class="comment">// Same-origin restraint is enabled by default.</span>
@@ -130,8 +126,7 @@ quicklink({
 <span class="regexp">    uri =&gt; uri.includes('.zip'),</span>
 <span class="regexp">    (uri, elem) =&gt; elem.hasAttribute('noprefetch')</span>
 <span class="regexp">  ]</span>
-<span class="regexp">});</span>
-</code></pre>
+<span class="regexp">});</span></code></pre>
 <h2 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h2><p>The prefetching provided by <code>quicklink</code> can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>. Cross-browser support is as follows:</p>
 <ul>
 <li>Without polyfills: Chrome, Firefox, Edge, Opera, Android Browser, Samsung Internet.</li>
@@ -149,9 +144,8 @@ quicklink({
 <span class="javascript"><span class="keyword">const</span> urls = [<span class="string">'1.html'</span>, <span class="string">'2.html'</span>];</span>
 <span class="javascript"><span class="keyword">const</span> promises = urls.map(<span class="function"><span class="params">url</span> =&gt;</span> prefetch(url));</span>
 <span class="javascript"><span class="built_in">Promise</span>.all(promises);</span>
-<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-</code></pre>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>Here’s a <a href="https://www.webpagetest.org/video/view.php?id=181212_4c294265117680f2636676721cc886613fe2eede&amp;data=1">WebPageTest run</a> for our <a href="https://keyword-2-ecd7b.firebaseapp.com/">demo</a> improving page-load performance by up to 4 seconds via quicklink’s prefetching. A <a href="https://youtu.be/rQ75YEbJicw">video</a> comparison of the before/after prefetching is on YouTube.</p>
+<span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></code></pre>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>Here’s a <a href="https://www.webpagetest.org/video/view.php?id=181212_4c294265117680f2636676721cc886613fe2eede&data=1">WebPageTest run</a> for our <a href="https://keyword-2-ecd7b.firebaseapp.com/">demo</a> improving page-load performance by up to 4 seconds via quicklink’s prefetching. A <a href="https://youtu.be/rQ75YEbJicw">video</a> comparison of the before/after prefetching is on YouTube.</p>
 <p>For demo purposes, we deployed a version of the <a href="https://blog.google">Google Blog</a> on<br>Firebase hosting. We then deployed another version of it, adding quicklink to the homepage and benchmarked navigating from the homepage to an article that was<br>automatically prefetched. The prefetched version loaded faster.</p>
 <p>Please note: this is by no means an exhaustive benchmark of the pros and cons of in-viewport link prefetching. Just a demo of the potential improvements the approach can offer. Your own mileage may heavily vary.</p>
 <h2 id="Related-projects"><a href="#Related-projects" class="headerlink" title="Related projects"></a>Related projects</h2><ul>
