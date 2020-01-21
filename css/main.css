@@ -2112,7 +2112,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bbe0a1;
+  background: #bad569;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2494,6 +2494,7 @@ img:hover {
   width: 100%;
   outline: none;
   border: none;
+  text-indent: 8px;
   background: transparent;
   vertical-align: middle;
 }
@@ -3454,9 +3455,9 @@ input {
 input:focus {
   border-color: #f00;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 4px;
 rgba(102,175,233,0.6)
-  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 4px;
 rgba(102,175,233,0.6)
 }
 .posts-expand .post-tags {
