@@ -2112,7 +2112,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff8a;
+  background: #6b17ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3304,7 +3304,6 @@ body {
 }
 .site-meta {
   height: 100px;
-  background-image: url("https://ziyuan.lruihao.cn/images/site-meta.jpg");
   background-size: cover;
 }
 @media (max-width: 767px) {
