@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2020-02-07T04:22:32.104Z</updated>
+  <updated>2020-02-08T05:13:38.700Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -17,16 +17,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="https://www.shmily.today/test.html"/>
-    <id>https://www.shmily.today/test.html</id>
-    <published>2020-02-07T04:22:32.000Z</published>
-    <updated>2020-02-07T04:22:32.104Z</updated>
+    <title>test.md</title>
+    <link href="https://www.shmily.today/test-md.html"/>
+    <id>https://www.shmily.today/test-md.html</id>
+    <published>2020-02-08T05:12:57.000Z</published>
+    <updated>2020-02-08T05:13:38.700Z</updated>
     
     <summary type="html">
     
+      I am the test description
+    
     </summary>
     
+      <category term="test" scheme="https://www.shmily.today/categories/test/"/>
+    
+    
+      <category term="test" scheme="https://www.shmily.today/tags/test/"/>
     
   </entry>
   

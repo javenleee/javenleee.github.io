@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2Ftest.html</url>
+    <title><![CDATA[test.md]]></title>
+    <url>%2Ftest-md.html</url>
     <content type="text"></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Quartus II安装破解及基础操作]]></title>
