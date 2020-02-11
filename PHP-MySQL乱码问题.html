@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="浅谈PHP+MySQL乱码问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-11T13:45:57.235Z">
+<meta property="og:updated_time" content="2020-02-11T14:02:16.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP+MySQL乱码问题总结">
 <meta name="twitter:description" content="浅谈PHP+MySQL乱码问题">
@@ -649,6 +649,12 @@
 <p>对于第一种情况，往往是数据库选择的字符集不支持存入的数据。如character_set_database是latin1,而存入的数据是汉字，那么自然会乱码。</p>
 <p>第二种情况可能是character_set_connection和character_set_results不兼容导致的，当然最基本的，如果整个网页都乱码的话，可能是php文件编码和设置的meta charset不兼容导致的。</p>
 <p>所以在确保character_set_database支持的情况下，在PHP环境中，连接完数据库之后，使用mysql-&gt;set_charset(’utf8mb4‘)函数指定三个字符集为utf8mb4（PHP手册中不推荐使用mysql-&gt;query(“set names utf8”)方法），这样就保证了连接通信正确，基本就不会出现乱码了。</p>
+<p>参考：</p>
+<ul>
+<li><a href="http://ourmysql.com/archives/314" target="_blank" rel="noopener">http://ourmysql.com/archives/314</a></li>
+<li><a href="https://www.cnblogs.com/digdeep/p/5228199.html" target="_blank" rel="noopener">https://www.cnblogs.com/digdeep/p/5228199.html</a></li>
+<li>高性能MySQL（第3版）</li>
+</ul>
 
       
     </div>
@@ -702,7 +708,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2020-02-11 21:45:57</li>
+  <strong>修改时间： </strong>2020-02-11 22:02:16</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/PHP-MySQL乱码问题.html" title="PHP+MySQL乱码问题总结">https://www.shmily.today/PHP-MySQL乱码问题.html</a>
@@ -1015,7 +1021,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">5k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">5.1k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
