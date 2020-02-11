@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2020-02-09T15:24:43.786Z</updated>
+  <updated>2020-02-11T13:45:57.235Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>PHP+MySQL乱码问题总结</title>
+    <link href="https://www.shmily.today/PHP-MySQL%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html"/>
+    <id>https://www.shmily.today/PHP-MySQL乱码问题.html</id>
+    <published>2020-02-10T14:20:24.000Z</published>
+    <updated>2020-02-11T13:45:57.235Z</updated>
+    
+    <summary type="html">
+    
+      浅谈PHP+MySQL乱码问题
+    
+    </summary>
+    
+      <category term="MySQL" scheme="https://www.shmily.today/categories/MySQL/"/>
+    
+    
+      <category term="编码" scheme="https://www.shmily.today/tags/%E7%BC%96%E7%A0%81/"/>
+    
+      <category term="MySQL" scheme="https://www.shmily.today/tags/MySQL/"/>
+    
+      <category term="PHP" scheme="https://www.shmily.today/tags/PHP/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MySQL中的utf8和utf8mb4</title>
     <link href="https://www.shmily.today/MySql%E4%B8%AD%E7%9A%84utf8%E5%92%8Cutf8mb4.html"/>
     <id>https://www.shmily.today/MySql中的utf8和utf8mb4.html</id>
     <published>2020-02-09T15:10:41.000Z</published>
-    <updated>2020-02-09T15:24:43.786Z</updated>
+    <updated>2020-02-11T03:09:52.551Z</updated>
     
     <summary type="html">
     
@@ -33,6 +57,8 @@
     
     
       <category term="编码" scheme="https://www.shmily.today/tags/%E7%BC%96%E7%A0%81/"/>
+    
+      <category term="MySQL" scheme="https://www.shmily.today/tags/MySQL/"/>
     
   </entry>
   
