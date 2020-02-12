@@ -2112,7 +2112,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9ad6f4;
+  background: #ff7832;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3291,7 +3291,7 @@ blockquote {
   height: 0px;
 }
 body {
-  background-image: url("../images/bg2.jpg");
+  background-image: url("https://i.loli.net/2020/02/12/mW5AeTb4O7yk6vQ.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3406,24 +3406,11 @@ pre {
   outline: 5000px solid rgba(0,0,0,0);
   z-index: 99999;
 }
-@font-face {
-  font-family: MMT;
-  src: url("/fonts/MMT_579767_SOAJ0.ttf");
-}
-@font-face {
-  font-family: STLiti;
-  src: url("/fonts/STLITI.TTF");
-}
-@font-face {
-  font-family: Title;
-  src: url("/fonts/Title.ttf");
-}
 .site-title {
-  font-family: Title;
+  font-family: "Microsoft Yahei";
   font-size: 220%;
 }
 .site-subtitle {
-  font-family: STLiti;
   font-size: 15px;
   color: #eee;
   margin-top: 22px;
@@ -3435,7 +3422,6 @@ pre {
   }
 }
 .site-description {
-  font-family: STLiti;
   font-size: 15px;
   line-height: 1.6em;
 }
