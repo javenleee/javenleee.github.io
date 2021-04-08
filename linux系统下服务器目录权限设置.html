@@ -109,14 +109,14 @@
 
 
   <meta name="description" content="Linux系统下设置合理的目录、文件权限">
-<meta name="keywords" content="linux,权限">
+<meta name="keywords" content="Linux,权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux系统下服务器目录权限设置">
 <meta property="og:url" content="https://www.shmily.today/linux系统下服务器目录权限设置.html">
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="Linux系统下设置合理的目录、文件权限">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-15T01:38:51.165Z">
+<meta property="og:updated_time" content="2021-04-08T10:43:45.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux系统下服务器目录权限设置">
 <meta name="twitter:description" content="Linux系统下设置合理的目录、文件权限">
@@ -377,10 +377,6 @@
            </li>
          
            <li>
-             <a href="/Untitled.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/PHP-MySQL乱码问题.html" title="PHP+MySQL乱码问题总结" target="_blank">PHP+MySQL乱码问题总结</a>
            </li>
          
@@ -522,7 +518,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -586,8 +582,7 @@
       
 
       
-        <p>[TOC]</p>
-<h1 id="Linux系统下设置合理的服务器目录、文件权限"><a href="#Linux系统下设置合理的服务器目录、文件权限" class="headerlink" title="Linux系统下设置合理的服务器目录、文件权限"></a>Linux系统下设置合理的服务器目录、文件权限</h1><p>Linux系统设置合理的目录以及文件权限是一个比较头疼的问题（当然我们说的是多用户，单用户的话就无所谓了，都是你的文件，你开心就好），特别是服务器这种涉及到系统安全的目录，我们这里谈论在多用户系统中如何设置一个合理的服务器用户权限。</p>
+        <h1 id="Linux系统下设置合理的服务器目录、文件权限"><a href="#Linux系统下设置合理的服务器目录、文件权限" class="headerlink" title="Linux系统下设置合理的服务器目录、文件权限"></a>Linux系统下设置合理的服务器目录、文件权限</h1><p>Linux系统设置合理的目录以及文件权限是一个比较头疼的问题（当然我们说的是多用户，单用户的话就无所谓了，都是你的文件，你开心就好），特别是服务器这种涉及到系统安全的目录，我们这里谈论在多用户系统中如何设置一个合理的服务器用户权限。</p>
 <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>在terminal中使用<code>ll</code>命令（ll命令是ls -l的别名）查看当前目录下文件的详细信息，大体是这个样子：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">XXX@iZ2ze9b3o2pb5g31mt7a6wZ:/var/www$ ll</span><br><span class="line">total 12</span><br><span class="line">drwxr-xr-x  3 root root     4096 Apr 13 11:30 ./</span><br><span class="line">drwxr-xr-x 12 root root     4096 Apr 13 11:30 ../</span><br><span class="line">drwxrwx---  2 root www-data 4096 Apr 14 22:43 html/</span><br></pre></td></tr></table></figure>
 
@@ -645,7 +640,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2020-04-15 09:38:51</li>
+  <strong>修改时间： </strong>2021-04-08 18:43:45</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/linux系统下服务器目录权限设置.html" title="linux系统下服务器目录权限设置">https://www.shmily.today/linux系统下服务器目录权限设置.html</a>
@@ -660,7 +655,7 @@
     
       <div class="post-tags">
         
-          <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
         
       </div>
     
@@ -676,8 +671,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Untitled.html" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/PHP-MySQL乱码问题.html" rel="next" title="PHP+MySQL乱码问题总结">
+                <i class="fa fa-chevron-left"></i> PHP+MySQL乱码问题总结
               </a>
             
           </div>
@@ -768,7 +763,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -787,9 +782,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -812,9 +805,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

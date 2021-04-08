@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-04-08T10:28:23.644Z</updated>
+  <updated>2021-04-08T10:43:23.009Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://www.shmily.today/linux%E5%91%BD%E4%BB%A4.html"/>
     <id>https://www.shmily.today/linux命令.html</id>
     <published>2021-04-08T09:21:32.000Z</published>
-    <updated>2021-04-08T10:28:23.644Z</updated>
+    <updated>2021-04-08T10:43:23.009Z</updated>
     
     <summary type="html">
     
-      Linux命令的学
+      Linux命令的学习记录
     
     </summary>
     
@@ -41,7 +41,7 @@
     <link href="https://www.shmily.today/linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE.html"/>
     <id>https://www.shmily.today/linux系统下服务器目录权限设置.html</id>
     <published>2020-04-14T15:08:45.000Z</published>
-    <updated>2020-04-15T01:38:51.165Z</updated>
+    <updated>2021-04-08T10:43:45.971Z</updated>
     
     <summary type="html">
     
@@ -49,24 +49,10 @@
     
     </summary>
     
-      <category term="linux" scheme="https://www.shmily.today/categories/linux/"/>
+      <category term="Linux" scheme="https://www.shmily.today/categories/Linux/"/>
     
     
-      <category term="linux" scheme="https://www.shmily.today/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/Untitled.html"/>
-    <id>https://www.shmily.today/Untitled.html</id>
-    <published>2020-03-12T14:22:43.987Z</published>
-    <updated>2020-03-12T14:31:54.836Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
+      <category term="Linux" scheme="https://www.shmily.today/tags/Linux/"/>
     
   </entry>
   

@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Linux命令的学">
+  <meta name="description" content="Linux命令的学习记录">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux命令">
 <meta property="og:url" content="https://www.shmily.today/linux命令.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="Linux命令的学">
+<meta property="og:description" content="Linux命令的学习记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-04-08T10:28:23.644Z">
+<meta property="og:updated_time" content="2021-04-08T10:43:23.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux命令">
-<meta name="twitter:description" content="Linux命令的学">
+<meta name="twitter:description" content="Linux命令的学习记录">
 
 
 
@@ -377,10 +377,6 @@
            </li>
          
            <li>
-             <a href="/Untitled.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/PHP-MySQL乱码问题.html" title="PHP+MySQL乱码问题总结" target="_blank">PHP+MySQL乱码问题总结</a>
            </li>
          
@@ -570,7 +566,7 @@
           
 
           
-              <div class="post-description">Linux命令的学</div>
+              <div class="post-description">Linux命令的学习记录</div>
           
 
         </div>
@@ -586,9 +582,8 @@
       
 
       
-        <p>[TOC]</p>
-<h1 id="ssh免密登陆"><a href="#ssh免密登陆" class="headerlink" title="ssh免密登陆"></a>ssh免密登陆</h1><h2 id="在本地生成密钥"><a href="#在本地生成密钥" class="headerlink" title="在本地生成密钥"></a>在本地生成密钥</h2><p><code>ssh-keygen</code>连续回车三次，会在c:/user/username/.ssh（username替换成你的用户名）文件夹下生成私钥id_rsa和公钥id_rsa.pub，通过<a href="#scp命令">scp</a>命令将公钥id_rsa.pub上传到服务器用户个人目录下的.ssh文件夹下。</p>
-<p><strong>将公钥导入到authorized_keys中</strong> <strong><u>==<em>很重要</em>==</u></strong></p>
+        <h1 id="ssh免密登陆"><a href="#ssh免密登陆" class="headerlink" title="ssh免密登陆"></a>ssh免密登陆</h1><h2 id="在本地生成密钥"><a href="#在本地生成密钥" class="headerlink" title="在本地生成密钥"></a>在本地生成密钥</h2><p><code>ssh-keygen</code>连续回车三次，会在c:/user/username/.ssh（username替换成你的用户名）文件夹下生成私钥id_rsa和公钥id_rsa.pub，通过<a href="#scp命令">scp</a>命令将公钥id_rsa.pub上传到服务器用户个人目录下的.ssh文件夹下。</p>
+<p><strong>将公钥导入到authorized_keys中</strong> <strong><u><em>很重要</em></u></strong></p>
 <p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
 <h2 id="修改服务器文件权限"><a href="#修改服务器文件权限" class="headerlink" title="修改服务器文件权限"></a>修改服务器文件权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh权限设置为700 </span><br><span class="line">~/.ssh/authorized_keys的权限设置为600</span><br><span class="line"># 这是linux的安全要求，如果权限不对，自动登录将不会生效</span><br></pre></td></tr></table></figure>
 
@@ -716,7 +711,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-04-08 18:28:23</li>
+  <strong>修改时间： </strong>2021-04-08 18:43:23</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/linux命令.html" title="linux命令">https://www.shmily.today/linux命令.html</a>
@@ -835,7 +830,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -854,9 +849,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -879,9 +872,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
