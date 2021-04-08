@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="MySQL中的utf8和utf8mb4的区别">
-<meta name="keywords" content="MySQL,编码">
+  <meta name="description" content="Linux命令的学">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL中的utf8和utf8mb4">
-<meta property="og:url" content="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+<meta property="og:title" content="linux命令">
+<meta property="og:url" content="https://www.shmily.today/linux命令.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="MySQL中的utf8和utf8mb4的区别">
+<meta property="og:description" content="Linux命令的学">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-11T03:09:52.551Z">
+<meta property="og:updated_time" content="2021-04-08T10:28:23.644Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL中的utf8和utf8mb4">
-<meta name="twitter:description" content="MySQL中的utf8和utf8mb4的区别">
+<meta name="twitter:title" content="linux命令">
+<meta name="twitter:description" content="Linux命令的学">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+  <link rel="canonical" href="https://www.shmily.today/linux命令.html">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>MySQL中的utf8和utf8mb4 | blog</title>
+  <title>linux命令 | blog</title>
   
 
 
@@ -461,7 +461,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/linux命令.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zosien">
@@ -479,7 +479,7 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-                MySQL中的utf8和utf8mb4
+                linux命令
               
             
           </h2>
@@ -504,7 +504,7 @@
                 
               
 
-              <time title="创建时间：2020-02-09 23:10:41" itemprop="dateCreated datePublished" datetime="2020-02-09T23:10:41+08:00">2020-02-09</time>
+              <time title="创建时间：2021-04-08 17:21:32" itemprop="dateCreated datePublished" datetime="2021-04-08T17:21:32+08:00">2021-04-08</time>
             
 
             
@@ -522,7 +522,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -540,8 +540,8 @@
                 
                 <span class="post-meta-item-text"> 评论数： </span>
                 
-                <a href="/MySql中的utf8和utf8mb4.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/MySql中的utf8和utf8mb4.html" itemprop="commentCount"></span>
+                <a href="/linux命令.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/linux命令.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -549,7 +549,7 @@
 
           
           
-             <span id="/MySql中的utf8和utf8mb4.html" class="leancloud_visitors" data-flag-title="MySQL中的utf8和utf8mb4">
+             <span id="/linux命令.html" class="leancloud_visitors" data-flag-title="linux命令">
                <span class="post-meta-divider">|</span>
                <span title="阅读次数">
                  <span class="post-meta-item-icon">
@@ -570,7 +570,7 @@
           
 
           
-              <div class="post-description">MySQL中的utf8和utf8mb4的区别</div>
+              <div class="post-description">Linux命令的学</div>
           
 
         </div>
@@ -586,23 +586,83 @@
       
 
       
-        <h3 id="MySQL中utf8和utf8mb4"><a href="#MySQL中utf8和utf8mb4" class="headerlink" title="MySQL中utf8和utf8mb4"></a>MySQL中utf8和utf8mb4</h3><p>开始之前先回顾一下UTF-8和Unicode的概念</p>
-<p>UTF-8？ 来自百度百科的定义</p>
-<blockquote>
-<p>UTF-8（8位元，Universal Character Set/Unicode Transformation Format）是针对Unicode的一种可变长度字符编码。它可以用来表示Unicode标准中的任何字符，而且其编码中的第一个字节仍与<a href="https://baike.baidu.com/item/ASCII/309296" target="_blank" rel="noopener">ASCII</a>相容，使得原来处理ASCII字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为<a href="https://baike.baidu.com/item/电子邮件/111106" target="_blank" rel="noopener">电子邮件</a>、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-</blockquote>
-<p>那么什么是Unicode呢？</p>
-<blockquote>
-<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p>
-</blockquote>
-<p>通俗点讲：早期针对英语设计的ASCII码并不能支持其他语言，各国为了把各自的语言文字输入进计算机来处理，制定了自己的编码规范（如中国的gb2312），而这就导致了同样的数据通过不同的编码打开时的乱码问题。而为了统一所有的语言文字，Unicode应运而生，他把所有的语言统一到一套编码里，解决了乱码的问题，UTF-8是Unicode的一种字符集转换格式（Unicode Transformation Format），也就是怎么将Unicode定义的数字转换成程序数据。UTF-8即以8位也就是一个字节为单位对Unicode进行编码，是Unicode的一种实现方式，除了 UTF-8，还有UTF-16，UTF-32 等都可以实现 Unicode，但是 UTF-8 相对而言是用的最为广泛的。</p>
-<p>UTF-8编码的特点是对不同范围的字符使用不同长度的编码，如英文字符“A”只需要8位，则用一个字节，汉字多用三个字节，而极少使用的语言字符则使用4字节编码。每个字符最多用4个字节来编码，这样做就节省空间。</p>
-<p>在MySQL中，utf8字符集最大字符长度为3字节，如果遇到4字节的宽字符就会出现插入异常的情况，像emoji表情和很多不常用的汉字都无法使用MySQL的utf8字符集，为了弥补这个缺陷，MySQL在5.5.3版本增加了utf8mb4字符集，mb4就是most byte 4，专门用来兼容4字节的Unicode。也就是说：在MySQL中utf8mb4才是真正的UTF-8，是utf8的超集。</p>
-<p>要在MySQL中使用4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本之后才支持，为了获得更好的兼容，最好使用utf8mb4而不是utf8，对于char类型数据来说，utf8mb4会多消耗一些空间（每个字符多占用一个字节），MySQL官方建议，可以使用varchar来替代char</p>
-<p>参考资料：</p>
-<ul>
-<li><a href="http://ourmysql.com/archives/1402" target="_blank" rel="noopener">http://ourmysql.com/archives/1402</a></li>
+        <p>[TOC]</p>
+<h1 id="ssh免密登陆"><a href="#ssh免密登陆" class="headerlink" title="ssh免密登陆"></a>ssh免密登陆</h1><h2 id="在本地生成密钥"><a href="#在本地生成密钥" class="headerlink" title="在本地生成密钥"></a>在本地生成密钥</h2><p><code>ssh-keygen</code>连续回车三次，会在c:/user/username/.ssh（username替换成你的用户名）文件夹下生成私钥id_rsa和公钥id_rsa.pub，通过<a href="#scp命令">scp</a>命令将公钥id_rsa.pub上传到服务器用户个人目录下的.ssh文件夹下。</p>
+<p><strong>将公钥导入到authorized_keys中</strong> <strong><u>==<em>很重要</em>==</u></strong></p>
+<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
+<h2 id="修改服务器文件权限"><a href="#修改服务器文件权限" class="headerlink" title="修改服务器文件权限"></a>修改服务器文件权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/.ssh权限设置为700 </span><br><span class="line">~/.ssh/authorized_keys的权限设置为600</span><br><span class="line"># 这是linux的安全要求，如果权限不对，自动登录将不会生效</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改ssh配置"><a href="#修改ssh配置" class="headerlink" title="修改ssh配置"></a>修改ssh配置</h2><p>修改服务器的ssh配置<code>vim /etc/ssh/sshd_config</code>，将<code>PubkeyAuthentication</code>改为yes即可。若root用户无法登陆则需修改<code>PermitRootLogin</code>为yes。</p>
+<p>用户登陆时，会去登陆账户文件夹下的.ssh文件夹的<strong>authorized_keys</strong>中验证密钥是否正确，若正确，则可登陆。</p>
+<h1 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd [-mMnr][-c &lt;备注&gt;][-d &lt;登入目录&gt;][-e &lt;有效期限&gt;][-f &lt;缓冲天数&gt;][-g &lt;群组&gt;][-G &lt;群组&gt;][-s &lt;shell&gt;][-u &lt;uid&gt;][用户帐号]</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h2><ul>
+<li>-c&lt;备注&gt; 　加上备注文字。备注文字会保存在passwd的备注栏位中。</li>
+<li>-d&lt;登入目录&gt; 　指定用户登入时的起始目录。</li>
+<li>-g&lt;群组&gt; 　指定用户所属的群组。</li>
+<li>-m 　自动建立用户的登入目录。</li>
+<li>-r 　建立系统帐号。</li>
+<li>-u<uid> 指定用户ID。</uid></li>
 </ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>添加一般用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username</span><br></pre></td></tr></table></figure>
+
+<p>为添加的用户指定相应的用户组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g root username</span><br></pre></td></tr></table></figure>
+
+<p>创建一个系统用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -r username</span><br></pre></td></tr></table></figure>
+
+<p>为新添加的用户指定home目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /home/myd username</span><br></pre></td></tr></table></figure>
+
+<p>建立用户且制定ID</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd username -u 544</span><br></pre></td></tr></table></figure>
+
+<h1 id="更改密码"><a href="#更改密码" class="headerlink" title="更改密码"></a>更改密码</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd [-k] [-l] [-u [-f]] [-d] [-S] [username]</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用参数："><a href="#常用参数：" class="headerlink" title="常用参数："></a>常用参数：</h2><ul>
+<li>-d –delete删除密码</li>
+<li>-f –force强迫用户下次登录时必须修改口令</li>
+<li>-k –keep更新只能发送在过期之后</li>
+<li>-l –lock停止账号使用</li>
+<li>-S –status显示密码信息</li>
+<li>-u –unlock启用已被停止的账户</li>
+<li>-x –maximum指定口令最长存活期</li>
+<li>-n –minimum指定口令最短存活期</li>
+<li>-w –warning口令要到期提前警告的天数</li>
+<li>-i –inactive口令过期后多少天停用账户</li>
+</ul>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p>设置密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+
+<p>删除用户密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd -d username</span><br></pre></td></tr></table></figure>
+
+<h1 id="scp命令"><a href="#scp命令" class="headerlink" title="scp命令"></a>scp命令</h1><p>Linux scp 命令用于 Linux 之间复制文件和目录。</p>
+<p>scp 是 secure copy 的缩写, scp 是 linux 系统下基于 ssh 登陆进行安全的远程文件拷贝命令。</p>
+<p>scp 是加密的，<a href="https://www.runoob.com/linux/linux-comm-rcp.html" target="_blank" rel="noopener">rcp</a> 是不加密的，scp 是 rcp 的加强版。</p>
+<h2 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]</span><br><span class="line">[-l limit] [-o ssh_option] [-P port] [-S program]</span><br><span class="line">[[user@]host1:]file1 [...] [[user@]host2:]file2</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用参数-1"><a href="#常用参数-1" class="headerlink" title="常用参数"></a>常用参数</h2><ul>
+<li>-r： 递归复制整个目录。</li>
+<li>-q： 不显示传输进度条。</li>
+<li>-P port：注意是大写的P, port是指定数据传输用到的端口号</li>
+<li>-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。适用于禁止ssh密码登陆的情况。</li>
+<li>-p：保留原文件的修改时间，访问时间和访问权限。</li>
+<li>-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</li>
+<li>-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</li>
+</ul>
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><p>目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r local_folder user@ip:path</span><br></pre></td></tr></table></figure>
+
+<p>非目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp local_file user@ip:path</span><br></pre></td></tr></table></figure>
+
+<p>更改最后一个参数的文件名可以实现传输的同时改名。</p>
+<h2 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h2><p>将scp的最后两个参数位置调换即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r user@ip:path local_path</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -656,10 +716,10 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2020-02-11 11:09:52</li>
+  <strong>修改时间： </strong>2021-04-08 18:28:23</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.shmily.today/MySql中的utf8和utf8mb4.html" title="MySQL中的utf8和utf8mb4">https://www.shmily.today/MySql中的utf8和utf8mb4.html</a>
+    <a href="https://www.shmily.today/linux命令.html" title="linux命令">https://www.shmily.today/linux命令.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -671,9 +731,7 @@
     
       <div class="post-tags">
         
-          <a href="/tags/编码/" rel="tag"><i class="fa fa-tag"></i> 编码</a>
-        
-          <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
         
       </div>
     
@@ -689,8 +747,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/PHP学习笔记.html" rel="next" title="PHP学习笔记">
-                <i class="fa fa-chevron-left"></i> PHP学习笔记
+              <a href="/linux系统下服务器目录权限设置.html" rel="next" title="linux系统下服务器目录权限设置">
+                <i class="fa fa-chevron-left"></i> linux系统下服务器目录权限设置
               </a>
             
           </div>
@@ -698,10 +756,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/PHP-MySQL乱码问题.html" rel="prev" title="PHP+MySQL乱码问题总结">
-                PHP+MySQL乱码问题总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -927,7 +981,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中utf8和utf8mb4"><span class="nav-number">1.</span> <span class="nav-text">MySQL中utf8和utf8mb4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh免密登陆"><span class="nav-number">1.</span> <span class="nav-text">ssh免密登陆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在本地生成密钥"><span class="nav-number">1.1.</span> <span class="nav-text">在本地生成密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改服务器文件权限"><span class="nav-number">1.2.</span> <span class="nav-text">修改服务器文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改ssh配置"><span class="nav-number">1.3.</span> <span class="nav-text">修改ssh配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建新用户"><span class="nav-number">2.</span> <span class="nav-text">创建新用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用参数"><span class="nav-number">2.2.</span> <span class="nav-text">常用参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">2.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更改密码"><span class="nav-number">3.</span> <span class="nav-text">更改密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-1"><span class="nav-number">3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用参数："><span class="nav-number">3.2.</span> <span class="nav-text">常用参数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-1"><span class="nav-number">3.3.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp命令"><span class="nav-number">4.</span> <span class="nav-text">scp命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-2"><span class="nav-number">4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用参数-1"><span class="nav-number">4.2.</span> <span class="nav-text">常用参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传文件"><span class="nav-number">4.3.</span> <span class="nav-text">上传文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载文件"><span class="nav-number">4.4.</span> <span class="nav-text">下载文件</span></a></li></ol></li></ol></div>
             
 
           </div>

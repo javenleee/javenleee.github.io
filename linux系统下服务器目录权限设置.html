@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="MySQL中的utf8和utf8mb4的区别">
-<meta name="keywords" content="MySQL,编码">
+  <meta name="description" content="Linux系统下设置合理的目录、文件权限">
+<meta name="keywords" content="linux,权限">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL中的utf8和utf8mb4">
-<meta property="og:url" content="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+<meta property="og:title" content="linux系统下服务器目录权限设置">
+<meta property="og:url" content="https://www.shmily.today/linux系统下服务器目录权限设置.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="MySQL中的utf8和utf8mb4的区别">
+<meta property="og:description" content="Linux系统下设置合理的目录、文件权限">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-11T03:09:52.551Z">
+<meta property="og:updated_time" content="2020-04-15T01:38:51.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL中的utf8和utf8mb4">
-<meta name="twitter:description" content="MySQL中的utf8和utf8mb4的区别">
+<meta name="twitter:title" content="linux系统下服务器目录权限设置">
+<meta name="twitter:description" content="Linux系统下设置合理的目录、文件权限">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+  <link rel="canonical" href="https://www.shmily.today/linux系统下服务器目录权限设置.html">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>MySQL中的utf8和utf8mb4 | blog</title>
+  <title>linux系统下服务器目录权限设置 | blog</title>
   
 
 
@@ -461,7 +461,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/MySql中的utf8和utf8mb4.html">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/linux系统下服务器目录权限设置.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zosien">
@@ -479,7 +479,7 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-                MySQL中的utf8和utf8mb4
+                linux系统下服务器目录权限设置
               
             
           </h2>
@@ -504,7 +504,7 @@
                 
               
 
-              <time title="创建时间：2020-02-09 23:10:41" itemprop="dateCreated datePublished" datetime="2020-02-09T23:10:41+08:00">2020-02-09</time>
+              <time title="创建时间：2020-04-14 23:08:45" itemprop="dateCreated datePublished" datetime="2020-04-14T23:08:45+08:00">2020-04-14</time>
             
 
             
@@ -522,7 +522,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a></span>
 
                 
                 
@@ -540,8 +540,8 @@
                 
                 <span class="post-meta-item-text"> 评论数： </span>
                 
-                <a href="/MySql中的utf8和utf8mb4.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/MySql中的utf8和utf8mb4.html" itemprop="commentCount"></span>
+                <a href="/linux系统下服务器目录权限设置.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/linux系统下服务器目录权限设置.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -549,7 +549,7 @@
 
           
           
-             <span id="/MySql中的utf8和utf8mb4.html" class="leancloud_visitors" data-flag-title="MySQL中的utf8和utf8mb4">
+             <span id="/linux系统下服务器目录权限设置.html" class="leancloud_visitors" data-flag-title="linux系统下服务器目录权限设置">
                <span class="post-meta-divider">|</span>
                <span title="阅读次数">
                  <span class="post-meta-item-icon">
@@ -570,7 +570,7 @@
           
 
           
-              <div class="post-description">MySQL中的utf8和utf8mb4的区别</div>
+              <div class="post-description">Linux系统下设置合理的目录、文件权限</div>
           
 
         </div>
@@ -586,23 +586,12 @@
       
 
       
-        <h3 id="MySQL中utf8和utf8mb4"><a href="#MySQL中utf8和utf8mb4" class="headerlink" title="MySQL中utf8和utf8mb4"></a>MySQL中utf8和utf8mb4</h3><p>开始之前先回顾一下UTF-8和Unicode的概念</p>
-<p>UTF-8？ 来自百度百科的定义</p>
-<blockquote>
-<p>UTF-8（8位元，Universal Character Set/Unicode Transformation Format）是针对Unicode的一种可变长度字符编码。它可以用来表示Unicode标准中的任何字符，而且其编码中的第一个字节仍与<a href="https://baike.baidu.com/item/ASCII/309296" target="_blank" rel="noopener">ASCII</a>相容，使得原来处理ASCII字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为<a href="https://baike.baidu.com/item/电子邮件/111106" target="_blank" rel="noopener">电子邮件</a>、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-</blockquote>
-<p>那么什么是Unicode呢？</p>
-<blockquote>
-<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p>
-</blockquote>
-<p>通俗点讲：早期针对英语设计的ASCII码并不能支持其他语言，各国为了把各自的语言文字输入进计算机来处理，制定了自己的编码规范（如中国的gb2312），而这就导致了同样的数据通过不同的编码打开时的乱码问题。而为了统一所有的语言文字，Unicode应运而生，他把所有的语言统一到一套编码里，解决了乱码的问题，UTF-8是Unicode的一种字符集转换格式（Unicode Transformation Format），也就是怎么将Unicode定义的数字转换成程序数据。UTF-8即以8位也就是一个字节为单位对Unicode进行编码，是Unicode的一种实现方式，除了 UTF-8，还有UTF-16，UTF-32 等都可以实现 Unicode，但是 UTF-8 相对而言是用的最为广泛的。</p>
-<p>UTF-8编码的特点是对不同范围的字符使用不同长度的编码，如英文字符“A”只需要8位，则用一个字节，汉字多用三个字节，而极少使用的语言字符则使用4字节编码。每个字符最多用4个字节来编码，这样做就节省空间。</p>
-<p>在MySQL中，utf8字符集最大字符长度为3字节，如果遇到4字节的宽字符就会出现插入异常的情况，像emoji表情和很多不常用的汉字都无法使用MySQL的utf8字符集，为了弥补这个缺陷，MySQL在5.5.3版本增加了utf8mb4字符集，mb4就是most byte 4，专门用来兼容4字节的Unicode。也就是说：在MySQL中utf8mb4才是真正的UTF-8，是utf8的超集。</p>
-<p>要在MySQL中使用4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本之后才支持，为了获得更好的兼容，最好使用utf8mb4而不是utf8，对于char类型数据来说，utf8mb4会多消耗一些空间（每个字符多占用一个字节），MySQL官方建议，可以使用varchar来替代char</p>
-<p>参考资料：</p>
-<ul>
-<li><a href="http://ourmysql.com/archives/1402" target="_blank" rel="noopener">http://ourmysql.com/archives/1402</a></li>
-</ul>
+        <p>[TOC]</p>
+<h1 id="Linux系统下设置合理的服务器目录、文件权限"><a href="#Linux系统下设置合理的服务器目录、文件权限" class="headerlink" title="Linux系统下设置合理的服务器目录、文件权限"></a>Linux系统下设置合理的服务器目录、文件权限</h1><p>Linux系统设置合理的目录以及文件权限是一个比较头疼的问题（当然我们说的是多用户，单用户的话就无所谓了，都是你的文件，你开心就好），特别是服务器这种涉及到系统安全的目录，我们这里谈论在多用户系统中如何设置一个合理的服务器用户权限。</p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><p>在terminal中使用<code>ll</code>命令（ll命令是ls -l的别名）查看当前目录下文件的详细信息，大体是这个样子：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">XXX@iZ2ze9b3o2pb5g31mt7a6wZ:/var/www$ ll</span><br><span class="line">total 12</span><br><span class="line">drwxr-xr-x  3 root root     4096 Apr 13 11:30 ./</span><br><span class="line">drwxr-xr-x 12 root root     4096 Apr 13 11:30 ../</span><br><span class="line">drwxrwx---  2 root www-data 4096 Apr 14 22:43 html/</span><br></pre></td></tr></table></figure>
+
+<p>第一栏可以分为四组三组<code>d | rwx | rwx | ---</code>，第一个d表示这是一个目录，若不是目录用<code>-</code>代替，第一组</p>
 
       
     </div>
@@ -656,10 +645,10 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2020-02-11 11:09:52</li>
+  <strong>修改时间： </strong>2020-04-15 09:38:51</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.shmily.today/MySql中的utf8和utf8mb4.html" title="MySQL中的utf8和utf8mb4">https://www.shmily.today/MySql中的utf8和utf8mb4.html</a>
+    <a href="https://www.shmily.today/linux系统下服务器目录权限设置.html" title="linux系统下服务器目录权限设置">https://www.shmily.today/linux系统下服务器目录权限设置.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -671,9 +660,7 @@
     
       <div class="post-tags">
         
-          <a href="/tags/编码/" rel="tag"><i class="fa fa-tag"></i> 编码</a>
-        
-          <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
         
       </div>
     
@@ -689,8 +676,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/PHP学习笔记.html" rel="next" title="PHP学习笔记">
-                <i class="fa fa-chevron-left"></i> PHP学习笔记
+              <a href="/Untitled.html" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -699,8 +686,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/PHP-MySQL乱码问题.html" rel="prev" title="PHP+MySQL乱码问题总结">
-                PHP+MySQL乱码问题总结 <i class="fa fa-chevron-right"></i>
+              <a href="/linux命令.html" rel="prev" title="linux命令">
+                linux命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -927,7 +914,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL中utf8和utf8mb4"><span class="nav-number">1.</span> <span class="nav-text">MySQL中utf8和utf8mb4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux系统下设置合理的服务器目录、文件权限"><span class="nav-number">1.</span> <span class="nav-text">Linux系统下设置合理的服务器目录、文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限"><span class="nav-number">1.1.1.</span> <span class="nav-text">权限</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

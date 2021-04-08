@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2020-02-11T15:15:48.529Z</updated>
+  <updated>2021-04-08T10:28:23.644Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux命令</title>
+    <link href="https://www.shmily.today/linux%E5%91%BD%E4%BB%A4.html"/>
+    <id>https://www.shmily.today/linux命令.html</id>
+    <published>2021-04-08T09:21:32.000Z</published>
+    <updated>2021-04-08T10:28:23.644Z</updated>
+    
+    <summary type="html">
+    
+      Linux命令的学
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.shmily.today/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://www.shmily.today/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux系统下服务器目录权限设置</title>
+    <link href="https://www.shmily.today/linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE.html"/>
+    <id>https://www.shmily.today/linux系统下服务器目录权限设置.html</id>
+    <published>2020-04-14T15:08:45.000Z</published>
+    <updated>2020-04-15T01:38:51.165Z</updated>
+    
+    <summary type="html">
+    
+      Linux系统下设置合理的目录、文件权限
+    
+    </summary>
+    
+      <category term="linux" scheme="https://www.shmily.today/categories/linux/"/>
+    
+    
+      <category term="linux" scheme="https://www.shmily.today/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/Untitled.html"/>
+    <id>https://www.shmily.today/Untitled.html</id>
+    <published>2020-03-12T14:22:43.987Z</published>
+    <updated>2020-03-12T14:31:54.836Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>PHP+MySQL乱码问题总结</title>
@@ -67,20 +121,19 @@
     <link href="https://www.shmily.today/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"/>
     <id>https://www.shmily.today/PHP学习笔记.html</id>
     <published>2019-05-29T00:45:54.000Z</published>
-    <updated>2019-05-30T13:55:19.511Z</updated>
+    <updated>2020-03-12T14:24:36.747Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;ul&gt;
+        &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;php是弱类型语言，不需生命变量类型&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;ul&gt;
 &lt;li&gt;变量名只能包含字母数字下划线，并且以字母和下划线开头，变量名区分大小写，$this 是一个特殊的变量，不能被赋值。变量名可以用中文。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;l
+&lt;
       
     
     </summary>
