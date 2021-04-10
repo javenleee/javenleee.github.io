@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-04-08T10:43:23.009Z</updated>
+  <updated>2021-04-10T12:23:35.645Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ipfs私有网络搭建</title>
+    <link href="https://www.shmily.today/ipfs%E7%A7%81%E6%9C%89%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.html"/>
+    <id>https://www.shmily.today/ipfs私有网络搭建.html</id>
+    <published>2021-04-10T11:04:10.000Z</published>
+    <updated>2021-04-10T12:23:35.645Z</updated>
+    
+    <summary type="html">
+    
+      IPFS私有网络的搭建
+    
+    </summary>
+    
+      <category term="IPFS" scheme="https://www.shmily.today/categories/IPFS/"/>
+    
+    
+      <category term="IPFS" scheme="https://www.shmily.today/tags/IPFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sed</title>
+    <link href="https://www.shmily.today/sed.html"/>
+    <id>https://www.shmily.today/sed.html</id>
+    <published>2021-04-09T07:59:34.000Z</published>
+    <updated>2021-04-09T07:59:34.541Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>linux命令</title>
