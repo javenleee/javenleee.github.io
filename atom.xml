@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-04-10T12:23:35.645Z</updated>
+  <updated>2021-04-18T13:55:24.144Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>转发和重定向的区别</title>
+    <link href="https://www.shmily.today/%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
+    <id>https://www.shmily.today/转发和重定向的区别.html</id>
+    <published>2021-04-18T12:58:09.000Z</published>
+    <updated>2021-04-18T13:55:24.144Z</updated>
+    
+    <summary type="html">
+    
+      转发和重定向的区别
+    
+    </summary>
+    
+      <category term="面试" scheme="https://www.shmily.today/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器输入网址回车后发生了什么</title>
+    <link href="https://www.shmily.today/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%9B%9E%E8%BD%A6%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88.html"/>
+    <id>https://www.shmily.today/浏览器输入网址回车后发生了什么.html</id>
+    <published>2021-04-18T11:26:55.000Z</published>
+    <updated>2021-04-18T11:26:55.599Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ipfs私有网络搭建</title>
@@ -41,7 +75,7 @@
     <link href="https://www.shmily.today/sed.html"/>
     <id>https://www.shmily.today/sed.html</id>
     <published>2021-04-09T07:59:34.000Z</published>
-    <updated>2021-04-09T07:59:34.541Z</updated>
+    <updated>2021-04-18T14:09:33.530Z</updated>
     
     <summary type="html">
     

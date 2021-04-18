@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[转发和重定向的区别]]></title>
+    <url>%2F%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB.html</url>
+    <content type="text"><![CDATA[转发和重定向转发：客户浏览器发送请求，服务器收到请求后调用内部一个方法在容器内部完成请求处理和转发动作，最后将转发到的那个网页资源返回给客户端。 重定向：客户端发送请求，服务器收到请求后返回302/301状态码以及新的位置，客户端发现是302/301后再次向新的地址发送请求。 举个:chestnut:：办理证件 你先去A窗口，A窗口发现你来错地了，你应该去旁边B窗口，但是他能帮你办了，就顺手去B那帮你办了把结果返回给你，这就是转发。 但如果你去A窗口，A跟你说你来错了，让你去C部门，你又去C办，这就是重定向。 答案 重定向是浏览器发送请求并收到相应以后再次向一个新地址发送请求；转发是服务器收到请求后为了完成相应转到另一个资源 重定向中有两次请求对象，不共享数据；转发只产生一次请求对象，且在组件间共享数据 重定向后地址栏地址会改变，而转发不会 重定向的新地址可以是任意地址，转发必须是同一应用内的某个资源。 问题扩展获取servlet的转发和重定向的方式 转发的方法： 通过HttpServletRequest的getRequestDispatch()方法获得 通过ServletContext的getRequestDispatcher()方法获得 重定向的方法： HttpServletResponse的sendRedirect()方法 结合项目使用 重定向可以实现图片的异步上传 一般访问web-inf下的文件，只能通过转发来实现]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[浏览器输入网址回车后发生了什么]]></title>
+    <url>%2F%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%9B%9E%E8%BD%A6%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[ipfs私有网络搭建]]></title>
     <url>%2Fipfs%E7%A7%81%E6%9C%89%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.html</url>
     <content type="text"><![CDATA[IPFS（InterPlanetary File System，星际文件系统），是一个旨在创建持久且分布式存储和共享文件的网络传输协议。它是一种内容可寻址的对等超媒体分发协议。在IPFS网络中的节点将构成一个分布式文件系统。它是一个开放源代码项目，自2014年开始由Protocol Labs在开源社区的帮助下发展。其最初由Juan Benet设计。 IPFS安装ipfs官网（需要翻墙），去dist.ipfs.io下载对应版本的安装包，我的环境是windows+wsl，下载了两个系统的命令行版本，下面以wsl ubunut2004为例。 go-ipfs安装包 go-ipfs_v0.8.0_linux-amd64.tar.gz 解压 1tar -zxvf go-ipfs_v0.8.0_linux-amd64.tar.gz 解压后的文件夹为go-ipfs，cd go-ipfs进入该文件夹，文件夹下有一个install.sh的文件，运行该文件 1sudo ./install.sh 该程序将ipfs文件移动到/usr/local/bin下，没有sudo回报权限错误。 1ipfs --version 显示ipfs版本则安装完成。同样在Windows下安装好。 IPFS私有网络配置密钥私有网络所有的节点必须共享同一个密钥，首先我们使用密钥创建工具，创建一个密钥。参考ipfs-swarm-key-gen 安装 1go get -u github.com/Kubuxu/go-ipfs-swarm-key-gen/ipfs-swarm-key-gen 可能下载速度很慢，可以设置go代理。在/etc/profile最后添加export GOPROXY=https://goproxy.cn 上面go get命令会将文件下载到你的GOPATH/bin中，安装完成后，进入GOPATH/bin， 1ipfs-swarm-key-gen &gt; ~/.ipfs/swarm.key 该命令会生成密钥到~/.ipfs下，可能会报错说没有~/.ipfs文件夹，自己先创建好再运行上面命令即可。 密钥生成好后，将该密钥复制到Windows的用户目录（通常为C:\User\Your_Name）下的.ipfs文件夹下。 init分别在Ubuntu和Windows下运行以下命令 12ipfs initipfs bootstrap rm all ipfs init后的默认启动节点是连接ipfs公网的节点，如果要连接私有网络 在每一个节点执行第二条语句，删除掉所有的默认启动节点。 修改配置因为wsl和Windows公用端口号，所以二者不能同时使用默认配置启动，需提前修改一处配置。 修改Windows ipfs配置 在用户目录.ipfs文件夹下有一个config文件，修改其中的5001、8080、4001改为其他未使用端口号。 add然后分别在两个系统中添加对方的节点。 查看Ubuntu的ip地址。123456789ifconfigeth0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt; mtu 1500 inet 172.29.247.157 netmask 255.255.240.0 broadcast 172.29.255.255 inet6 fe80::215:5dff:fef6:3763 prefixlen 64 scopeid 0x20&lt;link&gt; ether 00:15:5d:f6:37:63 txqueuelen 1000 (Ethernet) RX packets 769725 bytes 712542870 (712.5 MB) RX errors 0 dropped 0 overruns 0 frame 0 TX packets 370109 bytes 596443776 (596.4 MB) TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0 eth0下的inet就是自己的地址 查看ipfs id123456789ipfs id&#123; "ID": "12D3KooWPJq5t8GR4TkPqbkQcTEuNV4YjGLUGm4efNZ5owBNPNpm", "PublicKey": "CAESIMhyoHz02Bocf8pACjqJ6si9ydWWt5kN5OMPxXprLXU+", "Addresses": null, "AgentVersion": "go-ipfs/0.8.0/", "ProtocolVersion": "ipfs/0.1.0", "Protocols": null&#125; 在Windows中添加Ubuntu节点1ipfs bootstrap add /ip4/172.29.247.157/tcp/4001/ipfs/12D3KooW9qfu5tmdnuUBdS3R9ETsVjWLmuRgE8XhnZez4gJuXnYm ip4后面是ip地址，tcp后面是端口号，ipfs后面是ipfs id，修改为对方对应的数值即可。 接下来查看Windows的ip地址、ipfs id。在Ubuntu中添加Windows节点不再赘述，需要注意的是端口号改为前面你修改过的端口号。 至此配置完成。 启动1ipfs daemon #启动ipfs，可以让他在后台运行。 测试在Windows下向ipfs上传文件，在Ubuntu下载 12ipfs add file added QmSRiccSZ2rX6tocuuA84PhfEBr2MWgVmqsMvHsT4qmMjd file #返回hash值 在Ubuntu中下载文件 12ipfs get QmSRiccSZ2rX6tocuuA84PhfEBr2MWgVmqsMvHsT4qmMjdSaving file(s) to QmSRiccSZ2rX6tocuuA84PhfEBr2MWgVmqsMvHsT4qmMjd 下载后的文件仍是以该hash值命名，只要改一下后缀就可正常使用了。 注意ipfs add命令添加的文件只是暂时保存在ipfs中，GC时会删除，ipfs pin add hashcode会将对应文件永久保存 12ipfs pin add QmSRiccSZ2rX6tocuuA84PhfEBr2MWgVmqsMvHsT4qmMjd #永久保存在网络中ipfs pin rm QmSRiccSZ2rX6tocuuA84PhfEBr2MWgVmqsMvHsT4qmMjd #删除]]></content>
