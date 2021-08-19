@@ -1,0 +1,168 @@
+<p align="center">
+  <img src="https://i.imgur.com/NVRZLHv.png" width="640" alt="quicklink">
+  <br>
+  <a href="https://www.npmjs.org/package/quicklink"><img src="https://img.shields.io/npm/v/quicklink.svg?style=flat" alt="npm"></a>
+  <a href="https://unpkg.com/quicklink"><img src="https://img.badgesize.io/https://unpkg.com/quicklink/dist/quicklink.js?compression=gzip" alt="gzip size"></a>
+  <a href="https://www.npmjs.com/package/quicklink"><img src="https://img.shields.io/npm/dt/quicklink.svg" alt="downloads" ></a>
+  <a href="https://travis-ci.org/GoogleChromeLabs/quicklink"><img src="https://travis-ci.org/GoogleChromeLabs/quicklink.svg?branch=master" alt="travis"></a>
+</p>
+
+<h1 id="quicklink"><a href="#quicklink" class="headerlink" title="quicklink"></a>quicklink</h1><blockquote>
+<p>Faster subsequent page-loads by prefetching in-viewport links during idle time</p>
+</blockquote>
+<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h2><p>Quicklink attempts to make navigations to subsequent pages load faster. It:</p>
+<ul>
+<li><strong>Detects links within the viewport</strong> (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersection Observer</a>)</li>
+<li><strong>Waits until the browser is idle</strong> (using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback">requestIdleCallback</a>)</li>
+<li><strong>Checks if the user isn’t on a slow connection</strong> (using <code>navigator.connection.effectiveType</code>) or has data-saver enabled (using <code>navigator.connection.saveData</code>)</li>
+<li><strong>Prefetches URLs to the links</strong> (using <a href="https://www.w3.org/TR/resource-hints/#prefetch"><code>&lt;link rel=prefetch&gt;</code></a> or XHR). Provides some control over the request priority (can switch to <code>fetch()</code> if supported).</li>
+</ul>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>This project aims to be a drop-in solution for sites to prefetch links based on what is in the user’s viewport. It also aims to be small (<strong>&lt; 1KB minified/gzipped</strong>).</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>For use with <a href="http://nodejs.org">node</a> and <a href="https://npmjs.com">npm</a>:</p>
+<pre><code class="lang-sh">npm install --save quicklink
+</code></pre>
+<p>You can also grab <code>quicklink</code> from <a href="https://unpkg.com/quicklink">unpkg.com/quicklink</a>.</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Once initialized, <code>quicklink</code> will automatically prefetch URLs for links that are in-viewport during idle time.</p>
+<p>Quickstart:</p>
+<pre><code class="lang-html">&lt;!-- Include quicklink from dist --&gt;
+&lt;script src=&quot;dist/quicklink.js&quot;&gt;&lt;/script&gt;
+&lt;!-- Initialize (you can do this whenever you want) --&gt;
+&lt;script&gt;
+quicklink();
+&lt;/script&gt;
+</code></pre>
+<p>For example, you can initialize after the <code>load</code> event fires:</p>
+<pre><code class="lang-html">&lt;script&gt;
+window.addEventListener(&#39;load&#39;, () =&gt;{
+   quicklink();
+});
+&lt;/script&gt;
+</code></pre>
+<p>ES Module import:</p>
+<pre><code class="lang-js">import quicklink from &quot;dist/quicklink.mjs&quot;;
+quicklink();
+</code></pre>
+<p>The above options are best for multi-page sites. Single-page apps have a few options available for using quicklink with a router:</p>
+<ul>
+<li>Call <code>quicklink()</code> once a navigation to a new route has completed</li>
+<li>Call <code>quicklink()</code> against a specific DOM element / component</li>
+<li>Call <code>quicklink({urls:[...]})</code> with a custom set of URLs to prefetch</li>
+</ul>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><code>quicklink</code> accepts an optional options object with the following parameters:</p>
+<ul>
+<li><code>el</code>: DOM element to observe for in-viewport links to prefetch</li>
+<li><code>urls</code>: Static array of URLs to prefetch (instead of observing <code>document</code> or a DOM element links in the viewport)</li>
+<li><code>timeout</code>: Integer for the <code>requestIdleCallback</code> timeout. A time in milliseconds by which the browser must execute prefetching. Defaults to 2 seconds.</li>
+<li><code>timeoutFn</code>: Function for specifying a timeout. Defaults to <code>requestIdleCallback</code>. Can also be swapped out for a custom function like <a href="https://github.com/pastelsky/network-idle-callback">networkIdleCallback</a> (see demos)</li>
+<li><code>priority</code>: Boolean specifying preferred priority for fetches. Defaults to <code>false</code>. <code>true</code> will attempt to use the <code>fetch()</code> API where supported (rather than rel=prefetch)</li>
+<li><code>origins</code>: Static array of URL hostname strings that are allowed to be prefetched. Defaults to the same domain origin, which prevents _any_ cross-origin requests.</li>
+<li><code>ignores</code>: A RegExp, Function, or Array that further determines if a URL should be prefetched. These execute _after_ origin matching.</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Explore detecting file-extension of resources and using <a href="https://w3c.github.io/preload/">rel=preload</a> for high priority fetches</li>
+<li>Explore using <a href="https://github.com/WICG/priority-hints">Priority Hints</a> for importance hinting</li>
+</ul>
+<h2 id="Polyfills"><a href="#Polyfills" class="headerlink" title="Polyfills"></a>Polyfills</h2><p><code>quicklink</code>:</p>
+<ul>
+<li>Includes a very small fallback for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback">requestIdleCallback</a></li>
+<li>Requires <code>IntersectionObserver</code> to be supported (see <a href="https://caniuse.com/#feat=intersectionobserver">CanIUse</a>). We recommend conditionally polyfilling this feature with a service like Polyfill.io:</li>
+</ul>
+<pre><code class="lang-html">&lt;script src=&quot;https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Alternatively, see the <a href="https://github.com/w3c/IntersectionObserver/tree/master/polyfill">Intersection Observer polyfill</a>.</p>
+<h2 id="Recipes"><a href="#Recipes" class="headerlink" title="Recipes"></a>Recipes</h2><p><strong>Set a custom timeout for prefetching resources</strong></p>
+<p>Defaults to 2 seconds (via <code>requestIdleCallback</code>). Here we override it to 4 seconds:</p>
+<pre><code class="lang-js">quicklink({
+  timeout: 4000
+});
+</code></pre>
+<p><strong>Set the DOM element to observe for in-viewport links</strong></p>
+<p>Defaults to <code>document</code> otherwise.</p>
+<pre><code class="lang-js">const elem = document.getElementById(&#39;carousel&#39;);
+quicklink({
+  el: elem
+});
+</code></pre>
+<p><strong>Set a custom array of URLs to be prefetched</strong></p>
+<p>If you would prefer to provide a static list of URLs to be prefetched, instead of detecting those in-viewport, customizing URLs is supported.</p>
+<pre><code class="lang-js">quicklink({
+   urls: [&#39;2.html&#39;,&#39;3.html&#39;, &#39;4.js&#39;]
+});
+</code></pre>
+<p><strong>Set the request priority for prefetches</strong></p>
+<p>Defaults to low-priority (<code>rel=prefetch</code> or XHR). For high-priority (<code>priority: true</code>), attempts to use <code>fetch()</code> or falls back to XHR.</p>
+<pre><code class="lang-js">quicklink({ priority: true });
+</code></pre>
+<p><strong>Specify a custom list of allowed origins</strong></p>
+<p>Provide a list of hostnames that should be prefetch-able. Only the same origin is allowed by default.</p>
+<blockquote>
+<p><strong>Important:</strong> You must also include your own hostname!</p>
+</blockquote>
+<pre><code class="lang-js">quicklink({
+  origins: [
+    // add mine
+    &#39;my-website.com&#39;,
+    &#39;api.my-website.com&#39;,
+    // add third-parties
+    &#39;other-website.com&#39;,
+    &#39;example.com&#39;,
+    // ...
+  ]
+});
+</code></pre>
+<p><strong>Allow all origins</strong></p>
+<p>Enables all cross-origin requests to be made.</p>
+<blockquote>
+<p><strong>Note:</strong> You may run into <a href="https://chromium.googlesource.com/chromium/src/+/master/services/network/cross_origin_read_blocking_explainer.md">CORB</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a> issues!</p>
+</blockquote>
+<pre><code class="lang-js">quicklink({
+  origins: true,
+  // or
+  origins: []
+});
+</code></pre>
+<p><strong>Custom Ignore Patterns</strong></p>
+<p>These filters run _after_ the <code>origins</code> matching has run. Ignores can be useful for avoiding large file downloads or for responding to DOM attributes dynamically.</p>
+<pre><code class="lang-js">// Same-origin restraint is enabled by default.
+//
+// This example will ignore all requests to:
+//  - all &quot;/api/*&quot; pathnames
+//  - all &quot;.zip&quot; extensions
+//  - all &lt;a&gt; tags with &quot;noprefetch&quot; attribute
+//
+quicklink({
+  ignores: [
+    /\/api\/?/,
+    uri =&gt; uri.includes(&#39;.zip&#39;),
+    (uri, elem) =&gt; elem.hasAttribute(&#39;noprefetch&#39;)
+  ]
+});
+</code></pre>
+<h2 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h2><p>The prefetching provided by <code>quicklink</code> can be viewed as a <a href="https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/">progressive enhancement</a>. Cross-browser support is as follows:</p>
+<ul>
+<li>Without polyfills: Chrome, Firefox, Edge, Opera, Android Browser, Samsung Internet.</li>
+<li>With <a href="https://github.com/w3c/IntersectionObserver/tree/master/polyfill">Intersection Observer polyfill</a> ~6KB gzipped/minified: Safari, IE9+</li>
+</ul>
+<p>Certain features have layered support:</p>
+<ul>
+<li>The <a href="https://wicg.github.io/netinfo/">Network Information API</a>, which is used to check if the user has a slow effective connection type (via <code>navigator.connection.effectiveType</code>) is only available in <a href="https://caniuse.com/#feat=netinfo">Chrome 61+ and Opera 57+</a></li>
+<li>If opting for <code>{priority: true}</code> and the <a href="https://fetch.spec.whatwg.org/">Fetch API</a> isn’t available, XHR will be used instead.</li>
+</ul>
+<h2 id="Using-the-prefetcher-directly"><a href="#Using-the-prefetcher-directly" class="headerlink" title="Using the prefetcher directly"></a>Using the prefetcher directly</h2><p><code>quicklink</code> includes a prefetcher that can be individually imported for use in other projects. After installing <code>quicklink</code> as a dependency, you can use it as follows:</p>
+<pre><code class="lang-html">&lt;script type=&quot;module&quot;&gt;
+import prefetch from &#39;../src/prefetch.mjs&#39;;
+
+const urls = [&#39;1.html&#39;, &#39;2.html&#39;];
+const promises = urls.map(url =&gt; prefetch(url));
+Promise.all(promises);
+&lt;/script&gt;
+</code></pre>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>Here’s a <a href="https://www.webpagetest.org/video/view.php?id=181212_4c294265117680f2636676721cc886613fe2eede&amp;data=1">WebPageTest run</a> for our <a href="https://keyword-2-ecd7b.firebaseapp.com/">demo</a> improving page-load performance by up to 4 seconds via quicklink’s prefetching. A <a href="https://youtu.be/rQ75YEbJicw">video</a> comparison of the before/after prefetching is on YouTube.</p>
+<p>For demo purposes, we deployed a version of the <a href="https://blog.google">Google Blog</a> on<br>Firebase hosting. We then deployed another version of it, adding quicklink to the homepage and benchmarked navigating from the homepage to an article that was<br>automatically prefetched. The prefetched version loaded faster.</p>
+<p>Please note: this is by no means an exhaustive benchmark of the pros and cons of in-viewport link prefetching. Just a demo of the potential improvements the approach can offer. Your own mileage may heavily vary.</p>
+<h2 id="Related-projects"><a href="#Related-projects" class="headerlink" title="Related projects"></a>Related projects</h2><ul>
+<li>Using <a href="https://gatsbyjs.org">Gatsby</a>? You already get most of this for free baked in. It uses <code>Intersection Observer</code> to prefetch all of the links that are in view and provided heavy inspiration for this project.</li>
+<li>Want a more data-driven approach? See <a href="https://guess-js.github.io">Guess.js</a>. It uses analytics and machine-learning to prefetch resources based on how users navigate your site. It also has plugins for <a href="https://www.npmjs.com/package/guess-webpack">Webpack</a> and <a href="https://www.gatsbyjs.org/docs/optimize-prefetching-with-guessjs/">Gatsby</a>.</li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>Licensed under the Apache-2.0 license.</p>

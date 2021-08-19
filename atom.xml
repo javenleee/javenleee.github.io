@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>blog</title>
+  
+  <subtitle>心有猛虎，细嗅蔷薇</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.shmily.today/"/>
+  <updated>2021-08-19T09:13:43.968Z</updated>
+  <id>https://www.shmily.today/</id>
+  
+  <author>
+    <name>Zosien</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to bootstrap snarky blockchain</title>
+    <link href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html"/>
+    <id>https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</id>
+    <published>2021-08-18T13:13:19.000Z</published>
+    <updated>2021-08-19T09:13:43.968Z</updated>
+    
+    <summary type="html">
+    
+      零知识证明论文翻译、阅读
+    
+    </summary>
+    
+      <category term="论文" scheme="https://www.shmily.today/categories/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="零知识证明" scheme="https://www.shmily.today/categories/%E8%AE%BA%E6%96%87/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
+    
+    
+      <category term="论文" scheme="https://www.shmily.today/tags/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="零知识证明" scheme="https://www.shmily.today/tags/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>装箱与拆箱</title>
+    <link href="https://www.shmily.today/%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1.html"/>
+    <id>https://www.shmily.today/装箱与拆箱.html</id>
+    <published>2021-08-17T12:13:19.000Z</published>
+    <updated>2021-08-18T13:22:09.418Z</updated>
+    
+    <summary type="html">
+    
+      源码分析与面试题总结
+    
+    </summary>
+    
+      <category term="源码" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="面试题" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="面试题" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/20210817.html"/>
+    <id>https://www.shmily.today/20210817.html</id>
+    <published>2021-08-17T08:31:03.783Z</published>
+    <updated>2021-08-18T06:17:30.388Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;20&lt;/p&gt;
+&lt;p&gt;150&lt;/p&gt;
+&lt;h2 id=&quot;71-简化路径&quot;&gt;&lt;a href=&quot;#71-简化路径&quot; class=&quot;headerlink&quot; title=&quot;71.简化路径&quot;&gt;&lt;/a&gt;71.简化路径&lt;/h2&gt;&lt;p&gt;给你一个字符串 path ，表示指向某一文件或目录的 Un
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/Ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8.html"/>
+    <id>https://www.shmily.today/Ubuntu更新内核.html</id>
+    <published>2021-08-17T02:35:46.575Z</published>
+    <updated>2021-08-17T03:17:25.494Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从Ubuntu官方提供的内核链接中获取所需要的内核版本：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://kernel.ubuntu.com/~kernel-ppa/mainline/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://kern
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/802.11.html"/>
+    <id>https://www.shmily.today/802.11.html</id>
+    <published>2021-08-17T01:28:29.686Z</published>
+    <updated>2021-08-17T01:29:12.128Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/20210816-24-25.html"/>
+    <id>https://www.shmily.today/20210816-24-25.html</id>
+    <published>2021-08-16T08:19:35.371Z</published>
+    <updated>2021-08-16T11:45:54.048Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;24-两两交换链表中的节点&quot;&gt;&lt;a href=&quot;#24-两两交换链表中的节点&quot; class=&quot;headerlink&quot; title=&quot;24.两两交换链表中的节点&quot;&gt;&lt;/a&gt;24.两两交换链表中的节点&lt;/h2&gt;&lt;p&gt;给定一个链表，两两交换其中相邻的节点，并返回交换后的
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</title>
+    <link href="https://www.shmily.today/Arrays%E7%B1%BB%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B2%A1%E6%89%BE%E5%88%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%94%E5%9B%9E-(low+1).html"/>
+    <id>https://www.shmily.today/Arrays类中的二分查找没找到为什么返回-(low+1).html</id>
+    <published>2021-08-15T13:13:19.000Z</published>
+    <updated>2021-08-18T13:21:04.537Z</updated>
+    
+    <summary type="html">
+    
+      源码分析
+    
+    </summary>
+    
+      <category term="源码" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/How%20to%20bootstrap%20snarky%20blockchain%20back.html"/>
+    <id>https://www.shmily.today/How to bootstrap snarky blockchain back.html</id>
+    <published>2021-08-13T12:12:39.072Z</published>
+    <updated>2021-08-18T08:43:34.559Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain&quot;&gt;&lt;a href=&quot;#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain&quot; class=&quot;h
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/20210813-220.html"/>
+    <id>https://www.shmily.today/20210813-220.html</id>
+    <published>2021-08-13T08:30:47.905Z</published>
+    <updated>2021-08-18T13:24:13.226Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;220-存在重复元素&quot;&gt;&lt;a href=&quot;#220-存在重复元素&quot; class=&quot;headerlink&quot; title=&quot;220.存在重复元素&quot;&gt;&lt;/a&gt;220.存在重复元素&lt;/h2&gt;&lt;p&gt;给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E6%AF%94%E8%B5%9B%EF%BC%8C%E4%B8%AD%E6%9C%AC%E8%81%AA%E6%B0%B8%E8%BF%9C%E4%B8%8D%E4%BA%8F.html"/>
+    <id>https://www.shmily.today/一切都是比赛，中本聪永远不亏.html</id>
+    <published>2021-08-09T12:00:37.207Z</published>
+    <updated>2021-08-09T14:15:50.411Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一切都是一场比赛，中本聪永远不亏&quot;&gt;&lt;a href=&quot;#一切都是一场比赛，中本聪永远不亏&quot; class=&quot;headerlink&quot; title=&quot;一切都是一场比赛，中本聪永远不亏&quot;&gt;&lt;/a&gt;一切都是一场比赛，中本聪永远不亏&lt;/h1&gt;&lt;h2 id=&quot;摘要&quot;&gt;&lt;a hr
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E9%81%8D%E5%8E%86Map%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F.html"/>
+    <id>https://www.shmily.today/遍历Map的4种方式.html</id>
+    <published>2021-08-09T09:34:30.507Z</published>
+    <updated>2021-08-12T09:16:25.674Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;遍历Map的4种方式&quot;&gt;&lt;a href=&quot;#遍历Map的4种方式&quot; class=&quot;headerlink&quot; title=&quot;遍历Map的4种方式&quot;&gt;&lt;/a&gt;遍历Map的4种方式&lt;/h1&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/Map.html"/>
+    <id>https://www.shmily.today/Map.html</id>
+    <published>2021-07-09T10:04:26.112Z</published>
+    <updated>2021-07-13T08:12:08.462Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Map中存储一对数据，即键值对（key-value），其中键是不能重复的，值是可以重复的。键跟值是一一对应的。&lt;/p&gt;
+&lt;h3 id=&quot;遍历方式&quot;&gt;&lt;a href=&quot;#遍历方式&quot; class=&quot;headerlink&quot; title=&quot;遍历方式&quot;&gt;&lt;/a&gt;遍历方式&lt;/h3&gt;&lt;o
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java笔记</title>
+    <link href="https://www.shmily.today/java%E7%AC%94%E8%AE%B0.html"/>
+    <id>https://www.shmily.today/java笔记.html</id>
+    <published>2021-06-11T09:07:12.000Z</published>
+    <updated>2021-08-12T09:22:36.558Z</updated>
+    
+    <summary type="html">
+    
+      Java学习
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
+    
+    
+      <category term="笔记" scheme="https://www.shmily.today/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java" scheme="https://www.shmily.today/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>位运算</title>
+    <link href="https://www.shmily.today/%E4%BD%8D%E8%BF%90%E7%AE%97.html"/>
+    <id>https://www.shmily.today/位运算.html</id>
+    <published>2021-06-09T15:26:55.000Z</published>
+    <updated>2021-08-18T03:28:41.027Z</updated>
+    
+    <summary type="html">
+    
+      位运算总结
+    
+    </summary>
+    
+      <category term="位运算" scheme="https://www.shmily.today/categories/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+    
+      <category term="位运算" scheme="https://www.shmily.today/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>毕设项目bug总结</title>
+    <link href="https://www.shmily.today/%E6%AF%95%E8%AE%BE%E9%A1%B9%E7%9B%AEbug%E6%80%BB%E7%BB%93.html"/>
+    <id>https://www.shmily.today/毕设项目bug总结.html</id>
+    <published>2021-05-20T13:09:04.000Z</published>
+    <updated>2021-08-18T13:18:13.148Z</updated>
+    
+    <summary type="html">
+    
+      使用Springboot开发项目遇到的问题总结
+    
+    </summary>
+    
+      <category term="Springboot" scheme="https://www.shmily.today/categories/Springboot/"/>
+    
+      <category term="fabric" scheme="https://www.shmily.today/categories/Springboot/fabric/"/>
+    
+    
+      <category term="Springboot" scheme="https://www.shmily.today/tags/Springboot/"/>
+    
+      <category term="fabric" scheme="https://www.shmily.today/tags/fabric/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试</title>
+    <link href="https://www.shmily.today/%E9%9D%A2%E8%AF%95.html"/>
+    <id>https://www.shmily.today/面试.html</id>
+    <published>2021-04-19T11:30:10.000Z</published>
+    <updated>2021-08-18T13:18:48.558Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据结构&quot;&gt;&lt;a href=&quot;#数据结构&quot; class=&quot;headerlink&quot; title=&quot;数据结构&quot;&gt;&lt;/a&gt;数据结构&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;排序算法，快排步骤，稳定排序&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数据库&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="面试题" scheme="https://www.shmily.today/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="面试题" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>转发和重定向的区别</title>
+    <link href="https://www.shmily.today/%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
+    <id>https://www.shmily.today/转发和重定向的区别.html</id>
+    <published>2021-04-18T12:58:09.000Z</published>
+    <updated>2021-04-18T13:55:24.144Z</updated>
+    
+    <summary type="html">
+    
+      转发和重定向的区别
+    
+    </summary>
+    
+      <category term="面试" scheme="https://www.shmily.today/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="面试" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ipfs私有网络搭建</title>
+    <link href="https://www.shmily.today/ipfs%E7%A7%81%E6%9C%89%E7%BD%91%E7%BB%9C%E6%90%AD%E5%BB%BA.html"/>
+    <id>https://www.shmily.today/ipfs私有网络搭建.html</id>
+    <published>2021-04-10T11:04:10.000Z</published>
+    <updated>2021-05-24T15:48:24.536Z</updated>
+    
+    <summary type="html">
+    
+      IPFS私有网络的搭建
+    
+    </summary>
+    
+      <category term="IPFS" scheme="https://www.shmily.today/categories/IPFS/"/>
+    
+    
+      <category term="IPFS" scheme="https://www.shmily.today/tags/IPFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sed</title>
+    <link href="https://www.shmily.today/sed.html"/>
+    <id>https://www.shmily.today/sed.html</id>
+    <published>2021-04-09T07:59:34.000Z</published>
+    <updated>2021-08-10T08:40:28.233Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux命令</title>
+    <link href="https://www.shmily.today/linux%E5%91%BD%E4%BB%A4.html"/>
+    <id>https://www.shmily.today/linux命令.html</id>
+    <published>2021-04-08T09:21:32.000Z</published>
+    <updated>2021-04-08T10:43:23.009Z</updated>
+    
+    <summary type="html">
+    
+      Linux命令的学习记录
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://www.shmily.today/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://www.shmily.today/tags/Linux/"/>
+    
+  </entry>
+  
+</feed>

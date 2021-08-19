@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.7.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<!--站长验证-->
+<meta name="baidu-site-verification" content="5rEIjow3aW">
+<meta name="google-site-verification" content="OhdtVOx5uwpZ_mMm0AZJXzw-dY1PPpAAkdavmmQhIL4">
+<meta name="360-site-verification" content="5b1c9d7574859ca6e460dd687667d5dc">
+
+
+
+  <meta name="description" content="Java学习">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java笔记">
+<meta property="og:url" content="https://www.shmily.today/java笔记.html">
+<meta property="og:site_name" content="blog">
+<meta property="og:description" content="Java学习">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.shmily.today/java%E7%AC%94%E8%AE%B0/image-20210703005228607.png">
+<meta property="og:image" content="https://www.shmily.today/java%E7%AC%94%E8%AE%B0/image-20210812172232737.png">
+<meta property="og:updated_time" content="2021-08-12T09:22:36.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java笔记">
+<meta name="twitter:description" content="Java学习">
+<meta name="twitter:image" content="https://www.shmily.today/java%E7%AC%94%E8%AE%B0/image-20210703005228607.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://www.shmily.today/java笔记.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>java笔记 | blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博采众长</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">心有猛虎，细嗅蔷薇</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+		
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result">
+    
+      <div style="text-align: center;padding: 3px 0 0;">
+       <div style="margin-top: 20px;font-size: 18px;font-weight: 600;border-bottom: 1px solid #ccc;">
+         <i class="fa fa-history" aria-hidden="true"></i>
+         近期文章
+       </div>
+       <ul style="margin: 0;padding: 0;list-style: none;">
+         
+         
+           <li>
+             <a href="/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain" target="_blank">How to bootstrap snarky blockchain</a>
+           </li>
+         
+           <li>
+             <a href="/装箱与拆箱.html" title="装箱与拆箱" target="_blank">装箱与拆箱</a>
+           </li>
+         
+           <li>
+             <a href="/20210817.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Ubuntu更新内核.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/802.11.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/20210816-24-25.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Arrays类中的二分查找没找到为什么返回-(low+1).html" title="Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)" target="_blank">Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</a>
+           </li>
+         
+           <li>
+             <a href="/How to bootstrap snarky blockchain back.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/20210813-220.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/一切都是比赛，中本聪永远不亏.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/遍历Map的4种方式.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Map.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/java笔记.html" title="java笔记" target="_blank">java笔记</a>
+           </li>
+         
+           <li>
+             <a href="/位运算.html" title="位运算" target="_blank">位运算</a>
+           </li>
+         
+           <li>
+             <a href="/毕设项目bug总结.html" title="毕设项目bug总结" target="_blank">毕设项目bug总结</a>
+           </li>
+         
+       </ul>
+      </div>
+    
+  </div>
+</div>
+
+
+
+    </div>
+  
+
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/Zosien/zosien.github.io" class="github-corner" target="_blank" title="万水千山总是情,给个star行不行！" aria-label="万水千山总是情,给个star行不行！"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/java笔记.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zosien">
+      <meta itemprop="description" content="柔而不弱，强而不悍<br/>阳光下像个孩子<br/>风雨里像个大人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                java笔记
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-06-11 17:07:12" itemprop="dateCreated datePublished" datetime="2021-06-11T17:07:12+08:00">2021-06-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                
+                <span class="post-meta-item-text"> 评论数： </span>
+                
+                <a href="/java笔记.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/java笔记.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/java笔记.html" class="leancloud_visitors" data-flag-title="java笔记">
+               <span class="post-meta-divider">|</span>
+               <span title="阅读次数">
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 
+                   <span class="post-meta-item-text">阅读次数：</span>
+                 
+                   <span class="leancloud-visitors-count"></span>
+               </span>
+             </span>
+          
+
+          
+          
+          
+
+          
+
+          
+              <div class="post-description">Java学习</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">"abc"</span>; </span><br><span class="line">        String s2 = <span class="string">"ab"</span>;</span><br><span class="line">        String s3 = s2 + <span class="string">"c"</span>;</span><br><span class="line">        System.out.pringln(s1 == s3); <span class="comment">// false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>s1指向字符串常量池中的“abc”，s2指向字符串常量池“ab”</p>
+<p>s3，当字符串之间使用+拼接时，系统底层会自动创建一个StringBuilder对象（在堆中），然后再调用其append方法完成拼接，然后再调用toString方法转换为String类型，同样在堆中，因此这个过程一共创建了三个对象，一个c，一个StringBuilder，最后一个String。</p>
+<h3 id="常量优化机制"><a href="#常量优化机制" class="headerlink" title="常量优化机制"></a>常量优化机制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String s1 = <span class="string">"abc"</span>;</span><br><span class="line">        String s2 = <span class="string">"a"</span> + <span class="string">"b"</span> +<span class="string">"c"</span>;</span><br><span class="line">        System.out.pringln(s1 == s2); <span class="comment">// true</span></span><br><span class="line">    &#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不同于字符串拼接，“a”+”b”+”c”拼接为”abc”，就相当于<code>String s2 = &quot;abc&quot;</code>，同样指向常量池中的”abc”</p>
+<h3 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h3><p>对象调用方法后返回对象本身，则可以链式编程，例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">StringBuilder sb2 = sb.append(<span class="string">"abc"</span>); <span class="comment">// sb2 == sb</span></span><br><span class="line">StringBuilder sb3 = sb2.append(<span class="string">"123"</span>); <span class="comment">// sb3 == sb2 == sb</span></span><br><span class="line">StringBuilder sb = sb.append(<span class="string">"abc"</span>).append(<span class="string">"123"</span>); <span class="comment">//链式编程</span></span><br></pre></td></tr></table></figure>
+<h3 id="StringBuilder提高效率原理"><a href="#StringBuilder提高效率原理" class="headerlink" title="StringBuilder提高效率原理"></a>StringBuilder提高效率原理</h3><h4 id="String的拼接"><a href="#String的拼接" class="headerlink" title="String的拼接"></a>String的拼接</h4><p>String内容不可改变，String拼接时每次都需要系统底层自动创建StringBuilder对象，然后调用StringBuilder的append()方法，最后使用toString()转换为String对象返回，销毁StringBuilder对象。</p>
+<h4 id="StringBuilder拼接"><a href="#StringBuilder拼接" class="headerlink" title="StringBuilder拼接"></a>StringBuilder拼接</h4><p>StringBuilder内容可以更改，都在原来的StringBuilder对象中进行。</p>
+<h3 id="循环标号"><a href="#循环标号" class="headerlink" title="循环标号"></a>循环标号</h3><p>在Java中，可以在循环前加入标号，标号只能被continue和break引用，用于跳出多重循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lo:</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">    String choice = sc.next();</span><br><span class="line">    <span class="keyword">switch</span>(chice) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"1"</span>:</span><br><span class="line">            <span class="keyword">break</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git init</td>
+<td>初始化创建仓库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看git状态</td>
+</tr>
+<tr>
+<td>git add</td>
+<td>将文件添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit</td>
+<td>将暂存区提交到历史仓库</td>
+</tr>
+<tr>
+<td>git log</td>
+<td>查看日志</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>精简日志</td>
+</tr>
+<tr>
+<td>git reset —hard *<em>*</em></td>
+<td>切换版本</td>
+</tr>
+<tr>
+<td>git branch 分支名</td>
+<td>创建分支，创建的新分支包含现有文件</td>
+</tr>
+<tr>
+<td>git branch</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git branch -d 分支名</td>
+<td>删除分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>将分支合并到当前分支</td>
+</tr>
+<tr>
+<td>git remote add &lt;远程仓库名称&gt; &lt;远程仓库url&gt;</td>
+<td>添加远程仓库</td>
+</tr>
+<tr>
+<td>git push -u &lt;仓库名称&gt; &lt;分支名&gt;</td>
+<td>push到远程仓库</td>
+</tr>
+<tr>
+<td>git pull &lt;远程仓库名&gt; &lt;分支名&gt;</td>
+<td>从远程仓库拉取文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>生成ssh公钥<code>ssh-keygen -t rsa -C &lt;username&gt;</code></p>
+<h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p>静态修饰符</p>
+<p>特点：</p>
+<ol>
+<li>被static修饰的成员被该类的所有成员共享</li>
+<li>被static修饰的成员会随着类的加载而加载，优先于对象存在</li>
+<li>可以通过类名.*<em>*</em>的形式进行调用</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>静态方法中只能访问静态成员（成员变量，成员方法）</li>
+<li>非静态方法中，可以使用静态成员，也可以使用非静态成员</li>
+<li>静态方法中，没有this关键字</li>
+</ol>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>好处：</p>
+<ol>
+<li>提高代码复用性</li>
+<li>提高代码的可维护性</li>
+<li>让类与类之间产生了关系，是多态的基础</li>
+</ol>
+<p>弊端：</p>
+<ol>
+<li>继承导致子类必须拥有父类非私有属性和方法</li>
+</ol>
+<p>特点：</p>
+<ol>
+<li>只支持单继承，不支持多继承，但支持多层继承</li>
+</ol>
+<h3 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>同一个类中</th>
+<th>同一包中子类无关类</th>
+<th>不同包中子类</th>
+<th>不同包中无关类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>:heavy_check_mark:</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>默认</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+<td>:heavy_check_mark:</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>private修饰的成员同样会被子类继承，但是对子类不可见，即子类大小包含了父类private成员，可以通过get、set方法获取设置private成员。</p>
+<h3 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h3><p>在子父类中</p>
+<p>注意事项</p>
+<ol>
+<li>父类中私有方法不能被重写</li>
+<li>父类非静态方法，子类必须通过非静态方法重写，静态方法不能被重写</li>
+<li>子类重写父类时，访问权限必须大于等于父类</li>
+</ol>
+<h3 id="继承中构造方法的特点："><a href="#继承中构造方法的特点：" class="headerlink" title="继承中构造方法的特点："></a>继承中构造方法的特点：</h3><p>子类中所有的构造方法默认都会访问父类中无参的构造方法，系统默认构造方法的第一条语句是<code>super()</code>，会访问父类构造方法。</p>
+<h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>对扩展内容开放，对修改内容关闭，尽量在不改变原有代码的前提下完成需求。（人话：扩展代码可以，修改代码不行，保存原有代码，添加新的需求实现代码）</p>
+<h3 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h3><p>Java中的抽象方法就是以abstract修饰的方法，这种方法只声明返回的数据类型、方法名称和所需的参数，没有方法体，也就是说抽象方法只需要声明而不需要实现。</p>
+<p>当一个方法为抽象方法时，意味着这个方法应该被子类的方法所重写，否则其子类的该方法仍然是abstract的，这个子类由于继承父类，拥有抽象方法，因此它也是抽象类，即声明为abstract。abstract方法只允许声明不能实现。 </p>
+<h4 id="抽象类注意事项"><a href="#抽象类注意事项" class="headerlink" title="抽象类注意事项"></a>抽象类注意事项</h4><ol>
+<li>抽象类不能被实例化</li>
+<li>抽象类中有构造方法</li>
+<li>抽象类的子类必须重写父类中所有抽象方法，或者子类也是抽象类</li>
+<li>如果一个类中含有abstract方法，那么这个类必须用abstract来修饰，当然abstract类也可以没有abstract方法。一个抽象类里面没有一个抽象方法可用来禁止产生这种类的对象</li>
+</ol>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>可以修饰方法类变量</p>
+<ol>
+<li><p>final修饰的方法不能被重写</p>
+</li>
+<li><p>final修饰的变量是常量，不能再次被赋值</p>
+<p><strong>常量命名规范</strong>：</p>
+<p>​    如果是一个单词，所有字母大写，如果是多个单词，同样所有单词大写，但中间需要使用下划线分隔</p>
+</li>
+<li><p>final修饰的类不能被继承</p>
+</li>
+<li><p>final修饰的成员变量初始化要么是在创建的时候直接给值，要么是在构造方法结束前给值。</p>
+</li>
+</ol>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><ol>
+<li><p>局部代码块</p>
+<p>方法内的一对中括号，限定变量的生命周期，及早释放，提高内存利用率。</p>
+</li>
+<li><p>构造代码块</p>
+<p>类中方法外，每次构造方法执行时，都会执行该代码块代码，并且在构造方法执行前执行</p>
+<p>作用：将多个构造方法中相同的代码，抽取到构造代码块中，提高代码的复用性。</p>
+</li>
+<li><p>静态代码块</p>
+<p>类中方法外，需要使用static修饰，随着类的加载而加载，并且只执行一次。</p>
+<p>作用：类加载时做数据初始化操作。</p>
+</li>
+</ol>
+<h3 id="基本数据类型（8种）"><a href="#基本数据类型（8种）" class="headerlink" title="基本数据类型（8种）"></a>基本数据类型（8种）</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>字节数</th>
+<th>默认值</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>1</td>
+<td>0</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>0</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>0</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td>0L</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2</td>
+<td>‘u0000’</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>0.0F</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>0.0D</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>boolen</td>
+<td>1</td>
+<td>false</td>
+<td>Boolen</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>String等引用类型默认值是null</p>
+<h4 id="自动装箱"><a href="#自动装箱" class="headerlink" title="自动装箱"></a>自动装箱</h4><p>java底层自动调用 <strong>valueOf()</strong>方法，把一个基本数据类型变成对应的包装类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">22</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="自动拆箱"><a href="#自动拆箱" class="headerlink" title="自动拆箱"></a>自动拆箱</h4><p>把一个包装类，变成基本数据类型。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i2 = i1;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>;</span><br><span class="line">i1 += <span class="number">200</span>;</span><br><span class="line">System.out.println(i1);<span class="comment">// 300</span></span><br></pre></td></tr></table></figure>
+<p>上面代码看似简单，但计算过程很重要；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>; <span class="comment">//自动装箱，将100转换为Integer类型。</span></span><br><span class="line">i1 += <span class="number">200</span>;	<span class="comment">// i1 = i1 + 200 首先自动拆箱，将i1变为int 100，然后相加，最后将结果300自动装箱赋值给i1</span></span><br><span class="line">System.out.println(i1);<span class="comment">// 300</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>：Integer是对象，只要是对象，在使用前就必须进行不为null判断。</p>
+<h4 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">char --&gt; int</span><br><span class="line">byte --&gt; short</span><br><span class="line">short --&gt; int</span><br><span class="line">int --&gt; long</span><br><span class="line">long --&gt; float</span><br><span class="line">float --&gt; double</span><br></pre></td></tr></table></figure>
+<p>自动提升：两个数值进行二元运算时先将两个操作数转换为同一类型，然后进行运算。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">20_0000_0000</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">long</span> c;</span><br><span class="line">c = a * b;</span><br><span class="line">System.out.println(c); <span class="comment">//这个结果是错误的</span></span><br><span class="line"><span class="comment">//a和b都是int类型，在计算时都使用int类型，计算结果同样使用int类型存储，因为计算结果太大溢出，因此int存储的结果是错误的，再赋值给long类型也是错误的结果。</span></span><br><span class="line">c = (<span class="keyword">long</span>)a * b;</span><br><span class="line">System.out.pringln(c); <span class="comment">//这个结果正确</span></span><br><span class="line"><span class="comment">//将a强制转换为long后，a和b的运算使用long类型进行，最后使用long存储计算结果，赋值给c，结果正确。</span></span><br></pre></td></tr></table></figure>
+<h5 id="int转String"><a href="#int转String" class="headerlink" title="int转String"></a>int转String</h5><ol>
+<li>直接加双引号，<code>10+&quot;&quot;</code></li>
+<li>使用String类中的valueOf()方法。</li>
+</ol>
+<h5 id="String转int"><a href="#String转int" class="headerlink" title="String转int"></a>String转int</h5><p>​    Integer.parseInt()方法，返回值为int类型。</p>
+<h5 id="Arrays-binarySearch-返回值"><a href="#Arrays-binarySearch-返回值" class="headerlink" title="Arrays.binarySearch()返回值"></a>Arrays.binarySearch()返回值</h5><ol>
+<li>要查找的元素存在，则返回索引，</li>
+<li>要查找的元素不存在，返回（-插入点-1）<ol>
+<li>插入点就是这个元素应该在数组中的位置，因为使用二分查找必须是有序的，因此每个元素都可以有一个确定的位置，即插入点。</li>
+<li>为什么要-1，若不减1，插入点可能是0，则不能确定元素是否存在。</li>
+</ol>
+</li>
+</ol>
+<h3 id="switch支持的表达式类型"><a href="#switch支持的表达式类型" class="headerlink" title="switch支持的表达式类型"></a>switch支持的表达式类型</h3><p>​    int、byte、char、short、枚举类型、字符串（JDK7）</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="接口的定义与特点"><a href="#接口的定义与特点" class="headerlink" title="接口的定义与特点"></a>接口的定义与特点</h3><p>接口用关键字interface来定义</p>
+<p><code>public interface &lt;Interface_Name&gt;{}</code></p>
+<ol>
+<li><p>接口不能实例化</p>
+</li>
+<li><p>接口与类之间是实现关系，通过<code>implements</code>关键字表示</p>
+<p><code>public class &lt;Class_Name&gt; implements &lt;Interface_Name&gt; {}</code></p>
+</li>
+<li><p>接口可以多实现。</p>
+</li>
+<li><strong>接口中的变量默认是常量</strong>，系统会自动加入三个关键字修饰：public、static、final</li>
+<li>接口没有构造方法。</li>
+<li>接口中方法没有方法体，默认是public、abstract的，在jdk8后，允许在接口中定义非抽象方法，但需要使用default修饰，这些方法就是默认方法，不强制实现类重写，用于解决接口的升级问题。</li>
+</ol>
+<p><strong>接口中默认方法注意事项：</strong></p>
+<ol>
+<li>默认方法不是抽象方法，所以不能被强制重写。但可以重写，重写要去掉default。</li>
+<li>public可以省略，但default不能。</li>
+<li>如果实现了多个接口，接口中有相同的默认方法声明，子类就必须重写默认方法。</li>
+</ol>
+<p><strong>JDK8中接口成员的特点：</strong></p>
+<ol>
+<li>允许在接口中定义非抽象类型，但需要default修饰，用于解决接口的升级问题。</li>
+<li>允许定义static静态方法。<code>public static void &lt;Func_Name&gt;(){}</code></li>
+</ol>
+<p>一个文件中可以有多个类，但只能有一个被public修饰，被public修饰的类必须与文件名保持一致。</p>
+<h3 id="接口和抽象类的相同点和区别？"><a href="#接口和抽象类的相同点和区别？" class="headerlink" title="接口和抽象类的相同点和区别？"></a>接口和抽象类的相同点和区别？</h3><p>相同点:</p>
+<ol>
+<li>都不能被实例化。</li>
+<li>接口的实现类或抽象类的子类需实现接口或抽象类中相应的方法才能被实例化。</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li><del>接口只能有方法定义，不能有方法的实现，而抽象类可以有方法的定义与实现。</del>    JDK8后可以有默认接口，默认接口有方法体。</li>
+<li>实现接口的关键字为implements,继承抽象类的关键字为extends。一个类可以实现多个接口，只能继承一个抽象类。</li>
+<li>当子类和父类之间存在逻辑上的层次结构，推荐使用抽象类，有利于功能的累积。当功能不需要，希望支持差别较大的两个或更多对象间的特定交互行为，推荐使用接口。使用接口能降低软件系统的耦合度，便于日后维护或添加删除方法。</li>
+</ol>
+<h3 id="类和接口的关系"><a href="#类和接口的关系" class="headerlink" title="类和接口的关系"></a>类和接口的关系</h3><h4 id="类和类的关系"><a href="#类和类的关系" class="headerlink" title="类和类的关系"></a>类和类的关系</h4><p>继承关系，只能单继承，但是可以多层继承。</p>
+<h4 id="类和接口的关系-1"><a href="#类和接口的关系-1" class="headerlink" title="类和接口的关系"></a>类和接口的关系</h4><p>实现关系，可以单实现，可以多实现，还可以继承的同时实现多个接口。</p>
+<p>如果类实现的接口和继承的父类中有相同的函数，则默认是继承来的函数生效。</p>
+<h4 id="接口和接口的关系"><a href="#接口和接口的关系" class="headerlink" title="接口和接口的关系"></a>接口和接口的关系</h4><p>继承关系，可以多继承。</p>
+<p>若多个继承的接口有函数代码逻辑冲突，则必须重写。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><h3 id="多态的成员访问特点"><a href="#多态的成员访问特点" class="headerlink" title="多态的成员访问特点"></a>多态的成员访问特点</h3><ol>
+<li>成员变量：编译看左边（父类），运行看左边（父类）   即：编译和运行使用的都是父类的成员变量。</li>
+<li>成员方法：编译看左边（父类），运行看右边（子类）   即：编译时看父类中有没有该方法，运行时看子类中具体的逻辑代码。</li>
+</ol>
+<h3 id="多态的好处"><a href="#多态的好处" class="headerlink" title="多态的好处"></a>多态的好处</h3><p>扩展性提高，定义方法时使用父类作为形式参数，该方法就可以接受任意子类对象。</p>
+<h3 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h3><p>不能调用子类中特有的方法。</p>
+<h3 id="多态中的转型"><a href="#多态中的转型" class="headerlink" title="多态中的转型"></a>多态中的转型</h3><ol>
+<li><p>向上转型</p>
+<p>父类引用指向子类对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FuClass f = <span class="keyword">new</span> ZiClass();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向下转型</p>
+<p>从父类类型转换成子类类型。类似强制类型转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FuClass f = <span class="keyword">new</span> ZiClass();</span><br><span class="line">ZiClass z = (ZiClass)f;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h2><h3 id="定义内部类对象"><a href="#定义内部类对象" class="headerlink" title="定义内部类对象"></a>定义内部类对象</h3><p>外部类名.内部类名 对象名  =  new 外部类对象().new  内部类对象();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outer.Inner i = <span class="keyword">new</span> Outer().new Inner();</span><br></pre></td></tr></table></figure>
+<p><strong>访问特点：</strong>1. 内部类可以使用外部类成员，包括私有成员。 2. 外部类访问内部类成员必须创建对象。</p>
+<h3 id="静态成员内部类"><a href="#静态成员内部类" class="headerlink" title="静态成员内部类"></a>静态成员内部类</h3><p>外部类名.内部类名  对象名  = new 外部类名.内部类名();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outer.Inner oi = <span class="keyword">new</span> Outer.Inner();</span><br></pre></td></tr></table></figure>
+<h3 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h3><h4 id="定义方法："><a href="#定义方法：" class="headerlink" title="定义方法："></a>定义方法：</h4><p>在方法内定义类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"show"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Inner i = <span class="keyword">new</span> Inner();</span><br><span class="line">        i.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="访问方式："><a href="#访问方式：" class="headerlink" title="访问方式："></a>访问方式：</h4><p>只能在方法中创建对象并访问。</p>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>将继承\实现，方法重写，创建对象放在了一部进行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inter</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Inter()&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"匿名内部类"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;.show();</span><br></pre></td></tr></table></figure>
+<p>应用场景：接口的形参是接口或抽象类。</p>
+<h3 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h3><p>对匿名内部类进行优化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        goSwimming(<span class="keyword">new</span> Inter() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">learn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"learn"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);												<span class="comment">// 匿名内部类</span></span><br><span class="line">        goSwimming(() -&gt; System.out.println(<span class="string">"learn"</span>));  <span class="comment">// lambda表达式 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goSwimming</span><span class="params">(Inter inter)</span></span>&#123;</span><br><span class="line">        inter.learn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inter</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">learn</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用前提："><a href="#使用前提：" class="headerlink" title="使用前提："></a>使用前提：</h4><ol>
+<li>有一个接口（只能是接口）</li>
+<li>接口中有且仅有一个抽象方法</li>
+</ol>
+<h4 id="Lambda表达式的省略模式"><a href="#Lambda表达式的省略模式" class="headerlink" title="Lambda表达式的省略模式"></a>Lambda表达式的省略模式</h4><ol>
+<li>参数类型可以省略，但有多个参数的情况下，不能只省略一个。</li>
+<li>如果参数有且只有一个，那么小括号可以省略。</li>
+<li>如果函数体只有一条语句，可以省略大括号和分号，甚至return语句。</li>
+</ol>
+<h4 id="Lambda表达式和匿名内部类的区别"><a href="#Lambda表达式和匿名内部类的区别" class="headerlink" title="Lambda表达式和匿名内部类的区别"></a>Lambda表达式和匿名内部类的区别</h4><h5 id="所需类型不同："><a href="#所需类型不同：" class="headerlink" title="所需类型不同："></a>所需类型不同：</h5><ul>
+<li>匿名内部类可以是接口，也可以是抽象类，还可以是具体类。</li>
+<li>Lambda表达式只能是接口。</li>
+</ul>
+<h5 id="使用限制不同"><a href="#使用限制不同" class="headerlink" title="使用限制不同"></a>使用限制不同</h5><ul>
+<li><p>如果接口中有且仅有一个抽象方法，可以使用Lambda表达式，也可以使用匿名内部类。</p>
+</li>
+<li><p>如果接口中多于一个抽象方法，只能使用匿名内部类，而不能使用Lambda表达式。</p>
+</li>
+</ul>
+<h5 id="实现原理不同"><a href="#实现原理不同" class="headerlink" title="实现原理不同"></a>实现原理不同</h5><ul>
+<li>匿名内部类编译之后产生一个单独的.class字节码文件</li>
+<li>Lambda表达式编译之后，没有一个单独的.class字节码文件。对应的字节码文件会在运行时动态生成。</li>
+</ul>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><h4 id="运行时异常和编译时异常"><a href="#运行时异常和编译时异常" class="headerlink" title="运行时异常和编译时异常"></a>运行时异常和编译时异常</h4><p>运行时异常可以忽略不处理，编译时异常必须处理。</p>
+<h4 id="throw和throws的比较"><a href="#throw和throws的比较" class="headerlink" title="throw和throws的比较"></a>throw和throws的比较</h4><ol>
+<li>throws用在方法声明后面，跟的是异常的类名；throw在方法体内，跟异常的对象。</li>
+<li>throws表示声明一个异常，若交由调用者处理；throw是手动抛出异常，是异常处理。</li>
+</ol>
+<h4 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h4><ol>
+<li>定义异常类</li>
+<li>明确继承关系</li>
+<li>构造方法（空参、带参）</li>
+</ol>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><h4 id="集合和数组对比"><a href="#集合和数组对比" class="headerlink" title="集合和数组对比"></a>集合和数组对比</h4><ol>
+<li>数组长度不可变；集合长度可变，会自动扩容。</li>
+<li>数组可以存储基本数据类型和引用数据类型；集合只能存储引用数据类型，如果要存储基本数据类型，就要存对应的包装类。int -&gt; Integer</li>
+</ol>
+<h4 id="集合分类"><a href="#集合分类" class="headerlink" title="集合分类"></a>集合分类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">集合 --单列--&gt; Collection</span><br><span class="line">集合 --多列--&gt; Map</span><br><span class="line">Collection --可重复--&gt; List</span><br><span class="line">Collection --不可重复--&gt; Set</span><br><span class="line">List --&gt; ArrayList</span><br><span class="line">List --&gt; LinkedList</span><br><span class="line">Set --&gt; HashSet</span><br><span class="line">Set --&gt; TreeSet</span><br><span class="line">Map --&gt; HashMap</span><br><span class="line">Map --&gt; TreeMap</span><br></pre></td></tr></table></figure>
+<p><strong>叶子节点是实现类，其他都是接口。</strong></p>
+<h4 id="集合常用方法"><a href="#集合常用方法" class="headerlink" title="集合常用方法"></a>集合常用方法</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean add(E e)</td>
+<td>添加元素</td>
+</tr>
+<tr>
+<td>boolean remove(Object o)</td>
+<td>删除元素</td>
+</tr>
+<tr>
+<td>boolean removeIf(Predicate&lt;? super E&gt; filter)</td>
+<td>指定条件删除，参数是Lambda表达式</td>
+</tr>
+<tr>
+<td>contains(Object o)</td>
+<td>判断集合是否包含元素</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空集合</td>
+</tr>
+<tr>
+<td>isEmpty()</td>
+<td>判断集合是否为空</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回集合元素数量</td>
+</tr>
+<tr>
+<td>boolean retainAll(Collection&lt;?&gt; c)</td>
+<td>从集合中删除不包含在指定集合中的元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>集合专用遍历方式</p>
+<p>Iterator <e> iterator()     默认指向0索引位置。</e></p>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean hasNext()</td>
+<td>判断<strong>当前位置</strong>是否有元素可以被取出</td>
+</tr>
+<tr>
+<td>E next()</td>
+<td>获取<strong>当前位置</strong>元素，并将迭代器移向下一个位置</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>删除迭代器指定元素</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="增强for"><a href="#增强for" class="headerlink" title="增强for"></a>增强for</h4><p>简化数组和Collection集合的遍历</p>
+<p>是JDK5之后出现的，内部原理是一个Iterator迭代器，只有实现了Iterator接口的类才能使用迭代器和增强for</p>
+<p>List和Set可以使用，Map不能使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;String&gt; collection = new ArrayList&lt;&gt;();</span><br><span class="line">for(String s : collection)&#123;</span><br><span class="line">	System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>在增强for中，s只是第三方变量，修改其值并不会改变集合中的元素。</p>
+<h4 id="在增强for中使用remove方法出现ConcurrentModificationException异常"><a href="#在增强for中使用remove方法出现ConcurrentModificationException异常" class="headerlink" title="在增强for中使用remove方法出现ConcurrentModificationException异常"></a>在增强for中使用remove方法出现ConcurrentModificationException异常</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String[] strArr = &#123;<span class="string">"111"</span>,<span class="string">"222"</span>,<span class="string">"333"</span>,<span class="string">"333"</span>,<span class="string">"444"</span>&#125;;</span><br><span class="line">    List&lt;String&gt; strings = Arrays.asList(strArr);</span><br><span class="line">    Collection&lt;String&gt; collection = <span class="keyword">new</span> ArrayList&lt;&gt;(strings);</span><br><span class="line">    collection.add(<span class="string">"aaa"</span>);</span><br><span class="line">    collection.add(<span class="string">"bbb"</span>);</span><br><span class="line">    collection.add(<span class="string">"ccc"</span>);</span><br><span class="line">    Iterator&lt;String&gt; iterator = collection.iterator();</span><br><span class="line">    <span class="keyword">for</span> (String s : collection) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"aaa"</span>.equals(s))&#123;</span><br><span class="line">            collection.remove(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    String s = collection.toString();</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码使用增强for删除元素，看似没有问题，然而实际运行时会抛出ConcurrentModificationException异常</p>
+<blockquote>
+<p>这是由于增强for循环底层调用的是迭代器的next和hasnext方法来遍历的，移除元素后，无法预知到元素的位置。这也是增强for的缺点，不能获取下标，不能动态删除集合中的内容。</p>
+</blockquote>
+<p>大概意思是说在增强for和迭代器Iterator以及forEach中，不能使用remove删除元素，否则会抛出异常。</p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String[] strArr = &#123;<span class="string">"111"</span>,<span class="string">"222"</span>,<span class="string">"333"</span>,<span class="string">"333"</span>,<span class="string">"444"</span>&#125;;</span><br><span class="line">    List&lt;String&gt; strings = Arrays.asList(strArr);</span><br><span class="line">    Collection&lt;String&gt; collection = <span class="keyword">new</span> ArrayList&lt;&gt;(strings);</span><br><span class="line">    collection.add(<span class="string">"aaa"</span>);</span><br><span class="line">    collection.add(<span class="string">"bbb"</span>);</span><br><span class="line">    collection.add(<span class="string">"ccc"</span>);</span><br><span class="line">    Iterator&lt;String&gt; iterator = collection.iterator();</span><br><span class="line">    List&lt;String&gt; removeList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (String s : collection) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"aaa"</span>.equals(s))&#123;</span><br><span class="line">            removeList.add(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    collection.removeAll(removeList);</span><br><span class="line">    String s = collection.toString();</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="三种集合遍历方式"><a href="#三种集合遍历方式" class="headerlink" title="三种集合遍历方式"></a>三种集合遍历方式</h4><ol>
+<li><p>普通for循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; collection.size(); i++) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用场景：需要操作索引</p>
+</li>
+<li><p>迭代器Iterator</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = collection.iterator();</span><br><span class="line"><span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">    System.out.println(it.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用场景：遍历时删除元素</p>
+</li>
+<li><p>增强for</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String s : collection)&#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用场景：仅遍历</p>
+</li>
+</ol>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><h5 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h5><p>使用TreeSet时，对于自定义类，必须定义排序规则，定义排序规则的方式有两种：</p>
+<ol>
+<li><p>自然排序：自定义类实现Comparable接口，并重写其中的compareTo方法，根据返回值进行排序，返回负数，插入前面；返回0，不插入；返回正数，插入到后面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Student</span>&gt;</span>&#123; <span class="comment">// Comparable中的泛型应该是TreeSet中的数据类型</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Student o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getAge()-o.getAge();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 构造方法、get和set方法省略。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>比较器排序：创建TreeSet对象时使用有参构造方法，参数是Comparator对象，重写compare方法，根据返回值进行排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//有参构造的两种方式</span></span><br><span class="line">    <span class="comment">//第一种，Lambda表达式</span></span><br><span class="line">    TreeSet&lt;Student&gt; set = <span class="keyword">new</span> TreeSet&lt;&gt;((Student s1,Student s2) -&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> s1.getAge()-s2.getAge();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//第二种，匿名内部类</span></span><br><span class="line">    TreeSet&lt;Student&gt; ts = <span class="keyword">new</span> TreeSet&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Student&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// 主要条件：根据age排序</span></span><br><span class="line">                <span class="keyword">int</span> result = o1.getAge() - o2.getAge();</span><br><span class="line">                <span class="comment">// 次要条件：根据name排序</span></span><br><span class="line">                result = result == <span class="number">0</span> ? o1.getName().compareTo(o2.getName()) : result;</span><br><span class="line">                <span class="keyword">return</span> result;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    Student s1 = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>, <span class="number">23</span>);</span><br><span class="line">    Student s2 = <span class="keyword">new</span> Student(<span class="string">"lisi"</span>, <span class="number">22</span>);</span><br><span class="line">    Student s3 = <span class="keyword">new</span> Student(<span class="string">"wangwu"</span>, <span class="number">24</span>);</span><br><span class="line">    set.add(s1);</span><br><span class="line">    set.add(s2);</span><br><span class="line">    set.add(s3);</span><br><span class="line">    </span><br><span class="line">    System.out.println(set);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h3><p>红黑树添加节点时，默认节点是红色效率高。</p>
+<p>红黑树添加节点</p>
+<p><img src="java%E7%AC%94%E8%AE%B0/image-20210703005228607.png" alt="image-20210703005228607"></p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>Object类中的hashCode方法根据地址值计算hash值，因此可能有相同内容的对象存储到set中，若HashSet中存储自定义类，需要重写hashCode和equals方法。</li>
+<li>不能使用索引遍历set。</li>
+</ol>
+<h4 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h4><ol>
+<li>JDK1.7以前，HashSet的底层使用Hash表+链表的形式存储数据，即链地址法。HashSet默认的加载因子是0.75，最大容量是16，因此可以得出HashMap的默认容量是：0.75*16=12，当存储空间&gt;=12时，发生扩容。当数据要添加到set中时，通过hashCode函数计算出数据应该在hash表中的索引，如果该位置当前无数据（null），直接添加，如果该位置不为空，则通过equals方法判断当前数据和hash表中数据是否相等，相等不添加，不等则添加到链表头部。</li>
+<li>由于使用链表，当链表长度过长时，添加、查询效率太低，在JDK1.8之后，自动将长度大于等于8的链表转换为红黑树存储。因此在1.8之后，hash表中不仅有链表，还有红黑树。</li>
+</ol>
+<h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h2><h3 id="获取方法"><a href="#获取方法" class="headerlink" title="获取方法"></a>获取方法</h3><ol>
+<li><p>单列集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HashSet&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;(Set.of(<span class="string">"张三"</span>,<span class="string">"李四"</span>,<span class="string">"王五"</span>,<span class="string">"赵六"</span>));</span><br><span class="line">set.stream().forEach(s-&gt; System.out.println(s));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>双列集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;(Map.of(<span class="string">"张三"</span>,<span class="number">23</span>,<span class="string">"李四"</span>,<span class="number">24</span>));</span><br><span class="line">map.keySet().stream().forEach(s-&gt;System.out.println(s));</span><br><span class="line"><span class="comment">//map.entrySet().stream().forEach(s-&gt;System.out.println(s));</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">Arrays.stram(arr).forEach(s-&gt;System.out.println(s));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>同类型数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stram.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>).forEach(s-&gt;System.out.println(s));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h3><p><img src="java%E7%AC%94%E8%AE%B0/image-20210812172232737.png" alt="image-20210812172232737"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">IO流--&gt;字节流</span><br><span class="line">IO流--&gt;字符流</span><br><span class="line">字节流</span><br></pre></td></tr></table></figure>
+<p>Java中泛型必须是引用类型。</p>
+<p>BigDecimal精确计算需要使用String进行构造BigDecimal对象。使用double不行。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢支持 ！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zosien 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Zosien 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zosien</li>
+  <li>
+  <strong>修改时间： </strong>2021-08-12 17:22:36</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shmily.today/java笔记.html" title="java笔记">https://www.shmily.today/java笔记.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    
+      <div class="post-tags">
+        
+          <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+        
+          <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+        
+      </div>
+    
+    
+    
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/位运算.html" rel="next" title="位运算">
+                <i class="fa fa-chevron-left"></i> 位运算
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Map.html" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+     
+  
+
+  
+    <div class="comments" id="comments">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Zosien">
+            
+              <p class="site-author-name" itemprop="name">Zosien</p>
+              <p class="site-description motion-element" itemprop="description">柔而不弱，强而不悍<br>阳光下像个孩子<br>风雨里像个大人</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+          
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Zosien" title="GitHub &rarr; https://github.com/Zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/zosien" title="微博 &rarr; https://weibo.com/zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/wechat.png" title="微信 &rarr; /images/wechat.png"><i class="fa fa-fw fa-wechat"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/qq.jpg" title="QQ &rarr; /images/qq.jpg"><i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:1562248279@qq.com" title="E-Mail &rarr; mailto:1562248279@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串拼接"><span class="nav-number">1.1.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量优化机制"><span class="nav-number">1.2.</span> <span class="nav-text">常量优化机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式编程"><span class="nav-number">1.3.</span> <span class="nav-text">链式编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringBuilder提高效率原理"><span class="nav-number">1.4.</span> <span class="nav-text">StringBuilder提高效率原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String的拼接"><span class="nav-number">1.4.1.</span> <span class="nav-text">String的拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StringBuilder拼接"><span class="nav-number">1.4.2.</span> <span class="nav-text">StringBuilder拼接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环标号"><span class="nav-number">1.5.</span> <span class="nav-text">循环标号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git"><span class="nav-number">1.6.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#static"><span class="nav-number">1.7.</span> <span class="nav-text">static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.8.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限修饰符"><span class="nav-number">1.9.</span> <span class="nav-text">权限修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法重写"><span class="nav-number">1.10.</span> <span class="nav-text">方法重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承中构造方法的特点："><span class="nav-number">1.11.</span> <span class="nav-text">继承中构造方法的特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开闭原则"><span class="nav-number">1.12.</span> <span class="nav-text">开闭原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类与抽象方法"><span class="nav-number">1.13.</span> <span class="nav-text">抽象类与抽象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类注意事项"><span class="nav-number">1.13.1.</span> <span class="nav-text">抽象类注意事项</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final关键字"><span class="nav-number">1.14.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">1.15.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型（8种）"><span class="nav-number">1.16.</span> <span class="nav-text">基本数据类型（8种）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自动装箱"><span class="nav-number">1.16.1.</span> <span class="nav-text">自动装箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动拆箱"><span class="nav-number">1.16.2.</span> <span class="nav-text">自动拆箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型转换"><span class="nav-number">1.16.3.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#int转String"><span class="nav-number">1.16.3.1.</span> <span class="nav-text">int转String</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String转int"><span class="nav-number">1.16.3.2.</span> <span class="nav-text">String转int</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Arrays-binarySearch-返回值"><span class="nav-number">1.16.3.3.</span> <span class="nav-text">Arrays.binarySearch()返回值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch支持的表达式类型"><span class="nav-number">1.17.</span> <span class="nav-text">switch支持的表达式类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">2.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的定义与特点"><span class="nav-number">2.1.</span> <span class="nav-text">接口的定义与特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口和抽象类的相同点和区别？"><span class="nav-number">2.2.</span> <span class="nav-text">接口和抽象类的相同点和区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类和接口的关系"><span class="nav-number">2.3.</span> <span class="nav-text">类和接口的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类和类的关系"><span class="nav-number">2.3.1.</span> <span class="nav-text">类和类的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类和接口的关系-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">类和接口的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口和接口的关系"><span class="nav-number">2.3.3.</span> <span class="nav-text">接口和接口的关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">3.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的成员访问特点"><span class="nav-number">3.1.</span> <span class="nav-text">多态的成员访问特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态的好处"><span class="nav-number">3.2.</span> <span class="nav-text">多态的好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弊端"><span class="nav-number">3.3.</span> <span class="nav-text">弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态中的转型"><span class="nav-number">3.4.</span> <span class="nav-text">多态中的转型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类"><span class="nav-number">4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义内部类对象"><span class="nav-number">4.1.</span> <span class="nav-text">定义内部类对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态成员内部类"><span class="nav-number">4.2.</span> <span class="nav-text">静态成员内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部内部类"><span class="nav-number">4.3.</span> <span class="nav-text">局部内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义方法："><span class="nav-number">4.3.1.</span> <span class="nav-text">定义方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问方式："><span class="nav-number">4.3.2.</span> <span class="nav-text">访问方式：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.4.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">4.5.</span> <span class="nav-text">Lambda表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用前提："><span class="nav-number">4.5.1.</span> <span class="nav-text">使用前提：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda表达式的省略模式"><span class="nav-number">4.5.2.</span> <span class="nav-text">Lambda表达式的省略模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda表达式和匿名内部类的区别"><span class="nav-number">4.5.3.</span> <span class="nav-text">Lambda表达式和匿名内部类的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#所需类型不同："><span class="nav-number">4.5.3.1.</span> <span class="nav-text">所需类型不同：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用限制不同"><span class="nav-number">4.5.3.2.</span> <span class="nav-text">使用限制不同</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现原理不同"><span class="nav-number">4.5.3.3.</span> <span class="nav-text">实现原理不同</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常"><span class="nav-number">4.6.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运行时异常和编译时异常"><span class="nav-number">4.6.1.</span> <span class="nav-text">运行时异常和编译时异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#throw和throws的比较"><span class="nav-number">4.6.2.</span> <span class="nav-text">throw和throws的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义异常"><span class="nav-number">4.6.3.</span> <span class="nav-text">自定义异常</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合"><span class="nav-number">4.7.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#集合和数组对比"><span class="nav-number">4.7.1.</span> <span class="nav-text">集合和数组对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合分类"><span class="nav-number">4.7.2.</span> <span class="nav-text">集合分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合常用方法"><span class="nav-number">4.7.3.</span> <span class="nav-text">集合常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迭代器"><span class="nav-number">4.7.4.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">4.7.4.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增强for"><span class="nav-number">4.7.5.</span> <span class="nav-text">增强for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在增强for中使用remove方法出现ConcurrentModificationException异常"><span class="nav-number">4.7.6.</span> <span class="nav-text">在增强for中使用remove方法出现ConcurrentModificationException异常</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方法"><span class="nav-number">4.7.6.1.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三种集合遍历方式"><span class="nav-number">4.7.7.</span> <span class="nav-text">三种集合遍历方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">5.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeSet"><span class="nav-number">5.1.</span> <span class="nav-text">TreeSet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意事项："><span class="nav-number">5.1.0.1.</span> <span class="nav-text">注意事项：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树"><span class="nav-number">5.2.</span> <span class="nav-text">红黑树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet"><span class="nav-number">5.3.</span> <span class="nav-text">HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">5.3.1.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底层原理"><span class="nav-number">5.3.2.</span> <span class="nav-text">底层原理</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#可变参数"><span class="nav-number">6.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream流"><span class="nav-number">7.</span> <span class="nav-text">Stream流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取方法"><span class="nav-number">7.1.</span> <span class="nav-text">获取方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO流"><span class="nav-number">7.2.</span> <span class="nav-text">IO流</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><font color="white" face="STLiti">Copyright &nbsp;</font><font color="white">&copy;</font> <font color="white" face="STLiti">2018 - </font><font color="white" face="STLiti"><span itemprop="copyrightYear">2021</span></font>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder" style="font-family:STLiti;color:white;">LZX . All Rights Reserved.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <font color="white" face="STLiti"><span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
+    </span><span class="post-meta-divider">|</span></font>
+    <font color="white" face="STLiti">
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">41.4k</span>字,</span>
+    <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
+    </font>
+  
+
+  
+    <font color="white" face="STLiti"><span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次
+    </span></font>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div style="font-family:STLiti;display:inline-block;height:20px;line-height:20px;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030402000254" ><img src="/images/gov.png" style="float:left;"/>湘公网安备 43030402000254号</a>
+        <span class="post-meta-divider" style="color: #555;">|</span><span><a href="http://www.miitbeian.gov.cn" target="_blank">湘ICP备18020535号</a></sapn>
+        </div> -->
+        
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+<!--console.log-->
+
+<!--此处为建站时间 -->
+<script>
+  var now = new Date(); 
+  function createtime() { 
+      var grt= new Date("05/28/2019 20:01:01");
+      now.setTime(now.getTime()+250); 
+      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+      document.getElementById("timeDate").innerHTML =dnum+"&thinsp;天"; 
+      document.getElementById("times").innerHTML = hnum + "&thinsp;时" + mnum + "&thinsp;分" + snum + "&thinsp;秒"; 
+  } 
+setInterval("createtime()",250);
+</script>
+
+<!--知乎卡片链接-->
+<script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+<!--夜间模式-->
+<script type="text/javascript" src="/js/src/night.js"></script>
+<div class="cover"></div>
+
+<!--崩溃欺骗-->
+<!-- <script type="text/javascript" src="/js/src/crash_cheat.js"></script> -->
+
+<!--input特效-->
+<script src="/js/src/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+<!-- 鼠标点击特效 -->
+
+ <script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'nBqcJNgT4JDUb4G29LREPoiY-gzGzoHsz',
+        appKey: '3GRto2sfPhCf8DQnPl68r3RI',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'15' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/browser/pangu.min.js"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('manual', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #1b1b1b;
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 9px;
+      top: 4px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

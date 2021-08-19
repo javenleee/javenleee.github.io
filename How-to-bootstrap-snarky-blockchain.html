@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.7.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<!--站长验证-->
+<meta name="baidu-site-verification" content="5rEIjow3aW">
+<meta name="google-site-verification" content="OhdtVOx5uwpZ_mMm0AZJXzw-dY1PPpAAkdavmmQhIL4">
+<meta name="360-site-verification" content="5b1c9d7574859ca6e460dd687667d5dc">
+
+
+
+  <meta name="description" content="零知识证明论文翻译、阅读">
+<meta name="keywords" content="论文,零知识证明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to bootstrap snarky blockchain">
+<meta property="og:url" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html">
+<meta property="og:site_name" content="blog">
+<meta property="og:description" content="零知识证明论文翻译、阅读">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211645014.png">
+<meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211712095.png">
+<meta property="og:updated_time" content="2021-08-19T09:13:43.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to bootstrap snarky blockchain">
+<meta name="twitter:description" content="零知识证明论文翻译、阅读">
+<meta name="twitter:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211645014.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>How to bootstrap snarky blockchain | blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博采众长</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">心有猛虎，细嗅蔷薇</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+		
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result">
+    
+      <div style="text-align: center;padding: 3px 0 0;">
+       <div style="margin-top: 20px;font-size: 18px;font-weight: 600;border-bottom: 1px solid #ccc;">
+         <i class="fa fa-history" aria-hidden="true"></i>
+         近期文章
+       </div>
+       <ul style="margin: 0;padding: 0;list-style: none;">
+         
+         
+           <li>
+             <a href="/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain" target="_blank">How to bootstrap snarky blockchain</a>
+           </li>
+         
+           <li>
+             <a href="/装箱与拆箱.html" title="装箱与拆箱" target="_blank">装箱与拆箱</a>
+           </li>
+         
+           <li>
+             <a href="/20210817.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Ubuntu更新内核.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/802.11.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/20210816-24-25.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Arrays类中的二分查找没找到为什么返回-(low+1).html" title="Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)" target="_blank">Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</a>
+           </li>
+         
+           <li>
+             <a href="/How to bootstrap snarky blockchain back.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/20210813-220.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/一切都是比赛，中本聪永远不亏.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/遍历Map的4种方式.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/Map.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/java笔记.html" title="java笔记" target="_blank">java笔记</a>
+           </li>
+         
+           <li>
+             <a href="/位运算.html" title="位运算" target="_blank">位运算</a>
+           </li>
+         
+           <li>
+             <a href="/毕设项目bug总结.html" title="毕设项目bug总结" target="_blank">毕设项目bug总结</a>
+           </li>
+         
+       </ul>
+      </div>
+    
+  </div>
+</div>
+
+
+
+    </div>
+  
+
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/Zosien/zosien.github.io" class="github-corner" target="_blank" title="万水千山总是情,给个star行不行！" aria-label="万水千山总是情,给个star行不行！"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zosien">
+      <meta itemprop="description" content="柔而不弱，强而不悍<br/>阳光下像个孩子<br/>风雨里像个大人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                How to bootstrap snarky blockchain
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-08-18 21:13:19" itemprop="dateCreated datePublished" datetime="2021-08-18T21:13:19+08:00">2021-08-18</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文/" itemprop="url" rel="index"><span itemprop="name">论文</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文/零知识证明/" itemprop="url" rel="index"><span itemprop="name">零知识证明</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                
+                <span class="post-meta-item-text"> 评论数： </span>
+                
+                <a href="/How-to-bootstrap-snarky-blockchain.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/How-to-bootstrap-snarky-blockchain.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/How-to-bootstrap-snarky-blockchain.html" class="leancloud_visitors" data-flag-title="How to bootstrap snarky blockchain">
+               <span class="post-meta-divider">|</span>
+               <span title="阅读次数">
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 
+                   <span class="post-meta-item-text">阅读次数：</span>
+                 
+                   <span class="leancloud-visitors-count"></span>
+               </span>
+             </span>
+          
+
+          
+          
+          
+
+          
+
+          
+              <div class="post-description">零知识证明论文翻译、阅读</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain"><a href="#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain" class="headerlink" title="Mining for Privacy:How to Bootstrap a Snarky Blockchain"></a>Mining for Privacy:How to Bootstrap a Snarky Blockchain</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>非交互零知识证明，更具体说是简洁非交互零知识证明（zkSNARKS），已经被证明时区块链和分布式账本领域的瑞士军刀，具有多种在隐私、交互操作、可扩展性方面的应用。<strong>许多常用的SNARK系统依赖结构化参考字符串，这个字符串的安全生成被证明是他们致命弱点</strong>：如果用于生成字符串的随机性是已知的，则证明系统的健全性可能会被破坏，从而对使用他们的底层区块链系统造成毁灭性后果。<strong>在这项工作中，我们首次描述和分析了一种区块链机制，该机制能够产生一个安全的SRS，他的特征是在与区块链协议本身具有可比性的条件下显示安全性的特点。我们的机制利用最近发现的可更新结构化参考字符串来以完全分布式的方式执行安全生成。通过这种方式，SRS源自区块链协议本身的正常执行。不需要额外的安全驾驶或者链下的计算和\或验证。</strong>我们为这个参数的设置提供了具体的指导，允许在合理的实践段内完成安全设置。我们也提供了一个激励方案，当与更新机制配合使用时，可以适当地激励参与者为安全的参考字符串生成做出贡献。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>在分布式账本领域，无交互的零知识证明有许多有趣的应用，特别是，他们已经成功被应用到隐私引入这些固有的公共点对点系统中更值得注意的是，Zerocash证明了他们在创建私有货币方面的用处。除此之外，还有好多建议将相同的技术应用到智能合约以增加隐私性。除了隐私性，其他零知识证明的应用包括区块链的交互操作性和可扩展性</p>
+<p>对于这些设计的<strong>实际效率</strong>，有两件事是最重要的：证明的简洁性，以及验证这些证明的速度。账本的分布式特性要求大量用户存储和验证每一个证明，这使得许多零知识证明系统不适合。</p>
+<p>对所谓的zk-SNARKs的研究旨在精确优化这些特征：证明大小通常在千字节以下，验证时间以毫秒为单位。<strong>众所周知，无交互零知识证明需要一些共享的随机性或者公共参考字符串。</strong>对很多简洁系统，强壮的属性是必须的：<strong>不仅是需要一个共享随机值，而且必须遵守一个特定的结构。</strong>这样的结构化参考字符串（或者SRS）通常由相关的组元素组成，例如：$g^{x^i}$​​​ 对于$i \in Z_n$​​​ 。</p>
+<p><strong>从公共随机数中采样这样一个参考字符串的明显方法揭示了所使用的指数——对这些值的掌握破坏了这个证明系统本身的稳定性。</strong>更糟糕的是，这些系统的安全性通常依赖于指数知识的假设，这个假设表明了以这种方式创建相关的组元素需要知道基础指数，因此任何SRS采样器都必须知道这个被使用的指数并且被信任可以消除他们，从而有效的变成一个底层系统的单点故障。虽然安全多方计算能够并且已经被用于减少在设置过程中的这类信任，安全计算参与者的选择和MPC协议生成SRS的验证保留了中心化的元素。在需要SNARKs的去中心化系统的设置中使用MPC仍然有争议。</p>
+<p><strong>最近的工作已经发现了具有可更新参考字符串的简洁零知识证明系统。在这些系统中，给定一个参考字符串，有可能产生一个更新参考字符串</strong>，因此要知道新字符串的trapdoor，既需要知道旧字符串的trapdoor，也需要知道更新中使用的随机性。<strong>推测一个区块链协议可以被用来安全地生成这样一个参考字符串。然而，到目前为止，产生SRS的确切区块链机制以及其可以提供的安全保证的描述仍然难以琢磨。</strong></p>
+<h3 id="1-1-我们的贡献"><a href="#1-1-我们的贡献" class="headerlink" title="1.1 我们的贡献"></a>1.1 我们的贡献</h3><p><strong>在这项工作中，我们首次描述和分析了一种区块链机制，这种机制能够产生一个安全的SRS（Structured Reference String ？，结构化参考字符串？），其特征是，在类似的条件下区块链协议被证明是安全的。</strong>明显不同的是，我们隐式地使用安全擦除，并且仅仅在一个特定初始化期间需要诚实的大多数。SRS源于区块链协议本身的正常运行，不需要额外的安全假设，或者链下的计算和\或验证。</p>
+<p>我们主要依赖”Nakamoto-style”的<code>区块链质量</code>属性——分布式账本，其中一个随机过程选择哪个用户可以将块添加到已建立的链上。这样的账本依赖诚实大多数的哈希算力（或者一些其他资源）——并且可以证明<code>链质量</code>属性，这表明任何足够长链片段都会有一些被诚实节点创建的块。</p>
+<p>我们在第三章描述的构造中将参考字符串更新集成到生成块过程中，但是由于更新计算是一个计算量很大的操作（尽管，与暴力破解哈希相反，但是有用），我们面临额外的困难。由此产生了两个方面的问题。首先，攻击团伙可以通过在更新中提供少量的熵来走捷径，并且尝试利用这一额外挖矿能力来推翻这个参考字符串，这可能对攻击者来说有很大的好处。其次，即使是非共谋的理性区块创建者，也有可能被激励来使用不良随机性，这可能减少或者消除更新的任何安全好处。我们的工作解决了这两个问题。</p>
+<p><strong>在本文的完整版本中，我们通过在通用组合框架中提供分析，正式证明了我们的机制产生了一个安全参考字符串。此外，本文的完整版本通过实验分析演示了如何具体参数化工作证明账本，来保证走捷径的攻击者（而诚实的用户不会走捷径）仍然无法subvert破坏参考字符串。</strong>在我们实验章节提供的具体的结果可以用来指导参数的选择，以便在实时区块链系统中运行我们的参考字符串生成机制。</p>
+<p>在第四节中，我们更进一步介绍一个激励机制，它能够保证协议中想要最大化利益的理性参与者能够避免低熵攻击。简而言之，激励机制要求最终链中更新贡献者的随机部分会被要求揭示他们的trapdoor，它会被潜在账本规则验证为随机Oracle预言机？输出。只有使用者能够证明他们的更新是随机的，他们才能获得相应的奖励。小心的选择奖励分配能够使我们能够证明，理性的参与者会利用高熵指数，从而为SRS计算做出贡献。</p>
+<h3 id="1-2相关工作"><a href="#1-2相关工作" class="headerlink" title="1.2相关工作"></a>1.2相关工作</h3><p>除了与引入可更新字符串的工作的明显关系，还有尝试实际回答如何安全地生成参考字符串的问题。这些是在字符串是不可更新的背景下。</p>
+<p>值得注意的是，[5]描述了<code>Sprout</code>在加密货币SRS初始化设置中使用的机制（Sprout是<code>Zcash</code>的第一个版本），它使用了多方计算来生成一个参考字符串，其中包含对初始参与群体的信任根。由于MPC协议的性能限制，尽管只需要但参与者的诚实度，但参与者的集合相对小。</p>
+<p>对于<code>Zcash</code>的<code>Sapling</code>版本，当他们的参考字符串被替代的时候（由于零知识语句的升级，并且使用了证明系统），它使用了一个不同的方法。他们在[6]中描述的第二SRS生成机制，使用了一个多阶段轮询机制来为<code>Groth&#39;s zk-SNARK</code>生成参考字符串。他们利用一个随机信标beacon来保证结果的均匀分布，并且使用一个协调器来执行确定性辅助计算。</p>
+<p>在无交互零知识证明的设计方面也做了大量工作，这种零知识证明不需要参考文献中的结构，如DARK[8],STARKs[1],Bulletproffs[7]。虽然这些提出了一个很有前途的可替代方案，充分利用参考字符串的可更新性有可能在没有额外安全假设的情况下获得更好的效率，并且可能在实例化通用结构（如基于多项式承诺的<code>Halo Infinite</code>）时发挥作用。</p>
+<h2 id="2-可更新的结构化参考字符串"><a href="#2-可更新的结构化参考字符串" class="headerlink" title="2 可更新的结构化参考字符串"></a>2 可更新的结构化参考字符串</h2><p>虽然可更新的结构化参考字符串（updateable structured reference strings，uSRSs）在我们构建的工作[26,3.2节]中建模，但我们在通用可组合型（UC）设置中对他的安全性进行建模[10]。在此，一个uSRS是一个带有潜在trapdoor $\tau$​​​ 的参考字符串，它具有一个结构函数$S$​​ 。$S(\tau)$​​ 是这个参考字符串本身，但是$\tau$​​​​ 并不会透露给攻击者，在本文的完整版本中[22,附录A]，我们证明了<code>Sonic</code>[26]（正像在2.2节说的，对提取进行了少量修改）满足我们在本节要求的所有属性。我们的主要证明是与<code>Sonic</code>协议无关，并且适用于满足本节其余部分列出的属性的任何可更新的参考字符串方案。</p>
+<h3 id="2-1-标准需求"><a href="#2-1-标准需求" class="headerlink" title="2.1 标准需求"></a>2.1 标准需求</h3><p>uSRS方案S由一个trapdoor域T，一个初始trapdoor $\tau_0$​​​​​ ，T上允许置换的集合P（即域和余域为T的双射函数）和域T上的结构函数S组成。我们要求P包括恒等函数id，并在函数组合下封闭：$\forall p_1,p_2 \in P : p_1 * P_2 \in P$​​​​​ 。​一个有效的置换$\dagger $​​​​ 提升应该存在，这样对于任何置换$p \in P$​​​​ 和 $\tau \in T$​​​​ ，$p^{\dagger}(S(\tau)) = S(p(\tau))$​​​ 。最后，必须存在用于创建并验证更新证明的算法$\rho \gets  ProveUpd(S(\tau),p)$​​​ 和算法 $b \gets VerifyUpd(S(\tau),\rho ,S(p(\tau)))$​​​​ 。这些更新证明的格式没有指定，然而必须满足一下约束条件：</p>
+<ol>
+<li>正确性，应用一个诚实生成的更新证明会验证：$\forall p \in P ,\tau \in T : VerifyUpd(S(\tau),ProveUpd(S(\tau),p),S(p(\tau)))$​ </li>
+<li>结构保护，应用任何有效的更新等价于在trapdoor $\forall p,\tau,srs’:VerifyUpd(S(\tau),\rho,srs’) \Rightarrow \exist p \in P: srs’ = S(p(\tau))$ 应用一些排列。</li>
+<li>更新一致性。应用一个随机排序就等价于选择一个新的随机trapdoor：设D是T上的均匀分布，对于所有的$\tau \in T$ ，使得$D_\tau$ 是多重集${p(\tau) | p \in P}$ 上的均匀分布，然后$\forall \tau \in T : D = D_\tau$ </li>
+</ol>
+<p>我们定义了一个相应的UC函数FuSRS，它提供了一个参考字符串$S(p(\tau_\mathscr{H}))$ ，这个参考字符串能被攻击者通过排列$p\in P$ 影响，仅给定$S(\tau_\mathscr{H})$ 作为输入，用户随机采样$\tau\mathscr{H} \in T$ .</p>
+<p><img src="How-to-bootstrap-snarky-blockchain/image-20210818211645014.png" alt="image-20210818211645014"></p>
+<p>我们相信这个功能是独立的，它没有明确地与我们的实现联系在一起。值得注意的是，当while我们使用分布式账本作为广播通道的弱形式，但可以考虑其他通道，而无需修改此功能。然而，正如前面所说，这个功能并没有规定任何特定的用法，我们推测，当使用适当的结构函数和排列集参数化时，它可以安全地实例化可更新的基于SRS的SNARKs，如Sonic[26],Marlin[11], 或者Plonk[13],由于UC设置，这将需要额外的提升来实现UC知识提取，如[24].</p>
+<h3 id="2-2-模拟要求"><a href="#2-2-模拟要求" class="headerlink" title="2.2 模拟要求"></a>2.2 模拟要求</h3><p>除了正确性、结构保持和更新一致性的基本属性外，任何希望通过更新帮助实现$F_{uSRS}$ 的模拟器都需要两个额外的属性：</p>
+<ol>
+<li>更新证明模拟。从模拟器知道trapdoor的初始SRS $S(\tau)$ ，它可以生成一个任何（正确结构的）SRS有效更新。形式上：$\exist S_\rho \forall \tau_1,\tau_2 \in T: VerifyUpd(S(\tau_1),S_\rho(\tau_1,S(\tau_2)),S(\tau_2))$ 其中$S_\rho$时一个PPT算法。</li>
+<li>permutation extraction，排列提取？。模拟器必须能够提取任何有效对抗性更新证明背后的排列p</li>
+</ol>
+<p>实现排列提取最自然的方法时使用白盒提取器，因为更新本身通常依赖于某种形式的知识假设，如指数知识，然而，白盒提取器不能用在UC证明中，相反，我们假设更新证明通过一个低等级的NIZK（Non-interactive zero-knowledge，非交互零知识证明）被证明是与特定的trapdoor相对应。更重要的是，这种低等级的NIZK，仅仅依赖于常见的随机字符串或者一个随机oracle，而不需要结构化的参考字符串。幸运的是，它不像本文完整版本[22,第四节]演示的那样，受到严格的效率要求。</p>
+<p>具体来说，我们假设基本更新证明是NIZK关系R中的一个语句，其中见证人是对应排列p的一个编码。我们要求每个更新证明有且仅有一个相应的排列，正式地表示为要求R是一个双射，这导致了对ProveUpd和VerifyUpd的直接修改。即使在UC环境下也允许提取底层排列：ProveUpd还创建了一个NIZK证明$\pi of(\rho,p) $,并且返回$(\rho,\pi)$ ，而VerifyUpd只有这个新嵌入的NIZK证明也验证时才返回true。</p>
+<p>如有R的定义，添加此NIZK可以简单保留所有安全属性，包括正确性：</p>
+<script type="math/tex; mode=display">
+Definition 1. 如果下列关系是双射并且NP，\\那么uSRS是排列可提取的：\\
+R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附录A]中表明，可以有效地构建Sonic[26]的情况所需的关系，并将如何在不依赖于进一步的NIZK的情况下实现提取的问题留给未来的工作。</p>
+<h2 id="3-根据链质量属性构建uSRS"><a href="#3-根据链质量属性构建uSRS" class="headerlink" title="3 根据链质量属性构建uSRS"></a>3 根据链质量属性构建uSRS</h2><p>本节展示了如何通过要求块创建者在初始化期间对不断发展的uSRS执行更新来使用分布式账本安全地初始化uSRS，在等待最终uSRS达成一致后，它可以被安全地使用。为了对这种方法正式建模，我们讨论了在模拟证明中使用的理想情况和现实情况。两种情况都可以访问账本，但是理想条件下账本和参考字符串（由独立的$\mathcal{F}_{uSRS}$ 功能提供）是独立的，然而现实情况是账本通过编程使用更新来生成</p>
+<h3 id="3-1-高度概括"><a href="#3-1-高度概括" class="headerlink" title="3.1 高度概括"></a>3.1 高度概括</h3><p>本文的这个基本前提依赖于<code>Nakamoto-style</code> 账本的基本操作方式：不同的用户如果满足一些条件可以扩展区块链，这个条件由一种难度有关，这个难度值可以保证攻击者能够执行的扩展数量有限。给定这样一个结构，我们将uSRS更新与时间$\delta_1$​ 之前的每个区块关联起来。这个时间的选择保证账本的安全属性确保此时每个竞争链中至少一个区块是诚实的。</p>
+<p>在我们的建模中，我们通过一个额外的领导状态的账本功能来构建他，这个领导状态源自嵌在区块中的信息挖掘者。特别对于我们的情况，这些编码的uSRS更新。我们保留足够的通用性来允许其他用途。它的基本思想是要表明，一个在领导状态执行uSRS更新的账本等同于不执行更新，但伴随有$\mathcal{F}_{uSRS}$ 功能。他们分别构成了我们理想情况和真实情况。在$\delta_1$ 之后，用户再等待一段时间$\delta_2$​ 直到公共前缀保证所有各方对参考字符串达成一致。</p>
+<p>尽管账本功能常常被视作是全局的，但我们的方法有效地从另一个账本构建了一个账本——账本不是我们协议的一个依赖项，但是是一个组成部分。再这种情况下，全局是无关紧要的，因为环境已经可以直接访问功能，但是我们仍期待构建在账本上的协议能够在全局范围内使用它。对于uSRS来说，情况并非如此，大多数使用可能依赖于模拟器能够提取它的trapdoor。</p>
+<h3 id="3-2-我们的账本摘要"><a href="#3-2-我们的账本摘要" class="headerlink" title="3.2 我们的账本摘要"></a>3.2 我们的账本摘要</h3><p>我们对这些可更新结构化参考字符串功能的构造很大程度上依赖于<code>公共前缀,链质量，链增长</code>的属性，这些属性是Garay等人在”Bitcoin backbone”分析中定义[14]，用于<code>Nakamoto-style</code> 共识算法。尽管我们在标题中仅使用了链质量属性，但我们充分利用了这三个属性，而不仅仅是链质量属性。我们强调链质量，因为他是确保一个诚实更新发生的核心属性。我们简单而非正式地重申这三个属性：</p>
+<ul>
+<li>公共前缀。给定当前两方的链$\varPi_1$​ 和$\varPi_2$​ ，并从第一个开始移除k个块，它是第二个链的前缀：$\varPi_1^{\varGamma k} \prec \varPi_2$</li>
+<li>链质量.对于任何一方的当前链$\varPi$​ ，该链中任意连续$l$​个区块将包含诚实方创建的$\mu$​ 个块。</li>
+<li>链增长。如果一方链长度为c，那么在s个时间段之后，链长度至少为$c+\gamma$ 。</li>
+</ul>
+<p>这些参数决定了我们协议的两个阶段的长度，在第一个阶段，我们从liveness parameter（假设$\mu \ge 1$​ ）构建了参考字符串本身，在第二阶段，我们等待这个参考字符串传播到所有用户，第一个阶段的长度至少为$\delta_1 \ge \lceil l\gamma^{-1} \rceil s$​​ ，第二个阶段长度至少为$\delta_2 \ge \lceil k\gamma^{-1}\rceil s$​​ ，他们合起来构成了uSRS的总生成延迟$\delta \ge (\lceil l\gamma^{-1} \rceil + \lceil k\gamma^{-1} \rceil)s$ </p>
+<p>我们假设一个保证主干属性的账本。虽然我们没有证明任何具体的现有工作量证明账本（或者基于不同领导选择机制的账本）正式地UC-realise这种特定的形式，我们认为<code>Nakamoto-style</code>共识的所有账本都是这样。账本和论证都在本文的完整版本[22,附录B]呈现，我们的功能进一步依赖一个<code>global clock</code> $\cal{G}_{clock}$​ ，在[22，附录E.1]中定义。本文的目的，这是一个信标，他向请求他们的任何一方提供代表当前时间的单递增值，这就足够了。</p>
+<p>除此之外，我们假设每个块都能包含额外的信息，由他的创建者（矿工）提供，这些信息可以被聚合来创建一个”领导者状态“。每一个创建的块与一个更新a相关联，账本由两个过程<code>Gen</code> , <code>Apply</code> 参数化，这两个过程分别描述了更新的诚实选择，和更新的语义。展望未来，他们在内部使用ProveUpd和VerifyUpd，尽管其形式足够普通允许将leader state用于其他并行目的。这个具体的参数在理想情况和现实情况不同，在理想情况”隐藏“uSRS更新，除此之外，现实情况增加了时间敏感性：在设置期后它对SRS没有任何作用。<strong>Gen</strong>是随机的以leader状态$\sigma$​​​ 和当前时间t作为输入，生成一个更新a,<strong>Apply</strong> 以leader state $\sigma$ 、更新a、和更新时间t为输入，返回继承状态$\sigma’:\sigma’ = Apply(\sigma,(a,t))$ ，对一个链来说，leader state或许由从初始化状态$\varnothing$​ 开始顺序应用链中所有更新计算得来。</p>
+<p>攻击者控制着什么时候、哪一方创建一个新块，同样还有每个新块中包含的交易（只要不违反主干属性）。对于由被破坏的一方创建的交易，攻击者可以更进一步控制块的时间戳（在不存在于未来的合理范围内，并在前一个块之后），以及所需的更新a本身。对于诚实方更新，则使用Gen。</p>
+<p>我们的账本提供的接口如下：</p>
+<ul>
+<li>SUBMIT，提交一个新的交易</li>
+<li>READ，读取确定的交易序列</li>
+<li>PROJECTION，读取当前链的交易序列（可能是未确认的）</li>
+<li>LEADER-STATE，读取确定的leader state</li>
+<li>ADVANCE，攻击者将一方切换到更长链</li>
+<li>EXTEND，攻击者指示一方创建区块</li>
+</ul>
+<p>虽然这个账本抽象不是本文的重点，但是我们相信，在需要对矿商的行为进行更精细的控制或者更好地访问竞争链的情况下，它具有独特的便利</p>
+<h3 id="3-3-理想情况"><a href="#3-3-理想情况" class="headerlink" title="3.3 理想情况"></a>3.3 理想情况</h3><p>我们的理想环境下由两个并行组合的功能组成（我们的意思是：环境可以解决任何一个问题，而且他们不相互作用）第一个是$\cal{F}_{uSRS}$ 的变体，经过修改后，在$\delta$ 时间过去之前，诚实的各方不能进行处理。在形式上，这种改变是使用包装函数$\cal{W}_{delay}(\cal{F},\delta)$ 完成的，如[22,附录E，4]所述。</p>
+<p>第二个是<code>Nakamoto-style</code>账本功能，通过任意leader-state生成和应用程序进行参数化，这些函数也在混合环境下部分使用：$Gen = Genldeal$ 和 $Apply = ApplyIdeal$ 以及以下账本参数：</p>
+<ol>
+<li>一个公共前缀参数k</li>
+<li>链质量参数$\mu$ 和 $l$</li>
+<li>链增长参数$\gamma$ 和 $s$</li>
+</ol>
+<p>在形式上，我们理想环境下由这对$(\cal{W}_{delay}(\delta,\cal{F}_{uSRS}),\cal{F}^{ideal}_{nakLedger})$ ，以及全局功能$\cal{G}_{clock}$ 组成。</p>
+<h3 id="3-4-现实与理想的混合情况"><a href="#3-4-现实与理想的混合情况" class="headerlink" title="3.4 现实与理想的混合情况"></a>3.4 现实与理想的混合情况</h3><p>在我们的混合情况中，我们使用uSRS方案$\cal{S}$ ，算法<code>ProveUpd</code>和<code>VerifyUpd</code>，结构函数S，允许排列P，排序提升＋，初始trapdoor $\tau_0$ 混合情况由单独的<code>Nakamoto-style</code> 账本 $\cal{F}^{real}_{nakLedger}$​ ，一个NIZK功能$\cal{F}^R_{NIZK}$ ，和一个全局时钟$\cal{G}_{clock}$ 组成，这个账本由与理想情况下同样的链参数和以下leader-state程序进行参数化：</p>
+<p><img src="How-to-bootstrap-snarky-blockchain/image-20210818211712095.png" alt="image-20210818211712095"></p>
+<p>请注意，这些参数化算法使用$\cal{F}^R_{NIZK}$ ，因此账本依赖于此混合功能。</p>
+<p>问题的关键是一旦在初始化块质量期间之后一个块通过共识上链，他可能声明的任何参考字符串更新都不再执行。此时，因为链仍可能被重新组织，uSRS不一定稳定，但是对于特定链来说不应该改变。更进一步，这些程序总是模仿理想情况，扩展他<em>（是指？）</em>而不是取代他。这证明了允许块leader产生更新的可组合性，：一个用于安全更新的系统不会影响leadership state的其他并行使用。</p>
+<p>除了保证查询被适当的路由，Uc模拟理想情况的行为几乎不需要做其他工作，特别时如何在混合情况下查询参考字符串。我们在本文的完整版本[22，附录C]中使用一个小”适配器”协议来描述这个，<code>LEDGER-ADAPTOR</code> 。这将转发大多数查询，并且将uSTS查询看作是$\delta$时间后查询leader state的适当部分，在这个时间之前则忽略他们。正式地，我们现实情况是由全局时钟$\cal{G}_{clock}$ 和系统<code>LEDGER-ADAPTOR</code> $(\delta,\cal{F}^{real}_{nakLedger}(\cal{F}^R_{NIZK}))$ 。</p>
+<h3 id="3-5-mathcal-G-clock-​-的替代用法"><a href="#3-5-mathcal-G-clock-​-的替代用法" class="headerlink" title="3.5 $\mathcal{G}_{clock}$​ 的替代用法"></a>3.5 $\mathcal{G}_{clock}$​ 的替代用法</h3><p>在这两个条件下，$\cal{G}_{clock}$​​​​ 被用作确定截断点，在此点之后参考字符串被视作安全的。这个Clock的简单的替代方案是，为此目的而依赖于链的长度。我们没有做出这样的选择，因为它使理想情况变得复杂：延迟包装器必须与理想情况下的账本通信，并且查询各方链的长度。我们不认为时钟是一个重要的额外假设，然而，如果使用链长度代替，本文的剩余部分几乎没有什么不同。即使在这种情况下，时钟的出现也是为了保证火星，尽管它只用于约束攻击者。</p>
+<h3 id="3-6-UC仿真"><a href="#3-6-UC仿真" class="headerlink" title="3.6 UC仿真"></a>3.6 UC仿真</h3><p>我们的安全性是通过UC仿真得到的，在以下定理中说明：</p>
+<p>定理1.对于任意可更新参考字符串模式S，满足正确性，结构保持和更新一致性以及使用$S_p$ 进行更新模拟和排列提取，<code>LEDGER-ADAPTOR</code> （在$(\cal{F}^{real}_{nakLedger},\cal{F}^R_{NIZK})$ 混合情况下，参数化如3.4节）在存在全局时钟功能$\cal{G}_{clock}$ 的情况下，使用模拟器$S_{LEDGER-ADAPTOR}$ .UC仿真这对功能$(\cal{F}^{ideal}_{nakLedger},\cal{W}_{delay}(\delta,\cal{F}_{uSRS}))$ ，参数化如3.3节，</p>
+<p>完整的安全证明和仿真可以在本文的完整版本中找到[22，附录 F&amp;D]</p>
+<h2 id="4-低熵攻击更新缓解"><a href="#4-低熵攻击更新缓解" class="headerlink" title="4 低熵攻击更新缓解"></a>4 低熵攻击更新缓解</h2><p>虽然我们的分析表明，在<code>Byzantine</code>拜占庭，诚实大多数情况下，我们协议生成一个值得信任的参考字符串，他也要求参与者将计算资源用于更新。在合理的情况下，玩家需要合理激励来遵守协议。我们强调理想条件并不是本文的重点，乐观地说，在一个大多数矿工都是理性只有一小部分诚实的环境中，少数诚实的区块足以消除本节中描述的问题。</p>
+<p>对于<code>Sonic</code> ，一个协议偏差的存在破坏了参考字符串的安全性：通过以特定的低熵方式选择指数（例如$y=2^l$ ）。主要依赖于重复平方的更新计算可以明显加快。一般来说，P中的一些随机排列可能更有效地计算。更详细地说，与其使用一个随机排列p， 不如做出一个特定的选择来简化srs’的计算，——在最极端的情况下，对于任何uSRS方案，p=id的更新是微不足道的。</p>
+<h3 id="4-1-proposed-construction"><a href="#4-1-proposed-construction" class="headerlink" title="4.1 proposed construction"></a>4.1 proposed construction</h3><p>为了缓解这类攻击，我们将需要假设底层账本的一个额外的属性，特别是他必须提供一个可重置的随机信标：对于每一个<code>ADVANCE</code>操作（攻击者必须限制它执行这个操作的频率），一个随机信标值在变量<code>bcn</code>中采样并且和对应的块相关联。这类信标通常很容易获得，例如通过工作量证明机制[4]的哈希算法，并且很多内置在权益证明机制的设计中。之前的工作[12]证明了这种信标值允许攻击者在信标值还没有进入到账本确定状态确定前，只通过重置它最多一定次数（如t次）来使他们发生偏差。t的确切取值取决于链参数。</p>
+<p>我们可以 通过向$\cal{F}_{RO}$​​发送一个查询<code>（bcn,nonce）</code> 来修正<code>Gen</code>以从随机oracle中获得随机值，其中<code>nonce</code>是一个随机选择的随机值，<code>bcn</code> 是前一个块的信标值。响应用于索引trapdoor排列集合P，选择结果p，nonce由矿工存储在本地，并保持私有。我们调整第一阶段的第一期，以便至少产生$l’ := l(1-\theta)^{-1}+c$​ 个区块，其中$\theta$和$c$ 是新的安全参数（下面会讨论）。接下来，第二阶段结束后，我们可以确定与第一阶段结束相关联的信标值最多被重置了t次。</p>
+<p>我们从<code>bcn</code>中提取 <code>l&#39;</code> 个有偏差虚拟币中，每个都有概率$\theta$。对于每个区块，如果对应的币为1.则需要在至少与活性参数一样长的一段时间内揭示其随机性。具体来说，上链区块所对应的矿工可以显示其nonce，相应地，这个矿工会获得标准区块奖励的R倍额外奖励。</p>
+<p>然而这需要更严格的链质量属性，而账本功能却强制<code>l</code>中一个未打开的更新是诚实的，我们在下一节中概述为什么这个属性仍然保持。</p>
+<h3 id="4-2-安全直觉"><a href="#4-2-安全直觉" class="headerlink" title="4.2 安全直觉"></a>4.2 安全直觉</h3><p>现在考虑一个具有哈希能力$\alpha$ 的理性矿工。我们知道，在最好情况下，使用像比特币这样的基础区块链，这样一个矿工期待的相对的回报最多是$\alpha/(1-\alpha)$​ ，这架设了一个自私的挖掘策略，在所有的网络竞赛中战胜了其他理性参与者。现在考虑一个矿工，它使用低熵指数来节省创建区块的算力，从而增加他们的哈希能力$\alpha$ 到一个相对哈希能力 $\alpha’ &gt; \alpha$​​​ 。这种攻击可以进一步通过分叉和有选择的公开那些有能力将<code>bcn</code>值重置到一为首选值的区块来影响区块链。为了证明这个影响是最小的，我们证明了下面的引理。</p>
+<p>引理1.考虑一个映射 $\rho \mapsto \{0,1\}^{l’}$​ ，当\rho 均匀选择时，产生$l’$​ 个独立的偏差代币，每一个的概率为$\theta$​ 。考虑任意 $n \le l’$​ 的固定位置，假设攻击者从映射的随即输入的$t$​ 个独立抽取中选择任意一个，目的是增加n个位置的成功次数。获得超过$n(1+\epsilon)\theta$​ 成功的概率是$exp(-\varOmega(\epsilon^2\theta n)+lnt)$​</p>
+<p>证明。在$t = 1$​的情况下，结果来自定义为获得大于$n(1+\epsilon)\theta$​次充公的事件E的切尔诺夫界，并且具有概率$exp(-\varOmega(\epsilon^2\theta n))$​ 。鉴于每次重置都是同一实验的独立实验，通过应用并集边界，我们得到引理的论述。 </p>
+<p>利用低熵攻击的矿工的最优策略是最小化其他矿工被选择的区块数量，来增加相对回报。引理1证明了以这种方式最多可以造成$(1+\epsilon)^{-1}$ 的一个因子的伤害，无论矿工是否利用低熵攻击，他们的最优策略是自私挖掘，在低熵攻击挖掘中，期望$l’\alpha’/(1-\alpha’)$ 块[14]。一个利用低熵攻击的理性矿工不会获得任何额外的奖励，然而另一个不这么做的矿工，根绝引理1，通过揭露他们的随机性会获得至少$l’\alpha/(1-\alpha)(1+\epsilon)^{-1}\theta R$ 个奖励。这证明了对一个理性的矿工，只有在以下情况下，该策略才有利于纯粹的自私挖掘：</p>
+<script type="math/tex; mode=display">
+\frac{\alpha'}{1-\alpha'} \gt (1+\theta(1+\epsilon)^{-1}R)\frac{\alpha}{1-\alpha}</script><p>如果我们假设一个矿工可以通过使用低熵攻击指数来将他们有效哈希率提高c倍，那么在低熵情况下，他们的优势是$\alpha’ =  \alpha c/(\alpha c+\beta)$ ,其中$\beta = 1-\alpha$ 是所有其他矿工的相对挖掘能力。如果上式满足，那么当且仅当下式成立，矿工才会获益：</p>
+<script type="math/tex; mode=display">
+\frac{\alpha c}{\alpha c+\beta} \cdot \frac{\alpha c+\beta}{\beta} \gt (1+\theta(1+\epsilon)^{-1}R)\frac{\alpha}{\beta} \\
+\Longleftrightarrow c \gt  1+\theta(1+\epsilon)^{-1}R</script><p>如果我们在各块之前采用一个足够大的预期时间间隔，就有可能使用低熵指数来约束矿工的相对节省</p>
+<p>根据完整版本模拟的参数化[22,4.2节]，如果一个使用这样指数的自私矿工可以提高他们的哈希能力最多一个乘法因子c，那么我们可以通过设置R为$(c-1)/(\theta(1+\epsilon)^{-1})$ 来缓解这样的攻击。</p>
+<h2 id="5-讨论"><a href="#5-讨论" class="headerlink" title="5 讨论"></a>5 讨论</h2><p>尽管我们从一个账本协议简洁生成一个参考字符串本身是有用的，但实际情况可能更加复杂，在本节，我们将讨论可能进行的实际调整。</p>
+<h3 id="5-1-更新参考字符串"><a href="#5-1-更新参考字符串" class="headerlink" title="5.1 更新参考字符串"></a>5.1 更新参考字符串</h3><p>因为分布式账本通常寿命很长，很可能比任何在其中使用的参考字符串都要长，或者在需要参考字符串之前已经在运行了。实际上，<code>Zcahs</code>协议的参考字符串已经升级。没有上下文的情况下，一个参考字符串被新的取代是无害的，然而重要的是考虑他们在零知识证明方面通常是怎么使用的。如果使用他们的证明是无状态的，那么从一个不安全的参考字符串升级到一个安全字符串的行为可能会像人们天真期望的那样：它确保升级之后安全属性不变。</p>
+<p>在<code>Zcash</code>的例子中，它运行的是<code>Zerocash</code>协议的一个变体，他的情况更加复杂。<code>Zerocash</code> 提供<em>有状态</em>的零知识证明，假设一个用户对初始设置的安全性持怀疑态度—并且有充分的里由—但是确信第二个参考字符串是安全的。这样的用户是否能够对<code>Zcash</code> 的安全性充满信心？</p>
+<p>如果<code>Zcash</code>没有合适的保障措施，答案将是否定的。虽然协议可以按照预期执行，并且用户可以确信这一点，由于证明的有状态性，用户不能确信这个状态的正确性。<code>Zcash</code>加密货币确实采用了与我们下面概述的类似的保卫措施。我们在此强调这一点的重要性，因为并不是所有项目都会有这样的远见。</p>
+<p>具体来说，对于基于<code>Zerocash</code>的系统，一个初始参考字符串的后门可能已经被用来创建不匹配的交易，并且有效地非法铸造大量货币。这一过程在当时是无法检测的，并且非法铸造的货币将在参考字符串升级过程中持续存在，。因此我们的虚拟用户可能会对合理怀疑他买到的任何货币的价值，他们可能是一个几乎无限货币池的一部分。</p>
+<p>这样的攻击一旦发生（尤其是针对货币）是很难恢复的。因为无法证实货币的合法物主，即使私有交易历史被匿名，罪魁祸首也被确认。罪犯可能已经将他创造的任何东西交易出去。因此，简单地宣布交易无效会伤害那些与罪犯交易的用户，而不是罪犯自己。在一个极端情况下，如果他与合法货币持有者进行一对一交易，他将成功地窃取诚实用户的资产，而如果这样的攻击发生，社区用户有两个不行的选择：取消潜在合法用户的资金，或者接受潜在的大量通货膨胀。</p>
+<p>然而我们可以假设一个没有那么糟糕的情况：假设我们合理地相信旧参考字符串的安全性，但我们更相信新的参考字符串。有无可能使用户相信我们真的升级了安全性？我们建议使用一种防火墙属性，这种属性在（cross-chain transfers）跨链传输领域中是很常见的[17]。并且被设计来防止一条链上的灾难性故障损坏另一条链。</p>
+<p>对于货币转账，防火墙可以保证不超过资金上限，如果可以接受一个小的隐私损失，那么证明防火墙属性是容易的——每一个私有货币都要在升级后使用之前进行重铸，重铸期间必须声明他的价值。假设所有操作正常执行，并且没有违反防火墙属性，与后防火墙状态交易的用户可以确信可用资金的上限，此外，系统上的攻击亦可以识别：如果一个攻击铸造了太多货币，最终会违反防火墙属性，这表明有太多货币在流通——这就带来了如何处理这种情况的问题。我们相信，防火墙属性确实可以让系统用户安心，并且是一种实用的方法，可以缓解对曾经有问题参考字符串的系统安全性的担忧。</p>
+<p>在<code>Zcash</code>中，这种防火墙的一种软形式是可用的，因为资产被分成几个池pools，每一个池实用不同的证明机制。每个池的总价值是可以管吃的，低于0的值会被视为报警原因，并拒绝。<code>Zcash</code>使用术语<code>&quot;turnstiles&quot;</code> 旋转门？，并且没有观察到通过他们的攻击。</p>
+<p>正如完整版本的模拟[22,4.2节]，对于实时系统，需要进一步考虑的点是，所需时间很大程度上依赖于块之间的频率。这可能与选择块时间的其他考虑冲突——这个问题的一个潜在解决方案是只在<code>&quot;superblocks&quot;</code> 上执行更新：满足比通常更高的工作量证明（或其他选择机制）标准的块。</p>
+<h3 id="5-2-信任的根源-The-Root-of-Trust"><a href="#5-2-信任的根源-The-Root-of-Trust" class="headerlink" title="5.2 信任的根源 The Root of Trust"></a>5.2 信任的根源 The Root of Trust</h3><p>对于分布式账本设置中的所有协议来说，一个更重要的问题是，是否一个在运行时某个点进入系统的用户可以相信其安全性。早期的权益证明协议，如[23]，在这一方面做的很差，例如很容易受到<code>&quot;stake-bleeding&quot;</code>攻击[16]，实际上意味着新用户不能安全地加入到网络中。</p>
+<p>对于参考字符串，如果一个新用户准备接受诚实大多数假设成立，<strong>他们</strong>？可能相信参考字符串的安全，正如前述定理1。然而， 共识协议的安全性有一个奇怪的不同：至少对基于工作量证明的协议来说，要相信共识，最重要的是相信当前诚实大多数，因为这些协议被认为能够在过去某个时候从不诚实大多数中恢复过来。另一方面，参考字符串的安全性只依赖于在初始$\delta$​ 时间单位内假设诚实大多数。如果一大段时间过去，这可能会成为一个问题——为什么要相信不同时间段的用户的意图？</p>
+<p>事实上，定期刷新参考字符串来更新对他的信任可能是有意义的。持续执行更新是诱人的，然而，正如5.1节所述，这并不一定会增加对有状态系统的信任，尽管当使用无状态证明时，它可以从诚实大多数需求中删除”历史“部分。</p>
+<p>大多数颠覆攻击时可以检测的——他们需要很长的分叉，这在合法执行的过程中不太可能发生。在没有攻击企图的乐观情况下，这可能提供了额外的确认级别：如果在初始设计期间没有广泛传播的大分叉声称，那么参考字符串可能是安全的（除非出现大规模out-of-band审查）。另一方面，这可能更容易引起怀疑，然而，因为没有办法证明这一点：恶意行为者可能会在初始化设置很长时间之后创建一个分叉，并声称这是破坏系统可信度攻击的证据</p>
+<h3 id="5-3-不可更新SNARKs的应用"><a href="#5-3-不可更新SNARKs的应用" class="headerlink" title="5.3 不可更新SNARKs的应用"></a>5.3 不可更新SNARKs的应用</h3><h2 id="6-致谢Acknowledgements"><a href="#6-致谢Acknowledgements" class="headerlink" title="6 致谢Acknowledgements"></a>6 致谢Acknowledgements</h2><h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a>Bibliography</h2>
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢支持 ！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Zosien 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Zosien 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Zosien</li>
+  <li>
+  <strong>修改时间： </strong>2021-08-19 17:13:43</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain">https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    
+      <div class="post-tags">
+        
+          <a href="/tags/论文/" rel="tag"><i class="fa fa-tag"></i> 论文</a>
+        
+          <a href="/tags/零知识证明/" rel="tag"><i class="fa fa-tag"></i> 零知识证明</a>
+        
+      </div>
+    
+    
+    
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/装箱与拆箱.html" rel="next" title="装箱与拆箱">
+                <i class="fa fa-chevron-left"></i> 装箱与拆箱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+     
+  
+
+  
+    <div class="comments" id="comments">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Zosien">
+            
+              <p class="site-author-name" itemprop="name">Zosien</p>
+              <p class="site-description motion-element" itemprop="description">柔而不弱，强而不悍<br>阳光下像个孩子<br>风雨里像个大人</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+          
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Zosien" title="GitHub &rarr; https://github.com/Zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/zosien" title="微博 &rarr; https://weibo.com/zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/wechat.png" title="微信 &rarr; /images/wechat.png"><i class="fa fa-fw fa-wechat"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/qq.jpg" title="QQ &rarr; /images/qq.jpg"><i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:1562248279@qq.com" title="E-Mail &rarr; mailto:1562248279@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain"><span class="nav-number">1.</span> <span class="nav-text">Mining for Privacy:How to Bootstrap a Snarky Blockchain</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-我们的贡献"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 我们的贡献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2相关工作"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2相关工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-可更新的结构化参考字符串"><span class="nav-number">1.3.</span> <span class="nav-text">2 可更新的结构化参考字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-标准需求"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 标准需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-模拟要求"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2 模拟要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-根据链质量属性构建uSRS"><span class="nav-number">1.4.</span> <span class="nav-text">3 根据链质量属性构建uSRS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-高度概括"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 高度概括</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-我们的账本摘要"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2 我们的账本摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-理想情况"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3 理想情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-现实与理想的混合情况"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4 现实与理想的混合情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-mathcal-G-clock-​-的替代用法"><span class="nav-number">1.4.5.</span> <span class="nav-text">3.5 $\mathcal{G}_{clock}$​ 的替代用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-UC仿真"><span class="nav-number">1.4.6.</span> <span class="nav-text">3.6 UC仿真</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-低熵攻击更新缓解"><span class="nav-number">1.5.</span> <span class="nav-text">4 低熵攻击更新缓解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-proposed-construction"><span class="nav-number">1.5.1.</span> <span class="nav-text">4.1 proposed construction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-安全直觉"><span class="nav-number">1.5.2.</span> <span class="nav-text">4.2 安全直觉</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-讨论"><span class="nav-number">1.6.</span> <span class="nav-text">5 讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-更新参考字符串"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1 更新参考字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-信任的根源-The-Root-of-Trust"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2 信任的根源 The Root of Trust</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-不可更新SNARKs的应用"><span class="nav-number">1.6.3.</span> <span class="nav-text">5.3 不可更新SNARKs的应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-致谢Acknowledgements"><span class="nav-number">1.7.</span> <span class="nav-text">6 致谢Acknowledgements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bibliography"><span class="nav-number">1.8.</span> <span class="nav-text">Bibliography</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><font color="white" face="STLiti">Copyright &nbsp;</font><font color="white">&copy;</font> <font color="white" face="STLiti">2018 - </font><font color="white" face="STLiti"><span itemprop="copyrightYear">2021</span></font>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder" style="font-family:STLiti;color:white;">LZX . All Rights Reserved.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <font color="white" face="STLiti"><span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
+    </span><span class="post-meta-divider">|</span></font>
+    <font color="white" face="STLiti">
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">41.4k</span>字,</span>
+    <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
+    </font>
+  
+
+  
+    <font color="white" face="STLiti"><span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次
+    </span></font>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div style="font-family:STLiti;display:inline-block;height:20px;line-height:20px;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030402000254" ><img src="/images/gov.png" style="float:left;"/>湘公网安备 43030402000254号</a>
+        <span class="post-meta-divider" style="color: #555;">|</span><span><a href="http://www.miitbeian.gov.cn" target="_blank">湘ICP备18020535号</a></sapn>
+        </div> -->
+        
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+<!--console.log-->
+
+<!--此处为建站时间 -->
+<script>
+  var now = new Date(); 
+  function createtime() { 
+      var grt= new Date("05/28/2019 20:01:01");
+      now.setTime(now.getTime()+250); 
+      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+      document.getElementById("timeDate").innerHTML =dnum+"&thinsp;天"; 
+      document.getElementById("times").innerHTML = hnum + "&thinsp;时" + mnum + "&thinsp;分" + snum + "&thinsp;秒"; 
+  } 
+setInterval("createtime()",250);
+</script>
+
+<!--知乎卡片链接-->
+<script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+<!--夜间模式-->
+<script type="text/javascript" src="/js/src/night.js"></script>
+<div class="cover"></div>
+
+<!--崩溃欺骗-->
+<!-- <script type="text/javascript" src="/js/src/crash_cheat.js"></script> -->
+
+<!--input特效-->
+<script src="/js/src/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+<!-- 鼠标点击特效 -->
+
+ <script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'nBqcJNgT4JDUb4G29LREPoiY-gzGzoHsz',
+        appKey: '3GRto2sfPhCf8DQnPl68r3RI',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'15' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+  
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/browser/pangu.min.js"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('manual', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #1b1b1b;
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 9px;
+      top: 4px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

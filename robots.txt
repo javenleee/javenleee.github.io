@@ -1,0 +1,19 @@
+#hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /home/
+Allow: /archives/
+Allow: /categories/
+Allow: /about/
+Allow: /guestbook/
+Allow: /tags/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /lib/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://www.shmily.today/sitemap.xml
+Sitemap: https://www.shmily.today/baidusitemap.xml
