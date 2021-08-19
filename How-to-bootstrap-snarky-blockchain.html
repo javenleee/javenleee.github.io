@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211645014.png">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211712095.png">
-<meta property="og:updated_time" content="2021-08-19T09:13:43.968Z">
+<meta property="og:updated_time" content="2021-08-19T14:36:23.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to bootstrap snarky blockchain">
 <meta name="twitter:description" content="零知识证明论文翻译、阅读">
@@ -628,13 +628,13 @@
       
 
       
-        <h1 id="Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain"><a href="#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain" class="headerlink" title="Mining for Privacy:How to Bootstrap a Snarky Blockchain"></a>Mining for Privacy:How to Bootstrap a Snarky Blockchain</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>非交互零知识证明，更具体说是简洁非交互零知识证明（zkSNARKS），已经被证明时区块链和分布式账本领域的瑞士军刀，具有多种在隐私、交互操作、可扩展性方面的应用。<strong>许多常用的SNARK系统依赖结构化参考字符串，这个字符串的安全生成被证明是他们致命弱点</strong>：如果用于生成字符串的随机性是已知的，则证明系统的健全性可能会被破坏，从而对使用他们的底层区块链系统造成毁灭性后果。<strong>在这项工作中，我们首次描述和分析了一种区块链机制，该机制能够产生一个安全的SRS，他的特征是在与区块链协议本身具有可比性的条件下显示安全性的特点。我们的机制利用最近发现的可更新结构化参考字符串来以完全分布式的方式执行安全生成。通过这种方式，SRS源自区块链协议本身的正常执行。不需要额外的安全驾驶或者链下的计算和\或验证。</strong>我们为这个参数的设置提供了具体的指导，允许在合理的实践段内完成安全设置。我们也提供了一个激励方案，当与更新机制配合使用时，可以适当地激励参与者为安全的参考字符串生成做出贡献。</p>
-<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>在分布式账本领域，无交互的零知识证明有许多有趣的应用，特别是，他们已经成功被应用到隐私引入这些固有的公共点对点系统中更值得注意的是，Zerocash证明了他们在创建私有货币方面的用处。除此之外，还有好多建议将相同的技术应用到智能合约以增加隐私性。除了隐私性，其他零知识证明的应用包括区块链的交互操作性和可扩展性</p>
-<p>对于这些设计的<strong>实际效率</strong>，有两件事是最重要的：证明的简洁性，以及验证这些证明的速度。账本的分布式特性要求大量用户存储和验证每一个证明，这使得许多零知识证明系统不适合。</p>
+        <h1 id="Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain"><a href="#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain" class="headerlink" title="Mining for Privacy:How to Bootstrap a Snarky Blockchain"></a>Mining for Privacy:How to Bootstrap a Snarky Blockchain</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>非交互零知识证明，更具体说是简洁非交互零知识证明（zk-SNARKs，zero-knowledge Succient No-inactive Arguments of knowledge），已经被证明时区块链和分布式账本领域的瑞士军刀，具有多种在隐私、交互操作、可扩展性方面的应用。<strong>许多常用的SNARK系统依赖结构化参考字符串，这个字符串的安全生成被证明是他们致命弱点</strong>：如果用于生成字符串的随机性是已知的，则证明系统的健全性可能会被破坏，从而对使用他们的底层区块链系统造成毁灭性后果。<strong>在这项工作中，我们首次描述和分析了一种区块链机制，该机制能够产生一个安全的SRS，他的特征是在与区块链协议本身具有可比性的条件下显示安全性的特点。我们的机制利用最近发现的可更新结构化参考字符串来以完全分布式的方式执行安全生成。通过这种方式，SRS源自区块链协议本身的正常执行。不需要额外的安全假设或者链下的计算和\或验证。</strong>我们为这个参数的设置提供了具体的指导，允许在合理的时间段内完成安全设置。我们也提供了一个激励方案，当与更新机制配合使用时，可以适当地激励参与者为安全的参考字符串生成做出贡献。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>在分布式账本领域，无交互的零知识证明有许多有趣的应用，特别是，他们已经成功被应用到隐私引入这些固有的公共点对点系统中，更值得注意的是，<code>Zerocash</code>证明了他们在创建私有货币方面的用处。除此之外，还有好多建议将相同的技术应用到智能合约以增加隐私性。除了隐私性，其他零知识证明的应用包括区块链的交互操作性和可扩展性</p>
+<p>对于这些设计的<strong>实际效率</strong>，有两件事是<strong>最重要的：证明的简洁性，以及验证这些证明的速度</strong>。账本的分布式特性要求大量用户存储和验证每一个证明，这使得许多零知识证明系统不适合。</p>
 <p>对所谓的zk-SNARKs的研究旨在精确优化这些特征：证明大小通常在千字节以下，验证时间以毫秒为单位。<strong>众所周知，无交互零知识证明需要一些共享的随机性或者公共参考字符串。</strong>对很多简洁系统，强壮的属性是必须的：<strong>不仅是需要一个共享随机值，而且必须遵守一个特定的结构。</strong>这样的结构化参考字符串（或者SRS）通常由相关的组元素组成，例如：$g^{x^i}$​​​ 对于$i \in Z_n$​​​ 。</p>
 <p><strong>从公共随机数中采样这样一个参考字符串的明显方法揭示了所使用的指数——对这些值的掌握破坏了这个证明系统本身的稳定性。</strong>更糟糕的是，这些系统的安全性通常依赖于指数知识的假设，这个假设表明了以这种方式创建相关的组元素需要知道基础指数，因此任何SRS采样器都必须知道这个被使用的指数并且被信任可以消除他们，从而有效的变成一个底层系统的单点故障。虽然安全多方计算能够并且已经被用于减少在设置过程中的这类信任，安全计算参与者的选择和MPC协议生成SRS的验证保留了中心化的元素。在需要SNARKs的去中心化系统的设置中使用MPC仍然有争议。</p>
 <p><strong>最近的工作已经发现了具有可更新参考字符串的简洁零知识证明系统。在这些系统中，给定一个参考字符串，有可能产生一个更新参考字符串</strong>，因此要知道新字符串的trapdoor，既需要知道旧字符串的trapdoor，也需要知道更新中使用的随机性。<strong>推测一个区块链协议可以被用来安全地生成这样一个参考字符串。然而，到目前为止，产生SRS的确切区块链机制以及其可以提供的安全保证的描述仍然难以琢磨。</strong></p>
-<h3 id="1-1-我们的贡献"><a href="#1-1-我们的贡献" class="headerlink" title="1.1 我们的贡献"></a>1.1 我们的贡献</h3><p><strong>在这项工作中，我们首次描述和分析了一种区块链机制，这种机制能够产生一个安全的SRS（Structured Reference String ？，结构化参考字符串？），其特征是，在类似的条件下区块链协议被证明是安全的。</strong>明显不同的是，我们隐式地使用安全擦除，并且仅仅在一个特定初始化期间需要诚实的大多数。SRS源于区块链协议本身的正常运行，不需要额外的安全假设，或者链下的计算和\或验证。</p>
+<h3 id="1-1-我们的贡献"><a href="#1-1-我们的贡献" class="headerlink" title="1.1 我们的贡献"></a>1.1 我们的贡献</h3><p><strong>在这项工作中，我们首次描述和分析了一种区块链机制，这种机制能够产生一个安全的SRS（Structured Reference String ？，结构化参考字符串？），其特征是，在<em>类似的条件</em>下区块链协议被证明是安全的。明显不同的是，我们隐式地使用安全擦除，并且仅仅在一个特定初始化期间需要诚实的大多数。SRS源于区块链协议本身的正常运行，不需要额外的安全假设，或者链下的计算和\或验证。</strong></p>
 <p>我们主要依赖”Nakamoto-style”的<code>区块链质量</code>属性——分布式账本，其中一个随机过程选择哪个用户可以将块添加到已建立的链上。这样的账本依赖诚实大多数的哈希算力（或者一些其他资源）——并且可以证明<code>链质量</code>属性，这表明任何足够长链片段都会有一些被诚实节点创建的块。</p>
 <p>我们在第三章描述的构造中将参考字符串更新集成到生成块过程中，但是由于更新计算是一个计算量很大的操作（尽管，与暴力破解哈希相反，但是有用），我们面临额外的困难。由此产生了两个方面的问题。首先，攻击团伙可以通过在更新中提供少量的熵来走捷径，并且尝试利用这一额外挖矿能力来推翻这个参考字符串，这可能对攻击者来说有很大的好处。其次，即使是非共谋的理性区块创建者，也有可能被激励来使用不良随机性，这可能减少或者消除更新的任何安全好处。我们的工作解决了这两个问题。</p>
 <p><strong>在本文的完整版本中，我们通过在通用组合框架中提供分析，正式证明了我们的机制产生了一个安全参考字符串。此外，本文的完整版本通过实验分析演示了如何具体参数化工作证明账本，来保证走捷径的攻击者（而诚实的用户不会走捷径）仍然无法subvert破坏参考字符串。</strong>在我们实验章节提供的具体的结果可以用来指导参数的选择，以便在实时区块链系统中运行我们的参考字符串生成机制。</p>
@@ -734,8 +734,12 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
 <h3 id="5-2-信任的根源-The-Root-of-Trust"><a href="#5-2-信任的根源-The-Root-of-Trust" class="headerlink" title="5.2 信任的根源 The Root of Trust"></a>5.2 信任的根源 The Root of Trust</h3><p>对于分布式账本设置中的所有协议来说，一个更重要的问题是，是否一个在运行时某个点进入系统的用户可以相信其安全性。早期的权益证明协议，如[23]，在这一方面做的很差，例如很容易受到<code>&quot;stake-bleeding&quot;</code>攻击[16]，实际上意味着新用户不能安全地加入到网络中。</p>
 <p>对于参考字符串，如果一个新用户准备接受诚实大多数假设成立，<strong>他们</strong>？可能相信参考字符串的安全，正如前述定理1。然而， 共识协议的安全性有一个奇怪的不同：至少对基于工作量证明的协议来说，要相信共识，最重要的是相信当前诚实大多数，因为这些协议被认为能够在过去某个时候从不诚实大多数中恢复过来。另一方面，参考字符串的安全性只依赖于在初始$\delta$​ 时间单位内假设诚实大多数。如果一大段时间过去，这可能会成为一个问题——为什么要相信不同时间段的用户的意图？</p>
 <p>事实上，定期刷新参考字符串来更新对他的信任可能是有意义的。持续执行更新是诱人的，然而，正如5.1节所述，这并不一定会增加对有状态系统的信任，尽管当使用无状态证明时，它可以从诚实大多数需求中删除”历史“部分。</p>
-<p>大多数颠覆攻击时可以检测的——他们需要很长的分叉，这在合法执行的过程中不太可能发生。在没有攻击企图的乐观情况下，这可能提供了额外的确认级别：如果在初始设计期间没有广泛传播的大分叉声称，那么参考字符串可能是安全的（除非出现大规模out-of-band审查）。另一方面，这可能更容易引起怀疑，然而，因为没有办法证明这一点：恶意行为者可能会在初始化设置很长时间之后创建一个分叉，并声称这是破坏系统可信度攻击的证据</p>
-<h3 id="5-3-不可更新SNARKs的应用"><a href="#5-3-不可更新SNARKs的应用" class="headerlink" title="5.3 不可更新SNARKs的应用"></a>5.3 不可更新SNARKs的应用</h3><h2 id="6-致谢Acknowledgements"><a href="#6-致谢Acknowledgements" class="headerlink" title="6 致谢Acknowledgements"></a>6 致谢Acknowledgements</h2><h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a>Bibliography</h2>
+<p>大多数颠覆攻击时可以检测的——他们需要很长的分叉，这在合法执行的过程中不太可能发生。在没有攻击企图的乐观情况下，这可能提供了额外的确认级别：如果在初始设计期间没有广泛传播的大分叉声称，那么参考字符串可能是安全的（除非出现大规模out-of-band审查）。另一方面，这可能更容易引起怀疑，然而，因为没有办法证明这一点：恶意行为者可能会在初始化设置很长时间之后创建一个分叉，并声称这是破坏系统可信度攻击的证据。</p>
+<h3 id="5-3-不可更新SNARKs的应用"><a href="#5-3-不可更新SNARKs的应用" class="headerlink" title="5.3 不可更新SNARKs的应用"></a>5.3 不可更新SNARKs的应用</h3><p>可更新<code>SNARK</code>模式有两个明显的优势，我们的协议利用了这两个优势：首先，他们有一个显式的更新过程，这个过程允许一方 $\phi$​​ 使用安全性依赖于$A\vee (\phi 是诚实的)$​​ 的参考字符串替代一个安全性依赖于一些假设A的参考字符串。第二，他们可以在部分偏差的参考字符串上生存，这是我们在本文没有直接使用的一个事实，但是我们提供的$\cal{F}_{uSRS}$​​​ 功能允许拒绝采样，将其编码到理想情况中。</p>
+<p>对于某些zk-SNARKs（如[18])，可以通过存在一个较弱的属性来解决更新算法的缺乏问题。：在第二阶段中，参考字符串可以由（可能不同的）各方在每个阶段执行round-robin更新（也可以分组求幂）来构造，在[6]中也详细介绍了这种方法，他意味着对我们协议自然转换，其中第一阶段被长度相同的两个阶段替代，分别执行第一阶段和第二阶段更新。</p>
+<p>对不可更新SNARKs，部分偏差字符串的安全性还没有充分分析，然而这一弱点可以得到缓解。根据[6]，可以使用一个纯随机信标（与第4节中使用的可重置信标相反）从目前不纯参考字符串创建一个纯参考字符串。设计方案如：在时间$\delta$​ 后将查询随机信标，并使用这种随机性来选择在参考字符串上的trapdoor排列。这将被每一方独立应用，得到相同的随机分布的参考字符串。</p>
+<p>由于可更新SRS不需要这么做，所以我们没有进行深度分析，然而这个模拟方法是相同地执行SRS生成，然后编程随机信标来反转所有应用于诚实参考字符串的排列。由于这包括应用在每个诚实更新上的诚实排列，所以这对攻击者来说与随机值没有什么区别。值得注意的是，随机信标的需求是需求中较强的一方，特别是由于它本身不应该允许对抗性影响来提供所需优势。为随机性而使用的块哈希方法引入了我们正试图消除的有限影响。</p>
+<h2 id="6-致谢Acknowledgements"><a href="#6-致谢Acknowledgements" class="headerlink" title="6 致谢Acknowledgements"></a>6 致谢Acknowledgements</h2><h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a>Bibliography</h2>
       
     </div>
 
@@ -788,7 +792,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-08-19 17:13:43</li>
+  <strong>修改时间： </strong>2021-08-19 22:36:23</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain">https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</a>
@@ -1151,7 +1155,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">41.4k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">42k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
