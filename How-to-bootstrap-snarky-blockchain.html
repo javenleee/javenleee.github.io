@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211645014.png">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211712095.png">
-<meta property="og:updated_time" content="2021-08-19T14:36:23.709Z">
+<meta property="og:updated_time" content="2021-08-21T05:20:56.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to bootstrap snarky blockchain">
 <meta name="twitter:description" content="零知识证明论文翻译、阅读">
@@ -372,6 +372,10 @@
          
          
            <li>
+             <a href="/HyperLedger-Fabric-安装.html" title="HyperLedger Fabric 安装" target="_blank">HyperLedger Fabric 安装</a>
+           </li>
+         
+           <li>
              <a href="/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain" target="_blank">How to bootstrap snarky blockchain</a>
            </li>
          
@@ -397,10 +401,6 @@
          
            <li>
              <a href="/Arrays类中的二分查找没找到为什么返回-(low+1).html" title="Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)" target="_blank">Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</a>
-           </li>
-         
-           <li>
-             <a href="/How to bootstrap snarky blockchain back.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -647,7 +647,7 @@
 <h3 id="2-1-标准需求"><a href="#2-1-标准需求" class="headerlink" title="2.1 标准需求"></a>2.1 标准需求</h3><p>uSRS方案S由一个trapdoor域T，一个初始trapdoor $\tau_0$​​​​​ ，T上允许置换的集合P（即域和余域为T的双射函数）和域T上的结构函数S组成。我们要求P包括恒等函数id，并在函数组合下封闭：$\forall p_1,p_2 \in P : p_1 * P_2 \in P$​​​​​ 。​一个有效的置换$\dagger $​​​​ 提升应该存在，这样对于任何置换$p \in P$​​​​ 和 $\tau \in T$​​​​ ，$p^{\dagger}(S(\tau)) = S(p(\tau))$​​​ 。最后，必须存在用于创建并验证更新证明的算法$\rho \gets  ProveUpd(S(\tau),p)$​​​ 和算法 $b \gets VerifyUpd(S(\tau),\rho ,S(p(\tau)))$​​​​ 。这些更新证明的格式没有指定，然而必须满足一下约束条件：</p>
 <ol>
 <li>正确性，应用一个诚实生成的更新证明会验证：$\forall p \in P ,\tau \in T : VerifyUpd(S(\tau),ProveUpd(S(\tau),p),S(p(\tau)))$​ </li>
-<li>结构保护，应用任何有效的更新等价于在trapdoor $\forall p,\tau,srs’:VerifyUpd(S(\tau),\rho,srs’) \Rightarrow \exist p \in P: srs’ = S(p(\tau))$ 应用一些排列。</li>
+<li>结构保护，应用任何有效的更新等价于在trapdoor $\forall p,\tau,srs’:VerifyUpd(S(\tau),\rho,srs’) \Rightarrow \exists p \in P: srs’ = S(p(\tau))$​ 应用一些排列。</li>
 <li>更新一致性。应用一个随机排序就等价于选择一个新的随机trapdoor：设D是T上的均匀分布，对于所有的$\tau \in T$ ，使得$D_\tau$ 是多重集${p(\tau) | p \in P}$ 上的均匀分布，然后$\forall \tau \in T : D = D_\tau$ </li>
 </ol>
 <p>我们定义了一个相应的UC函数FuSRS，它提供了一个参考字符串$S(p(\tau_\mathscr{H}))$ ，这个参考字符串能被攻击者通过排列$p\in P$ 影响，仅给定$S(\tau_\mathscr{H})$ 作为输入，用户随机采样$\tau\mathscr{H} \in T$ .</p>
@@ -655,7 +655,7 @@
 <p>我们相信这个功能是独立的，它没有明确地与我们的实现联系在一起。值得注意的是，当while我们使用分布式账本作为广播通道的弱形式，但可以考虑其他通道，而无需修改此功能。然而，正如前面所说，这个功能并没有规定任何特定的用法，我们推测，当使用适当的结构函数和排列集参数化时，它可以安全地实例化可更新的基于SRS的SNARKs，如Sonic[26],Marlin[11], 或者Plonk[13],由于UC设置，这将需要额外的提升来实现UC知识提取，如[24].</p>
 <h3 id="2-2-模拟要求"><a href="#2-2-模拟要求" class="headerlink" title="2.2 模拟要求"></a>2.2 模拟要求</h3><p>除了正确性、结构保持和更新一致性的基本属性外，任何希望通过更新帮助实现$F_{uSRS}$ 的模拟器都需要两个额外的属性：</p>
 <ol>
-<li>更新证明模拟。从模拟器知道trapdoor的初始SRS $S(\tau)$ ，它可以生成一个任何（正确结构的）SRS有效更新。形式上：$\exist S_\rho \forall \tau_1,\tau_2 \in T: VerifyUpd(S(\tau_1),S_\rho(\tau_1,S(\tau_2)),S(\tau_2))$ 其中$S_\rho$时一个PPT算法。</li>
+<li>更新证明模拟。从模拟器知道trapdoor的初始SRS $S(\tau)$​ ，它可以生成一个任何（正确结构的）SRS有效更新。形式上：$\exists S_\rho \forall \tau_1,\tau_2 \in T: VerifyUpd(S(\tau_1),S_\rho(\tau_1,S(\tau_2)),S(\tau_2))$​ 其中$S_\rho$​时一个PPT算法。</li>
 <li>permutation extraction，排列提取？。模拟器必须能够提取任何有效对抗性更新证明背后的排列p</li>
 </ol>
 <p>实现排列提取最自然的方法时使用白盒提取器，因为更新本身通常依赖于某种形式的知识假设，如指数知识，然而，白盒提取器不能用在UC证明中，相反，我们假设更新证明通过一个低等级的NIZK（Non-interactive zero-knowledge，非交互零知识证明）被证明是与特定的trapdoor相对应。更重要的是，这种低等级的NIZK，仅仅依赖于常见的随机字符串或者一个随机oracle，而不需要结构化的参考字符串。幸运的是，它不像本文完整版本[22,第四节]演示的那样，受到严格的效率要求。</p>
@@ -792,7 +792,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-08-19 22:36:23</li>
+  <strong>修改时间： </strong>2021-08-21 13:20:56</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain">https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</a>
@@ -834,6 +834,10 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/HyperLedger-Fabric-安装.html" rel="prev" title="HyperLedger Fabric 安装">
+                HyperLedger Fabric 安装 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1155,7 +1159,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">42k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">34.5k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-08-19T14:36:23.709Z</updated>
+  <updated>2021-08-20T12:18:09.377Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -17,11 +17,25 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HyperLedger Fabric 安装</title>
+    <link href="https://www.shmily.today/HyperLedger-Fabric-%E5%AE%89%E8%A3%85.html"/>
+    <id>https://www.shmily.today/HyperLedger-Fabric-安装.html</id>
+    <published>2021-08-20T12:18:09.000Z</published>
+    <updated>2021-08-20T12:18:09.377Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>How to bootstrap snarky blockchain</title>
     <link href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html"/>
     <id>https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</id>
     <published>2021-08-18T13:13:19.000Z</published>
-    <updated>2021-08-19T14:36:23.709Z</updated>
+    <updated>2021-08-21T05:20:56.077Z</updated>
     
     <summary type="html">
     
@@ -160,25 +174,6 @@
     
     
       <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/How%20to%20bootstrap%20snarky%20blockchain%20back.html"/>
-    <id>https://www.shmily.today/How to bootstrap snarky blockchain back.html</id>
-    <published>2021-08-13T12:12:39.072Z</published>
-    <updated>2021-08-18T08:43:34.559Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain&quot;&gt;&lt;a href=&quot;#Mining-for-Privacy-How-to-Bootstrap-a-Snarky-Blockchain&quot; class=&quot;h
-      
-    
-    </summary>
-    
     
   </entry>
   
