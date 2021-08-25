@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211645014.png">
 <meta property="og:image" content="https://www.shmily.today/How-to-bootstrap-snarky-blockchain/image-20210818211712095.png">
-<meta property="og:updated_time" content="2021-08-21T05:20:56.077Z">
+<meta property="og:updated_time" content="2021-08-24T03:33:34.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to bootstrap snarky blockchain">
 <meta name="twitter:description" content="零知识证明论文翻译、阅读">
@@ -372,6 +372,14 @@
          
          
            <li>
+             <a href="/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" title="An Empirical Analysis of Privacy in the Lightning Network" target="_blank">An Empirical Analysis of Privacy in the Lightning Network</a>
+           </li>
+         
+           <li>
+             <a href="/Untitled.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/HyperLedger-Fabric-安装.html" title="HyperLedger Fabric 安装" target="_blank">HyperLedger Fabric 安装</a>
            </li>
          
@@ -421,14 +429,6 @@
          
            <li>
              <a href="/java笔记.html" title="java笔记" target="_blank">java笔记</a>
-           </li>
-         
-           <li>
-             <a href="/位运算.html" title="位运算" target="_blank">位运算</a>
-           </li>
-         
-           <li>
-             <a href="/毕设项目bug总结.html" title="毕设项目bug总结" target="_blank">毕设项目bug总结</a>
            </li>
          
        </ul>
@@ -712,7 +712,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
 <p>我们从<code>bcn</code>中提取 <code>l&#39;</code> 个有偏差虚拟币中，每个都有概率$\theta$。对于每个区块，如果对应的币为1.则需要在至少与活性参数一样长的一段时间内揭示其随机性。具体来说，上链区块所对应的矿工可以显示其nonce，相应地，这个矿工会获得标准区块奖励的R倍额外奖励。</p>
 <p>然而这需要更严格的链质量属性，而账本功能却强制<code>l</code>中一个未打开的更新是诚实的，我们在下一节中概述为什么这个属性仍然保持。</p>
 <h3 id="4-2-安全直觉"><a href="#4-2-安全直觉" class="headerlink" title="4.2 安全直觉"></a>4.2 安全直觉</h3><p>现在考虑一个具有哈希能力$\alpha$ 的理性矿工。我们知道，在最好情况下，使用像比特币这样的基础区块链，这样一个矿工期待的相对的回报最多是$\alpha/(1-\alpha)$​ ，这架设了一个自私的挖掘策略，在所有的网络竞赛中战胜了其他理性参与者。现在考虑一个矿工，它使用低熵指数来节省创建区块的算力，从而增加他们的哈希能力$\alpha$ 到一个相对哈希能力 $\alpha’ &gt; \alpha$​​​ 。这种攻击可以进一步通过分叉和有选择的公开那些有能力将<code>bcn</code>值重置到一为首选值的区块来影响区块链。为了证明这个影响是最小的，我们证明了下面的引理。</p>
-<p>引理1.考虑一个映射 $\rho \mapsto \{0,1\}^{l’}$​ ，当\rho 均匀选择时，产生$l’$​ 个独立的偏差代币，每一个的概率为$\theta$​ 。考虑任意 $n \le l’$​ 的固定位置，假设攻击者从映射的随即输入的$t$​ 个独立抽取中选择任意一个，目的是增加n个位置的成功次数。获得超过$n(1+\epsilon)\theta$​ 成功的概率是$exp(-\varOmega(\epsilon^2\theta n)+lnt)$​</p>
+<p>引理1.考虑一个映射 $\rho \mapsto \{0,1\}^{l’}$ ，当$\rho $均匀选择时，产生$l’$ 个独立的偏差代币，每一个的概率为$\theta$ 。考虑任意 $n \le l’$ 的固定位置，假设攻击者从映射的随即输入的$t$ 个独立抽取中选择任意一个，目的是增加n个位置的成功次数。获得超过$n(1+\epsilon)\theta$ 成功的概率是$exp(-\varOmega(\epsilon^2\theta n)+lnt)$</p>
 <p>证明。在$t = 1$​的情况下，结果来自定义为获得大于$n(1+\epsilon)\theta$​次充公的事件E的切尔诺夫界，并且具有概率$exp(-\varOmega(\epsilon^2\theta n))$​ 。鉴于每次重置都是同一实验的独立实验，通过应用并集边界，我们得到引理的论述。 </p>
 <p>利用低熵攻击的矿工的最优策略是最小化其他矿工被选择的区块数量，来增加相对回报。引理1证明了以这种方式最多可以造成$(1+\epsilon)^{-1}$ 的一个因子的伤害，无论矿工是否利用低熵攻击，他们的最优策略是自私挖掘，在低熵攻击挖掘中，期望$l’\alpha’/(1-\alpha’)$ 块[14]。一个利用低熵攻击的理性矿工不会获得任何额外的奖励，然而另一个不这么做的矿工，根绝引理1，通过揭露他们的随机性会获得至少$l’\alpha/(1-\alpha)(1+\epsilon)^{-1}\theta R$ 个奖励。这证明了对一个理性的矿工，只有在以下情况下，该策略才有利于纯粹的自私挖掘：</p>
 <script type="math/tex; mode=display">
@@ -739,7 +739,19 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
 <p>对于某些zk-SNARKs（如[18])，可以通过存在一个较弱的属性来解决更新算法的缺乏问题。：在第二阶段中，参考字符串可以由（可能不同的）各方在每个阶段执行round-robin更新（也可以分组求幂）来构造，在[6]中也详细介绍了这种方法，他意味着对我们协议自然转换，其中第一阶段被长度相同的两个阶段替代，分别执行第一阶段和第二阶段更新。</p>
 <p>对不可更新SNARKs，部分偏差字符串的安全性还没有充分分析，然而这一弱点可以得到缓解。根据[6]，可以使用一个纯随机信标（与第4节中使用的可重置信标相反）从目前不纯参考字符串创建一个纯参考字符串。设计方案如：在时间$\delta$​ 后将查询随机信标，并使用这种随机性来选择在参考字符串上的trapdoor排列。这将被每一方独立应用，得到相同的随机分布的参考字符串。</p>
 <p>由于可更新SRS不需要这么做，所以我们没有进行深度分析，然而这个模拟方法是相同地执行SRS生成，然后编程随机信标来反转所有应用于诚实参考字符串的排列。由于这包括应用在每个诚实更新上的诚实排列，所以这对攻击者来说与随机值没有什么区别。值得注意的是，随机信标的需求是需求中较强的一方，特别是由于它本身不应该允许对抗性影响来提供所需优势。为随机性而使用的块哈希方法引入了我们正试图消除的有限影响。</p>
-<h2 id="6-致谢Acknowledgements"><a href="#6-致谢Acknowledgements" class="headerlink" title="6 致谢Acknowledgements"></a>6 致谢Acknowledgements</h2><h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a>Bibliography</h2>
+<h2 id="6-致谢Acknowledgements"><a href="#6-致谢Acknowledgements" class="headerlink" title="6 致谢Acknowledgements"></a>6 致谢Acknowledgements</h2><h2 id="Bibliography"><a href="#Bibliography" class="headerlink" title="Bibliography"></a>Bibliography</h2><p><strong>无论多复杂的验证问题都可以最终简化为一个多项式验证问题</strong>！</p>
+<p>零知识证明：</p>
+<ul>
+<li>两方：prover，verifier （已知）</li>
+<li>证明算法：Setup （已知）<ul>
+<li>同态隐藏：1.一个x对应一个y，2.但是y不能反推出x，3.F(a)+F(b) = F(a+b)</li>
+</ul>
+</li>
+<li>公共参考字符串 CRS （已知）</li>
+<li>证明问题： 取决于双方</li>
+</ul>
+<p>verifier 要向prover发送一段信息，要求prove证明这部分信息满足一定要求，这部分信息不随验证内容改变，可以事先在区块链中一次性设置好，之后的验证过程可以复用，这个事先设置好的信息成为公共参考字符串（CRS），这个字符串由随机点s，和随即系数k经处理得到，这个字符串需要保密，因此sk需要保密，CRS泄露后会有伪造证明通过，<code>在Zcash的系统里，CRS中存放的实际上只是随机点s和随机系数k的一系列加密值，而s和k的明文则由6个“被充分信任的人”私下保存，这6个人处在地球上6个不同的位置，这些机密的随机数被拆开保存在这6个人手上，只要不是这6个人都变成“坏人”，这些随机数信息就不会被完整恢复。</code> 不同prover和verifier双方验证问题的不同决定多项式的不同，即同样的参考字符串在不同的多项式中不同的性质。</p>
+
       
     </div>
 
@@ -792,7 +804,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-08-21 13:20:56</li>
+  <strong>修改时间： </strong>2021-08-24 11:33:34</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html" title="How to bootstrap snarky blockchain">https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</a>
@@ -917,7 +929,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -960,7 +972,9 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1007,7 +1021,9 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1159,7 +1175,7 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">34.5k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">38.2k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

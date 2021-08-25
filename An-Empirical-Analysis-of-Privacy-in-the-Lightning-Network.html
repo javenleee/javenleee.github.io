@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="柔而不弱，强而不悍阳光下像个孩子风雨里像个大人">
+  <meta name="description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
+<meta name="keywords" content="区块链,Lightning Network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HyperLedger Fabric 安装">
-<meta property="og:url" content="https://www.shmily.today/HyperLedger-Fabric-安装.html">
+<meta property="og:title" content="An Empirical Analysis of Privacy in the Lightning Network">
+<meta property="og:url" content="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="柔而不弱，强而不悍阳光下像个孩子风雨里像个大人">
+<meta property="og:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-20T12:18:09.377Z">
+<meta property="og:updated_time" content="2021-08-25T11:57:48.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HyperLedger Fabric 安装">
-<meta name="twitter:description" content="柔而不弱，强而不悍阳光下像个孩子风雨里像个大人">
+<meta name="twitter:title" content="An Empirical Analysis of Privacy in the Lightning Network">
+<meta name="twitter:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
 
 
 
@@ -127,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="https://www.shmily.today/HyperLedger-Fabric-安装.html">
+  <link rel="canonical" href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html">
 
 
 
@@ -137,7 +138,7 @@
   };
 </script>
 
-  <title>HyperLedger Fabric 安装 | blog</title>
+  <title>An Empirical Analysis of Privacy in the Lightning Network | blog</title>
   
 
 
@@ -492,7 +493,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/HyperLedger-Fabric-安装.html">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zosien">
@@ -510,7 +511,7 @@
         
         
           <h2 class="post-title" itemprop="name headline">
-                HyperLedger Fabric 安装
+                An Empirical Analysis of Privacy in the Lightning Network
               
             
           </h2>
@@ -535,12 +536,30 @@
                 
               
 
-              <time title="创建时间：2021-08-20 20:18:09" itemprop="dateCreated datePublished" datetime="2021-08-20T20:18:09+08:00">2021-08-20</time>
+              <time title="创建时间：2021-08-23 21:59:08" itemprop="dateCreated datePublished" datetime="2021-08-23T21:59:08+08:00">2021-08-23</time>
             
 
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/区块链/" itemprop="url" rel="index"><span itemprop="name">区块链</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -553,8 +572,8 @@
                 
                 <span class="post-meta-item-text"> 评论数： </span>
                 
-                <a href="/HyperLedger-Fabric-安装.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/HyperLedger-Fabric-安装.html" itemprop="commentCount"></span>
+                <a href="/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -562,7 +581,7 @@
 
           
           
-             <span id="/HyperLedger-Fabric-安装.html" class="leancloud_visitors" data-flag-title="HyperLedger Fabric 安装">
+             <span id="/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" class="leancloud_visitors" data-flag-title="An Empirical Analysis of Privacy in the Lightning Network">
                <span class="post-meta-divider">|</span>
                <span title="阅读次数">
                  <span class="post-meta-item-icon">
@@ -583,6 +602,8 @@
           
 
           
+              <div class="post-description">An Empirical Analysis of Privacy in the Lightning Network翻译</div>
+          
 
         </div>
       </header>
@@ -597,7 +618,34 @@
       
 
       
-        
+        <hr>
+<h1 id="闪电网络隐私的实证分析"><a href="#闪电网络隐私的实证分析" class="headerlink" title="闪电网络隐私的实证分析"></a>闪电网络隐私的实证分析</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>支付渠道网络，特别是Lightning Network，似乎为比特币和其他基于区块链的加密货币缺乏可扩展性和隐私性提供了解决方案，先前的研究主要关注可扩展性，可用性以及Lightning Network的加密经济，然而很少探索他在实践中实现的隐私级别。本文对Lightning Network提供的隐私性提出了一个进行深度分析，<strong>提出了几种利用网络公开信息的攻击</strong>，来了解那些设计为保密的信息，例如一个节点拥有多少货币或者在网络中路由的一次交易中谁是发送方，谁是接收方。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>从2008年推出以来，比特币已经成为最广泛应用的加密货币。比特币去中心化和无需许可性质允许所有用户加入网络，并且避免了对他们中控制了资金流的中介机构和当局的需要。相反，每笔交易的有效性由网络参加者们自己做出的共识决定。有效的交易被记录再公共区块链中。因此，区块链实际上充当记录所有已经发生交易的账本。</p>
+<p>在网络中将交易广播给所有人以及在永久账单中存储他们的需要对基于区块链的加密货币的寿命提出了两个问题。首先，他带来了严重的可扩展性限制：比特币区块链现在已经超过300GB，并且比特币每秒仅能完成10笔交易。其他的加密货币的吞吐量略高，然而在这些基于广播的系统，吞吐量和安全性存在一个固有的权衡。第二，账本的透明性意味着任何人可以观察货币的流向，确定交易的另一方，并且将不同的交易联系起来。</p>
+<p>这一点在比特币上表现得最为明显，然而这种类型的分析甚至拓展到明确设计隐私的加密货币。</p>
+<p>目前为了解决可扩展性而部署的最有前途的解决方案是所谓的<code>&quot;layer-two&quot;</code>协议，其中Lightning Network （LN）是自从2018年3月问世以来最受欢迎的解决方案。在LN中，成对的参与者使用比特币区块链来打开和关闭二者之间的<code>payment channels</code> 。在这个通道内，这两者可以进行双方之间的任意多的链下交易，而不需要使用区块链。除了单一通道之外，Lightning支持多<code>multi-hop</code>支付路由，这意味着即使是没有直接互联的参与者仍然可恶意通过更广义的<code>payment channel network (PCN)</code> 路由支付。在这个网络中的节点可以收取路由小费，以这种方式他们被激励去路由支付。</p>
+<p>除了在提高可扩展性方面的承诺，<code>Lightning</code> 似乎还解决了隐私问题。像我们在第二节详细说明的，为了建立PCN，网络中的节点和网络中大多数通道是公开的（尽管有些通道可能是私有的），给定通道的容量也是如此，这意味着这条通道可以路由的最大支付值。然而， 与通道有关的个人余额是保密的。此外，支付不会广播给所有节点并且不会存储在公开账本中。即使是通过<code>multi-hop</code>路由的支付，它使用洋葱路由来保证在路由路径上每个节点只能识别他的直接前任和后继节点。</p>
+<p>然而，就像基于账本的加密货币一样，Lightning网络中隐私潜力和现实之间的差距很大，正如我们在本工作中所示。特别地，我们考虑<code>LN</code>承诺的四个隐私属性：</p>
+<ul>
+<li><strong>Private channels</strong> 应该允许两个节点共享一个通道，但是保持他和他所有信息（容量，参与者等等）存在，并在其他网络中隐藏，我们在3.2节探索了这个属性，通过提出一个启发式方法，他能够识别私有通道的链上资产以及通道上的一方甚至双方。</li>
+<li><strong>第三方余额秘密</strong>，就是说即使通道的容量是公开的，参与者各自的余额也应该是保密的。我们在第四节中探索了这个属性，通过提出了评估了一种通用方法，主动攻击者（即网络中右节点的开发通道）可以发现通道上的余额。</li>
+<li><strong>路径关系匿名表示</strong>，路由支付的中继节点不应该知道除了他的直接前任和后继之外的其他节点是支付路由的一部分。我们在第5节探索了这个属性，我们利用一个我们构建的LN模拟器（在5.1节描述）来评估一个中继节点推断他所路由的支付的发送方和接收方的能力</li>
+<li><strong>路径外支付隐私</strong>， 不涉及路由的其他任意节点不应该推断得到任何关于路由节点或者支付值的信息，我们在第6节探索了这个属性，通过提出和评估了一个方法，一个主动攻击者可以使用发现余额的能力来形成<code>网络快照</code> 。通过比较连续的网络快照，攻击者可以通过确认通道余额的变化位置以及多少推断出支付。</li>
+</ul>
+<h3 id="1-1道德考虑"><a href="#1-1道德考虑" class="headerlink" title="1.1道德考虑"></a>1.1道德考虑</h3><p>第五节和第六节提出的攻击是在一个模拟网络上进行评估的，而不是实时网络，但是在第四节的攻击是在实时测试网络评估的。与比特币网络上的相关主动攻击一样，我们尽一切努力来保证我们的攻击不会影响网络的正常运行：攻击期间发送的信息没有不正常的影响也不会花费任何金钱来处理，并且他们的量相对较小（我们最多向每个被攻击节点发送24条信息）。因此我们相信，对于处理这些信息的节点没有任何长期或短期的破坏性影响。我们在2020年向三个主要LN代理商和流动性提供商Bitrefill的开发者公开了本文的结果，并在之后和Ligtning开发者讨论了本文。</p>
+<h3 id="1-2相关工作"><a href="#1-2相关工作" class="headerlink" title="1.2相关工作"></a>1.2相关工作</h3><p>我们认为所有关注Ln的研究都是相关的，特别时都是关于隐私性的。大多数前人的研究已经关注了LN的可扩展性，实用性和加密经济这些方面，或者关注他的图属性。Rohrer等人研究了LN对基于拓扑的攻击的敏感性。Tochner等人提出了提出了一种利用<code>multi-hop</code>路由方式的Dos攻击。在其他发现中，他们还表明，是个最中心化的节点可以通过他们的攻击破坏大约80%的路径。Perez-Sola等人提出了一种攻击，他能减少一个节点通道的容量，从而阻止节点参与到网络中。Tikhomirov等人展示了虫洞攻击是如何阻止诚实中间节点参与支付路由的。</p>
+<p>在隐私方面，Malavolta等人发现了一种利用锁机制的新的攻击，这种锁机制允许不诚实用户从路由路径上的诚实中间节点偷取支付小费。他们提出匿名<code>multi-hop</code> 锁作为一种更安全的选项。Nowatowski和Ton研究了各种启发式方法，来确认在比特币区块链上的Lightning交易。在我们这项工作的同时，Romiti等人构建了几个启发式方法来将Lightning实体和比特币钱包连接起来。其中一个启发式方法与我们在3.2节构建的<code>tracing heuristic</code> 相似但是他们的目标是创建增强的比特币集群方法而不是识别私有通道，正如我们在第四节进一步描述的，其他人已经实施了<code>余额发现攻击</code>，这些攻击的主要限制是他们依赖攻击者收到的特定的错误信息，所以随着网络的发展很容易变得无关紧要。我们通过提出了一种通用攻击（在第四节）以及更广泛的研究这种攻击的影响，克服了这种限制。</p>
+<p>Beres等人简要的研究了寻找支付发送方和接收方的问题。与我们的工作类似，他们基于公开可用的网络快照和某些节点所有者发部的信息开发了LN流量模拟器，然而，他们的工作只考虑了<code>single-hop</code>支付，也没有研究其他隐私属性。很多其他LN研究使用了网络模拟器，。其中几个模拟器被用作执行LN网络的经济分析，然而CLoTH模拟器只提供了性能统计数据（例如完成一笔支付的实践，支付失败可能性等等）。然而，所有这些模拟器都对拓扑结构、路径选择算法和支付分布做出了几个简单的假设。因此他们不适合分析其隐私属性。</p>
+<h2 id="2-背景"><a href="#2-背景" class="headerlink" title="2.背景"></a>2.背景</h2><p>为了打开Lightning通道，双方将比特币存入一个2of2的多签名地址，这意味着花费这些货币的任何交易都需要被双方签名。这些资金代表着这个通道的容量，也就是说，可以通过这个通道传输的最大交易值。一旦一个通道建立起来，参与者可以使用它来交换任意数量的支付，只要其中一个有正余数。他们也可以通过一个比特币交易来关闭通道，该交易从2of2多签名地址返还他们各自的余额。</p>
+<p>然而，大多数用户并没有直接连接，因此需要通过公有LN来路由他们的支付，在公有LN中，节点通过公钥标识，边代表着通道，他们与一个<code>通道认证</code>id、通道容量C、和通过该通道的路由小费fee公开关联起来。边也隐式地与通道的收入和支出秘密联系起来。除了只有在路由时才显示的私有通道外，网络的拓扑以及他的公开标签对每一个节点都是公开的。当路由一个支付的时候，发送方（Alice）使用洋葱路由来隐藏他和接收者（Bob）的关系。Alice根据和Bob之间通道的容量和路由小费来选择完整的路径（源路由）。最终的目标是这条路径上的每一个中间节点转发这个支付到他的后继节点，并期望他的前任节点也这么做，这样余额就不会改变。然而节点不能立刻发送资金，因为可能是支付失败的情况。为了创建中间节点状态，LN使用了<code>hashed timelock contracts(HTLCs)</code> 哈希时间锁合约，这个合约支持有时间限制的有条件支付。总之，这个协议遵循以下五个步骤让Alice支付Bob：</p>
+<ol>
+<li>开发票， Bob生成一个密钥<em>x</em>并且计算他的哈希值<em>h</em>。他开一个包含<em>h</em>和一些支付金额<em>amt</em>的发票给Alice</li>
+<li>洋葱路由，Alice选择了一条路径$A \rightarrow U_1 \rightarrow … \rightarrow U_n \rightarrow B$ ，然后Alice生成一个Sphinx数据包，目标是Bob，路由经过$U_i$ 节点。然后Alice发送最外层的洋葱包$onion_1$ 给 $U_1$ </li>
+<li>通道准备。从$U_{i-1}$ 接收到$onion_i$ 后，$U_i$解密获得<em>cid</em>，它指示了下一个节点$U_{i+1}$ ，要发送的数量$amt_i$，延迟$t_i$ ，以及要转发给$U_{i+1}$ 的 $onion_{i+1}$ 数据包。在将$onion_{i+1}$ 发送给$U_{i+1}$ 之前，$U_i$ 和 $U_{i-1}$ 通过使用HTLC更新他们中间节点状态来准备通道，以确保如果$U_{i-1}$ 没有在延迟$t_i$ 前向$U_i$ 提供h的预映像，$U_i$ 可以要求退还他们的付款。完成此操作后，$U_i$ 可以将$union_{i+1}$ 发送给 $U_{i+1}$ </li>
+<li>发票结算。最终，Bob从$U_n$接收到$union_{n+1}$ 并解码，获得$(amt,t,h)$ ，如果amt和h跟她开的发票匹配，它发送发票预映像x给$U_{n-1}$ 来赎回其支付的金额amt。这个值按照路径以此向后发送。</li>
+<li>通道结算。在路径上的每一步，$U_i$ 和$U_{i+1}$ 使用x结算他们的通道，例如，要确认更新状态反映了$amt_i$ 从 $U_i$ 发送到 $U_{i+1}$ 这个事实，因此amt被从Alice发送到Bob。 </li>
+</ol>
+<h2 id="3-区块链分析"><a href="#3-区块链分析" class="headerlink" title="3.区块链分析"></a>3.区块链分析</h2><h3 id="3-1数据和测量"><a href="#3-1数据和测量" class="headerlink" title="3.1数据和测量"></a>3.1数据和测量</h3><h3 id="3-2隐私通道"><a href="#3-2隐私通道" class="headerlink" title="3.2隐私通道"></a>3.2隐私通道</h3><h2 id="4-balance-discovery"><a href="#4-balance-discovery" class="headerlink" title="4.balance discovery"></a>4.balance discovery</h2><h2 id="5-path-discovery"><a href="#5-path-discovery" class="headerlink" title="5.path discovery"></a>5.path discovery</h2><h3 id="5-1lightning-network-simulator"><a href="#5-1lightning-network-simulator" class="headerlink" title="5.1lightning network simulator"></a>5.1lightning network simulator</h3><h3 id="5-2simulation-result"><a href="#5-2simulation-result" class="headerlink" title="5.2simulation result"></a>5.2simulation result</h3><h2 id="6-payment-discovery"><a href="#6-payment-discovery" class="headerlink" title="6.payment discovery"></a>6.payment discovery</h2><h3 id="6-1payment-discovery-algorithm"><a href="#6-1payment-discovery-algorithm" class="headerlink" title="6.1payment discovery algorithm"></a>6.1payment discovery algorithm</h3><h3 id="6-2attack-simulation"><a href="#6-2attack-simulation" class="headerlink" title="6.2attack simulation"></a>6.2attack simulation</h3><h3 id="6-3simulated-attack-results"><a href="#6-3simulated-attack-results" class="headerlink" title="6.3simulated attack results"></a>6.3simulated attack results</h3><h2 id="7-conclusion"><a href="#7-conclusion" class="headerlink" title="7.conclusion"></a>7.conclusion</h2>
       
     </div>
 
@@ -650,10 +698,10 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-08-20 20:18:09</li>
+  <strong>修改时间： </strong>2021-08-25 19:57:48</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://www.shmily.today/HyperLedger-Fabric-安装.html" title="HyperLedger Fabric 安装">https://www.shmily.today/HyperLedger-Fabric-安装.html</a>
+    <a href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" title="An Empirical Analysis of Privacy in the Lightning Network">https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -662,6 +710,12 @@
       </div>
     
 
+    
+      <div class="post-tags">
+        
+          <a href="/tags/区块链/" rel="tag"><i class="fa fa-tag"></i> 区块链</a>
+        
+      </div>
     
     
     
@@ -675,8 +729,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/How-to-bootstrap-snarky-blockchain.html" rel="next" title="How to bootstrap snarky blockchain">
-                <i class="fa fa-chevron-left"></i> How to bootstrap snarky blockchain
+              <a href="/Untitled.html" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -684,10 +738,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Untitled.html" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -740,8 +790,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -941,6 +1000,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闪电网络隐私的实证分析"><span class="nav-number">1.</span> <span class="nav-text">闪电网络隐私的实证分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1道德考虑"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1道德考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2相关工作"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2相关工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-背景"><span class="nav-number">1.3.</span> <span class="nav-text">2.背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区块链分析"><span class="nav-number">1.4.</span> <span class="nav-text">3.区块链分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1数据和测量"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1数据和测量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2隐私通道"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2隐私通道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-balance-discovery"><span class="nav-number">1.5.</span> <span class="nav-text">4.balance discovery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-path-discovery"><span class="nav-number">1.6.</span> <span class="nav-text">5.path discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1lightning-network-simulator"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1lightning network simulator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2simulation-result"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2simulation result</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-payment-discovery"><span class="nav-number">1.7.</span> <span class="nav-text">6.payment discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1payment-discovery-algorithm"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.1payment discovery algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2attack-simulation"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.2attack simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3simulated-attack-results"><span class="nav-number">1.7.3.</span> <span class="nav-text">6.3simulated attack results</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-conclusion"><span class="nav-number">1.8.</span> <span class="nav-text">7.conclusion</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
