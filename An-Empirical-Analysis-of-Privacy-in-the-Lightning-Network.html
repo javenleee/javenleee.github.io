@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-25T11:57:48.123Z">
+<meta property="og:updated_time" content="2021-09-02T06:06:07.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Empirical Analysis of Privacy in the Lightning Network">
 <meta name="twitter:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
@@ -369,15 +369,19 @@
          
          
            <li>
+             <a href="/leetcode416-分割等和子集.html" title="leetcode416.分割等和子集" target="_blank">leetcode416.分割等和子集</a>
+           </li>
+         
+           <li>
+             <a href="/多线程实现方法.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/每日一题-881-救生艇.html" title="每日一题-881.救生艇" target="_blank">每日一题-881.救生艇</a>
            </li>
          
            <li>
              <a href="/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" title="An Empirical Analysis of Privacy in the Lightning Network" target="_blank">An Empirical Analysis of Privacy in the Lightning Network</a>
-           </li>
-         
-           <li>
-             <a href="/HyperLedger-Fabric-安装.html" title="HyperLedger Fabric 安装" target="_blank">HyperLedger Fabric 安装</a>
            </li>
          
            <li>
@@ -418,10 +422,6 @@
          
            <li>
              <a href="/遍历Map的4种方式.html" title target="_blank"></a>
-           </li>
-         
-           <li>
-             <a href="/Map.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -645,7 +645,58 @@
 <li>发票结算。最终，Bob从$U_n$接收到$union_{n+1}$ 并解码，获得$(amt,t,h)$ ，如果amt和h跟她开的发票匹配，它发送发票预映像x给$U_{n-1}$ 来赎回其支付的金额amt。这个值按照路径以此向后发送。</li>
 <li>通道结算。在路径上的每一步，$U_i$ 和$U_{i+1}$ 使用x结算他们的通道，例如，要确认更新状态反映了$amt_i$ 从 $U_i$ 发送到 $U_{i+1}$ 这个事实，因此amt被从Alice发送到Bob。 </li>
 </ol>
-<h2 id="3-区块链分析"><a href="#3-区块链分析" class="headerlink" title="3.区块链分析"></a>3.区块链分析</h2><h3 id="3-1数据和测量"><a href="#3-1数据和测量" class="headerlink" title="3.1数据和测量"></a>3.1数据和测量</h3><h3 id="3-2隐私通道"><a href="#3-2隐私通道" class="headerlink" title="3.2隐私通道"></a>3.2隐私通道</h3><h2 id="4-balance-discovery"><a href="#4-balance-discovery" class="headerlink" title="4.balance discovery"></a>4.balance discovery</h2><h2 id="5-path-discovery"><a href="#5-path-discovery" class="headerlink" title="5.path discovery"></a>5.path discovery</h2><h3 id="5-1lightning-network-simulator"><a href="#5-1lightning-network-simulator" class="headerlink" title="5.1lightning network simulator"></a>5.1lightning network simulator</h3><h3 id="5-2simulation-result"><a href="#5-2simulation-result" class="headerlink" title="5.2simulation result"></a>5.2simulation result</h3><h2 id="6-payment-discovery"><a href="#6-payment-discovery" class="headerlink" title="6.payment discovery"></a>6.payment discovery</h2><h3 id="6-1payment-discovery-algorithm"><a href="#6-1payment-discovery-algorithm" class="headerlink" title="6.1payment discovery algorithm"></a>6.1payment discovery algorithm</h3><h3 id="6-2attack-simulation"><a href="#6-2attack-simulation" class="headerlink" title="6.2attack simulation"></a>6.2attack simulation</h3><h3 id="6-3simulated-attack-results"><a href="#6-3simulated-attack-results" class="headerlink" title="6.3simulated attack results"></a>6.3simulated attack results</h3><h2 id="7-conclusion"><a href="#7-conclusion" class="headerlink" title="7.conclusion"></a>7.conclusion</h2>
+<h2 id="3-区块链分析"><a href="#3-区块链分析" class="headerlink" title="3.区块链分析"></a>3.区块链分析</h2><h3 id="3-1数据和测量"><a href="#3-1数据和测量" class="headerlink" title="3.1数据和测量"></a>3.1数据和测量</h3><p>LN可以通过公共网络图的定期快照随时间捕获，该图提供有关节点（标识符，网络地址，状态等等）和他们通道（标识符，容量，端点等等）的基本事实数据。我们使用以下三方提供的数据来获得全面的快照：（1）我们自己的Lnd客户端数据（2）主要c-lightning开发者之一（3）从1ML和LN Bigsun收集用户提交（并验证）的数据。为了分析链上交易，我们也运行有一个比特币全节点，使用BlockSci 工具来解析和分析原生区块链数据。</p>
+<p>我们LN数据集包含被用来开启每一个通道的比特币交易的哈希值。通过将这些数据与我们区块链数据结合起来，我们就能够确定通道什么时候关闭以及他们的资金怎么分配。我们总共确定174378个通道，其中135850已经关闭，他们的总容量是3315.18BTC。这些关闭的通道中，69.22%的通道是单输出地址（也就是说关闭时完全不平衡），29.01%有两个地址，1.76%有超过两个地址。</p>
+<h3 id="3-2隐私通道"><a href="#3-2隐私通道" class="headerlink" title="3.2隐私通道"></a>3.2隐私通道</h3><p>私有通道为两个Lightning节点创建通道但不向网络公开提供了一种方法，在这一节中，我们试图了解私有通道被识别的程度，以及他们的隐私限制以及我们对公共网络的剩余攻击范围。</p>
+<p>我们首先使用属性启发法来提供私有通道的数量上限，这种方法识别似乎代表打开和关闭但我们没有公共通道标识符的比特币交易。</p>
+<p><strong>属性启发法</strong> ，为了与我们的LN数据集保持一致，我们首先寻找那些2018.1.12之后，2020.9.7之前发生的其中一个输出地址是P2WSH（根据规范，LN通道必须是这个）的所有比特币交易，和在这期间开放的174378个公共链通道相比较，我们共发现3500312笔交易满足这些条件，然后我们从从我们数据集中确定的已知开放交易中发现一些公共特点：（1）99.91%有最多两个输出地址，这有可能代表着创建通道和发送的投资者改变了。（2）99.91%的交易有单P2WSH输出地址（3）99.85%的交易有一个最多接受16777215个satoshis的P2WSH输出地址。而这个数字正是我们进行分析时LN通道的最大容量（4）99.99%的交易有一个在输入和输出时最多出现一次的P2WSH地址，这反映出他作为作为支付通道的一次性使用而不是可重用脚本。（5）99.99%的资金来自于WitnessPubHeyHash地址或ScriptHash地址。</p>
+<p>通过要求我们收集的交易也有这些特点，并排除任何涉及开放或者关闭公共通道的交易，我们还剩267674潜在交易，代表着私有通道的开放。如果这些交易的输出花费了他们的内容（即通道已经关闭），我们就能进一步看到他们是如何做的。这将提供更好的证据，证明他们是否与LN相关联。然后我们从从我们数据集中确定的已知关闭交易中发现以下公共特点：（1）如Lightning规范要求的，100%具有非零序列数。（2）100%有一个2-of-2 multisig地址单输入，这也是Lightning规范要求。（3）98.24%有最多两个输出，这表明通道中的两个参与者。</p>
+<p>通过要求我们收集的开放交易也有这三个特点的关闭交易，我们还剩77245对交易，他们是潜在的涉及开放和关闭私有通道的交易，同样，这只是一个上限，因为还有其他原因来使用2-of-2multisig以一种与Lightning无关的方式。</p>
+<p>我们确认了潜在涉及开放和关闭私有通道的77245对交易，但可能有很大的误报率。因此我们开发了一个<code>tracing heuristic</code> ，它遵循在公共通道打开和关闭时启动的“剥离链”，以识别任何相关的私有通道。</p>
+<p><strong>跟踪启发式</strong>：接下来，我们不仅关注单个交易的属性，同时也关注交易之间的比特币流动，特别是，我们观察到，用户以”剥夺链模式”打开通道是常见的，这意味着他们会（1）使用打开通道这笔交易带来的改变继续创建通道并且（2）使用通道关闭交易的输出来打开新的通道。此外，（3）他们通常会与关闭通道输出共同花费余额。例如，发起一个通道开启交易，交易的输入地址是前一个通道开启交易的余额，输出地址是前一个关闭通道交易的change（余额？改变？）</p>
+<p>通过系统性的识别这些操作，我们能够通过向前和向后跟踪剥离链，将同一Lightning节点打开或者关闭的通道连接起来。通过向后跟踪，我们跟踪每一个输入，直到根据属性启发式，找到一个看起来不是通道打开或关闭的交易。向前跟踪，我们识别交易的余额地址，同样根据属性启发，识别通道的创建地址，从而将余额地址和其他输出地址分离，继续执行直到达到以下其中之一：（1）一个没有余额输出地址或者没有花费的交易，意味着我们继续向前。或者（2）一个不满足属性启发的交易。我们同样为一个已知通道关闭交易的所有输出执行这样的操作，来修正（reflect）上面识别的第二种模式。</p>
+<p>我们从我们LN数据集中识别的174378个公开通道开始，通过应用我们跟踪启发式方法，我们最终获得了27386个额外的开启通道交易，其中27183笔交易与我们属性启发式识别的交易属于同一区块范围。</p>
+<p>然而，使用跟踪启发式方法，根据peeling chain上交易的共享所有者，不仅识别私有通道，同样允许我们将不同通道聚集起来（公共和私有）。为此，我们首先根据是否出现在同一peeling chain，将不同通道聚集起来，之后，查看每个集群中的公共通道并计算他们端点之间的公共参与者（如果有的话），如果只有单个公共参与者，那么我们就可以放心地将他们标记为负责打开所有这些通道的节点。</p>
+<p>为了找到每一个私有通道的另一个端点，我们利用跟踪启发式方法的第二和第三观察模式（只要适用），跟踪了通道关闭交易的关闭输出。特别是，当一个关闭输出的使用是为了打开一个新的通道我们执行了上述同样的集群操作。只有当通道仍然开启，或者通道关闭但是关闭输出未使用，又或者关闭输出没有用在Lightning上时，我们没有识别到第二个参与者。</p>
+<p>在我们确定代表开放私有通道的27183笔交易中，我们能够识别两个参与者的交易有2035（7.5%），一个参与者的21557（79.3%），以及没有参与者的3591（13.2%）。然而，我们的识别方法同样适用于公共频道，我们能够识别155202（89.0%）公共通道的开放参与者，同样，对于已经关闭的公共通道（代表185860关闭输出），我们能够将143577（77.25%）个关闭输出与特定参与者相关联。</p>
+<h2 id="4-balance-discovery"><a href="#4-balance-discovery" class="headerlink" title="4. balance discovery"></a>4. balance discovery</h2><p>以前的攻击旨在发现于单个通道相关的余额（而不仅仅是他们的容量），利用调试信息作为一个oracle，在这些攻击中，一个攻击者打开一个带有节点的通道，并通过其他通道，路由一个带有关联金额amt的虚假支付哈希。基于收到的错误信息以及对amt的二分查找执行（），攻击者可以有效地确定通道一端的确切余额。在本节中我们在LN测试网络上执行一个新的通用攻击。于之前的攻击相比，我们的攻击必须运行两个节点而不是一个。然而，如果将来删除错误消息或者使其通用化，我们的攻击仍可以继续工作，但是之前的攻击并不能。</p>
+<p><strong>攻击</strong>。在我们的攻击中，运行节点A和D的攻击者需要形成一条路径A-&gt;B-&gt;C-&gt;D，目的是寻找通道B-&gt;C的余额。这意味着我们的攻击者需要运行两个节点，一个带有向外输出余额的通道（A），一个带有向内输入余额的通道（D）。创建A-&gt;B的通道容易，因为攻击者可以直接和B打开一个通道并自己资助它，然而开通C-&gt;D的通道更难，因为攻击者必须创建输入余额。</p>
+<p>现在，有两个主要的选择来做到这一点，首先，攻击者可以打开通道C-&gt;D并且自己资助他们，但是余额分配给C而不是D（这被称为”为远程余额提供资金“），然而，这存在风险，即C可以立即关闭通道拿走所有资金。我们称这种方法为无辅助通道开放。第二个选择是使用<code>liquidity provider</code>（流动性提供者）（例如Bitrefill或者LNBIG），它是一个售卖带有输入余额通道的服务，我们称这为辅助通道开放。</p>
+<p>一旦攻击者创建了A-&gt;B和C-&gt;D的通道，他们通过B和C路由一个随机支付哈希H给D，并带有一些相关金额amt。如果D接收了H，这意味着从B到C的通道有路由支付金额amt的充足余额。如果D在一定时延后没有接收到H，攻击者可以认为支付失败，这意味着amt超出了从B到C的余额。无论哪种方式，攻击者都可以使用对amt的二分查找重复这个过程（正如之前的攻击）。最终，攻击者发现通道的余额即D能接收到H的最大值。</p>
+<p>在某种程度上，这种攻击甚至可以推广到两个攻击节点之间存在多个中间通道的情况，然而，在这种更一般的情况下，上面的方法只能识别整个路径的瓶颈余额，而不是单个通道的的余额。但是，再支付失败的情况下，当前C-lightning和LND clients返回一个错误索引error index，它是支付失败的节点位置，这意味着一个攻击者可以准确地知道在较长的路径上支付失败的位置。我们在实施攻击时选择不使用这个索引，以保持它完全通用并只测试基本版本，但将使用索引的攻击留作有趣的未来研究。</p>
+<p><strong>攻击结果</strong>。2020.9.3，我们在测试网络上实施了我们的攻击。我们运行了两个LN节点并且资助我们所有通道（无辅助），包括远程和本地，这需要对客户端进行轻微修改（因为完全资助一个远程通道默认是被限制的）。我们与网络中每个可访问节点建立通道，攻击发生时，有3159节点和9136个通道，其中我们能够连接103个节点，攻击1017个通道。但是我们不能连接到整个节点的大部分，这有多种原因：一些节点没有IPv4地址，一些节点不在线，一些关闭了LN端口，还有一些拒绝打开通道。</p>
+<p>在这些1017个通道中，我们确定568个通道的余额，很多（65%）是相当片面的，这意味着被攻击方的余额占总容量的70%甚至更多。我们在不成功的通道中收到了各种错误，例如<code>TemporaryChannelFailure</code>，或者我们超时，因为客户端需要超过30s才能返回响应。</p>
+<p>由于成本和道德考虑，我们没有主网上实施攻击，但相信攻击在那里可能会表现的更好，这是因为忘记关闭测试网络上的测试通道或者维护一节点不会产生任何成本，而在主网上用户受到机会成本（来自费用）的激励，以确保节点得到维护且通道处于活动状态。</p>
+<p><strong>攻击者成本</strong>。在我们的实验中，我们使用了基本上没有价值的测试网货币，因此我们执行攻击的货币成本可以忽略不计。然而，为了理解攻击的实际局限性，我们评估了在主网上的最低成本，当创建A-&gt;B的输出通道时，在比特币网络上攻击者必须支付开通和关闭交易的小费，在我们攻击时，每笔交易的小费是0.00043 BTC。他们还必须用足够的储备satoshis远程资助接收方节点，以允许转发高额支付，当前是通道容量的1%。创建输入通道C-&gt;D时，攻击者可以使用流动性提供商如Bitrefill，他们在撰写本文时允许用户以0.002604BTC购买具有0.16BTC输入容量的通道</p>
+<p>目前购买最便宜可用的输入流动性通道将花费攻击者0.00086 BTC和0.005 BTC搁置费用，从而能够路由到4811个通道（总容量45 BTC）。这需要打开2191个具有最大容量为0.04998769 BTC的通道。总的来说，这需要攻击者花费1.097 BTC并暂停109.53 BTC。</p>
+<h2 id="5-path-discovery"><a href="#5-path-discovery" class="headerlink" title="5. path discovery"></a>5. path discovery</h2><p>我们现在描述参与路由支付的诚实但好奇的中间节点如何推断有关路径的信息，特别是可以识别支付的发送方和接收方。我们的策略类似于针对Crowds匿名通信网络提出的前身攻击的被动变体。我们的策略可以通过分析稀疏的网络连接和由于通道容量而导致的潜在路径数量有限来进一步扩展。</p>
+<p>与之前的工作相比，我们不仅考虑单跳路由，同时还考虑了具有多个中间节点的路由。我们关于攻击者的中间节点做的唯一的假设是，它保持通道平衡，这实际上很容易。</p>
+<p>我们定义$Pr_S$ 和 $Pr_R$ 作为攻击者分别成功发现支付中的发送方和接收方的概率。根据我们的符号，Beres等人基于他们自己的模拟结果声称 $Pr_S = Pr_R$ 的范围从0.17到0.37，取决于他们模拟中用的参数。我们认为这个概率实际上是一个下限，因为她并没有考虑多条可能的路径长度或者支付失败的可能性（他们的模拟假设所有支付在第一次尝试时便成功）</p>
+<p>我们诚实但是好奇的对手的策略很简单：他们总是猜测他们的直接前驱节点是发送方。换句话说，如果我们定义H为路径上攻击节点的位置，他们总是假设H=1。同样地，他们总是猜测他们直接后继节点是接收方。<strong>我们关注它成功猜测发送方的概率</strong>，成功猜测接收方的概率可以用类似的方法计算。</p>
+<p><strong>成功支付</strong>。我们首先分析攻击者在支付成功的情况下成功的概率，我们将其表示为$Pr_S^{succ}$ ，我们将路径长度为$\ell$ 的概率定义为$Pr[L=\ell]$ ，将给定路径长度为$\ell$ 时，攻击者节点在$h$位置的概率为$Pr[H=h|L=l]$ ，根据Lightning规范，最大路径长度时20，通过遵循上述策略，我们有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\operatorname{Pr}_{S}^{\text {succ }}=& \sum_{\ell=3}^{20} \operatorname{Pr}[L=\ell \mid \text { succ }] \cdot \operatorname{Pr}[H=1 \mid L=\ell, \text { succ }] \\
+=& \operatorname{Pr}[L=3 \mid \text { succ }] \\
+&+\sum_{n=4}^{20} \operatorname{Pr}[L=\ell \mid \text { succ }] \cdot \operatorname{Pr}[H=1 \mid L=\ell, \text { succ }]
+\end{aligned}</script><p>因为攻击者是唯一中间节点时，$Pr[H=1|L=3,succ] = 1$ ，因此，$Pr[L=3]|succ$ 是$Pr_S$的下限。</p>
+<p>为了考虑总体概率，我们关注条件概率$Pr[H=1|L=\ell,succ$ ，如果所有节点形成一个小团体，任意节点在处于任何跳跃位置H=h的可能性几乎相等，（分布不完全统一的唯一原因是一些通道会比其他通道被选择的更频繁，这取决于他们收取的相对费用，但是攻击者会选择尽可能接近其邻居的费用）在这种情况下，$H=1$的概率仅有$1/(\ell-2)$ </p>
+<p><strong>失败支付</strong>。同样地，在支付失败的情况下，我们定义概率$Pr_S^{fail}$ 为</p>
+<script type="math/tex; mode=display">
+Pr_S^{fail} = \sum_{\ell=3}^{20}Pr[L=\ell|fail] \cdot Pr[H=1|L=\ell,fail]</script><p>这与$Pr_S^{succ}$ 相同，但我们知道$Pr[L=3|fail] = 0$ ，因为如果攻击者是唯一的中间节点，支付不会失败。此外，条件概率$Pr[H=1|L=\ell,fail]$ 与$Pr[H=1|L=\ell,succ]$ 不同，因为支付失败的事实向攻击者揭露了他们作为中间节点的角色。特别是，如果一个中间节点成功地将支付转发给后继节点但是交易最终失败，那么这个节点就知道他的直接后继不是支付的接收方，失败路径长度$L \ge 4$ ，且他的位置不是L-1.这意味着$Pr[L=\ell | fail]$ 就变成了$Pr[L=\ell | fail,\ell \ge 4]$ ，我们因此得到：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Pr_S^{fail} =& Pr[L=4|fail,\ell \ge 4] \\ 
+&+ \sum_{\ell=3}^{20}Pr[L=\ell|fail] \cdot Pr[H=1|L=\ell,fail]
+\end{aligned}</script><p>因此，支付失败的情况下，$Pr[L=4|fail,\ell \ge 4]$ 是下限，正如我们在支付成功时做的，我们假设clique topology是他们最佳策略，这种情况下，他们猜测自己位置的概率是$1/(\ell-3)$ （因为他们知道他们不是最后一个），我们因此得到：</p>
+<script type="math/tex; mode=display">
+Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot \frac{1}{\ell-3}</script><h3 id="5-1-lightning-network-simulator"><a href="#5-1-lightning-network-simulator" class="headerlink" title="5.1 lightning network simulator"></a>5.1 lightning network simulator</h3><p>为了调查路径上攻击者的成功，我们需要测量他需要从实时网络种获得的重要资源，例如支付的平均路径长度。考虑到这可能带来财务和道得问题，我们做出了与前面工作同样的决定，即构建一个Lightning网络模拟器来执行我们的分析。我们用2624行Python3代码实现了我们的模拟器，并将其作为开源软件发布。</p>
+<p><strong>网络拓扑</strong>。正如在第二章所提到的，</p>
+<p><strong>地理定位</strong></p>
+<p><strong>路径选择</strong></p>
+<p><strong>软件版本</strong></p>
+<p><strong>支付参数</strong></p>
+<h3 id="5-2-simulation-result"><a href="#5-2-simulation-result" class="headerlink" title="5.2 simulation result"></a>5.2 simulation result</h3><h2 id="6-payment-discovery"><a href="#6-payment-discovery" class="headerlink" title="6. payment discovery"></a>6. payment discovery</h2><h3 id="6-1-payment-discovery-algorithm"><a href="#6-1-payment-discovery-algorithm" class="headerlink" title="6.1 payment discovery algorithm"></a>6.1 payment discovery algorithm</h3><h3 id="6-2-attack-simulation"><a href="#6-2-attack-simulation" class="headerlink" title="6.2 attack simulation"></a>6.2 attack simulation</h3><h3 id="6-3-simulated-attack-results"><a href="#6-3-simulated-attack-results" class="headerlink" title="6.3 simulated attack results"></a>6.3 simulated attack results</h3><h2 id="7-conclusion"><a href="#7-conclusion" class="headerlink" title="7. conclusion"></a>7. conclusion</h2>
       
     </div>
 
@@ -698,7 +749,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-08-25 19:57:48</li>
+  <strong>修改时间： </strong>2021-09-02 14:06:07</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" title="An Empirical Analysis of Privacy in the Lightning Network">https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</a>
@@ -729,8 +780,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/HyperLedger-Fabric-安装.html" rel="next" title="HyperLedger Fabric 安装">
-                <i class="fa fa-chevron-left"></i> HyperLedger Fabric 安装
+              <a href="/How-to-bootstrap-snarky-blockchain.html" rel="next" title="How to bootstrap snarky blockchain">
+                <i class="fa fa-chevron-left"></i> How to bootstrap snarky blockchain
               </a>
             
           </div>
@@ -821,7 +872,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -868,7 +919,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -919,7 +976,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1019,7 +1080,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闪电网络隐私的实证分析"><span class="nav-number">1.</span> <span class="nav-text">闪电网络隐私的实证分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1道德考虑"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1道德考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2相关工作"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2相关工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-背景"><span class="nav-number">1.3.</span> <span class="nav-text">2.背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区块链分析"><span class="nav-number">1.4.</span> <span class="nav-text">3.区块链分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1数据和测量"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1数据和测量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2隐私通道"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2隐私通道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-balance-discovery"><span class="nav-number">1.5.</span> <span class="nav-text">4.balance discovery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-path-discovery"><span class="nav-number">1.6.</span> <span class="nav-text">5.path discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1lightning-network-simulator"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1lightning network simulator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2simulation-result"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2simulation result</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-payment-discovery"><span class="nav-number">1.7.</span> <span class="nav-text">6.payment discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1payment-discovery-algorithm"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.1payment discovery algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2attack-simulation"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.2attack simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3simulated-attack-results"><span class="nav-number">1.7.3.</span> <span class="nav-text">6.3simulated attack results</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-conclusion"><span class="nav-number">1.8.</span> <span class="nav-text">7.conclusion</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闪电网络隐私的实证分析"><span class="nav-number">1.</span> <span class="nav-text">闪电网络隐私的实证分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.2.</span> <span class="nav-text">1.介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1道德考虑"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1道德考虑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2相关工作"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2相关工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-背景"><span class="nav-number">1.3.</span> <span class="nav-text">2.背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-区块链分析"><span class="nav-number">1.4.</span> <span class="nav-text">3.区块链分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1数据和测量"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1数据和测量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2隐私通道"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2隐私通道</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-balance-discovery"><span class="nav-number">1.5.</span> <span class="nav-text">4. balance discovery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-path-discovery"><span class="nav-number">1.6.</span> <span class="nav-text">5. path discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-lightning-network-simulator"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1 lightning network simulator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-simulation-result"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2 simulation result</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-payment-discovery"><span class="nav-number">1.7.</span> <span class="nav-text">6. payment discovery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-payment-discovery-algorithm"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.1 payment discovery algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-attack-simulation"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.2 attack simulation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-simulated-attack-results"><span class="nav-number">1.7.3.</span> <span class="nav-text">6.3 simulated attack results</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-conclusion"><span class="nav-number">1.8.</span> <span class="nav-text">7. conclusion</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1071,7 +1132,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">38.6k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">44.5k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
