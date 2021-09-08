@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-09-03T13:10:11.170Z</updated>
+  <updated>2021-09-08T13:42:37.760Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题17.14.最小k个数</title>
+    <link href="https://www.shmily.today/%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html"/>
+    <id>https://www.shmily.today/面试题17-14-最小k个数.html</id>
+    <published>2021-09-08T12:53:09.000Z</published>
+    <updated>2021-09-08T13:42:37.760Z</updated>
+    
+    <summary type="html">
+    
+      设计一个算法，找出数组中最小的k个数。以任意顺序返回这k个数均可。
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://www.shmily.today/categories/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/Blockchain.html"/>
+    <id>https://www.shmily.today/Blockchain.html</id>
+    <published>2021-09-07T06:48:57.782Z</published>
+    <updated>2021-09-07T07:11:34.920Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;UTXO：Unspent Transaction Output，未花费交易输出&lt;/p&gt;
+&lt;p&gt;在比特币中，一笔交易的每一条输入和输出实际上都是UTXO，输入UTXO 就是以前交易剩下的， 更准确的说是以前交易的输出UTXO。&lt;strong&gt;账户系统&lt;/strong&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode221.最大正方形</title>
@@ -408,53 +452,6 @@
       <category term="Springboot" scheme="https://www.shmily.today/tags/Springboot/"/>
     
       <category term="fabric" scheme="https://www.shmily.today/tags/fabric/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>面试</title>
-    <link href="https://www.shmily.today/%E9%9D%A2%E8%AF%95.html"/>
-    <id>https://www.shmily.today/面试.html</id>
-    <published>2021-04-19T11:30:10.000Z</published>
-    <updated>2021-08-18T13:18:48.558Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;数据结构&quot;&gt;&lt;a href=&quot;#数据结构&quot; class=&quot;headerlink&quot; title=&quot;数据结构&quot;&gt;&lt;/a&gt;数据结构&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;排序算法，快排步骤，稳定排序&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;数据库&quot;&gt;&lt;a href
-      
-    
-    </summary>
-    
-      <category term="面试题" scheme="https://www.shmily.today/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    
-      <category term="面试题" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>转发和重定向的区别</title>
-    <link href="https://www.shmily.today/%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
-    <id>https://www.shmily.today/转发和重定向的区别.html</id>
-    <published>2021-04-18T12:58:09.000Z</published>
-    <updated>2021-04-18T13:55:24.144Z</updated>
-    
-    <summary type="html">
-    
-      转发和重定向的区别
-    
-    </summary>
-    
-      <category term="面试" scheme="https://www.shmily.today/categories/%E9%9D%A2%E8%AF%95/"/>
-    
-    
-      <category term="面试" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   

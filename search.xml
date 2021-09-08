@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[面试题17.14.最小k个数]]></title>
+    <url>%2F%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html</url>
+    <content type="text"><![CDATA[@ 法一：直接排序，然后取前K个值，时间复杂度：O(n*logn)，排序算法的时间复杂度。空间复杂度：O(logn)，排序递归栈的空间。 法二：使用堆，可以建立一个小根堆，遍历数组初始化小根堆，然后每次取出头元素，也就是最小的元素，然后调整堆，再次获取第二小元素，这样可以保证最小K个数的顺序，但相应的，需要的时间复杂度和空间复杂度较大。 ​ 时间复杂度：O（n*logn），其中建立堆的时间复杂度是O（n），每次调整的时间复杂度是O(n*logn)，因此总时间是O（n*logn） 法三：本题不需要按照顺序返回最小的K个数，因此可以使用大根堆，建立一个K个元素的大根堆，遍历数组，若当前元素大于树根的值，则删除树根，添加当前元素。最后，堆中剩余的元素就是最小的K个数。 12345678910111213141516171819202122232425262728class Solution &#123; public int[] smallestK(int[] arr, int k)&#123; int len = arr.length; if(k == 0)&#123; return new int[]&#123;&#125;; &#125; PriorityQueue&lt;Integer&gt; stack = new PriorityQueue&lt;Integer&gt;(new Comparator&lt;Integer&gt;() &#123; @Override public int compare(Integer i1, Integer i2)&#123; return i2-i1; &#125; &#125;); for(int i = 0; i &lt; k; i++)&#123; stack.offer(arr[i]); &#125; for(int i = k; i &lt; len; i++)&#123; if(stack.peek() &gt; arr[i])&#123; stack.poll; stack.offer(arr[i]); &#125; &#125; int[] res = new int[k]; for(int i = 0; i &lt; k; i++)&#123; res[i] = stack.poll(); &#125; return res; &#125;&#125; 还有根据快排思想做题，但是还没搞懂······ 以上代码通过测试。]]></content>
+      <categories>
+        <category>leetcode</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2FBlockchain.html</url>
+    <content type="text"><![CDATA[UTXO：Unspent Transaction Output，未花费交易输出 在比特币中，一笔交易的每一条输入和输出实际上都是UTXO，输入UTXO 就是以前交易剩下的， 更准确的说是以前交易的输出UTXO。账户系统 可以通过一项名为“RSA累加器”的技术，来替代现有的UTXO验证方案，从而用只有1.5KB大的区块，就可以证明所有的UTXO集是否可以满足交易的条件。也就是说用一个1.5KB的东西，就可以替代160G的整个UTXO。这简直就是区块链开发者的福音啊！！！]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode221.最大正方形]]></title>
     <url>%2Fleetcode221-%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2.html</url>
     <content type="text"><![CDATA[q 求最大面积，也就是求最大的边长，首先肯定可以通过暴力求解，遍历数组中的每一个元素，遇到’1’就以当前位置为正方形的右下角，向左上角遍历得到最大的正方形。二维数组遍历完成后就得到了整体最大正放心，然后求边长即可。 暴力法的时间复杂度是$O(mn*min(m,n)^2)$ ，遍历matrix需要O(mn)，对于每一个元素，需要求当前最大正方形，其边长小于等于min（m,n），遍历这样一个正方形需要$O(min(m,n)^2)$ 空间复杂度O(1) 仔细想暴力方法，其实前面已知的最大正方形是有助于我们得出当前最大正方形的，即当前（i，j）位置左上角（i-1，j-1）处最大正方形边长为k，则（i，j）位置最大为k+1，这取决于上面和左面是不是全是0，同样地，上面（i-1，j）位置最大正方形的边长就可以表示当前位置上面最多有几个0，左面（i，j-1）同样，因此，递归公式为： dp=\begin{cases} dp[i][j] = 0 & matrix[i][j] = 0 \\ dp[i][j] = min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1 & matrix[i][j] = 1 \end{cases}代码： 123456789101112131415161718192021222324252627282930313233343536class Solution &#123; public int maximalSquare(char[][] matrix)&#123; if(matrix == null)&#123; return 0; &#125; int rowLen = matrix.length; int columnLen = matrix[0].length; if(rowLen == 0 || columnLen == 0)&#123; return 0; &#125; int[][] dp = new int[rowLen][columnLen]; // 以当前位置为右下角的最大正方形边长 int max = 0; for(int i = 0; i &lt; rowLen; i++)&#123; for(int j = 0; j &lt; columnLen; j++)&#123; if(matrix[i][j] == '0')&#123; dp[i][j] = 0; &#125; // 边缘位置 else if(i == 0 || j == 0)&#123; dp[i][j] = 1; if(max &lt; 1)&#123; max = 1; &#125; &#125;else&#123; dp[i][j] = Math.min(Math.min(dp[i-1][j],dp[i][j-1]),dp[i-1][j-1])+1; // 更新最大值 if(dp[i][j] &gt; max)&#123; max = dp[i][j]; &#125; &#125; &#125; &#125; return max*max; &#125;&#125; 时间复杂度：O(mn)，需要遍历一遍matrix。 空间复杂度：O(mn)，dp数组大小。 代码优化，for循环里面的代码有数组值赋0的操作，而实际上数组初始化各个位置上的值都是0，因此这个操作是多余的。另外，i=0和j=0的判断实际上是避免i-1和j-1数组越界，可以通过设置一个大一圈的数组来减少这个判断。优化后代码如下： 123456789101112131415161718192021222324252627class Solution &#123; public int maximalSquare(char[][] matrix)&#123; if(matrix == null)&#123; return 0; &#125; int rowLen = matrix.length; int columnLen = matrix[0].length; if(rowLen == 0 || columnLen == 0)&#123; return 0; &#125; int[][] dp = new int[rowLen+1][columnLen+1]; // 以当前位置为右下角的最大正方形边长 int max = 0; for(int i = 1; i &lt;= rowLen; i++)&#123; for(int j = 1; j &lt;= columnLen; j++)&#123; if(matrix[i-1][j-1] == '1')&#123; dp[i][j] = Math.min(Math.min(dp[i-1][j],dp[i][j-1]),dp[i-1][j-1])+1; // 更新最大值 if(dp[i][j] &gt; max)&#123; max = dp[i][j]; &#125; &#125; &#125; &#125; return max*max; &#125;&#125; 以上代码均通过leetcode测试。 参考 530，动态规划解最大正方形 (qq.com)]]></content>
