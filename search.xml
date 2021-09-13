@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F%E5%8C%BA%E5%9D%97%E9%93%BE%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4.html</url>
+    <content type="text"><![CDATA[目前解决区块链隐私问题的主要技术有：混币、环签名、零知识证明等技术。 达氏币采用了混币这种技术，通过将大量的输入和输出地址发送至一些主节点进行混合，以此来混淆输入地址和输出地址之间的对应关系。但是这种技术一定要保证主节点的安全性． 门罗币采用环签名技术，当用户要发起一笔交易时，会使用自己的私钥和其他用户的公钥对交易信息进行签名，而验证该签名时，只需使用其他用户的公钥即可，因此可以避免 签名者信息泄露，但这种技术需要其他用户参与， 若签名中使用的大多数公钥都对应一个恶意用户， 则就有可能对用户的隐私产生威胁 零币使用了一种被称作 zk_SNARK 的零知识 证明技术，不仅可以对交易中的转账者、接收者和 交易金额等信息完全隐藏，而且还可以使区块链中 的各节点完成对交易结果的验证．虽然 zk_SNARK 对交易结果进行验证时，需要一定的计算量，但它 却是目前解决区块链隐私问题的一个较好的解决方 案，同时零知识证明技术也在越来越多的隐私保护 场景中获得应用． 从1985年零知识证明被首次提出[2]，到今天已经是重要的密码学基础构件。但是在很长一段时间内，零知识证明协议由于没有较好的运行效率和通用性，只是停留在理论。]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[An Update on Integrating Zcash on Ethereum (ZoE)]]></title>
+    <url>%2FAn-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</url>
+    <content type="text"><![CDATA[原文地址：An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog ​ 以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了Zcash blog - Electric Coin Company](https://electriccoin.co/blog/zcash-eth/)) ，由Ariel Gabizon（Zcash）和Christian Reitwiessner（Ethereum）共同撰写。 ​ 以太坊灵活的智能合约接口支持各种各样的应用程序，其中许多可能尚未被构思出来。当增加了隐私保护的能力，这种支持应用程序的可能性会大大增加。例如，你可以想象一下，通过智能合约在区块链上的选举或者拍卖，结果可以被任何区块链上的观察者验证，但是个人投票或竞标情况不会被披露。另一个可能的场景可能涉及到可选择的披露，用户拥有能力来证明他在某一个城市但是不暴露确切的位置。在Ethereum上增加这种能力的关键是零知识简洁非交互知识论证（zero-knowledge succinct non-interactive arguments of knowledge，zk-SNARKs）——这正是Zcash底层的加密引擎。]]></content>
+      <categories>
+        <category>零知识证明</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+        <tag>零知识证明</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[面试题17.14.最小k个数]]></title>
     <url>%2F%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html</url>
     <content type="text"><![CDATA[@ 法一：直接排序，然后取前K个值，时间复杂度：O(n*logn)，排序算法的时间复杂度。空间复杂度：O(logn)，排序递归栈的空间。 法二：使用堆，可以建立一个小根堆，遍历数组初始化小根堆，然后每次取出头元素，也就是最小的元素，然后调整堆，再次获取第二小元素，这样可以保证最小K个数的顺序，但相应的，需要的时间复杂度和空间复杂度较大。 ​ 时间复杂度：O（n*logn），其中建立堆的时间复杂度是O（n），每次调整的时间复杂度是O(n*logn)，因此总时间是O（n*logn） 法三：本题不需要按照顺序返回最小的K个数，因此可以使用大根堆，建立一个K个元素的大根堆，遍历数组，若当前元素大于树根的值，则删除树根，添加当前元素。最后，堆中剩余的元素就是最小的K个数。 12345678910111213141516171819202122232425262728class Solution &#123; public int[] smallestK(int[] arr, int k)&#123; int len = arr.length; if(k == 0)&#123; return new int[]&#123;&#125;; &#125; PriorityQueue&lt;Integer&gt; stack = new PriorityQueue&lt;Integer&gt;(new Comparator&lt;Integer&gt;() &#123; @Override public int compare(Integer i1, Integer i2)&#123; return i2-i1; &#125; &#125;); for(int i = 0; i &lt; k; i++)&#123; stack.offer(arr[i]); &#125; for(int i = k; i &lt; len; i++)&#123; if(stack.peek() &gt; arr[i])&#123; stack.poll; stack.offer(arr[i]); &#125; &#125; int[] res = new int[k]; for(int i = 0; i &lt; k; i++)&#123; res[i] = stack.poll(); &#125; return res; &#125;&#125; 还有根据快排思想做题，但是还没搞懂······ 以上代码通过测试。]]></content>
@@ -51,7 +68,7 @@
   <entry>
     <title></title>
     <url>%2F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html</url>
-    <content type="text"><![CDATA[继承Thread类 自定义类继承Thread 重写run方法 创建对象 启动线程 实现Runnable 定义一个类实现接口 类中重写run方法 创建对象 创建Thread类对象，将自定义类对象作为构造方法的参数传入 启动线程 callable 和future 自定义类实现callable接口 重写call方法 实例化自定义类 创建future实现类FutureTask对象，将自定义类对象作为构造方法参数传入 创建Thread类对象，将FutureTask对象作为构造方法参数传入 启动线程 run方法不开启线程，相当于普通方法的调用]]></content>
+    <content type="text"><![CDATA[实现多线程方式 继承Thread类 自定义类继承Thread 重写run方法 创建对象 启动线程 实现Runnable 定义一个类实现接口 类中重写run方法 创建对象 创建Thread类对象，将自定义类对象作为构造方法的参数传入 启动线程 callable 和future 自定义类实现callable接口 重写call方法 实例化自定义类 创建future实现类FutureTask对象，将自定义类对象作为构造方法参数传入 创建Thread类对象，将FutureTask对象作为构造方法参数传入 启动线程 run方法不开启线程，相当于普通方法的调用 任务拒接策略： ThreadPoolExecutor.AbortPolicy()：丢弃任务并抛出RejectedExecutionException异常，是默认策略 ThreadPoolExecutor.DiscardPolicy()，丢弃任务不抛出异常 ThreadPoolExecutor.DiscardOldestPolicy()：丢弃等待最久的任务并把当前任务加入队列。 ThreadPoolExecutor.CallerRunsPolicy()：调用任务的run方法绕过线程池直接执行。 volatile强制线程在每次使用共享数据时查看最新值，而不是数据副本。使用在变量前。 他不会保证原子性 Synchronize 线程获得锁对象 清空线程变量副本 从共享变量中拷贝最新值到变量副本中 执行代码 将修改后变量副本的值赋值给共享数据 释放锁 可以保证原子性 AtomicInteger类实现原子性的高效方式]]></content>
   </entry>
   <entry>
     <title><![CDATA[每日一题-881.救生艇]]></title>
@@ -257,9 +274,9 @@
         <category>MySQL</category>
       </categories>
       <tags>
+        <tag>PHP</tag>
         <tag>编码</tag>
         <tag>MySQL</tag>
-        <tag>PHP</tag>
       </tags>
   </entry>
   <entry>
