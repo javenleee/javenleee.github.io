@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="原文地址：An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog ​    以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了Zcash blog - Electric Coin Company](https://electricc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-09-10T13:48:10.410Z">
+<meta property="og:updated_time" content="2021-09-14T09:19:43.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Update on Integrating Zcash on Ethereum (ZoE)">
 <meta name="twitter:description" content="原文地址：An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog ​    以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了Zcash blog - Electric Coin Company](https://electricc">
@@ -369,6 +369,14 @@
          
          
            <li>
+             <a href="/leetcode-111-二叉树的最小深度.html" title="leetcode 111.二叉树的最小深度" target="_blank">leetcode 111.二叉树的最小深度</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-752-打开转盘锁.html" title="leetcode 752.打开转盘锁" target="_blank">leetcode 752.打开转盘锁</a>
+           </li>
+         
+           <li>
              <a href="/leetcode-447-回旋镖的数量.html" title="leetcode 447.回旋镖的数量" target="_blank">leetcode 447.回旋镖的数量</a>
            </li>
          
@@ -418,14 +426,6 @@
          
            <li>
              <a href="/装箱与拆箱.html" title="装箱与拆箱" target="_blank">装箱与拆箱</a>
-           </li>
-         
-           <li>
-             <a href="/20210817.html" title target="_blank"></a>
-           </li>
-         
-           <li>
-             <a href="/Ubuntu更新内核.html" title target="_blank"></a>
            </li>
          
        </ul>
@@ -619,6 +619,27 @@
         <p>原文地址：<a href="https://blog.ethereum.org/2017/01/19/update-integrating-zcash-ethereum/" target="_blank" rel="noopener">An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog</a></p>
 <p>​    以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了<a href="[An Update on Integrating Zcash on Ethereum (ZoE">Zcash blog</a> - Electric Coin Company](<a href="https://electriccoin.co/blog/zcash-eth/" target="_blank" rel="noopener">https://electriccoin.co/blog/zcash-eth/</a>)) ，由Ariel Gabizon（Zcash）和Christian Reitwiessner（Ethereum）共同撰写。</p>
 <p>​    以太坊灵活的智能合约接口支持各种各样的应用程序，其中许多可能尚未被构思出来。当增加了隐私保护的能力，这种支持应用程序的可能性会大大增加。例如，你可以想象一下，通过智能合约在区块链上的选举或者拍卖，结果可以被任何区块链上的观察者验证，但是个人投票或竞标情况不会被披露。另一个可能的场景可能涉及到可选择的披露，用户拥有能力来证明他在某一个城市但是不暴露确切的位置。在Ethereum上增加这种能力的关键是零知识简洁非交互知识论证（zero-knowledge succinct non-interactive arguments of knowledge，zk-SNARKs）——这正是Zcash底层的加密引擎。</p>
+<p>​    Zcash公司的代号为炼金术项目的目标之一时实现以太坊和Zcash的直接去中心化交易。连接这两种区块链和技术（一种侧重于可编程性，另一种侧重于隐私），是促进需要两者的应用程序开发的自然方式。</p>
+<p>​    作为Zcash/Ethereum技术合作的一部分，Zcash的Ariel Gabizon几周前访问了位于柏林的以太坊中心Christian Reitwiessner。此次访问的重点是使用Solidity编写的zk-SNARK验证器的概念实现证明，该验证器基于为以太坊C++客户端实现的预编译以太坊合约。这项工作实现了初期的ZoE，其中zk-SNARK预编译合约是为Parity（以太坊Rust客户端）编写。我们的更新包括增加了微小的加密原语（椭圆曲线乘法、加法和配对）并在Solidity中实现了其余部分，所有的这些都提供了更大的灵活性并且允许使用各种zk-SNARK结构而无需硬分叉。详细信息将在稍后公布，我们在以太坊区块链的测试网络上成功验证了一个真实的隐私保护Zcash交易，从而测试了新代码。</p>
+<p>​    验证只花了42毫秒，这表明这种预编译合约可以添加，并且使用它们花费的gas可以相当的实惠。</p>
+<h2 id="What-can-be-done-with-such-a-system"><a href="#What-can-be-done-with-such-a-system" class="headerlink" title="What can be done with such a system"></a>What can be done with such a system</h2><p>​    Zcash系统可以在以太坊上重复使用，来创建shielded custom tokens，这样的tokens已经支持许多应用比如投票或者简单的盲目拍卖，参与者在不知道其他人出价的情况下出价竞标。</p>
+<p>​    如果要尝试编译概念证明，可以使用以下命令，如果需要帮助，参阅<a href="https://gitter.im/ethereum/privacy-tech" target="_blank" rel="noopener">https://gitter.im/ethereum/privacy-tech</a> </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/scipr-lab/libsnark.git</span><br><span class="line"><span class="built_in">cd</span> libsnark</span><br><span class="line">sudo PREFIX=/usr/<span class="built_in">local</span> make NO_PROCPS=1 NO_GTEST=1 NO_DOCS=1 \</span><br><span class="line">   CURVE=ALT_BN128 \</span><br><span class="line">   FEATUREFLAGS=<span class="string">"-DBINARY_OUTPUT=1 -DMONTGOMERY_OUTPUT=1 \</span></span><br><span class="line"><span class="string">   -DNO_PT_COMPRESSION=1"</span> \</span><br><span class="line">   lib install</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snark https://github.com/ethereum/cpp-ethereum.git</span><br><span class="line"><span class="built_in">cd</span> cpp-ethereum</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . -DEVMJIT=0 -DETHASHCL=0 &amp;&amp; make eth</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snarks https://github.com/ethereum/solidity.git</span><br><span class="line"><span class="built_in">cd</span> solidity</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . &amp;&amp; make soltest</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">./cpp-ethereum/eth/eth --<span class="built_in">test</span> -d /tmp/<span class="built_in">test</span></span><br><span class="line"><span class="comment"># And on a second terminal:</span></span><br><span class="line">./solidity/<span class="built_in">test</span>/soltest -t <span class="string">"*/snark"</span> -- --ipcpath   /tmp/<span class="built_in">test</span>/geth.ipc  --show-messages</span><br></pre></td></tr></table></figure>
+<p>​    我们还讨论了将zk-SNARK集成到以太坊区块链中的各个方面，现在进行扩展</p>
+<h2 id="Deciding-what-precompiled-contracts-to-define"><a href="#Deciding-what-precompiled-contracts-to-define" class="headerlink" title="Deciding what precompiled contracts to define"></a>Deciding what precompiled contracts to define</h2><p>​    回想一下，SNARK是一些属性的简短证明，向以太坊添加隐私功能所需要的是能够验证此类证明的客户端。</p>
+<p>​    在所有最近的构造中，验证过程仅仅包括对椭圆曲线的操作。具体来说，验证者需要对椭圆曲线组进行标量乘法和加法，并且可能还需要称为双线性配对的更重的操作。</p>
+<p>​    如在此处所说，直接在EVM上实现这些操作成本太高，因此，我们希望实现执行这些操作的预编译合约。现在，有争论的问题是：这些预编译的合约应该达到什么程度的通用性。</p>
+<p>​    SNARK的安全级别对应于曲线的参数。粗略来说，曲线阶数越大，嵌入度就越大，基于曲线的SNARK就越安全。另一方面，这些数量越大，自然地，在相应曲线上的成本就越高，因此，使用SNARK的合约设计者可能希望根据他们自己所需要的效率/安全权衡来选择参数。这种权衡是实现高度通用性的预编译合约的一个原因，合约设计者可以从大量曲线中进行选择。实际上，我们一开始的目标是高度通用性，曲线的描述作为合约输入的一部分给出，在这种情况下，智能合约将能够在任何椭圆曲线组中执行加法。</p>
+<p>​    这种方法的一个复杂之处是将gas消耗分配给操作，你必须仅仅通过曲线的描述在不能访问特定实现的情况下，评估在该曲线上的组操作在最坏情况下的成本有多大。一种不大通用的方法是允许给定族中的所有曲线。我们注意到在使用Barreto-Naehrig(NG)曲线族时，可以大致评估给定曲线参数的配对操作的成本，因为所有这种曲线都支持特定类型的最佳Ate配对。下面是预编译如何工作以及gas消耗是如何计算的：</p>
+<p>​    我们从这场辩论中学到了很多，但最终，我们决定在这个概念证明中保持简洁：我们选择为Zcash中正在使用的特定曲线实现合约。我们通过使用在libsnark函数库中相应函数的包装器来做到这一点，Zcash也是这么做的。</p>
+<p>​    注意，我们可以简单地为Zcash当前使用的整个SNARK验证函数使用一个包装器，正如上面提到的早期ZoE项目所做的。然而，明确定义椭圆曲线操作的优势是能够使用各种SNARK结构，同样，所有这些结构都具有通过前面提到的三个椭圆曲线操作的某种组合来工作的验证器。</p>
+<h2 id="Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications"><a href="#Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications" class="headerlink" title="Reusing the Zcash setup for new anonymous tokens and other applications"></a>Reusing the Zcash setup for new anonymous tokens and other applications</h2><p>​    你可能已经听说，<strong>使用SNARKs需要一个复杂的setup阶段，在这个阶段，构建所谓的系统公共参数。我们每次想要对特定电路使用SNARKs时，这些公共参数都需要以一种安全的方式生成，这大大阻碍了SNARKs 的使用。</strong>简化这个setup阶段是我们考虑过的一个重要的目标，但是到目前为止还没有任何成功。</p>
+<p>​    好消息是，想要发行支持隐私保护交易token的人可以简单地<strong>重复使用Zcash早已安全生成的公共参数。它能被重复使用因为这个用来验证隐私保护交易的电路并不是固有地与一种货币或者区块链绑定。</strong>相反，其显式输入之一是包含所有有效票据的Merkle树根。因此可以根据人们希望使用的货币来更改此输入。而且，如果很容易开启一个新的匿名token，你已经可以完成许多乍一看不像token的任务。例如，假设我们希望进行匿名选举以在他们两个选项中选择一个首选选项。我们可以为投票发行一个匿名的自定义token，并且向每个投票方发送一枚硬币。因为没有挖矿，因此不可能以任何其他方式生成tokens。现在每一方根据他们的投票将他们的硬币发送到两个地址之一。最终余额较大的地址对应选举结果。</p>
+<h2 id="Other-application"><a href="#Other-application" class="headerlink" title="Other application"></a>Other application</h2><p>​    下面是一个非基于令牌的系统，他构建起来相当简单，并允许选择性揭露。例如，你可以定期将包含你的物理物质的加密信息发送到区块链（可能带有其他人的签名以防止欺骗）。如果你为每条消息使用不同的密钥，你只能在特定的时间通过公开你的密钥来揭露你的位置。然后，使用zk-SNARKs，你还可以证明你在某个区域，而不透露你的确切位置。在zk-SNARK中你解密你的位置并检查它是否在该区域内。由于零知识属性，每个人可以验证该检查，但没有人能够检索到你的实际位置。</p>
+<h2 id="The-work-ahead"><a href="#The-work-ahead" class="headerlink" title="The work ahead"></a>The work ahead</h2><p>​    实现上述功能——在以太坊区块链上创建匿名token并验证Zcash交易——需要使用solidity实现Zcash使用的其他元素</p>
+<p>​    对于第一个功能，我们必须实现由Zcash网络上节点执行的任务例如更新note commitment tree</p>
+<p>​    对于第二个功能呢，我们需要实现Zcash使用的equihash工作证明算法。否则，可以验证交易本身是有效的，但是我们不知道这笔交易是否实际集成到Zcash区块链中</p>
+<p>​    幸运的是，这样的实现已经完成，然而，他的效率需要提高才能在实际应用中使用。</p>
 
       
     </div>
@@ -672,7 +693,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-09-10 21:48:10</li>
+  <strong>修改时间： </strong>2021-09-14 17:19:43</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html" title="An Update on Integrating Zcash on Ethereum (ZoE)">https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</a>
@@ -770,8 +791,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -788,7 +818,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -847,7 +877,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -904,7 +938,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -994,6 +1032,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-can-be-done-with-such-a-system"><span class="nav-number">1.</span> <span class="nav-text">What can be done with such a system</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deciding-what-precompiled-contracts-to-define"><span class="nav-number">2.</span> <span class="nav-text">Deciding what precompiled contracts to define</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications"><span class="nav-number">3.</span> <span class="nav-text">Reusing the Zcash setup for new anonymous tokens and other applications</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-application"><span class="nav-number">4.</span> <span class="nav-text">Other application</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-work-ahead"><span class="nav-number">5.</span> <span class="nav-text">The work ahead</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1039,7 +1094,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">48.1k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">53.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

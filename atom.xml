@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-09-13T14:26:55.921Z</updated>
+  <updated>2021-09-15T11:28:00.846Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 111.二叉树的最小深度</title>
+    <link href="https://www.shmily.today/leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6.html"/>
+    <id>https://www.shmily.today/leetcode-111-二叉树的最小深度.html</id>
+    <published>2021-09-15T11:04:18.000Z</published>
+    <updated>2021-09-15T11:28:00.846Z</updated>
+    
+    <summary type="html">
+    
+      给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。说明：叶子节点是指没有子节点的节点。
+    
+    </summary>
+    
+      <category term="BFS" scheme="https://www.shmily.today/categories/BFS/"/>
+    
+    
+      <category term="BFS" scheme="https://www.shmily.today/tags/BFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 752.打开转盘锁</title>
+    <link href="https://www.shmily.today/leetcode-752-%E6%89%93%E5%BC%80%E8%BD%AC%E7%9B%98%E9%94%81.html"/>
+    <id>https://www.shmily.today/leetcode-752-打开转盘锁.html</id>
+    <published>2021-09-15T09:56:51.000Z</published>
+    <updated>2021-09-15T11:27:45.411Z</updated>
+    
+    <summary type="html">
+    
+      你有一个带有四个圆形拨轮的转盘锁。每个拨轮都有10个数字： &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39; 。每个拨轮可以自由旋转：例如把 &#39;9&#39; 变为 &#39;0&#39;，&#39;0&#39; 变为 &#39;9&#39; 。每次旋转都只能旋转一个拨轮的一位数字。锁的初始数字为 &#39;0000&#39; ，一个代表四个拨轮的数字的字符串。列表 deadends 包含了一组死亡数字，一旦拨轮的数字和列表里的任何一个元素相同，这个锁将会被永久锁定，无法再被旋转。字符串 target 代表可以解锁的数字，你需要给出解锁需要的最小旋转次数，如果无论如何不能解锁，返回 -1 。
+    
+    </summary>
+    
+      <category term="BFS" scheme="https://www.shmily.today/categories/BFS/"/>
+    
+      <category term="Leetcode" scheme="https://www.shmily.today/categories/BFS/Leetcode/"/>
+    
+    
+      <category term="BFS" scheme="https://www.shmily.today/tags/BFS/"/>
+    
+      <category term="Leetcode" scheme="https://www.shmily.today/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode 447.回旋镖的数量</title>
@@ -41,7 +85,7 @@
     <link href="https://www.shmily.today/leetcode-51-N%E7%9A%87%E5%90%8E.html"/>
     <id>https://www.shmily.today/leetcode-51-N皇后.html</id>
     <published>2021-09-13T11:17:12.000Z</published>
-    <updated>2021-09-13T14:27:00.754Z</updated>
+    <updated>2021-09-14T07:10:45.553Z</updated>
     
     <summary type="html">
     
@@ -86,7 +130,7 @@
     <link href="https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html"/>
     <id>https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</id>
     <published>2021-09-10T09:08:59.000Z</published>
-    <updated>2021-09-10T13:48:10.410Z</updated>
+    <updated>2021-09-14T09:19:43.784Z</updated>
     
     <summary type="html">
     
@@ -124,9 +168,9 @@
       <category term="算法" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -170,9 +214,9 @@
       <category term="动态规划" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
     
-      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="动态规划" scheme="https://www.shmily.today/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -198,9 +242,9 @@
       <category term="动态规划" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
     
-      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="动态规划" scheme="https://www.shmily.today/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
@@ -253,7 +297,7 @@
     <link href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html"/>
     <id>https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</id>
     <published>2021-08-23T13:59:08.000Z</published>
-    <updated>2021-09-02T06:06:07.337Z</updated>
+    <updated>2021-09-15T07:38:53.721Z</updated>
     
     <summary type="html">
     
@@ -412,44 +456,6 @@
     
     
       <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/20210813-220.html"/>
-    <id>https://www.shmily.today/20210813-220.html</id>
-    <published>2021-08-13T08:30:47.905Z</published>
-    <updated>2021-08-18T13:24:13.226Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;220-存在重复元素&quot;&gt;&lt;a href=&quot;#220-存在重复元素&quot; class=&quot;headerlink&quot; title=&quot;220.存在重复元素&quot;&gt;&lt;/a&gt;220.存在重复元素&lt;/h2&gt;&lt;p&gt;给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/%E4%B8%80%E5%88%87%E9%83%BD%E6%98%AF%E6%AF%94%E8%B5%9B%EF%BC%8C%E4%B8%AD%E6%9C%AC%E8%81%AA%E6%B0%B8%E8%BF%9C%E4%B8%8D%E4%BA%8F.html"/>
-    <id>https://www.shmily.today/一切都是比赛，中本聪永远不亏.html</id>
-    <published>2021-08-09T12:00:37.207Z</published>
-    <updated>2021-08-09T14:15:50.411Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;一切都是一场比赛，中本聪永远不亏&quot;&gt;&lt;a href=&quot;#一切都是一场比赛，中本聪永远不亏&quot; class=&quot;headerlink&quot; title=&quot;一切都是一场比赛，中本聪永远不亏&quot;&gt;&lt;/a&gt;一切都是一场比赛，中本聪永远不亏&lt;/h1&gt;&lt;h2 id=&quot;摘要&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
     
   </entry>
   

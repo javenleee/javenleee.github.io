@@ -116,10 +116,12 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-09-02T06:06:07.337Z">
+<meta property="og:image" content="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network/image-20210915144445146.png">
+<meta property="og:updated_time" content="2021-09-15T07:38:53.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Empirical Analysis of Privacy in the Lightning Network">
 <meta name="twitter:description" content="An Empirical Analysis of Privacy in the Lightning Network翻译">
+<meta name="twitter:image" content="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network/image-20210915144445146.png">
 
 
 
@@ -369,6 +371,14 @@
          
          
            <li>
+             <a href="/leetcode-111-二叉树的最小深度.html" title="leetcode 111.二叉树的最小深度" target="_blank">leetcode 111.二叉树的最小深度</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-752-打开转盘锁.html" title="leetcode 752.打开转盘锁" target="_blank">leetcode 752.打开转盘锁</a>
+           </li>
+         
+           <li>
              <a href="/leetcode-447-回旋镖的数量.html" title="leetcode 447.回旋镖的数量" target="_blank">leetcode 447.回旋镖的数量</a>
            </li>
          
@@ -418,14 +428,6 @@
          
            <li>
              <a href="/装箱与拆箱.html" title="装箱与拆箱" target="_blank">装箱与拆箱</a>
-           </li>
-         
-           <li>
-             <a href="/20210817.html" title target="_blank"></a>
-           </li>
-         
-           <li>
-             <a href="/Ubuntu更新内核.html" title target="_blank"></a>
            </li>
          
        </ul>
@@ -619,11 +621,10 @@
 
       
         <hr>
-<h1 id="闪电网络隐私的实证分析"><a href="#闪电网络隐私的实证分析" class="headerlink" title="闪电网络隐私的实证分析"></a>闪电网络隐私的实证分析</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>支付渠道网络，特别是Lightning Network，似乎为比特币和其他基于区块链的加密货币缺乏可扩展性和隐私性提供了解决方案，先前的研究主要关注可扩展性，可用性以及Lightning Network的加密经济，然而很少探索他在实践中实现的隐私级别。本文对Lightning Network提供的隐私性提出了一个进行深度分析，<strong>提出了几种利用网络公开信息的攻击</strong>，来了解那些设计为保密的信息，例如一个节点拥有多少货币或者在网络中路由的一次交易中谁是发送方，谁是接收方。</p>
-<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>从2008年推出以来，比特币已经成为最广泛应用的加密货币。比特币去中心化和无需许可性质允许所有用户加入网络，并且避免了对他们中控制了资金流的中介机构和当局的需要。相反，每笔交易的有效性由网络参加者们自己做出的共识决定。有效的交易被记录再公共区块链中。因此，区块链实际上充当记录所有已经发生交易的账本。</p>
-<p>在网络中将交易广播给所有人以及在永久账单中存储他们的需要对基于区块链的加密货币的寿命提出了两个问题。首先，他带来了严重的可扩展性限制：比特币区块链现在已经超过300GB，并且比特币每秒仅能完成10笔交易。其他的加密货币的吞吐量略高，然而在这些基于广播的系统，吞吐量和安全性存在一个固有的权衡。第二，账本的透明性意味着任何人可以观察货币的流向，确定交易的另一方，并且将不同的交易联系起来。</p>
-<p>这一点在比特币上表现得最为明显，然而这种类型的分析甚至拓展到明确设计隐私的加密货币。</p>
-<p>目前为了解决可扩展性而部署的最有前途的解决方案是所谓的<code>&quot;layer-two&quot;</code>协议，其中Lightning Network （LN）是自从2018年3月问世以来最受欢迎的解决方案。在LN中，成对的参与者使用比特币区块链来打开和关闭二者之间的<code>payment channels</code> 。在这个通道内，这两者可以进行双方之间的任意多的链下交易，而不需要使用区块链。除了单一通道之外，Lightning支持多<code>multi-hop</code>支付路由，这意味着即使是没有直接互联的参与者仍然可恶意通过更广义的<code>payment channel network (PCN)</code> 路由支付。在这个网络中的节点可以收取路由小费，以这种方式他们被激励去路由支付。</p>
+<h1 id="闪电网络隐私的实证分析"><a href="#闪电网络隐私的实证分析" class="headerlink" title="闪电网络隐私的实证分析"></a>闪电网络隐私的实证分析</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>支付通道网络Payment channel networks，特别是闪点网络Lightning Network，似乎为比特币和其他基于区块链的加密货币缺乏可扩展性和隐私性提供了解决方案，先前的研究主要关注可扩展性，可用性以及Lightning Network的加密经济，然而很少探索他在实践中实现的隐私级别。<strong>本文对Lightning Network提供的隐私性提出了一个进行深度分析，提出了几种利用网络公开信息的攻击</strong>，来了解那些设计为保密的信息，例如一个节点拥有多少货币或者在网络中路由的一次交易中谁是发送方，谁是接收方。</p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h2><p>​    从2008年推出以来，比特币已经成为最广泛应用的加密货币。比特币去中心化和无需许可性质允许所有用户加入网络，并且避免了对控制了资金流的中介机构和当局的需要。相反，每笔交易的有效性由网络参加者们自己做出的共识决定。有效的交易被记录再公共区块链中。因此，区块链实际上充当记录所有已经发生交易的账本。</p>
+<p>​    在网络中将交易广播给所有人以及在永久账单中存储他们的需要对基于区块链的加密货币的寿命提出了两个问题。首先，他带来了严重的可扩展性限制：比特币区块链现在已经超过300GB，并且比特币每秒仅能完成10笔交易。其他的加密货币的吞吐量略高，然而在这些基于广播的系统，吞吐量和安全性存在一个固有的权衡。第二，账本的透明性意味着任何人可以观察货币的流向，确定交易的另一方，并且将不同的交易联系起来。这一点在比特币上表现得最为明显，然而这种类型的分析甚至拓展到明确设计隐私的加密货币。</p>
+<p>​    目前为了解决可扩展性而部署的最有前途的解决方案是所谓的<code>&quot;layer-two&quot;</code>协议，其中Lightning Network （LN）是自从2018年3月问世以来最受欢迎的解决方案。在LN中，成对的参与者使用比特币区块链来打开和关闭二者之间的<code>payment channels</code> 。在这个通道内，这两者可以进行双方之间的任意多的链下交易，而不需要使用区块链。除了单一通道之外，Lightning支持多<code>multi-hop</code>支付路由，这意味着即使是没有直接互联的参与者仍然可恶意通过更广义的<code>payment channel network (PCN)</code> 路由支付。在这个网络中的节点可以收取路由小费，以这种方式他们被激励去路由支付。</p>
 <p>除了在提高可扩展性方面的承诺，<code>Lightning</code> 似乎还解决了隐私问题。像我们在第二节详细说明的，为了建立PCN，网络中的节点和网络中大多数通道是公开的（尽管有些通道可能是私有的），给定通道的容量也是如此，这意味着这条通道可以路由的最大支付值。然而， 与通道有关的个人余额是保密的。此外，支付不会广播给所有节点并且不会存储在公开账本中。即使是通过<code>multi-hop</code>路由的支付，它使用洋葱路由来保证在路由路径上每个节点只能识别他的直接前任和后继节点。</p>
 <p>然而，就像基于账本的加密货币一样，Lightning网络中隐私潜力和现实之间的差距很大，正如我们在本工作中所示。特别地，我们考虑<code>LN</code>承诺的四个隐私属性：</p>
 <ul>
@@ -690,13 +691,21 @@ Pr_S^{fail} =& Pr[L=4|fail,\ell \ge 4] \\
 &+ \sum_{\ell=3}^{20}Pr[L=\ell|fail] \cdot Pr[H=1|L=\ell,fail]
 \end{aligned}</script><p>因此，支付失败的情况下，$Pr[L=4|fail,\ell \ge 4]$ 是下限，正如我们在支付成功时做的，我们假设clique topology是他们最佳策略，这种情况下，他们猜测自己位置的概率是$1/(\ell-3)$ （因为他们知道他们不是最后一个），我们因此得到：</p>
 <script type="math/tex; mode=display">
-Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot \frac{1}{\ell-3}</script><h3 id="5-1-lightning-network-simulator"><a href="#5-1-lightning-network-simulator" class="headerlink" title="5.1 lightning network simulator"></a>5.1 lightning network simulator</h3><p>为了调查路径上攻击者的成功，我们需要测量他需要从实时网络种获得的重要资源，例如支付的平均路径长度。考虑到这可能带来财务和道得问题，我们做出了与前面工作同样的决定，即构建一个Lightning网络模拟器来执行我们的分析。我们用2624行Python3代码实现了我们的模拟器，并将其作为开源软件发布。</p>
-<p><strong>网络拓扑</strong>。正如在第二章所提到的，</p>
-<p><strong>地理定位</strong></p>
-<p><strong>路径选择</strong></p>
-<p><strong>软件版本</strong></p>
-<p><strong>支付参数</strong></p>
-<h3 id="5-2-simulation-result"><a href="#5-2-simulation-result" class="headerlink" title="5.2 simulation result"></a>5.2 simulation result</h3><h2 id="6-payment-discovery"><a href="#6-payment-discovery" class="headerlink" title="6. payment discovery"></a>6. payment discovery</h2><h3 id="6-1-payment-discovery-algorithm"><a href="#6-1-payment-discovery-algorithm" class="headerlink" title="6.1 payment discovery algorithm"></a>6.1 payment discovery algorithm</h3><h3 id="6-2-attack-simulation"><a href="#6-2-attack-simulation" class="headerlink" title="6.2 attack simulation"></a>6.2 attack simulation</h3><h3 id="6-3-simulated-attack-results"><a href="#6-3-simulated-attack-results" class="headerlink" title="6.3 simulated attack results"></a>6.3 simulated attack results</h3><h2 id="7-conclusion"><a href="#7-conclusion" class="headerlink" title="7. conclusion"></a>7. conclusion</h2>
+Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot \frac{1}{\ell-3}</script><h3 id="5-1-lightning-network-simulator"><a href="#5-1-lightning-network-simulator" class="headerlink" title="5.1 lightning network simulator"></a>5.1 lightning network simulator</h3><p>​    为了调查路径上攻击者的成功，我们需要测量他需要从实时网络种获得的重要资源，例如支付的平均路径长度。考虑到这可能带来财务和道得问题，我们做出了与前面工作同样的决定，即构建一个Lightning网络模拟器来执行我们的分析。我们用2624行Python3代码实现了我们的模拟器，并将其作为开源软件发布。</p>
+<p><strong>网络拓扑</strong>。正如在第二章所提到的，我们将网络表示为图 G = (V , E)。我们从收集的快照中获得关于V和E的信息，正如我们在3.1节所讲，其中还包括额外的信息，如容量和费用。因此我们模拟器的网络拓扑视图是实际公共网络的精确表示。</p>
+<p><strong>地理定位</strong> 。节点可以发部IPv4、IPv6或者.onion洋葱地址又或者这些地址的结合。如果一个节点公布了一个IPv4或者IPv6地址，我们使用它来为这个节点分配一个响应的地理位置。这使得我们能够根据节点间的距离并遵循先前对Verizon的使用全局IP延迟的研究来精确地模拟节点之间路由数据包的TCP延迟。对于只发布.onion洋葱地址的节点，考虑到与洋葱网络相关的更高延迟，我们根据Tor metrics发布的统计数据分配延迟。</p>
+<p><strong>路径选择</strong> 。如第二节所讨论的，在LN中到目的地的路由仅仅由支付发送方单独构建，所有客户端通常目标是找到网络上的最短路径，它意味着最低手续费。然而，正如Tochner等人所展示的，路由算法和手续费计算在客户端软件的三个主要选择：Ind、clightning、eclair中都不同，我们不能简单地从这些不同的实现中提取或者孤立路由算法，因此我们自己实现所有这三个版本的路径选择算法。我们使用Yen’s k-shortest路径算法和 networkx Dijkstra’s SPF算法实现。</p>
+<p><strong>软件版本</strong> 。我们搜集的快照不包括有关软件版本的信息，因此我们抓取了1ML网站上列出的每个节点的所有者信息字段，尽管其中91%这个字段都是空的，但结果让我们至少可以估计客户端软件的分布。我们得到了370个节点的信息，发现其中292个是Ind，54个是c-lightning，24个是eclair。我们根据这个分布随机为网络中剩余的节点分配了软件版本信息，然后根据软件版本改变路径选择算法中weight函数</p>
+<p><strong>支付参数</strong> 。我们第一个参数$t_{pay}$ 代表LN网络中每天发生的支付总数。为此，我们使用了LNBIG的估计值，在写本文时，LNBIG是拥有超过网络总容量40%的最大节点。根据LNBIG，每天通过网络路由交易的总数是1000-1500笔，但这不包括通过直接通道（direct channel）支付的交易。考虑到这个估值，我们对$t_{pay}$ 使用两个值：1000，代表对今天交易量的轻微低估；10000，代表对LN未来的潜在估计。</p>
+<p>​    我们还定义确定一个支付的发送方和接收方的参数为<code>endpoints</code> ，我们为这个参数定义了两个值：<code>uniform</code> ，意味着支付的参与方是随机均匀选择的，<code>weighted</code> 代表着参与者是根据加权分布随机选择的，这个加权分布考虑到他们<code>direct channel</code> 数量（即他们的<code>度</code>）。同样地，我们使用<code>values</code>来确定支付的值，当values is cheap，支付值是发送方可以发送的最小值，当values is expensive，支付值是发送方可以发送的最大值。</p>
+<h3 id="5-2-simulation-result"><a href="#5-2-simulation-result" class="headerlink" title="5.2 simulation result"></a>5.2 simulation result</h3><p>​    给定参数$t_{pay}$ ，endpoints 和 values，我们运行两个模拟实例，目标是为路径上的对手找到最坏情况和最好情况。根据$Pr_{S}^{succ}$ 和 $Pr_S^{fail}$ 各自的概率，我们可以看到最坏情况是路径长，支付可能成功，最好情况是路径段，支付可能失败。由于$t_{pay}$ 的总量并不影响路径的长度，我们对两个实例都使用 $t_{pay} = 1000$ 。每一个模拟器实例使用2020.9.1抓取的网络和节点参数运行。</p>
+<p>​    在我们第一次模拟中，$lengths_{long}$ ，我们的目标是捕捉对手的最坏情况。这意味着我们选择$ endpoints = uniform$ ，以便发送方和接收方的选择不会受到连接的影响，因此路径不会由于他们潜在高连接性而很短。类似地，我们选择 $values = cheap$ 来使得支付失败的可能性最小。我们第二次模拟时，$lengths_{short}$ 我们的目标是捕捉对手的最好情况，所以我们选择$endpoints = weightes$ 来确保更频繁地选择高度连接的节点，因此路径更短。我们还选择$values = expensive$ ，来确保很多支付失败。</p>
+<p><img src="An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network/image-20210915144445146.png" alt="image-20210915144445146"></p>
+<p>​    如图1所示，即使是当我们尝试在$lengths_{long}$ 中最大化路径长度时，14.98%的路径仍然只包含一个跃点hop，在 $lengths_{short}$ 中，56.65%的路径包含单个跃点hop，这一区间与最近的研究一致，该研究认为17-37%的路径只有一个中间节点，即使在$length_{long}$ 中路径都很短的主要的原因是网络拓扑和客户端路径选择算法对路径长度的影响比endpoints和values更大。</p>
+<p>​    除了图1的结果之外，运行我们的模拟器使我们能够估计对对手来说最好和最坏情况下，$Pr[L = \ell], 3 \le \ell \le 20$ 的概率。我们现在使用这些结果来计算    当对手只有在不可能出错时（LowerBound）成功的情况   以及clique topology（clique）的情况下    $Pr_S^{succ}$ 和 $Pr_S^{fail}$ 的概率，如图2 所示，其中clique topology 对对手来说是最坏情况，因为较不完整的拓扑将运行对手排除无法参与支付的节点从而增加他们的信心。</p>
+<p>​    当 L = 3 时，$Pr_S^{succ}$ 是有下界的，因为在这种情况，对手不可能出错，类似地，当 L = 4时，$Pr_S^{fail}$ 也有下界。在成功支付的情况下，$Pr_S^{succ}$ 的下界范围从15%（$lengths_{long}$） 到 57% （$lengths_{short}$）。另一方面，$Pr_S^{fail}$ 的下界随着不成功尝试的百分比而增加，高达83%($lengths_{short}$) ，这明显高于之前所有实验的记录。这也不仅是理论结果：根据最近的测量，34%的支付在第一次尝试时失败。</p>
+<p>​    我们的测量表明，即使采用极度简单策略的对手，也会有很高的概率推断通过其路由的支付的发送方，特别是支付失败时。这可能是由于LN的高度中心化拓扑结构，这意味着路径很短并且经常涉及相同的中间节点，以及客户端被设计为寻找cheapest 也就是 shortest路径因此，如果没有客户端或者网络拓扑结构的改变，中间节点很可能会继续违反路径上的匿名关系。 </p>
+<h2 id="6-payment-discovery"><a href="#6-payment-discovery" class="headerlink" title="6. payment discovery"></a>6. payment discovery</h2><h3 id="6-1-payment-discovery-algorithm"><a href="#6-1-payment-discovery-algorithm" class="headerlink" title="6.1 payment discovery algorithm"></a>6.1 payment discovery algorithm</h3><h3 id="6-2-attack-simulation"><a href="#6-2-attack-simulation" class="headerlink" title="6.2 attack simulation"></a>6.2 attack simulation</h3><h3 id="6-3-simulated-attack-results"><a href="#6-3-simulated-attack-results" class="headerlink" title="6.3 simulated attack results"></a>6.3 simulated attack results</h3><h2 id="7-conclusion"><a href="#7-conclusion" class="headerlink" title="7. conclusion"></a>7. conclusion</h2>
       
     </div>
 
@@ -749,7 +758,7 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-09-02 14:06:07</li>
+  <strong>修改时间： </strong>2021-09-15 15:38:53</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html" title="An Empirical Analysis of Privacy in the Lightning Network">https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</a>
@@ -872,7 +881,7 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -931,7 +940,11 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -988,7 +1001,11 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1140,7 +1157,7 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">48.1k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">53.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
