@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-09-15T11:28:00.846Z</updated>
+  <updated>2021-10-22T13:54:08.596Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -17,11 +17,119 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Adapting High-resource NMT Models to Translate Low-resource Related</title>
+    <link href="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html"/>
+    <id>https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html</id>
+    <published>2021-10-19T08:06:37.000Z</published>
+    <updated>2021-10-22T13:54:08.596Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;​    平行数据的缺乏对于训练高质量机器翻译系统为低资源语言翻译来说是一个主要障碍。幸运的
+      
+    
+    </summary>
+    
+      <category term="-论文" scheme="https://www.shmily.today/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="论文" scheme="https://www.shmily.today/tags/%E8%AE%BA%E6%96%87/"/>
+    
+      <category term="NLP" scheme="https://www.shmily.today/tags/NLP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/1018.html"/>
+    <id>https://www.shmily.today/1018.html</id>
+    <published>2021-10-18T04:30:59.335Z</published>
+    <updated>2021-10-20T12:58:45.507Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;区块链白皮书&quot;&gt;&lt;a href=&quot;#区块链白皮书&quot; class=&quot;headerlink&quot; title=&quot;区块链白皮书&quot;&gt;&lt;/a&gt;区块链白皮书&lt;/h2&gt;&lt;p&gt;交易——挖矿，奖励 coinbase，coinbase transaction——&lt;/p&gt;
+&lt;p&gt;每次交易中
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E6%8A%A5%E5%91%8A.html"/>
+    <id>https://www.shmily.today/文本编辑程序技术报告.html</id>
+    <published>2021-10-14T13:18:18.831Z</published>
+    <updated>2021-10-14T14:26:38.086Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;文本编辑程序技术报告&quot;&gt;&lt;a href=&quot;#文本编辑程序技术报告&quot; class=&quot;headerlink&quot; title=&quot;文本编辑程序技术报告&quot;&gt;&lt;/a&gt;文本编辑程序技术报告&lt;/h2&gt;&lt;p&gt;此程序为基于终端的文本行编辑程序，使用java编写，实现的功能有：&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 162.寻找峰值</title>
+    <link href="https://www.shmily.today/leetcode-162-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC.html"/>
+    <id>https://www.shmily.today/leetcode-162-寻找峰值.html</id>
+    <published>2021-09-16T02:29:37.000Z</published>
+    <updated>2021-09-16T13:06:01.618Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 220.存在重复元素</title>
+    <link href="https://www.shmily.today/leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0.html"/>
+    <id>https://www.shmily.today/leetcode-220-存在重复元素.html</id>
+    <published>2021-09-15T12:20:23.000Z</published>
+    <updated>2021-10-22T14:06:04.952Z</updated>
+    
+    <summary type="html">
+    
+      给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) &lt;= t ，同时又满足 abs(i - j) &lt;= k 。如果存在则返回 true，不存在返回 false。
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://www.shmily.today/categories/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>leetcode 111.二叉树的最小深度</title>
     <link href="https://www.shmily.today/leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6.html"/>
     <id>https://www.shmily.today/leetcode-111-二叉树的最小深度.html</id>
     <published>2021-09-15T11:04:18.000Z</published>
-    <updated>2021-09-15T11:28:00.846Z</updated>
+    <updated>2021-09-16T01:19:38.585Z</updated>
     
     <summary type="html">
     
@@ -105,27 +213,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://www.shmily.today/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4.html"/>
-    <id>https://www.shmily.today/区块链隐私保护.html</id>
-    <published>2021-09-10T09:09:21.348Z</published>
-    <updated>2021-09-10T09:09:21.362Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;目前解决区块链隐私问题的主要技术有：混币、环签名、零知识证明等技术。&lt;/p&gt;
-&lt;p&gt;达氏币采用了混币这种技术，通过将大量的输入和输出地址发送至一些主节点进行混合，以此来混淆输入地址和输出地址之间的对应关系。但是这种技术一定要保证主节点的安全性．&lt;/p&gt;
-&lt;p&gt;门罗币采用环签
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>An Update on Integrating Zcash on Ethereum (ZoE)</title>
     <link href="https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html"/>
     <id>https://www.shmily.today/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</id>
@@ -155,7 +242,7 @@
     <link href="https://www.shmily.today/%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html"/>
     <id>https://www.shmily.today/面试题17-14-最小k个数.html</id>
     <published>2021-09-08T12:53:09.000Z</published>
-    <updated>2021-09-08T13:42:37.760Z</updated>
+    <updated>2021-10-20T06:59:52.051Z</updated>
     
     <summary type="html">
     
@@ -175,22 +262,26 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://www.shmily.today/Blockchain.html"/>
-    <id>https://www.shmily.today/Blockchain.html</id>
-    <published>2021-09-07T06:48:57.782Z</published>
-    <updated>2021-09-07T07:11:34.920Z</updated>
+    <title>leetcode 24.两两交换链表种的节点</title>
+    <link href="https://www.shmily.today/leetcode-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.html"/>
+    <id>https://www.shmily.today/leetcode-24-两两交换链表中的节点.html</id>
+    <published>2021-09-03T12:20:23.000Z</published>
+    <updated>2021-10-22T14:06:30.452Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;UTXO：Unspent Transaction Output，未花费交易输出&lt;/p&gt;
-&lt;p&gt;在比特币中，一笔交易的每一条输入和输出实际上都是UTXO，输入UTXO 就是以前交易剩下的， 更准确的说是以前交易的输出UTXO。&lt;strong&gt;账户系统&lt;/strong&gt;&lt;/p&gt;
-      
+      给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) &lt;= t ，同时又满足 abs(i - j) &lt;= k 。如果存在则返回 true，不存在返回 false。
     
     </summary>
     
+      <category term="leetcode" scheme="https://www.shmily.today/categories/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/leetcode/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -251,33 +342,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://www.shmily.today/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html"/>
-    <id>https://www.shmily.today/多线程实现方法.html</id>
-    <published>2021-08-26T14:14:08.378Z</published>
-    <updated>2021-09-12T15:13:54.664Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;实现多线程方式&quot;&gt;&lt;a href=&quot;#实现多线程方式&quot; class=&quot;headerlink&quot; title=&quot;实现多线程方式&quot;&gt;&lt;/a&gt;实现多线程方式&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;继承Thread类&lt;ol&gt;
-&lt;li&gt;自定义类继承Thread&lt;/li&gt;
-&lt;li&gt;重写ru
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>每日一题-881.救生艇</title>
-    <link href="https://www.shmily.today/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-881-%E6%95%91%E7%94%9F%E8%89%87.html"/>
-    <id>https://www.shmily.today/每日一题-881-救生艇.html</id>
+    <title>leetcode 881.救生艇</title>
+    <link href="https://www.shmily.today/leetcode-881-%E6%95%91%E7%94%9F%E8%89%87.html"/>
+    <id>https://www.shmily.today/leetcode-881-救生艇.html</id>
     <published>2021-08-26T13:33:06.000Z</published>
-    <updated>2021-08-26T13:58:36.641Z</updated>
+    <updated>2021-09-23T13:51:42.542Z</updated>
     
     <summary type="html">
     
@@ -297,7 +366,7 @@
     <link href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html"/>
     <id>https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</id>
     <published>2021-08-23T13:59:08.000Z</published>
-    <updated>2021-09-15T07:38:53.721Z</updated>
+    <updated>2021-09-27T12:47:33.213Z</updated>
     
     <summary type="html">
     
@@ -309,6 +378,70 @@
     
     
       <category term="区块链" scheme="https://www.shmily.today/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu更新内核</title>
+    <link href="https://www.shmily.today/Ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8.html"/>
+    <id>https://www.shmily.today/Ubuntu更新内核.html</id>
+    <published>2021-08-20T13:09:04.000Z</published>
+    <updated>2021-10-22T14:00:27.338Z</updated>
+    
+    <summary type="html">
+    
+      Ubuntu更新内核
+    
+    </summary>
+    
+      <category term="Ubuntu" scheme="https://www.shmily.today/categories/Ubuntu/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://www.shmily.today/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多线程实现方式</title>
+    <link href="https://www.shmily.today/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html"/>
+    <id>https://www.shmily.today/多线程实现方法.html</id>
+    <published>2021-08-20T13:09:04.000Z</published>
+    <updated>2021-10-22T13:59:06.129Z</updated>
+    
+    <summary type="html">
+    
+      多线程实现方式
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
+    
+      <category term="多线程" scheme="https://www.shmily.today/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+      <category term="Java" scheme="https://www.shmily.today/tags/Java/"/>
+    
+      <category term="多线程" scheme="https://www.shmily.today/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>遍历Map的4种方式</title>
+    <link href="https://www.shmily.today/%E9%81%8D%E5%8E%86Map%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F.html"/>
+    <id>https://www.shmily.today/遍历Map的4种方式.html</id>
+    <published>2021-08-20T13:09:04.000Z</published>
+    <updated>2021-10-22T13:58:24.554Z</updated>
+    
+    <summary type="html">
+    
+      遍历Map的4种方式总结
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://www.shmily.today/tags/Java/"/>
     
   </entry>
   
@@ -333,129 +466,6 @@
       <category term="论文" scheme="https://www.shmily.today/tags/%E8%AE%BA%E6%96%87/"/>
     
       <category term="零知识证明" scheme="https://www.shmily.today/tags/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>装箱与拆箱</title>
-    <link href="https://www.shmily.today/%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1.html"/>
-    <id>https://www.shmily.today/装箱与拆箱.html</id>
-    <published>2021-08-17T12:13:19.000Z</published>
-    <updated>2021-08-18T13:22:09.418Z</updated>
-    
-    <summary type="html">
-    
-      源码分析与面试题总结
-    
-    </summary>
-    
-      <category term="源码" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/"/>
-    
-      <category term="面试题" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    
-      <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
-    
-      <category term="面试题" scheme="https://www.shmily.today/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/20210817.html"/>
-    <id>https://www.shmily.today/20210817.html</id>
-    <published>2021-08-17T08:31:03.783Z</published>
-    <updated>2021-08-26T06:08:53.086Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;20&lt;/p&gt;
-&lt;p&gt;150&lt;/p&gt;
-&lt;h2 id=&quot;71-简化路径&quot;&gt;&lt;a href=&quot;#71-简化路径&quot; class=&quot;headerlink&quot; title=&quot;71.简化路径&quot;&gt;&lt;/a&gt;71.简化路径&lt;/h2&gt;&lt;p&gt;给你一个字符串 path ，表示指向某一文件或目录的 Un
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/Ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8.html"/>
-    <id>https://www.shmily.today/Ubuntu更新内核.html</id>
-    <published>2021-08-17T02:35:46.575Z</published>
-    <updated>2021-08-17T03:17:25.494Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;从Ubuntu官方提供的内核链接中获取所需要的内核版本：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://kernel.ubuntu.com/~kernel-ppa/mainline/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://kern
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/802.11.html"/>
-    <id>https://www.shmily.today/802.11.html</id>
-    <published>2021-08-17T01:28:29.686Z</published>
-    <updated>2021-08-17T01:29:12.128Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/20210816-24-25.html"/>
-    <id>https://www.shmily.today/20210816-24-25.html</id>
-    <published>2021-08-16T08:19:35.371Z</published>
-    <updated>2021-08-16T11:45:54.048Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;24-两两交换链表中的节点&quot;&gt;&lt;a href=&quot;#24-两两交换链表中的节点&quot; class=&quot;headerlink&quot; title=&quot;24.两两交换链表中的节点&quot;&gt;&lt;/a&gt;24.两两交换链表中的节点&lt;/h2&gt;&lt;p&gt;给定一个链表，两两交换其中相邻的节点，并返回交换后的
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</title>
-    <link href="https://www.shmily.today/Arrays%E7%B1%BB%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B2%A1%E6%89%BE%E5%88%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%94%E5%9B%9E-(low+1).html"/>
-    <id>https://www.shmily.today/Arrays类中的二分查找没找到为什么返回-(low+1).html</id>
-    <published>2021-08-15T13:13:19.000Z</published>
-    <updated>2021-08-18T13:21:04.537Z</updated>
-    
-    <summary type="html">
-    
-      源码分析
-    
-    </summary>
-    
-      <category term="源码" scheme="https://www.shmily.today/categories/%E6%BA%90%E7%A0%81/"/>
-    
-    
-      <category term="源码" scheme="https://www.shmily.today/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
