@@ -119,7 +119,12 @@
 <meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211020160153198.png">
 <meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211022205713766.png">
 <meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211022214336389.png">
-<meta property="og:updated_time" content="2021-10-22T13:54:08.596Z">
+<meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023163510256.png">
+<meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023163525585.png">
+<meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023170249234.png">
+<meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023170313134.png">
+<meta property="og:image" content="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023171814935.png">
+<meta property="og:updated_time" content="2021-10-23T09:26:20.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adapting High-resource NMT Models to Translate Low-resource Related">
 <meta name="twitter:description" content="Abstract​    平行数据的缺乏对于训练高质量机器翻译系统为低资源语言翻译来说是一个主要障碍。幸运的是，一些低资源语言在语言学上是与高资源语言相关或者相似的，这些相关的语言或许共享一些语法或者句法结构。在本文工作中，除了相关高资源语言的平行数据，我们利用了这些语言学上的重叠，来促进从低资源或者到只有单语言数据的低资源语言的翻译。我们的方法——NMT-Adapt，结合了去噪自动编码、反向翻译">
@@ -679,6 +684,31 @@
 <p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211022214336389.png" alt="image-20211022214336389"></p>
 <p>​    <strong>Collecting Dialectical Arabic Data</strong>     虽然获取低资源单语数据相对简单（因为即使是低资源文本语言标识符也通常容易获得），但辨识方言数据通常并不简单。这是因为许多方言传统上被认为是口头的而不是书面的，通常缺少标准拼写、重要的俚语，甚至缺少与主要语言的相互理解。一般来说，在语言分类器中方言数据通常被分到和主语言一组。</p>
 <p>​    我们描述了我们得到可靠的Arabic方言单语数据采取的步骤。由于CC-100语料库不能区分MSA和他的方言变种，因此我们训练了一个更细粒度的分类器，用于区分MSA和特定口语方言。我们的分类器基于为Arabic预训练的BERT模型并针对六种分类对他做了微调：（i）Egyptian （ii）Levantine，（iii）Gulf，（iv）Maghrebi，（v）Iraqi 方言以及（vi）书面MSA。我们使用Bouamor和Zaidan的数据作为训练数据，得到的分类器在保留集上准确率达到了91%。我们使用训练好的Arabic方言分类器进一步分类CC-100的Arabic单语数据，挑选MSA，Levantine和Egyptian句子作为我们实验中Arabic的单语数据。</p>
+<h3 id="4-2-Training-Details"><a href="#4-2-Training-Details" class="headerlink" title="4.2 Training Details"></a>4.2 Training Details</h3><p>​    我们为critics使用学习率为0.01的RMSprop优化器，为剩余模型使用Adam优化器。我们使用8个GPU，每个GPU的batch size为1024个token训练我们的模型。对于对抗训练，生成器每三次更新训练一次，critic每次更新训练一次。</p>
+<p>​    （i）翻译，（ii）反向翻译，（iii）LRL和HRL去噪（只针对En—-&gt;LRL方向）的每次任务，都有同样的样例数，并且他们的交叉熵损失有相同的权重。adversarial loss 对抗性损失 $\mathcal{L}_{adv}$ 在critic上有相同的权重，而对生成器（编码器）有-60的乘数。这个乘数经过微调来保证收敛，并且是负的因为他与鉴别器损失相反。</p>
+<p>​    对于第一次迭代，从英语到低资源语言我们训练了128个 epochs，从低资源语言到英语我们训练了64次。第二次迭代，我们对两个方向都训练了55个epochs。我们所有其他的设置和训练参数都遵循（Liu等人2020的研究）。</p>
+<p>​    critics由四层组成：第三层是一个双向GRU并且剩余三层是全连接层。隐藏层大小是512，512和128，并且使用SELU激活函数。</p>
+<p>​    我们在8个GPU上做了实验，每次迭代花费将近三天的时间，我们使用公开可用的mBART-checkpoints初始化。我们方法的GPU内存使用只比mBART稍微大了一点。虽然我们将额外的参数引入到鉴别器中，但这些额外的参数与mBART大小相比是微不足道的。</p>
+<h3 id="4-3-Result"><a href="#4-3-Result" class="headerlink" title="4.3 Result"></a>4.3 Result</h3><p>我们展示在低资源语言翻译上应用NMT-Adapt的结果</p>
+<h4 id="4-3-1-English-to-Low-Resource"><a href="#4-3-1-English-to-Low-Resource" class="headerlink" title="4.3.1 English to Low-Resource"></a>4.3.1 English to Low-Resource</h4><p>​    我们首先评估翻译成低资源语言的表现，我们将NMT-Adapt的第一次迭代与下面几种baseline系统作比较（i）En —-&gt;HRL Model：直接使用为En —- &gt; HRL翻译训练的模型。（ii）adversarial（对照组？）：没有使用反向翻译以及没有最终微调的版本。（iii）反向翻译：在使用HRL—-&gt;En翻译模型生成的反向翻译数据上的mBART微调。（iv）BT+Adv：没有最终微调的模型。（v）BT+Adv+fine-tune：在第三节描述的我们的完整版本（NMT-Adapt）</p>
+<p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023163510256.png" alt="image-20211023163510256"></p>
+<p>​    如表2所示，只使用单独的adversarial组件，在BLEU得分上相比使用高资源翻译模型有了改进，这表明，我们提出结合去噪自编码和adversarial loss的方法在适应一个新的目标输出域是有效的。</p>
+<p>​    除此之外，我们发现只使用反向翻译数据有一个大的改进，这证明了使用高资源翻译模型来创建LRL-En反向翻译数据对于适应低资源语言目标非常有效。</p>
+<p>​    我们进一步看到结合对抗和反向翻译任务进一步对其他每种方法都各自有提高，这表明这两部分是互补的。我们同样也对带有反向翻译但是没有对抗loss的En-HRL翻译做了实验。然而，这产生了更差的结果，这表明这种改进并不是简单地得益于多任务学习。</p>
+<p>​    对于Arabic，反译作用明显，然而对于Portuguese和Nepali，对抗部分更重要。对于一些语言，像Marathi，这两部分单独作用时提高不多，但是同时使用时，改进很大。</p>
+<p>​    对于Urdu，我们发现只使用Hindi模型的反译完全失败，这是直观的，因为Hindi和Urdu书写方式完全不同，并且使用Hindi模型翻译Urdu会产生有效的随机反译数据。当我们尝试应用使用对抗任务训练的模型时，这个模型生成混有Hindi，Urdu和English的句子。为了保证我们的模型能单独输出Urdu，我们通过禁止所有包含English或Hindi字符的token来限制输出。这允许我们的模型输出有效的并且语义上有意义的翻译。这是一个有趣的结果，因为它表明我们的对抗混合允许翻译相似的语言，即使他们的书写方式不同。我们报告了带有限制的BLEU分数。因为已经限制了token，我们跳过最终的微调过程。</p>
+<h4 id="4-3-2-Low-Resource-to-English"><a href="#4-3-2-Low-Resource-to-English" class="headerlink" title="4.3.2 Low-Resource to English"></a>4.3.2 Low-Resource to English</h4><p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023163525585.png" alt="image-20211023163525585"></p>
+<p>​    表3展示了从低资源语言到英语翻译的第一次迭代的结果。我们比较了如下几个系统：（i）HRL—-&gt;En model：直接使用为HRL —-&gt;En翻译训练的模型。（ii）Adversarial：与我们整个模型相似，但是没有使用反译。（iii）反译：在来自我们模型En—-&gt;LRL方向生成的反译数据上mBART微调。（iv）BT+Adv：我们的完整的模型。</p>
+<p>​    对于这个方向，我们可以看到反译和对抗域适应部分通常都很有效。Arabic是个例外，这可能是由于与低资源语言分类相比，我们的方言分类噪音大，另一个原因可能是相比于低资源但是标准语言，口语方言缺乏书写标准。</p>
+<p>​    对于这些实验，我们在这个方向上没有为Urdu使用任何特别的防御措施，尽管他和Hindi有不同的书写方式。</p>
+<h4 id="4-3-3-Iterative-Training"><a href="#4-3-3-Iterative-Training" class="headerlink" title="4.3.3 Iterative Training"></a>4.3.3 Iterative Training</h4><p>​    表4展示了训练的两个迭代的结果。对于除了Arabic方言的语言，第二次迭代通常表现出对第一次迭代有改进，表明我们可以在一个方向上使用改进的模型来进一步改进相反方向。我们发现三次迭代后的改进微乎其微。</p>
+<p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023170249234.png" alt="image-20211023170249234"></p>
+<p>​    我们将我们的结果与使用HRL语言作为pivot的baseline做了比较，baseline使用微调过的mBART来执行英语和HRL之间的监督翻译，并且使用MASS来执行HRL和LRL之间的无监督翻译。mBART在我们模型使用的平行数据上微调过，MASS使用的单语数据与我们方法中的相同。对于所有的语言和方向，我们的方法都明显优于pivot baseline。</p>
+<h4 id="4-3-4-Comparison-with-Other-Methods"><a href="#4-3-4-Comparison-with-Other-Methods" class="headerlink" title="4.3.4 Comparison with Other Methods"></a>4.3.4 Comparison with Other Methods</h4><p>​    在表 5 中，我们比较了使用具有多种语言的平行语料库作为辅助数据的交叉翻译方法 (Garcia et al., 1020b) 以及 (Guzm´an et al., 2019) 和 (Liuet al., 2020) 中报告的结果 。所有方法使用相同的测试集，English-Hindi平行语料库，和为公平比较的tokenization。对于对于En—-&gt;Nepali，NMT-Adapt比先前使用Hindi或者多语言平行数据的无监督方法表现更好，与监督方法表现相近。对于Nepali——&gt;En方向，我们的方法与先前无监督方法有类似的表现。请注意，我们使用与表3和表4不同的标记化，以与之前的工作保持一致。</p>
+<p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023170313134.png" alt="image-20211023170313134"></p>
+<h4 id="4-3-5-Monolingual-Data-Ablation（消融，loss）"><a href="#4-3-5-Monolingual-Data-Ablation（消融，loss）" class="headerlink" title="4.3.5 Monolingual Data Ablation（消融，loss）"></a>4.3.5 Monolingual Data Ablation（消融，loss）</h4><p>​    表6展示了English—-&gt;Marathi第一次迭代的结果，同时改变了使用的单语数据量。我们发现，随着句子数量从10k增加到1M，BLEU得分从11.3增加到16.1，这表明更多的单语数据显著提高了表现。</p>
+<p><img src="Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related/image-20211023171814935.png" alt="image-20211023171814935"></p>
+<h2 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5 Conclusion"></a>5 Conclusion</h2><p>​    我们提出了NMT-Adapt，一个对低资源语言神经机器翻译的新方法，它假设在低资源语言中，没有平行数据或双语词典。使用类似的高资源语言的平行数据以及低资源语言中的单语数据，我们应用无监督适应来促进对低资源语言的翻译。我们的方法结合了几个任务来促进适应过程，其中包括对抗训练，去噪语言建模和迭代反向翻译。实验表明这种结合比任何单独的任务更有效，并且可以在许多不同的语种进行泛化。</p>
 
       
     </div>
@@ -732,7 +762,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Zosien</li>
   <li>
-  <strong>修改时间： </strong>2021-10-22 21:54:08</li>
+  <strong>修改时间： </strong>2021-10-23 17:26:20</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html" title="Adapting High-resource NMT Models to Translate Low-resource Related">https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html</a>
@@ -1089,7 +1119,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">3.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Method"><span class="nav-number">4.</span> <span class="nav-text">3 Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-English-to-Low-resource"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 English to Low-resource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Low-resource-to-English"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Low-resource to English</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Experiments"><span class="nav-number">5.</span> <span class="nav-text">4 Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Datasets"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 Datasets</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">3.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Method"><span class="nav-number">4.</span> <span class="nav-text">3 Method</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-English-to-Low-resource"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 English to Low-resource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Low-resource-to-English"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 Low-resource to English</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Experiments"><span class="nav-number">5.</span> <span class="nav-text">4 Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Datasets"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 Datasets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Training-Details"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 Training Details</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Result"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 Result</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-English-to-Low-Resource"><span class="nav-number">5.3.1.</span> <span class="nav-text">4.3.1 English to Low-Resource</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-Low-Resource-to-English"><span class="nav-number">5.3.2.</span> <span class="nav-text">4.3.2 Low-Resource to English</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-3-Iterative-Training"><span class="nav-number">5.3.3.</span> <span class="nav-text">4.3.3 Iterative Training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-4-Comparison-with-Other-Methods"><span class="nav-number">5.3.4.</span> <span class="nav-text">4.3.4 Comparison with Other Methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-5-Monolingual-Data-Ablation（消融，loss）"><span class="nav-number">5.3.5.</span> <span class="nav-text">4.3.5 Monolingual Data Ablation（消融，loss）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Conclusion"><span class="nav-number">6.</span> <span class="nav-text">5 Conclusion</span></a></li></ol></div>
             
 
           </div>
@@ -1141,7 +1171,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">63.6k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">65.6k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
