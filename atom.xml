@@ -6,28 +6,151 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2021-10-23T09:26:20.548Z</updated>
+  <updated>2021-11-13T14:18:54.443Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
-    <name>Zosien</name>
+    <name>Javen</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Adapting High-resource NMT Models to Translate Low-resource Related</title>
-    <link href="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html"/>
-    <id>https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html</id>
-    <published>2021-10-19T08:06:37.000Z</published>
-    <updated>2021-10-23T09:26:20.548Z</updated>
+    <title>神奇炸弹</title>
+    <link href="https://www.shmily.today/%E7%A5%9E%E5%A5%87%E7%82%B8%E5%BC%B9.html"/>
+    <id>https://www.shmily.today/神奇炸弹.html</id>
+    <published>2021-11-13T13:26:32.000Z</published>
+    <updated>2021-11-13T14:18:54.443Z</updated>
+    
+    <summary type="html">
+    
+      一种新型的炸弹，可以摧毁一个边长为R的正方形内的所有的目标。现在地图上有n个目标，用整数xi,yi(0&lt;=xi,yi&lt;=5000)表示目标在地图上的位置，每个目标都有一个价值0&lt;vi&lt;100。激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆破范围，即那个边长为R的正方形的边必须和x，y轴平行。若目标位于爆破正方形的边上，该目标将不会被摧毁。现在你的任务是计算一颗炸弹最多能炸掉地图上总价值为多少的目标。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93.html"/>
+    <id>https://www.shmily.today/论文总结.html</id>
+    <published>2021-11-06T06:58:47.864Z</published>
+    <updated>2021-11-08T09:13:24.088Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;/h2&gt;&lt;p&gt;​    平行数据的缺乏对于训练高质量机器翻译系统为低资源语言翻译来说是一个主要障碍。幸运的
+        &lt;h2 id=&quot;基于零知识证明的账户模型区块链系统隐私保护研究&quot;&gt;&lt;a href=&quot;#基于零知识证明的账户模型区块链系统隐私保护研究&quot; class=&quot;headerlink&quot; title=&quot;基于零知识证明的账户模型区块链系统隐私保护研究&quot;&gt;&lt;/a&gt;基于零知识证明的账户模型区块链系统
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%91%98%E6%8A%84.html"/>
+    <id>https://www.shmily.today/论文摘抄.html</id>
+    <published>2021-11-06T06:42:41.330Z</published>
+    <updated>2021-11-06T06:58:43.261Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;区块链隐私&quot;&gt;&lt;a href=&quot;#区块链隐私&quot; class=&quot;headerlink&quot; title=&quot;区块链隐私&quot;&gt;&lt;/a&gt;区块链隐私&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;通过分析区块链中的交易数据，攻击者可以分析不同账户之间的交易关系。并且这些交易被永久记录在区块链上
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.html"/>
+    <id>https://www.shmily.today/聊天机器人.html</id>
+    <published>2021-11-04T02:25:06.325Z</published>
+    <updated>2021-11-04T04:04:18.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;聊天机器人技术报告&quot;&gt;&lt;a href=&quot;#聊天机器人技术报告&quot; class=&quot;headerlink&quot; title=&quot;聊天机器人技术报告&quot;&gt;&lt;/a&gt;聊天机器人技术报告&lt;/h2&gt;&lt;p&gt;本项目复现现有开源项目，基于seq2seq+attention实现聊天机器人。&lt;/p
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/nlp.html"/>
+    <id>https://www.shmily.today/nlp.html</id>
+    <published>2021-11-03T06:32:49.970Z</published>
+    <updated>2021-11-04T03:25:52.074Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;C:/Users/15622/AppData/Roaming/Typora/typora-user-images/image-20211103143238744.png&quot; alt=&quot;image-20211103143238744&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;im
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>素数筛</title>
+    <link href="https://www.shmily.today/%E7%B4%A0%E6%95%B0%E7%AD%9B.html"/>
+    <id>https://www.shmily.today/素数筛.html</id>
+    <published>2021-10-29T06:37:34.000Z</published>
+    <updated>2021-11-13T14:19:42.746Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;description &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给你一个七位QQ号,输出小于这个QQ号的所有质数. 质数定义为在大于1的自然数中，除了1和它本身以外不再有其他因数。 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;input &lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Adapting High-resource NMT Models to Translate Low-resource Related Languages without Parallel Data</title>
+    <link href="https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html"/>
+    <id>https://www.shmily.today/Adapting-High-resource-NMT-Models-to-Translate-Low-resource-Related.html</id>
+    <published>2021-10-19T08:06:37.000Z</published>
+    <updated>2021-10-28T08:33:34.464Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;平行语料库是两种语言之间翻译文本的结构化集合。这种平行文本语料库是训练机器翻译算法的基础。&lt;/p&gt;
+&lt;h2 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract&quot;&gt;&lt;/a&gt;Abstract&lt;
       
     
     </summary>
@@ -338,134 +461,6 @@
       <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="动态规划" scheme="https://www.shmily.today/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 881.救生艇</title>
-    <link href="https://www.shmily.today/leetcode-881-%E6%95%91%E7%94%9F%E8%89%87.html"/>
-    <id>https://www.shmily.today/leetcode-881-救生艇.html</id>
-    <published>2021-08-26T13:33:06.000Z</published>
-    <updated>2021-09-23T13:51:42.542Z</updated>
-    
-    <summary type="html">
-    
-      第 i 个人的体重为 people[i]，每艘船可以承载的最大重量为 limit。每艘船最多可同时载两人，但条件是这些人的重量之和最多为 limit。返回载到每一个人所需的最小船数。(保证每个人都能被船载)。
-    
-    </summary>
-    
-      <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    
-      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>An Empirical Analysis of Privacy in the Lightning Network</title>
-    <link href="https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html"/>
-    <id>https://www.shmily.today/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</id>
-    <published>2021-08-23T13:59:08.000Z</published>
-    <updated>2021-09-27T12:47:33.213Z</updated>
-    
-    <summary type="html">
-    
-      An Empirical Analysis of Privacy in the Lightning Network翻译
-    
-    </summary>
-    
-      <category term="区块链" scheme="https://www.shmily.today/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-      <category term="区块链" scheme="https://www.shmily.today/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu更新内核</title>
-    <link href="https://www.shmily.today/Ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8.html"/>
-    <id>https://www.shmily.today/Ubuntu更新内核.html</id>
-    <published>2021-08-20T13:09:04.000Z</published>
-    <updated>2021-10-22T14:00:27.338Z</updated>
-    
-    <summary type="html">
-    
-      Ubuntu更新内核
-    
-    </summary>
-    
-      <category term="Ubuntu" scheme="https://www.shmily.today/categories/Ubuntu/"/>
-    
-    
-      <category term="Ubuntu" scheme="https://www.shmily.today/tags/Ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多线程实现方式</title>
-    <link href="https://www.shmily.today/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html"/>
-    <id>https://www.shmily.today/多线程实现方法.html</id>
-    <published>2021-08-20T13:09:04.000Z</published>
-    <updated>2021-10-22T13:59:06.129Z</updated>
-    
-    <summary type="html">
-    
-      多线程实现方式
-    
-    </summary>
-    
-      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
-    
-      <category term="多线程" scheme="https://www.shmily.today/categories/Java/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-    
-      <category term="Java" scheme="https://www.shmily.today/tags/Java/"/>
-    
-      <category term="多线程" scheme="https://www.shmily.today/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>遍历Map的4种方式</title>
-    <link href="https://www.shmily.today/%E9%81%8D%E5%8E%86Map%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F.html"/>
-    <id>https://www.shmily.today/遍历Map的4种方式.html</id>
-    <published>2021-08-20T13:09:04.000Z</published>
-    <updated>2021-10-22T13:58:24.554Z</updated>
-    
-    <summary type="html">
-    
-      遍历Map的4种方式总结
-    
-    </summary>
-    
-      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://www.shmily.today/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to bootstrap snarky blockchain</title>
-    <link href="https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html"/>
-    <id>https://www.shmily.today/How-to-bootstrap-snarky-blockchain.html</id>
-    <published>2021-08-18T13:13:19.000Z</published>
-    <updated>2021-09-09T07:41:03.560Z</updated>
-    
-    <summary type="html">
-    
-      零知识证明论文翻译、阅读
-    
-    </summary>
-    
-      <category term="论文" scheme="https://www.shmily.today/categories/%E8%AE%BA%E6%96%87/"/>
-    
-      <category term="零知识证明" scheme="https://www.shmily.today/categories/%E8%AE%BA%E6%96%87/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
-    
-    
-      <category term="论文" scheme="https://www.shmily.today/tags/%E8%AE%BA%E6%96%87/"/>
-    
-      <category term="零知识证明" scheme="https://www.shmily.today/tags/%E9%9B%B6%E7%9F%A5%E8%AF%86%E8%AF%81%E6%98%8E/"/>
     
   </entry>
   
