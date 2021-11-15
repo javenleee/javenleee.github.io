@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[有向图是否存在环？]]></title>
+    <url>%2F%E6%9C%89%E5%90%91%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F.html</url>
+    <content type="text"><![CDATA[t题目描述 写程序判断有向图是否存在环。有向图的输入用n个二元组表示(u,v)，表示从u到v有一条有向边，起点是u，终点是v。 输入格式 输入包括多组测试数据，每组测试数据首先是正整数n和m，表示有向图有n个节点（编号从1到n），m条有向边，接下来是m行，每行为两个正整数u和v，用空格隔开，表示从节点u到节点v有一条有向边，u和v都大于等于1且小于等于n最后一行为0 0，表示测试数据结束有向图的节点个数不超过100个，边的个数不超过1000 输出格式 如果该有向图存在环，输出YES，否则输出NO 输入样例 11 101 22 34 35 46 53 910 99 117 88 112 21 22 13 31 22 33 10 0 输出样例 NOYESYES 判断有向图是否存在环，有两种解决方法： 拓扑排序 DFS 首先说拓扑排序，百度是这么说拓扑排序的。 对一个有向无环图(Directed Acyclic Graph简称DAG)G进行拓扑排序，是将G中所有顶点排成一个线性序列，使得图中任意一对顶点u和v，若边∈E(G)，则u在线性序列中出现在v之前。通常，这样的线性序列称为满足拓扑次序(Topological Order)的序列，简称拓扑序列。简单的说，由某个集合上的一个偏序得到该集合上的一个全序，这个操作称之为拓扑排序。 操作的步骤是，重复执行：每次取入度为0的节点，从节点集合中删除，同时删除与之相关的边，更新剩余节点的入度。 删除所有入度为0的节点后，如果节点集合中仍有节点存在，那么他们一定能构成环，因为对于环中的所有节点，它至少有一个入度。 因此这是一个判断有向图有无环的方法。 另外一个方法是深度优先搜索DFS，大概的思想是，对于一个没有访问过的节点i，我们访问它相邻的节点j。如果相邻节点j被标记为正在被访问，那么说明当前能够构成一个环，直接返回true，如果相邻节点j没有被访问，那么标记为正在被访问，继续访问j的相邻节点，如果j已经访问过，说明不能构成环，返回false。大体思想就是这样。下面是代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475#include&lt;bits/stdc++.h&gt;using namespace std;// 二维数组存储图int arr[110][110];int n;// 访问标记int visited[110];bool ans;bool dfs(int i)&#123; // 如果当前节点正在被访问，表示找到了一个环，i是其中一个节点，那么返回true if(visited[i] == -1) &#123; return true; &#125;else if(visited[i] == 1) // 当前节点已经在前面访问过，不可能构成环，直接返回false &#123; return false; &#125; // 其他情况就是没有访问过，标记正在访问 visited[i] = -1; // 遍历所有节点 for(int j = 1; j &lt;= n; j++) &#123; // 如果有一条i-》j的边 if(arr[i][j] == 1) &#123; if(dfs(j)) &#123; return true; &#125; &#125; &#125; // 如果前面没有return true，则表示i的所有相邻边都不能构成环，把i标记为已访问，返回false visited[i] = 1; return false;&#125;int main()&#123; int m; while(scanf("%d%d",&amp;n,&amp;m)) &#123; ans=false; if ( m == 0 &amp;&amp; n == 0) &#123; break; &#125; int x,y; while(m--)&#123; scanf("%d%d",&amp;x,&amp;y); arr[x][y] = 1; &#125; // 外层循环，确保所有节点都访问过 for(int i = 1; i &lt;= n; i++) &#123; // 当前节点没有被访问 if(visited[i] == 0) &#123; // 深度优先遍历当前节点 ans=dfs(i); // 如果找到环，输出yes，break if(ans) &#123; printf("YES\n"); break; &#125; &#125; &#125; // ans 为false表示没有找到环，循环结束，输出no if(!ans)&#123; printf("NO\n"); &#125; memset(visited,0,sizeof(visited)); memset(arr,0,sizeof(arr)); &#125;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[神奇炸弹]]></title>
     <url>%2F%E7%A5%9E%E5%A5%87%E7%82%B8%E5%BC%B9.html</url>
     <content type="text"><![CDATA[题目描述 一种新型的炸弹，可以摧毁一个边长为R的正方形内的所有的目标。现在地图上有n个目标，用整数xi,yi(0&lt;=xi,yi&lt;=5000)表示目标在地图上的位置，每个目标都有一个价值0&lt;vi&lt;100。激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆破范围，即那个边长为R的正方形的边必须和x，y轴平行。若目标位于爆破正方形的边上，该目标将不会被摧毁。现在你的任务是计算一颗炸弹最多能炸掉地图上总价值为多少的目标。 输入格式 第一行为正整数n和正整数R，接下来的n行每行有3个正整数，分别表示xi,yi,vin&lt;=10000 输出格式 仅有一个正整数，表示一颗炸弹最多能炸掉地图上总价值为多少的目标（结果不会超过32767）。 输入样例 1234&gt; &gt; 2 1&gt; &gt; 0 0 1&gt; &gt; 1 1 1&gt; &gt; &gt; 输出样例 1 比较容易想到的做法是，将输入存储到一个大数组中，然后用边长为R的小数组遍历前面的大数组，找到每个小数组中的总价值，遍历取最大值。 这种做法的复杂在于每次小数组都要重新计算，而且我们发现后一个小数组和前一个小数组有很多重合部分，后一个数组可以通过前一个数组经过少量计算得到，类似于Rabin-karp，但也是比较复杂的。 这是一道前缀和题目，将数据组织成前缀和的形式，也就是数组中存储的不是单个点的value值，而是这个点之前的value值的和，那么很容易得到value[i][j] = value[i-1][j] + value[i][j-1] -value[i-1][j-1] ，那么同样地，当前所在位置之前边长为R的正方形内所有的value和为 value[i][j] - value[i-r][j] - value[i][j-r] + value[i-r][j-r] ，因为题目说了，正方形的边上不计算value值，所以是i-r，否则应该是i-r-1，因为我们的表示value值时，value[i][j] 是包含边的。这样一来代码就比较好写了。 123456789101112131415161718192021222324252627282930#include&lt;bits/stdc++.h&gt;using namespace std;const int maxn = 5050;int f[maxn][maxn];int main()&#123; int n,r; scanf("%d%d",&amp;n,&amp;r); memset(f,0,sizeof(f)); int x,y,v; // 输入数据，存入数组。 while(n--)&#123; scanf("%d%d%d",&amp;x,&amp;y,&amp;v); f[x+1][y+1] = v; &#125; // 重新组织数据 for(int i = 1; i &lt;= 5001; i++)&#123; for(int j = 1; j &lt;= 5001; j++)&#123; f[i][j] += f[i-1][j] + f[i][j-1] - f[i-1][j-1]; &#125; &#125; // 遍历计算最大值 int ans = 0; for(int i = r; i &lt;= 5001; i++)&#123; for(int j = r; j &lt;= 5001; j++)&#123; ans = max(ans,f[i][j] - f[i-r][j] -f[i][j-r] + f[i-r][j-r] ); &#125; &#125; printf("%d\n",ans);&#125;]]></content>
@@ -14,7 +26,7 @@
   <entry>
     <title></title>
     <url>%2F%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93.html</url>
-    <content type="text"><![CDATA[基于零知识证明的账户模型区块链系统隐私保护研究​ 原文 山大 2020 软工 硕 现有ZKProof大都针对UTXO模型，如zerocash，zerocoin，Monero、Dash、CoinJoin，但是针对账户模型的隐私保护方案很少，DSC是一个，本文提出基于zksnarks的BlockMaze，第一个从底层实现隐私保护的基于账户模型的区块链 （是一个全新的系统），同时保护交易金额、发送方、接收方、账户余额。提出了账户模型区块链的双余额模型，余额由明文余额和零知识余额组成。为了隐藏交易发送方和接收方之间的转账关系，设计了基于隐私保护交易的两步资金转移操作。 同态加密：ELGamal。全同态加密方案因为效率较低，不能在区块链中使用。 问题： 提出了双账户模型，一个明文余额，一个零知识余额，两个余额可以相互转换。总余额是两者的和，交易使用零知识余额进行。zk_balanceA由A的拥有者私密存储（那为什么不 区块链中存储加密后的余额，明文余额私密存储呢） 共识的过程有零知识证明吗？根据华为例子来看，验证在chaincode进行，然后提交，根没有使用零知识证明没有其他不同。在联盟链场景中，或者在教学平台上，只有个别受信任设备充当节点，是否需要零知识证明。 Merkle Patricia Tree（又称为Merkle Patricia Trie）是一种经过改良的、融合了默克尔树和前缀树两种树结构优点的数据结构，是以太坊中用来组织管理账户数据、生成交易集合哈希的重要数据结构。]]></content>
+    <content type="text"><![CDATA[基于零知识证明的账户模型区块链系统隐私保护研究​ 原文 山大 2020 软工 硕 现有ZKProof大都针对UTXO模型，如zerocash，zerocoin，Monero、Dash、CoinJoin，但是针对账户模型的隐私保护方案很少，DSC是一个，本文提出基于zksnarks的BlockMaze，第一个从底层实现隐私保护的基于账户模型的区块链 （是一个全新的系统），同时保护交易金额、发送方、接收方、账户余额。提出了账户模型区块链的双余额模型，余额由明文余额和零知识余额组成。为了隐藏交易发送方和接收方之间的转账关系，设计了基于隐私保护交易的两步资金转移操作。 同态加密：ELGamal。全同态加密方案因为效率较低，不能在区块链中使用。 问题： 提出了双账户模型，一个明文余额，一个零知识余额，两个余额可以相互转换。总余额是两者的和，交易使用零知识余额进行。zk_balanceA由A的拥有者私密存储（那为什么不 区块链中存储加密后的余额，明文余额私密存储呢） 共识的过程有零知识证明吗？根据华为例子来看，验证在chaincode进行，然后提交，根没有使用零知识证明没有其他不同。在联盟链场景中，或者在教学平台上，只有个别受信任设备充当节点，是否需要零知识证明。 Merkle Patricia Tree（又称为Merkle Patricia Trie）是一种经过改良的、融合了默克尔树和前缀树两种树结构优点的数据结构，是以太坊中用来组织管理账户数据、生成交易集合哈希的重要数据结构。 zkSNARKs in a NutshellChristian Reitwiebner ——solidity 创建者 zkSNARKs有四个主要部分： Encoding as a polynomial problem 要被检查的问题被编译成多项式的二次等式，t(x)h(x) = w(x)v(x),当且仅当程序正确执行。证明者要使验证者相信等式成立 Succinctness by random sampling 验证者选择一个随机评估点s，验证在该点t(s)h(s) = w(s)v(s)是否成立。这样做使多项式乘法简化成简单的标量乘法。 Homomorphic encoding / encryption 加密函数具有同态属性（但不是全同态，全同态现在还没有实用价值），这允许证明者在不知道随机评估点s，只知道其加密值E(s)的情况下计算E(t(s)),E(h(s)),E(v(s)),E(w(s)) Zero Knowledge prover将上面四个加密值乘以一个数来混淆他们，使得verifier不知道实际加密值而可以进行检查，因为检查t(s)h(s) = w(s)v(s)与检查t(s)h(s)k = w(s)v(s)k，（k是一个随机非零数）是等价的 RSA]]></content>
   </entry>
   <entry>
     <title></title>
@@ -72,8 +84,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -145,21 +157,8 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[leetcode 24.两两交换链表种的节点]]></title>
-    <url>%2Fleetcode-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.html</url>
-    <content type="text"><![CDATA[24.两两交换链表中的节点给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 递归 每次递归将第二个节点指向第一个节点，第一个节点指向下一次递归返回的头节点，直到链表中长度为0或者1结束，返回头节点。 123456789101112131415161718class Solution &#123; // 递归 // 时间复杂度O(n)，需要完整遍历一遍链表 // 空间复杂度O(n)，n次递归调用的栈空间 public ListNode swapPairs(ListNode head) &#123; // 长度为0或1，不需要交换直接返回 if(head == null || head.next == null)&#123; return head; &#125; // p指向下一次递归的链表头节点 ListNode p = head.next.next; // newHead指向第二个节点，也就是交换后的头节点 ListNode newHead = head.next; newHead.next = head; head.next = swapPairs(p); return newHead; &#125;&#125; 迭代，循环遍历链表，每次两两交换位置，直到最后剩一个节点或者不剩节点。 123456789101112131415161718192021222324252627class solution&#123; // 迭代 // 时间复杂度O(n),遍历一遍链表 // 空间复杂度O(1) public ListNode swapPairs(ListNode head) &#123; if(head == null || head.next == null)&#123; return head; &#125; ListNode dummyNode = new ListNode(-1,head); ListNode p = dummyNode; ListNode q = head; ListNode r = head.next; while(q != null &amp;&amp; r != null)&#123; q.next = r.next; r.next = q; p.next = r; p = q; q = q.next; if(q!=null)&#123; r = q.next; &#125;else&#123; break; &#125; &#125; return dummyNode.next; &#125;&#125; 25.K个一组反转链表给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。 k 是一个正整数，它的值小于或等于链表的长度。 如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。 123456789101112131415161718192021222324252627282930313233343536class Solution &#123; // 时间复杂度O(n) // 空间复杂度O(1) public ListNode reverseKGroup(ListNode head, int k) &#123; ListNode dummyNode = new ListNode(-1,head); ListNode end = dummyNode; ListNode start = end; while(start.next != null)&#123; for(int i = 1;i&lt;=k;i++)&#123; if(end == null)&#123; return dummyNode.next; &#125;else&#123; end = end.next; &#125; &#125; if(end != null)&#123; ListNode next = end.next; ListNode p = start.next; ListNode q = p.next; // 使用头插法反转链表 // 同样可以每次将第一个插入到最后来实现 while(q != next)&#123; p.next = q.next; q.next = start.next; start.next = q; q = p.next; &#125; start = p; end = start; &#125; &#125; return dummyNode.next; &#125;&#125; 147.对链表进行插入排序123456789101112131415161718192021222324class Solution &#123; public ListNode insertionSortList(ListNode head) &#123; ListNode dummyNode = new ListNode(-65536,head); ListNode p = head; ListNode q = dummyNode; ListNode rear = q; while(p!=null)&#123; if(rear.val &lt;= p.val)&#123; rear = rear.next; &#125;else&#123; ListNode next = p.next; q = dummyNode; while(q.next.val &lt;= p.val)&#123; q = q.next; &#125; p.next = q.next; q.next = p; rear.next = next; &#125; p = rear.next; &#125; return dummyNode.next; &#125;&#125; 237.删除链表中的节点请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点。传入函数的唯一参数为 要被删除的节点 。 1234567891011121314151617class Solution &#123; // public void deleteNode(ListNode node) &#123; // ListNode p = node; // while(p.next.next != null)&#123; // p.val = p.next.val; // p = p.next; // &#125; // p.val = p.next.val; // p.next = null; // &#125; // 官方答案，牛 public void deleteNode(ListNode node)&#123; node.val = node.next.val; node.next = node.next.next; &#125;&#125; 19 删除链表的倒数第N个结点给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。 进阶：你能尝试使用一趟扫描实现吗？ 12345678910111213141516class Solution &#123; // 双指针，一趟扫描实现。 public ListNode removeNthFromEnd(ListNode head, int n) &#123; ListNode temp = new ListNode(0,head); ListNode p = temp,q = temp; for(int i = 0; i&lt;n+1;i++)&#123; q = q.next; &#125; while(q != null)&#123; p = p.next; q = q.next; &#125; p.next = p.next.next; return temp.next; &#125;&#125; 61，143，234]]></content>
-      <categories>
-        <category>leetcode</category>
-        <category>算法</category>
-      </categories>
-      <tags>
         <tag>leetcode</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -172,9 +171,22 @@
         <category>动态规划</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
+        <tag>leetcode</tag>
         <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 24.两两交换链表种的节点]]></title>
+    <url>%2Fleetcode-24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.html</url>
+    <content type="text"><![CDATA[24.两两交换链表中的节点给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 递归 每次递归将第二个节点指向第一个节点，第一个节点指向下一次递归返回的头节点，直到链表中长度为0或者1结束，返回头节点。 123456789101112131415161718class Solution &#123; // 递归 // 时间复杂度O(n)，需要完整遍历一遍链表 // 空间复杂度O(n)，n次递归调用的栈空间 public ListNode swapPairs(ListNode head) &#123; // 长度为0或1，不需要交换直接返回 if(head == null || head.next == null)&#123; return head; &#125; // p指向下一次递归的链表头节点 ListNode p = head.next.next; // newHead指向第二个节点，也就是交换后的头节点 ListNode newHead = head.next; newHead.next = head; head.next = swapPairs(p); return newHead; &#125;&#125; 迭代，循环遍历链表，每次两两交换位置，直到最后剩一个节点或者不剩节点。 123456789101112131415161718192021222324252627class solution&#123; // 迭代 // 时间复杂度O(n),遍历一遍链表 // 空间复杂度O(1) public ListNode swapPairs(ListNode head) &#123; if(head == null || head.next == null)&#123; return head; &#125; ListNode dummyNode = new ListNode(-1,head); ListNode p = dummyNode; ListNode q = head; ListNode r = head.next; while(q != null &amp;&amp; r != null)&#123; q.next = r.next; r.next = q; p.next = r; p = q; q = q.next; if(q!=null)&#123; r = q.next; &#125;else&#123; break; &#125; &#125; return dummyNode.next; &#125;&#125; 25.K个一组反转链表给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。 k 是一个正整数，它的值小于或等于链表的长度。 如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。 123456789101112131415161718192021222324252627282930313233343536class Solution &#123; // 时间复杂度O(n) // 空间复杂度O(1) public ListNode reverseKGroup(ListNode head, int k) &#123; ListNode dummyNode = new ListNode(-1,head); ListNode end = dummyNode; ListNode start = end; while(start.next != null)&#123; for(int i = 1;i&lt;=k;i++)&#123; if(end == null)&#123; return dummyNode.next; &#125;else&#123; end = end.next; &#125; &#125; if(end != null)&#123; ListNode next = end.next; ListNode p = start.next; ListNode q = p.next; // 使用头插法反转链表 // 同样可以每次将第一个插入到最后来实现 while(q != next)&#123; p.next = q.next; q.next = start.next; start.next = q; q = p.next; &#125; start = p; end = start; &#125; &#125; return dummyNode.next; &#125;&#125; 147.对链表进行插入排序123456789101112131415161718192021222324class Solution &#123; public ListNode insertionSortList(ListNode head) &#123; ListNode dummyNode = new ListNode(-65536,head); ListNode p = head; ListNode q = dummyNode; ListNode rear = q; while(p!=null)&#123; if(rear.val &lt;= p.val)&#123; rear = rear.next; &#125;else&#123; ListNode next = p.next; q = dummyNode; while(q.next.val &lt;= p.val)&#123; q = q.next; &#125; p.next = q.next; q.next = p; rear.next = next; &#125; p = rear.next; &#125; return dummyNode.next; &#125;&#125; 237.删除链表中的节点请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点。传入函数的唯一参数为 要被删除的节点 。 1234567891011121314151617class Solution &#123; // public void deleteNode(ListNode node) &#123; // ListNode p = node; // while(p.next.next != null)&#123; // p.val = p.next.val; // p = p.next; // &#125; // p.val = p.next.val; // p.next = null; // &#125; // 官方答案，牛 public void deleteNode(ListNode node)&#123; node.val = node.next.val; node.next = node.next.next; &#125;&#125; 19 删除链表的倒数第N个结点给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。 进阶：你能尝试使用一趟扫描实现吗？ 12345678910111213141516class Solution &#123; // 双指针，一趟扫描实现。 public ListNode removeNthFromEnd(ListNode head, int n) &#123; ListNode temp = new ListNode(0,head); ListNode p = temp,q = temp; for(int i = 0; i&lt;n+1;i++)&#123; q = q.next; &#125; while(q != null)&#123; p = p.next; q = q.next; &#125; p.next = p.next.next; return temp.next; &#125;&#125; 61，143，234]]></content>
+      <categories>
+        <category>leetcode</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -187,8 +199,8 @@
         <category>动态规划</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
+        <tag>leetcode</tag>
         <tag>动态规划</tag>
       </tags>
   </entry>
@@ -226,17 +238,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[遍历Map的4种方式]]></title>
-    <url>%2F%E9%81%8D%E5%8E%86Map%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F.html</url>
-    <content type="text"><![CDATA[遍历Map的4种方式1234567891011121314151617181920212223242526272829public static void main(String[] args)&#123; HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); map.add(1,2); // 1.entrySet遍历，键和值都需要时使用 for( Map.Entry&lt;Integer,Integer&gt; entry : map.entrySet())&#123; System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue()); &#125; // 2.单独遍历 // 遍历键时 for(Integer key : map.keySet())&#123; key &#125; // 遍历值时 for(Integer value : map.values())&#123; &#125; // 3.iterator Iterator&lt;Map.Entry&lt;Integer,Integer&gt;&gt; it = map.entrySet.iterator(); while(it.hasNext())&#123; Map.Entry&lt;Integer,Integer&gt; map = it.next(); Integer key = map.getKey(); Integer value = map.getValue(); &#125; // Java8 lambda表达式,性能低于entrySet,所以更推荐用entrySet的方式 map.forEach((k,v)-&gt;&#123; System.out.println("key = " + k + ", value = " + v); &#125;) &#125;]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[多线程实现方式]]></title>
     <url>%2F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html</url>
     <content type="text"><![CDATA[实现多线程方式 继承Thread类 自定义类继承Thread 重写run方法 创建对象 启动线程 实现Runnable 定义一个类实现接口 类中重写run方法 创建对象 创建Thread类对象，将自定义类对象作为构造方法的参数传入 启动线程 callable 和future 自定义类实现callable接口 重写call方法 实例化自定义类 创建future实现类FutureTask对象，将自定义类对象作为构造方法参数传入 创建Thread类对象，将FutureTask对象作为构造方法参数传入 启动线程 run方法不开启线程，相当于普通方法的调用 任务拒接策略： ThreadPoolExecutor.AbortPolicy()：丢弃任务并抛出RejectedExecutionException异常，是默认策略 ThreadPoolExecutor.DiscardPolicy()，丢弃任务不抛出异常 ThreadPoolExecutor.DiscardOldestPolicy()：丢弃等待最久的任务并把当前任务加入队列。 ThreadPoolExecutor.CallerRunsPolicy()：调用任务的run方法绕过线程池直接执行。 volatile强制线程在每次使用共享数据时查看最新值，而不是数据副本。使用在变量前。 他不会保证原子性 Synchronize 线程获得锁对象 清空线程变量副本 从共享变量中拷贝最新值到变量副本中 执行代码 将修改后变量副本的值赋值给共享数据 释放锁 可以保证原子性 AtomicInteger类实现原子性的高效方式]]></content>
@@ -247,6 +248,17 @@
       <tags>
         <tag>Java</tag>
         <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[遍历Map的4种方式]]></title>
+    <url>%2F%E9%81%8D%E5%8E%86Map%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F.html</url>
+    <content type="text"><![CDATA[遍历Map的4种方式1234567891011121314151617181920212223242526272829public static void main(String[] args)&#123; HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;&gt;(); map.add(1,2); // 1.entrySet遍历，键和值都需要时使用 for( Map.Entry&lt;Integer,Integer&gt; entry : map.entrySet())&#123; System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue()); &#125; // 2.单独遍历 // 遍历键时 for(Integer key : map.keySet())&#123; key &#125; // 遍历值时 for(Integer value : map.values())&#123; &#125; // 3.iterator Iterator&lt;Map.Entry&lt;Integer,Integer&gt;&gt; it = map.entrySet.iterator(); while(it.hasNext())&#123; Map.Entry&lt;Integer,Integer&gt; map = it.next(); Integer key = map.getKey(); Integer value = map.getValue(); &#125; // Java8 lambda表达式,性能低于entrySet,所以更推荐用entrySet的方式 map.forEach((k,v)-&gt;&#123; System.out.println("key = " + k + ", value = " + v); &#125;) &#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -418,8 +430,8 @@
       </categories>
       <tags>
         <tag>编码</tag>
-        <tag>PHP</tag>
         <tag>MySQL</tag>
+        <tag>PHP</tag>
       </tags>
   </entry>
   <entry>

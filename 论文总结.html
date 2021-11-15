@@ -118,7 +118,8 @@
 <meta property="og:image" content="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/image-20211106151627921.png">
 <meta property="og:image" content="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/image-20211106152657303.png">
 <meta property="og:image" content="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/image-20211108110353192.png">
-<meta property="og:updated_time" content="2021-11-08T09:13:24.088Z">
+<meta property="og:image" content="https://www.shmily.today/%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/image-20211114222242995.png">
+<meta property="og:updated_time" content="2021-11-14T14:22:43.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blog">
 <meta name="twitter:description" content="基于零知识证明的账户模型区块链系统隐私保护研究​    原文 山大 2020 软工 硕  现有ZKProof大都针对UTXO模型，如zerocash，zerocoin，Monero、Dash、CoinJoin，但是针对账户模型的隐私保护方案很少，DSC是一个，本文提出基于zksnarks的BlockMaze，第一个从底层实现隐私保护的基于账户模型的区块链 （是一个全新的系统），同时保护交易金额、发">
@@ -372,6 +373,10 @@
          
          
            <li>
+             <a href="/有向图是否存在环？.html" title="有向图是否存在环？" target="_blank">有向图是否存在环？</a>
+           </li>
+         
+           <li>
              <a href="/神奇炸弹.html" title="神奇炸弹" target="_blank">神奇炸弹</a>
            </li>
          
@@ -425,10 +430,6 @@
          
            <li>
              <a href="/leetcode-447-回旋镖的数量.html" title="leetcode 447.回旋镖的数量" target="_blank">leetcode 447.回旋镖的数量</a>
-           </li>
-         
-           <li>
-             <a href="/leetcode-51-N皇后.html" title="leetcode 51.N皇后" target="_blank">leetcode 51.N皇后</a>
            </li>
          
        </ul>
@@ -618,6 +619,24 @@
 <ul>
 <li>Merkle Patricia Tree（又称为Merkle Patricia Trie）是一种经过改良的、融合了默克尔树和前缀树两种树结构优点的数据结构，是以太坊中用来组织管理账户数据、生成交易集合哈希的重要数据结构。</li>
 </ul>
+<h2 id="zkSNARKs-in-a-Nutshell"><a href="#zkSNARKs-in-a-Nutshell" class="headerlink" title="zkSNARKs in a Nutshell"></a>zkSNARKs in a Nutshell</h2><p>Christian Reitwiebner ——solidity 创建者</p>
+<p>zkSNARKs有四个主要部分：</p>
+<ol>
+<li><p>Encoding as a polynomial problem</p>
+<p>要被检查的问题被编译成多项式的二次等式，t(x)h(x) = w(x)v(x),当且仅当程序正确执行。证明者要使验证者相信等式成立</p>
+</li>
+<li><p>Succinctness by random sampling</p>
+<p>验证者选择一个随机评估点s，验证在该点t(s)h(s) = w(s)v(s)是否成立。这样做使多项式乘法简化成简单的标量乘法。</p>
+</li>
+<li><p>Homomorphic encoding / encryption</p>
+<p>加密函数具有同态属性（但不是全同态，全同态现在还没有实用价值），这允许证明者在不知道随机评估点s，只知道其加密值E(s)的情况下计算E(t(s)),E(h(s)),E(v(s)),E(w(s))</p>
+</li>
+<li><p>Zero Knowledge</p>
+<p>prover将上面四个加密值乘以一个数来混淆他们，使得verifier不知道实际加密值而可以进行检查，因为检查t(s)h(s) = w(s)v(s)与检查t(s)h(s)k = w(s)v(s)k，（k是一个随机非零数）是等价的</p>
+</li>
+</ol>
+<p>RSA</p>
+<p><img src="%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/image-20211114222242995.png" alt="image-20211114222242995"></p>
 
       
     </div>
@@ -671,7 +690,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Javen</li>
   <li>
-  <strong>修改时间： </strong>2021-11-08 17:13:24</li>
+  <strong>修改时间： </strong>2021-11-14 22:22:43</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/论文总结.html" title>https://www.shmily.today/论文总结.html</a>
@@ -788,7 +807,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -926,7 +945,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1026,7 +1047,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于零知识证明的账户模型区块链系统隐私保护研究"><span class="nav-number">1.</span> <span class="nav-text">基于零知识证明的账户模型区块链系统隐私保护研究</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于零知识证明的账户模型区块链系统隐私保护研究"><span class="nav-number">1.</span> <span class="nav-text">基于零知识证明的账户模型区块链系统隐私保护研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zkSNARKs-in-a-Nutshell"><span class="nav-number">2.</span> <span class="nav-text">zkSNARKs in a Nutshell</span></a></li></ol></div>
             
 
           </div>
@@ -1078,7 +1099,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">71.4k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">72.7k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
