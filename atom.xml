@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>blog</title>
+  
+  <subtitle>心有猛虎，细嗅蔷薇</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://www.shmily.today/"/>
+  <updated>2022-04-15T12:30:03.066Z</updated>
+  <id>https://www.shmily.today/</id>
+  
+  <author>
+    <name>Javen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hyperledger fabric 源码阅读</title>
+    <link href="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB.html"/>
+    <id>https://www.shmily.today/hyperledger-fabric-源码阅读.html</id>
+    <published>2022-04-15T07:45:09.000Z</published>
+    <updated>2022-04-15T12:30:03.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;s&quot;&gt;&lt;a href=&quot;#s&quot; class=&quot;headerlink&quot; title=&quot;s&quot;&gt;&lt;/a&gt;s&lt;/h3&gt;&lt;p&gt;fabric v2.2&lt;/p&gt;
+&lt;h2 id=&quot;目录结构&quot;&gt;&lt;a href=&quot;#目录结构&quot; class=&quot;headerlink&quot; title=&quot;目录
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/snarkjs%20&amp;%20circom.html"/>
+    <id>https://www.shmily.today/snarkjs &amp; circom.html</id>
+    <published>2022-04-14T08:41:45.927Z</published>
+    <updated>2022-04-14T14:33:49.880Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;编写电路&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/go.html"/>
+    <id>https://www.shmily.today/go.html</id>
+    <published>2022-04-13T08:01:46.841Z</published>
+    <updated>2022-04-13T08:01:58.429Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>买面粉</title>
+    <link href="https://www.shmily.today/%E4%B9%B0%E9%9D%A2%E7%B2%89.html"/>
+    <id>https://www.shmily.today/买面粉.html</id>
+    <published>2022-03-28T09:37:41.000Z</published>
+    <updated>2022-03-29T09:17:36.423Z</updated>
+    
+    <summary type="html">
+    
+      小X有n元现金（电子货币），要用这n元去买面粉，但市场上有m种面粉，每种面粉都不是散称，而是装袋的，他们的重量和价格都不一样，并且你只能整袋购买。怎样用有限的经费买到更多的面粉？
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/ass1.html"/>
+    <id>https://www.shmily.today/ass1.html</id>
+    <published>2022-03-27T08:27:18.751Z</published>
+    <updated>2022-04-11T01:37:44.149Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;服务器&quot;&gt;&lt;a href=&quot;#服务器&quot; class=&quot;headerlink&quot; title=&quot;服务器&quot;&gt;&lt;/a&gt;服务器&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;ass1/image-20220328103739249.png&quot; alt=&quot;image-20220328103
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-1637-两点之间不包含任何点的最宽垂直面积</title>
+    <link href="https://www.shmily.today/leetcode-1637-%E4%B8%A4%E7%82%B9%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%8C%85%E5%90%AB%E4%BB%BB%E4%BD%95%E7%82%B9%E7%9A%84%E6%9C%80%E5%AE%BD%E5%9E%82%E7%9B%B4%E9%9D%A2%E7%A7%AF.html"/>
+    <id>https://www.shmily.today/leetcode-1637-两点之间不包含任何点的最宽垂直面积.html</id>
+    <published>2022-03-24T14:34:56.000Z</published>
+    <updated>2022-03-24T14:42:05.686Z</updated>
+    
+    <summary type="html">
+    
+      给你 n 个二维平面上的点 points ，其中 points[i] = [xi, yi] ，请你返回两点之间内部不包含任何点的 最宽垂直面积 的宽度。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html"/>
+    <id>https://www.shmily.today/数学基础.html</id>
+    <published>2022-03-24T02:23:59.804Z</published>
+    <updated>2022-04-01T05:58:35.664Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;欧拉定理&lt;/p&gt;
+&lt;p&gt;欧拉定理（也称费马-欧拉定理或欧拉$\varphi$函数定理）是一个关于同余的性质。若&lt;code&gt;n,a&lt;/code&gt;为正整数，且&lt;code&gt;n,a&lt;/code&gt;互素（即&lt;code&gt;gcd(a,n) = 1&lt;/code&gt;），则$\a
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/leetcode.html"/>
+    <id>https://www.shmily.today/leetcode.html</id>
+    <published>2022-03-23T13:03:29.387Z</published>
+    <updated>2022-03-23T14:28:39.603Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;荷兰国旗问题&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;寻找下标三元组&quot;&gt;&lt;a href=&quot;#寻找下标三元组&quot; class=&quot;hea
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-1109-航班预定统计</title>
+    <link href="https://www.shmily.today/leetcode-1109-%E8%88%AA%E7%8F%AD%E9%A2%84%E5%AE%9A%E7%BB%9F%E8%AE%A1.html"/>
+    <id>https://www.shmily.today/leetcode-1109-航班预定统计.html</id>
+    <published>2022-02-19T13:48:35.000Z</published>
+    <updated>2022-03-25T03:21:18.297Z</updated>
+    
+    <summary type="html">
+    
+      这里有 n 个航班，它们分别从 1 到 n 进行编号。有一份航班预订表 bookings ，表中第 i 条预订记录 bookings[i] = [firsti, lasti, seatsi] 意味着在从 firsti 到 lasti （包含 firsti 和 lasti ）的 每个航班 上预订了 seatsi 个座位。请你返回一个长度为 n 的数组 answer，里面的元素是每个航班预定的座位总数。
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="差分" scheme="https://www.shmily.today/tags/%E5%B7%AE%E5%88%86/"/>
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-1524-和为奇数的子数组数目</title>
+    <link href="https://www.shmily.today/leetcode-1524-%E5%92%8C%E4%B8%BA%E5%A5%87%E6%95%B0%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E6%95%B0%E7%9B%AE.html"/>
+    <id>https://www.shmily.today/leetcode-1524-和为奇数的子数组数目.html</id>
+    <published>2022-02-19T04:35:01.000Z</published>
+    <updated>2022-02-19T13:12:07.907Z</updated>
+    
+    <summary type="html">
+    
+      给你一个整数数组 arr 。请你返回和为 奇数 的子数组数目。
+    
+    </summary>
+    
+      <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E8%93%9D%E6%A1%A5%E6%9D%AF.html"/>
+    <id>https://www.shmily.today/蓝桥杯.html</id>
+    <published>2022-01-18T12:22:31.445Z</published>
+    <updated>2022-03-30T12:13:48.136Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;在nextInt()后面使用nextLine()后出错，因为nextInt()遇到回车就停止了，而换行符留在缓冲区内，因此nextInt()后的第一个nextLine()读入了换行符。解决方式：在nextInt()后面加一行nextLine()读取换行符&lt;/li
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/fabric1.3%E5%AE%89%E8%A3%85.html"/>
+    <id>https://www.shmily.today/fabric1.3安装.html</id>
+    <published>2022-01-11T07:00:24.630Z</published>
+    <updated>2022-01-11T08:31:21.453Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;curl 安装&lt;/p&gt;
+&lt;p&gt;docker安装&lt;/p&gt;
+&lt;p&gt;go安装&lt;/p&gt;
+&lt;p&gt;下载地址：&lt;a href=&quot;https://golang.google.cn/dl/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Downloads - The Go 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/zk%20papers.html"/>
+    <id>https://www.shmily.today/zk papers.html</id>
+    <published>2022-01-04T09:02:56.770Z</published>
+    <updated>2022-01-04T09:28:06.066Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Marlin: Preprocessing zkSNARKs with Universal and Updatable SRS&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;E:\lzx\zotero\storage\42A4BRHT\Chiesa 等。 - 2020 
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/BlockChain.html"/>
+    <id>https://www.shmily.today/BlockChain.html</id>
+    <published>2021-12-31T09:27:35.568Z</published>
+    <updated>2021-12-31T09:36:48.718Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Hyperledger-Fabric&quot;&gt;&lt;a href=&quot;#Hyperledger-Fabric&quot; class=&quot;headerlink&quot; title=&quot;Hyperledger Fabric&quot;&gt;&lt;/a&gt;Hyperledger Fabric&lt;/h2&gt;&lt;p&gt;解决重放攻击
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/zksnark.html"/>
+    <id>https://www.shmily.today/zksnark.html</id>
+    <published>2021-12-21T10:09:35.223Z</published>
+    <updated>2022-02-23T00:57:51.849Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;h3 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h3&gt;&lt;p&gt; Sc
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-11.盛最多水的容器</title>
+    <link href="https://www.shmily.today/leetcode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8.html"/>
+    <id>https://www.shmily.today/leetcode-11-盛最多水的容器.html</id>
+    <published>2021-12-10T13:51:53.000Z</published>
+    <updated>2021-12-10T14:05:22.522Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。&lt;/p&gt;
+&lt;p&gt;说明：你不
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode-474.一和零</title>
+    <link href="https://www.shmily.today/leetcode-474-%E4%B8%80%E5%92%8C%E9%9B%B6.html"/>
+    <id>https://www.shmily.today/leetcode-474-一和零.html</id>
+    <published>2021-12-09T14:19:09.000Z</published>
+    <updated>2021-12-10T13:57:03.166Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给你一个二进制字符串数组 strs 和两个整数 m 和 n 。&lt;/p&gt;
+&lt;p&gt;请你找出并返回 strs 的最大子集的长度，该子集中 最多 有 m 个 0 和 n 个 1 。&lt;/p&gt;
+&lt;p&gt;如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。&lt;/p&gt;
+&lt;b
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 695.岛屿的最大面积</title>
+    <link href="https://www.shmily.today/leetcode-695-%E5%B2%9B%E5%B1%BF%E7%9A%84%E6%9C%80%E5%A4%A7%E9%9D%A2%E7%A7%AF.html"/>
+    <id>https://www.shmily.today/leetcode-695-岛屿的最大面积.html</id>
+    <published>2021-12-09T13:15:05.000Z</published>
+    <updated>2021-12-09T13:25:49.083Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给你一个大小为 m x n 的二进制矩阵 grid 。&lt;/p&gt;
+&lt;p&gt;岛屿 是由一些相邻的 1 (代表土地) 构成的组合，这里的「相邻」要求两个 1 必须在 水平或者竖直的四个方向上 相邻。你可以假设 grid 的四个边缘都被 0（代表水）包围着。&lt;/p&gt;
+&lt;p&gt;岛屿的面积
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://www.shmily.today/categories/leetcode/"/>
+    
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://www.shmily.today/zk.html"/>
+    <id>https://www.shmily.today/zk.html</id>
+    <published>2021-12-06T09:45:06.958Z</published>
+    <updated>2021-12-09T12:41:52.077Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;zk-SNARK 是“zero knowledge Succinct Non-interactive Argument of Knowledge”的缩写，是 非交互式零知识证明 中的一种，一个将实际的零知识证明类问题转为计算机程序问题的理论。作为目前密码学及其应用领域中最令
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>字典序全排列</title>
+    <link href="https://www.shmily.today/%E5%AD%97%E5%85%B8%E5%BA%8F%E5%85%A8%E6%8E%92%E5%88%97.html"/>
+    <id>https://www.shmily.today/字典序全排列.html</id>
+    <published>2021-11-16T14:16:13.000Z</published>
+    <updated>2021-11-16T14:43:58.584Z</updated>
+    
+    <summary type="html">
+    
+      要求计算从1到N的N个整数所能构成的所有排列，并按照字典顺序依次输出。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="回溯" scheme="https://www.shmily.today/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+</feed>
