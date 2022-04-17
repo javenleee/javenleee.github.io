@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="编写电路  12345678910pragma circom 2.0.0;template Multiplier2() &amp;#123;    signal input a;    signal input b;    signal output c;    c &amp;lt;== a*b; &amp;#125; component main = Multiplier2();  编译上述电路  1circom m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-04-14T14:33:49.880Z">
+<meta property="og:updated_time" content="2022-04-15T13:14:08.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blog">
 <meta name="twitter:description" content="编写电路  12345678910pragma circom 2.0.0;template Multiplier2() &amp;#123;    signal input a;    signal input b;    signal output c;    c &amp;lt;== a*b; &amp;#125; component main = Multiplier2();  编译上述电路  1circom m">
@@ -614,7 +614,8 @@
 </li>
 </ul>
 <h2 id="Power-of-Tau"><a href="#Power-of-Tau" class="headerlink" title="Power of Tau"></a>Power of Tau</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">snarkjs powersoftau new bn128 12 pot12_0000.ptau -v</span><br><span class="line">snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name=<span class="string">"First contribution"</span> -v</span><br><span class="line"><span class="comment"># phase 2</span></span><br><span class="line">snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v</span><br><span class="line">snarkjs groth16 setup multiplier2.r1cs pot12_final.ptau multiplier2_0000.zkey</span><br><span class="line">snarkjs zkey contribute multiplier2_0000.zkey multiplier2_0001.zkey --name=<span class="string">"1st Contributor Name"</span> -v</span><br><span class="line">snarkjs zkey <span class="built_in">export</span> verificationkey multiplier2_0001.zkey verification_key.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># generating a proof</span></span><br><span class="line">snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json</span><br><span class="line">snarkjs groth16 verify verification_key.json public.json proof.json</span><br><span class="line"></span><br><span class="line">snarkjs zkey <span class="built_in">export</span> solidityverifier multiplier2_0001.zkey verifier.sol</span><br><span class="line"></span><br><span class="line">snarkjs generatecall</span><br></pre></td></tr></table></figure>
-<h2 id="ethereum"><a href="#ethereum" class="headerlink" title="ethereum"></a>ethereum</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">geth --datadir . --networkid 1881005 --http --http.corsdomain=<span class="string">"*"</span> --http.port 8545 --http.addr <span class="string">"0.0.0.0"</span> --http.api db,web3,eth,debug,personal,net,miner,admin --allow-insecure-unlock --rpc.allow-unprotected-txs --port 30303 --dev --dev.period 1 console 2&gt;&gt;geth.log</span><br></pre></td></tr></table></figure>
+<h2 id="remix"><a href="#remix" class="headerlink" title="remix"></a>remix</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remixd -s E:\project\remix\contract --remix-ide https://remix.ethereum.org</span><br></pre></td></tr></table></figure>
+<h2 id="ethereum"><a href="#ethereum" class="headerlink" title="ethereum"></a>ethereum</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">geth --datadir . --networkid 1881005 --http --http.corsdomain=<span class="string">"*"</span> --http.port 8545 --http.addr <span class="string">"0.0.0.0"</span> --http.api <span class="string">"db,web3,eth,debug,personal,net,miner,admin"</span> --allow-insecure-unlock --nodiscover console 2&gt;&gt;output.log</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -668,7 +669,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Javen</li>
   <li>
-  <strong>修改时间： </strong>2022-04-14 22:33:49</li>
+  <strong>修改时间： </strong>2022-04-15 21:14:08</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/snarkjs & circom.html" title>https://www.shmily.today/snarkjs & circom.html</a>
@@ -1027,7 +1028,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Power-of-Tau"><span class="nav-number">1.</span> <span class="nav-text">Power of Tau</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ethereum"><span class="nav-number">2.</span> <span class="nav-text">ethereum</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Power-of-Tau"><span class="nav-number">1.</span> <span class="nav-text">Power of Tau</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remix"><span class="nav-number">2.</span> <span class="nav-text">remix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ethereum"><span class="nav-number">3.</span> <span class="nav-text">ethereum</span></a></li></ol></div>
             
 
           </div>
