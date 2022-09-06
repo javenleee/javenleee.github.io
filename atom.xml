@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2022-04-15T12:30:03.066Z</updated>
+  <updated>2022-05-13T13:51:26.852Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title></title>
+    <link href="https://www.shmily.today/%E5%91%A8%E6%8A%A5.html"/>
+    <id>https://www.shmily.today/周报.html</id>
+    <published>2022-05-13T13:47:16.701Z</published>
+    <updated>2022-05-13T13:51:26.852Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;4-18-4-24&quot;&gt;&lt;a href=&quot;#4-18-4-24&quot; class=&quot;headerlink&quot; title=&quot;4.18 - 4.24&quot;&gt;&lt;/a&gt;4.18 - 4.24&lt;/h3&gt;&lt;p&gt;使用 circom 和 snarkjs 实现简单的零知识证明solidity
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>hyperledger fabric 源码阅读</title>
     <link href="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB.html"/>
     <id>https://www.shmily.today/hyperledger-fabric-源码阅读.html</id>
     <published>2022-04-15T07:45:09.000Z</published>
-    <updated>2022-04-15T12:30:03.066Z</updated>
+    <updated>2022-09-04T07:23:11.992Z</updated>
     
     <summary type="html">
     
@@ -41,7 +60,7 @@
     <link href="https://www.shmily.today/snarkjs%20&amp;%20circom.html"/>
     <id>https://www.shmily.today/snarkjs &amp; circom.html</id>
     <published>2022-04-14T08:41:45.927Z</published>
-    <updated>2022-04-15T13:14:08.209Z</updated>
+    <updated>2022-04-23T03:46:34.583Z</updated>
     
     <summary type="html">
     
@@ -51,25 +70,6 @@
 &lt;li&gt;编写电路&lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/go.html"/>
-    <id>https://www.shmily.today/go.html</id>
-    <published>2022-04-13T08:01:46.841Z</published>
-    <updated>2022-04-13T08:01:58.429Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight go&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l
       
     
     </summary>
@@ -94,25 +94,6 @@
     
     
       <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/ass1.html"/>
-    <id>https://www.shmily.today/ass1.html</id>
-    <published>2022-03-27T08:27:18.751Z</published>
-    <updated>2022-04-11T01:37:44.149Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;服务器&quot;&gt;&lt;a href=&quot;#服务器&quot; class=&quot;headerlink&quot; title=&quot;服务器&quot;&gt;&lt;/a&gt;服务器&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;ass1/image-20220328103739249.png&quot; alt=&quot;image-20220328103
-      
-    
-    </summary>
-    
     
   </entry>
   
@@ -236,28 +217,6 @@
       
         &lt;ol&gt;
 &lt;li&gt;在nextInt()后面使用nextLine()后出错，因为nextInt()遇到回车就停止了，而换行符留在缓冲区内，因此nextInt()后的第一个nextLine()读入了换行符。解决方式：在nextInt()后面加一行nextLine()读取换行符&lt;/li
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/fabric1.3%E5%AE%89%E8%A3%85.html"/>
-    <id>https://www.shmily.today/fabric1.3安装.html</id>
-    <published>2022-01-11T07:00:24.630Z</published>
-    <updated>2022-04-15T13:13:53.755Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;curl 安装&lt;/p&gt;
-&lt;p&gt;docker安装&lt;/p&gt;
-&lt;p&gt;go安装&lt;/p&gt;
-&lt;p&gt;下载地址：&lt;a href=&quot;https://golang.google.cn/dl/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Downloads - The Go 
       
     
     </summary>
@@ -429,6 +388,48 @@
       <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="回溯" scheme="https://www.shmily.today/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有向图是否存在环？</title>
+    <link href="https://www.shmily.today/%E6%9C%89%E5%90%91%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F.html"/>
+    <id>https://www.shmily.today/有向图是否存在环？.html</id>
+    <published>2021-11-15T14:03:55.000Z</published>
+    <updated>2021-11-15T14:37:24.069Z</updated>
+    
+    <summary type="html">
+    
+      写程序判断有向图是否存在环。有向图的输入用n个二元组表示(u,v)，表示从u到v有一条有向边，起点是u，终点是v。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="DFS" scheme="https://www.shmily.today/tags/DFS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>神奇炸弹</title>
+    <link href="https://www.shmily.today/%E7%A5%9E%E5%A5%87%E7%82%B8%E5%BC%B9.html"/>
+    <id>https://www.shmily.today/神奇炸弹.html</id>
+    <published>2021-11-13T13:26:32.000Z</published>
+    <updated>2021-11-13T14:18:54.443Z</updated>
+    
+    <summary type="html">
+    
+      一种新型的炸弹，可以摧毁一个边长为R的正方形内的所有的目标。现在地图上有n个目标，用整数xi,yi(0&lt;=xi,yi&lt;=5000)表示目标在地图上的位置，每个目标都有一个价值0&lt;vi&lt;100。激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆破范围，即那个边长为R的正方形的边必须和x，y轴平行。若目标位于爆破正方形的边上，该目标将不会被摧毁。现在你的任务是计算一颗炸弹最多能炸掉地图上总价值为多少的目标。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
     
   </entry>
   

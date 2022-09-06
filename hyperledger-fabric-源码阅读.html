@@ -116,7 +116,7 @@
 <meta property="og:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。  common 通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。  core 大部分核心实现代码都在本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/image-20220415154651468.png">
-<meta property="og:updated_time" content="2022-04-15T12:30:03.066Z">
+<meta property="og:updated_time" content="2022-09-04T07:23:11.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hyperledger fabric 源码阅读">
 <meta name="twitter:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。  common 通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。  core 大部分核心实现代码都在本">
@@ -370,6 +370,10 @@
          
          
            <li>
+             <a href="/周报.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读" target="_blank">hyperledger fabric 源码阅读</a>
            </li>
          
@@ -378,15 +382,7 @@
            </li>
          
            <li>
-             <a href="/go.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/买面粉.html" title="买面粉" target="_blank">买面粉</a>
-           </li>
-         
-           <li>
-             <a href="/ass1.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -414,10 +410,6 @@
            </li>
          
            <li>
-             <a href="/fabric1.3安装.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/zk papers.html" title target="_blank"></a>
            </li>
          
@@ -427,6 +419,14 @@
          
            <li>
              <a href="/zksnark.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-11-盛最多水的容器.html" title="leetcode-11.盛最多水的容器" target="_blank">leetcode-11.盛最多水的容器</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-474-一和零.html" title="leetcode-474.一和零" target="_blank">leetcode-474.一和零</a>
            </li>
          
        </ul>
@@ -623,6 +623,21 @@
 <li><p>orderer</p>
 </li>
 </ol>
+<p>internal/peer/chaincode/invoke.go ===&gt; chaincodeInvoke()  ——&gt; ChaincodeInvokeOrQuery</p>
+<p>internal/peer/chaincode/common.go -&gt; ChaincodeInvokeOrQuery() 调用 processproposals</p>
+<p>internal/peer/chaincode/common.go -&gt; InitCmdFactory() 初始化 endorserclient</p>
+<p>peer</p>
+<h3 id="consensus"><a href="#consensus" class="headerlink" title="consensus"></a>consensus</h3><p>internal/peer/node/start.go  processproposal</p>
+<h4 id="endorsement"><a href="#endorsement" class="headerlink" title="endorsement"></a>endorsement</h4><p>github.com/hyperledger/fabric-protos-go/peer/peer.pb.go 中定义了endorser 服务的接口</p>
+<p>internal/peer/chaincode/invoke.go  chaincodeInvoke ——-&gt; chaincodeinvokeorquery -&gt;</p>
+<p>internal/peer/chaincode/common.go  processProposals方法调用了各个endorser的ProcessProposal方法</p>
+<p>core/endorser/endorser.go   ProcessProposal函数入口， preprocess初步检验双花交易和ACL，然后模拟执行</p>
+<h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>orderer/common/server/server.go 里定义了 两个 order节点的两个服务 Broadcast 和 Deliver，分别是排序服务前后消息处理逻辑</p>
+<p>orderer/common/broadcast/broadcast.go   handle方法实现了broadcast逻辑， 在 processMessage方法中，调用了排序服务的order方法，交由排序服务排序后返回。</p>
+<p>以solo为例，orderer/consensus/solo/consensus.go 的order方法将接收到的消息发送到 sendchan通道中，主函数从通道中接收消息，然后调用blockcutter的order将队列中的交易分割中区块提交。</p>
+<p>internal/peer/chaincode/common.go  processProposals</p>
+<p>orderer/consensus/consensus.go 定义了排序服务的接口</p>
+<p>自定义的排序服务需要实现该接口。</p>
 
       
     </div>
@@ -676,7 +691,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Javen</li>
   <li>
-  <strong>修改时间： </strong>2022-04-15 20:30:03</li>
+  <strong>修改时间： </strong>2022-09-04 15:23:11</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读">https://www.shmily.today/hyperledger-fabric-源码阅读.html</a>
@@ -710,6 +725,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/周报.html" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -789,7 +808,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1031,7 +1050,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#s"><span class="nav-number">1.</span> <span class="nav-text">s</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number"></span> <span class="nav-text">目录结构</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#s"><span class="nav-number">1.</span> <span class="nav-text">s</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number"></span> <span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#consensus"><span class="nav-number">1.</span> <span class="nav-text">consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#endorsement"><span class="nav-number">1.1.</span> <span class="nav-text">endorsement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">1.2.</span> <span class="nav-text">order</span></a></li></ol></li></ol></li></div>
             
 
           </div>
@@ -1083,7 +1102,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">91.8k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">88.6k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

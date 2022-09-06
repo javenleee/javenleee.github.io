@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.7.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: false,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+<!--站长验证-->
+<meta name="baidu-site-verification" content="5rEIjow3aW">
+<meta name="google-site-verification" content="OhdtVOx5uwpZ_mMm0AZJXzw-dY1PPpAAkdavmmQhIL4">
+<meta name="360-site-verification" content="5b1c9d7574859ca6e460dd687667d5dc">
+
+
+
+  <meta name="description" content="4.18 - 4.24使用 circom 和 snarkjs 实现简单的零知识证明solidity智能合约，并在本地以太坊测试链上部署测试  编写电路  12345678910pragma circom 2.0.0;template Multiplier2() &amp;#123;    signal input a;    signal input b;    signal output c;    c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="blog">
+<meta property="og:url" content="https://www.shmily.today/周报.html">
+<meta property="og:site_name" content="blog">
+<meta property="og:description" content="4.18 - 4.24使用 circom 和 snarkjs 实现简单的零知识证明solidity智能合约，并在本地以太坊测试链上部署测试  编写电路  12345678910pragma circom 2.0.0;template Multiplier2() &amp;#123;    signal input a;    signal input b;    signal output c;    c">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220513211724020.png">
+<meta property="og:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220505153510618.png">
+<meta property="og:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220507230338609.png">
+<meta property="og:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220507225830343.png">
+<meta property="og:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220508111607556.png">
+<meta property="og:updated_time" content="2022-05-13T13:51:26.852Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="blog">
+<meta name="twitter:description" content="4.18 - 4.24使用 circom 和 snarkjs 实现简单的零知识证明solidity智能合约，并在本地以太坊测试链上部署测试  编写电路  12345678910pragma circom 2.0.0;template Multiplier2() &amp;#123;    signal input a;    signal input b;    signal output c;    c">
+<meta name="twitter:image" content="https://www.shmily.today/%E5%91%A8%E6%8A%A5/image-20220513211724020.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="https://www.shmily.today/周报.html">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">博采众长</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">心有猛虎，细嗅蔷薇</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-guestbook">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>留言</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+		
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result">
+    
+      <div style="text-align: center;padding: 3px 0 0;">
+       <div style="margin-top: 20px;font-size: 18px;font-weight: 600;border-bottom: 1px solid #ccc;">
+         <i class="fa fa-history" aria-hidden="true"></i>
+         近期文章
+       </div>
+       <ul style="margin: 0;padding: 0;list-style: none;">
+         
+         
+           <li>
+             <a href="/周报.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读" target="_blank">hyperledger fabric 源码阅读</a>
+           </li>
+         
+           <li>
+             <a href="/snarkjs & circom.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/买面粉.html" title="买面粉" target="_blank">买面粉</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-1637-两点之间不包含任何点的最宽垂直面积.html" title="leetcode-1637-两点之间不包含任何点的最宽垂直面积" target="_blank">leetcode-1637-两点之间不包含任何点的最宽垂直面积</a>
+           </li>
+         
+           <li>
+             <a href="/数学基础.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/leetcode.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-1109-航班预定统计.html" title="leetcode-1109-航班预定统计" target="_blank">leetcode-1109-航班预定统计</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-1524-和为奇数的子数组数目.html" title="leetcode-1524-和为奇数的子数组数目" target="_blank">leetcode-1524-和为奇数的子数组数目</a>
+           </li>
+         
+           <li>
+             <a href="/蓝桥杯.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/zk papers.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/BlockChain.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/zksnark.html" title target="_blank"></a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-11-盛最多水的容器.html" title="leetcode-11.盛最多水的容器" target="_blank">leetcode-11.盛最多水的容器</a>
+           </li>
+         
+           <li>
+             <a href="/leetcode-474-一和零.html" title="leetcode-474.一和零" target="_blank">leetcode-474.一和零</a>
+           </li>
+         
+       </ul>
+      </div>
+    
+  </div>
+</div>
+
+
+
+    </div>
+  
+
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/Zosien/zosien.github.io" class="github-corner" target="_blank" title="万水千山总是情,给个star行不行！" aria-label="万水千山总是情,给个star行不行！"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.shmily.today/周报.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Javen">
+      <meta itemprop="description" content="柔而不弱，强而不悍<br/>阳光下像个孩子<br/>风雨里像个大人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-05-13 21:47:16" itemprop="dateCreated datePublished" datetime="2022-05-13T21:47:16+08:00">2022-05-13</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                
+                <span class="post-meta-item-text"> 评论数： </span>
+                
+                <a href="/周报.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/周报.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/周报.html" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span title="阅读次数">
+                 <span class="post-meta-item-icon">
+                   <i class="fa fa-eye"></i>
+                 </span>
+                 
+                   <span class="post-meta-item-text">阅读次数：</span>
+                 
+                   <span class="leancloud-visitors-count"></span>
+               </span>
+             </span>
+          
+
+          
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="4-18-4-24"><a href="#4-18-4-24" class="headerlink" title="4.18 - 4.24"></a>4.18 - 4.24</h3><p>使用 circom 和 snarkjs 实现简单的零知识证明solidity智能合约，并在本地以太坊测试链上部署测试</p>
+<ol>
+<li>编写电路</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pragma circom 2.0.0;</span><br><span class="line"></span><br><span class="line">template Multiplier2() &#123;</span><br><span class="line">    signal input a;</span><br><span class="line">    signal input b;</span><br><span class="line">    signal output c;</span><br><span class="line">    c &lt;== a*b;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> component main = Multiplier2();</span><br></pre></td></tr></table></figure>
+<ol>
+<li>编译上述电路</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">circom multiplier2.circom --r1cs --wasm --sym --c</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--r1cs</code>: it generates the file <code>multiplier2.r1cs</code> that contains the <a href="https://docs.circom.io/background/background#rank-1-constraint-system" target="_blank" rel="noopener">R1CS constraint system</a> of the circuit in binary format.</li>
+<li><code>--wasm</code>: it generates the directory <code>multiplier2_js</code> that contains the <code>Wasm</code> code (multiplier2.wasm) and other files needed to generate the <a href="https://docs.circom.io/background/background#witness" target="_blank" rel="noopener">witness</a>.</li>
+<li><code>--sym</code> : it generates the file <code>multiplier2.sym</code> , a symbols file required for debugging or for printing the constraint system in an annotated mode.</li>
+<li><p><code>--c</code> : it generates the directory <code>multiplier2_cpp</code> that contains several files (multiplier2.cpp, multiplier2.dat, and other common files for every compiled program like main.cpp, MakeFile, etc) needed to compile the C code to generate the witness.</p>
+<p>The set of inputs, intermediate signals and output is called <a href="https://docs.circom.io/background/background#witness" target="_blank" rel="noopener">witness</a>.</p>
+</li>
+</ul>
+<h4 id="Power-of-Tau"><a href="#Power-of-Tau" class="headerlink" title="Power of Tau"></a>Power of Tau</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">snarkjs powersoftau new bn128 12 pot12_0000.ptau -v</span><br><span class="line">snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name=<span class="string">"First contribution"</span> -v</span><br><span class="line"><span class="comment"># phase 2</span></span><br><span class="line">snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v</span><br><span class="line">snarkjs groth16 setup multiplier2.r1cs pot12_final.ptau multiplier2_0000.zkey</span><br><span class="line">snarkjs zkey contribute multiplier2_0000.zkey multiplier2_0001.zkey --name=<span class="string">"1st Contributor Name"</span> -v</span><br><span class="line">snarkjs zkey <span class="built_in">export</span> verificationkey multiplier2_0001.zkey verification_key.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># generating a proof</span></span><br><span class="line">snarkjs groth16 prove multiplier2_0001.zkey witness.wtns proof.json public.json</span><br><span class="line">snarkjs groth16 verify verification_key.json public.json proof.json</span><br><span class="line"></span><br><span class="line">snarkjs zkey <span class="built_in">export</span> solidityverifier multiplier2_0001.zkey verifier.sol</span><br><span class="line"></span><br><span class="line">snarkjs generatecall</span><br></pre></td></tr></table></figure>
+<h4 id="remix"><a href="#remix" class="headerlink" title="remix"></a>remix</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remixd -s E:\project\remix\contract --remix-ide https://remix.ethereum.org</span><br></pre></td></tr></table></figure>
+<h4 id="ethereum"><a href="#ethereum" class="headerlink" title="ethereum"></a>ethereum</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --datadir . --networkid 1881005 --http --http.corsdomain=<span class="string">"*"</span> --http.port 8545 --http.addr <span class="string">"0.0.0.0"</span> --http.api <span class="string">"db,web3,eth,debug,personal,net,miner,admin"</span> --allow-insecure-unlock --nodiscover console 2&gt;&gt;output.log</span><br></pre></td></tr></table></figure>
+<h4 id="生成的智能合约如下："><a href="#生成的智能合约如下：" class="headerlink" title="生成的智能合约如下："></a>生成的智能合约如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">// Copyright 2017 Christian Reitwiessner</span><br><span class="line">// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span><br><span class="line">// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</span><br><span class="line">// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span><br><span class="line">//</span><br><span class="line">// 2019 OKIMS</span><br><span class="line">//      ported to solidity 0.6</span><br><span class="line">//      fixed linter warnings</span><br><span class="line">//      added requiere error messages</span><br><span class="line">//</span><br><span class="line">//</span><br><span class="line">// SPDX-License-Identifier: GPL-3.0</span><br><span class="line">pragma solidity ^0.6.11;</span><br><span class="line">library Pairing &#123;</span><br><span class="line">    struct G1Point &#123;</span><br><span class="line">        uint X;</span><br><span class="line">        uint Y;</span><br><span class="line">    &#125;</span><br><span class="line">    // Encoding of field elements is: X[0] * z + X[1]</span><br><span class="line">    struct G2Point &#123;</span><br><span class="line">        uint[2] X;</span><br><span class="line">        uint[2] Y;</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return the generator of G1</span><br><span class="line">    function P1() internal pure returns (G1Point memory) &#123;</span><br><span class="line">        return G1Point(1, 2);</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return the generator of G2</span><br><span class="line">    function P2() internal pure returns (G2Point memory) &#123;</span><br><span class="line">        // Original code point</span><br><span class="line">        return G2Point(</span><br><span class="line">            [11559732032986387107991004021392285783925812861821192530917403151452391805634,</span><br><span class="line">             10857046999023057135944570762232829481370756359578518086990519993285655852781],</span><br><span class="line">            [4082367875863433681332203403145435568316851327593401208105741076214120093531,</span><br><span class="line">             8495653923123431417604973247489272438418190587263600148770280649306958101930]</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">        // Changed by Jordi point</span><br><span class="line">        return G2Point(</span><br><span class="line">            [10857046999023057135944570762232829481370756359578518086990519993285655852781,</span><br><span class="line">             11559732032986387107991004021392285783925812861821192530917403151452391805634],</span><br><span class="line">            [8495653923123431417604973247489272438418190587263600148770280649306958101930,</span><br><span class="line">             4082367875863433681332203403145435568316851327593401208105741076214120093531]</span><br><span class="line">        );</span><br><span class="line">*/</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return r the negation of p, i.e. p.addition(p.negate()) should be zero.</span><br><span class="line">    function negate(G1Point memory p) internal pure returns (G1Point memory r) &#123;</span><br><span class="line">        // The prime q in the base field F_q for G1</span><br><span class="line">        uint q = 21888242871839275222246405745257275088696311157297823662689037894645226208583;</span><br><span class="line">        if (p.X == 0 &amp;&amp; p.Y == 0)</span><br><span class="line">            return G1Point(0, 0);</span><br><span class="line">        return G1Point(p.X, q - (p.Y % q));</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return r the sum of two points of G1</span><br><span class="line">    function addition(G1Point memory p1, G1Point memory p2) internal view returns (G1Point memory r) &#123;</span><br><span class="line">        uint[4] memory input;</span><br><span class="line">        input[0] = p1.X;</span><br><span class="line">        input[1] = p1.Y;</span><br><span class="line">        input[2] = p2.X;</span><br><span class="line">        input[3] = p2.Y;</span><br><span class="line">        bool success;</span><br><span class="line">        // solium-disable-next-line security/no-inline-assembly</span><br><span class="line">        assembly &#123;</span><br><span class="line">            success := staticcall(sub(gas(), 2000), 6, input, 0xc0, r, 0x60)</span><br><span class="line">            // Use &quot;invalid&quot; to make gas estimation work</span><br><span class="line">            switch success case 0 &#123; invalid() &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        require(success,&quot;pairing-add-failed&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return r the product of a point on G1 and a scalar, i.e.</span><br><span class="line">    /// p == p.scalar_mul(1) and p.addition(p) == p.scalar_mul(2) for all points p.</span><br><span class="line">    function scalar_mul(G1Point memory p, uint s) internal view returns (G1Point memory r) &#123;</span><br><span class="line">        uint[3] memory input;</span><br><span class="line">        input[0] = p.X;</span><br><span class="line">        input[1] = p.Y;</span><br><span class="line">        input[2] = s;</span><br><span class="line">        bool success;</span><br><span class="line">        // solium-disable-next-line security/no-inline-assembly</span><br><span class="line">        assembly &#123;</span><br><span class="line">            success := staticcall(sub(gas(), 2000), 7, input, 0x80, r, 0x60)</span><br><span class="line">            // Use &quot;invalid&quot; to make gas estimation work</span><br><span class="line">            switch success case 0 &#123; invalid() &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        require (success,&quot;pairing-mul-failed&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return the result of computing the pairing check</span><br><span class="line">    /// e(p1[0], p2[0]) *  .... * e(p1[n], p2[n]) == 1</span><br><span class="line">    /// For example pairing([P1(), P1().negate()], [P2(), P2()]) should</span><br><span class="line">    /// return true.</span><br><span class="line">    function pairing(G1Point[] memory p1, G2Point[] memory p2) internal view returns (bool) &#123;</span><br><span class="line">        require(p1.length == p2.length,&quot;pairing-lengths-failed&quot;);</span><br><span class="line">        uint elements = p1.length;</span><br><span class="line">        uint inputSize = elements * 6;</span><br><span class="line">        uint[] memory input = new uint[](inputSize);</span><br><span class="line">        for (uint i = 0; i &lt; elements; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            input[i * 6 + 0] = p1[i].X;</span><br><span class="line">            input[i * 6 + 1] = p1[i].Y;</span><br><span class="line">            input[i * 6 + 2] = p2[i].X[0];</span><br><span class="line">            input[i * 6 + 3] = p2[i].X[1];</span><br><span class="line">            input[i * 6 + 4] = p2[i].Y[0];</span><br><span class="line">            input[i * 6 + 5] = p2[i].Y[1];</span><br><span class="line">        &#125;</span><br><span class="line">        uint[1] memory out;</span><br><span class="line">        bool success;</span><br><span class="line">        // solium-disable-next-line security/no-inline-assembly</span><br><span class="line">        assembly &#123;</span><br><span class="line">            success := staticcall(sub(gas(), 2000), 8, add(input, 0x20), mul(inputSize, 0x20), out, 0x20)</span><br><span class="line">            // Use &quot;invalid&quot; to make gas estimation work</span><br><span class="line">            switch success case 0 &#123; invalid() &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        require(success,&quot;pairing-opcode-failed&quot;);</span><br><span class="line">        return out[0] != 0;</span><br><span class="line">    &#125;</span><br><span class="line">    /// Convenience method for a pairing check for two pairs.</span><br><span class="line">    function pairingProd2(G1Point memory a1, G2Point memory a2, G1Point memory b1, G2Point memory b2) internal view returns (bool) &#123;</span><br><span class="line">        G1Point[] memory p1 = new G1Point[](2);</span><br><span class="line">        G2Point[] memory p2 = new G2Point[](2);</span><br><span class="line">        p1[0] = a1;</span><br><span class="line">        p1[1] = b1;</span><br><span class="line">        p2[0] = a2;</span><br><span class="line">        p2[1] = b2;</span><br><span class="line">        return pairing(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">    /// Convenience method for a pairing check for three pairs.</span><br><span class="line">    function pairingProd3(</span><br><span class="line">            G1Point memory a1, G2Point memory a2,</span><br><span class="line">            G1Point memory b1, G2Point memory b2,</span><br><span class="line">            G1Point memory c1, G2Point memory c2</span><br><span class="line">    ) internal view returns (bool) &#123;</span><br><span class="line">        G1Point[] memory p1 = new G1Point[](3);</span><br><span class="line">        G2Point[] memory p2 = new G2Point[](3);</span><br><span class="line">        p1[0] = a1;</span><br><span class="line">        p1[1] = b1;</span><br><span class="line">        p1[2] = c1;</span><br><span class="line">        p2[0] = a2;</span><br><span class="line">        p2[1] = b2;</span><br><span class="line">        p2[2] = c2;</span><br><span class="line">        return pairing(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">    /// Convenience method for a pairing check for four pairs.</span><br><span class="line">    function pairingProd4(</span><br><span class="line">            G1Point memory a1, G2Point memory a2,</span><br><span class="line">            G1Point memory b1, G2Point memory b2,</span><br><span class="line">            G1Point memory c1, G2Point memory c2,</span><br><span class="line">            G1Point memory d1, G2Point memory d2</span><br><span class="line">    ) internal view returns (bool) &#123;</span><br><span class="line">        G1Point[] memory p1 = new G1Point[](4);</span><br><span class="line">        G2Point[] memory p2 = new G2Point[](4);</span><br><span class="line">        p1[0] = a1;</span><br><span class="line">        p1[1] = b1;</span><br><span class="line">        p1[2] = c1;</span><br><span class="line">        p1[3] = d1;</span><br><span class="line">        p2[0] = a2;</span><br><span class="line">        p2[1] = b2;</span><br><span class="line">        p2[2] = c2;</span><br><span class="line">        p2[3] = d2;</span><br><span class="line">        return pairing(p1, p2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">contract Verifier &#123;</span><br><span class="line">    using Pairing for *;</span><br><span class="line">    struct VerifyingKey &#123;</span><br><span class="line">        Pairing.G1Point alfa1;</span><br><span class="line">        Pairing.G2Point beta2;</span><br><span class="line">        Pairing.G2Point gamma2;</span><br><span class="line">        Pairing.G2Point delta2;</span><br><span class="line">        Pairing.G1Point[] IC;</span><br><span class="line">    &#125;</span><br><span class="line">    struct Proof &#123;</span><br><span class="line">        Pairing.G1Point A;</span><br><span class="line">        Pairing.G2Point B;</span><br><span class="line">        Pairing.G1Point C;</span><br><span class="line">    &#125;</span><br><span class="line">    function verifyingKey() internal pure returns (VerifyingKey memory vk) &#123;</span><br><span class="line">        vk.alfa1 = Pairing.G1Point(</span><br><span class="line">            12337750874814986638183658287417226184821865034780062781169448227927843085437,</span><br><span class="line">            20789784105513116652447837778798744770812372834441090975130560939386240638449</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        vk.beta2 = Pairing.G2Point(</span><br><span class="line">            [18784773432458773856533621653352594216310804914846082882128369129867537056603,</span><br><span class="line">             15993147364930271011119857771229518400843864334160483000463925699781638094398],</span><br><span class="line">            [14426808660924769767209049580514677357290856656181006011291452963595796297437,</span><br><span class="line">             20849839715092881998024103134500501732489517045392067824309586274941085058084]</span><br><span class="line">        );</span><br><span class="line">        vk.gamma2 = Pairing.G2Point(</span><br><span class="line">            [11559732032986387107991004021392285783925812861821192530917403151452391805634,</span><br><span class="line">             10857046999023057135944570762232829481370756359578518086990519993285655852781],</span><br><span class="line">            [4082367875863433681332203403145435568316851327593401208105741076214120093531,</span><br><span class="line">             8495653923123431417604973247489272438418190587263600148770280649306958101930]</span><br><span class="line">        );</span><br><span class="line">        vk.delta2 = Pairing.G2Point(</span><br><span class="line">            [6111397131408822340052935052704500884297146961431774811308133271014030453383,</span><br><span class="line">             20257662194508954709330260176873004684846702285506792201377179815653163601689],</span><br><span class="line">            [6925686265402714784473799066161817568880279684260461258791863079183992598211,</span><br><span class="line">             232599846384973218731329320006391615042059720103935983598945368024486252821]</span><br><span class="line">        );</span><br><span class="line">        vk.IC = new Pairing.G1Point[](2);</span><br><span class="line">        </span><br><span class="line">        vk.IC[0] = Pairing.G1Point( </span><br><span class="line">            18962681638181644814620786412357572954435556887442787314425322833857457400640,</span><br><span class="line">            20931347130095835758845105591609451396603467861399243873929590769728350128676</span><br><span class="line">        );                                      </span><br><span class="line">        </span><br><span class="line">        vk.IC[1] = Pairing.G1Point( </span><br><span class="line">            10821775866028401376039912101097412401059716038949182737075130411672179882951,</span><br><span class="line">            14378620393193287343898032009055968536407856858577257301546616957060075180530</span><br><span class="line">        );                                      </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    function verify(uint[] memory input, Proof memory proof) internal view returns (uint) &#123;</span><br><span class="line">        uint256 snark_scalar_field = 21888242871839275222246405745257275088548364400416034343698204186575808495617;</span><br><span class="line">        VerifyingKey memory vk = verifyingKey();</span><br><span class="line">        require(input.length + 1 == vk.IC.length,&quot;verifier-bad-input&quot;);</span><br><span class="line">        // Compute the linear combination vk_x</span><br><span class="line">        Pairing.G1Point memory vk_x = Pairing.G1Point(0, 0);</span><br><span class="line">        for (uint i = 0; i &lt; input.length; i++) &#123;</span><br><span class="line">            require(input[i] &lt; snark_scalar_field,&quot;verifier-gte-snark-scalar-field&quot;);</span><br><span class="line">            vk_x = Pairing.addition(vk_x, Pairing.scalar_mul(vk.IC[i + 1], input[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        vk_x = Pairing.addition(vk_x, vk.IC[0]);</span><br><span class="line">        if (!Pairing.pairingProd4(</span><br><span class="line">            Pairing.negate(proof.A), proof.B,</span><br><span class="line">            vk.alfa1, vk.beta2,</span><br><span class="line">            vk_x, vk.gamma2,</span><br><span class="line">            proof.C, vk.delta2</span><br><span class="line">        )) return 1;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    /// @return r  bool true if proof is valid</span><br><span class="line">    function verifyProof(</span><br><span class="line">            uint[2] memory a,</span><br><span class="line">            uint[2][2] memory b,</span><br><span class="line">            uint[2] memory c,</span><br><span class="line">            uint[1] memory input</span><br><span class="line">        ) public view returns (bool r) &#123;</span><br><span class="line">        Proof memory proof;</span><br><span class="line">        proof.A = Pairing.G1Point(a[0], a[1]);</span><br><span class="line">        proof.B = Pairing.G2Point([b[0][0], b[0][1]], [b[1][0], b[1][1]]);</span><br><span class="line">        proof.C = Pairing.G1Point(c[0], c[1]);</span><br><span class="line">        uint[] memory inputValues = new uint[](input.length);</span><br><span class="line">        for(uint i = 0; i &lt; input.length; i++)&#123;</span><br><span class="line">            inputValues[i] = input[i];</span><br><span class="line">        &#125;</span><br><span class="line">        if (verify(inputValues, proof) == 0) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的library paring是椭圆曲线相关操作，其中的paring函数是椭圆曲线的配对函数，用在零知识证明zksnark的最后一步，比较两个等式是否相等。其实具体也看不太懂</p>
+<p>contract 下面的 varify是智能合约向外界提供的接口，该接口调用paring函数比较用户提供的证明是否符合条件，并返回0，1</p>
+<p>在上面的代码中，library库是libsnark算法的solidity实现，其算法的安全性、正确性证明相信在linsnark算法中都已经给出，那么整个过程不会涉及到隐私泄露的问题，而从verify函数中也可以看出，对用户提供的证明的预处理操作不过是解析证明到两个椭圆曲线上的点，然后就调用paring函数，因为在零知识证明理论中，证明本身不包含任何有用的信息，因此整个解析的过程也不会涉及到隐私泄露。<strong>总的来说，在零知识证明这个框架中，若能保证<code>libsnark</code> 算法的具体实现逻辑没有漏洞，那么整个过程没有知识的泄露</strong>。</p>
+<h2 id="4-25-5-1"><a href="#4-25-5-1" class="headerlink" title="4.25 - 5.1"></a>4.25 - 5.1</h2><p>学习Hyperledger Fabric源码、Gossip和Raft协议</p>
+<h3 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h3><p>​    出自1987 年发布的一篇论文：《Epidemic Algorithms for Replicated Database Maintenance》，弱一致性共识算法</p>
+<h4 id="数据更新的三种方法："><a href="#数据更新的三种方法：" class="headerlink" title="数据更新的三种方法："></a>数据更新的三种方法：</h4><p><img src="%E5%91%A8%E6%8A%A5/image-20220513211724020.png" alt="image-20220513211724020"></p>
+<p>直接邮寄：当一个节点数据变化，通知所有节点。简单、直接但是缺点是节点可能并不知道其他节点的存在</p>
+<p>反熵：<code>熵</code> 即混乱、差异程度，反熵就是消去节点直接的不同。节点随机选择其他节点，互相交换数据达成一致。可靠但是数据量大，开销大、速度慢。</p>
+<p>传谣：类似反熵但是只传播<code>谣言</code> 即 信息不平等的部分。可靠、网络开销小。</p>
+<p><strong>Gossip 设计了两种可能的消息传播模式：反熵（Anti-Entropy）和传谣（Rumor-Mongering）。</strong></p>
+<h4 id="Gossip协议的模拟过程"><a href="#Gossip协议的模拟过程" class="headerlink" title="Gossip协议的模拟过程"></a>Gossip协议的模拟过程</h4><p><a href="https://flopezluis.github.io/gossip-simulator/" target="_blank" rel="noopener">https://flopezluis.github.io/gossip-simulator/</a></p>
+<blockquote>
+<p>一个节点想与网络中的其他节点分享一些信息。然后，它定期从节点集合中随机选择一个节点并交换信息，收到信息的节点也做同样的事情。<br>该信息定期发送到 N 个目标，N 被称为扇出（Fanout）。</p>
+<p>算法复杂度为O(LogN)</p>
+<p>节点加入网路的方式是将自己添加到Gossip成员节点的节点集合中。</p>
+</blockquote>
+<h3 id="Raft"><a href="#Raft" class="headerlink" title="Raft"></a>Raft</h3><p>一种强一致性共识算法，Hyperledger Fabric 1.4 之后支持Raft共识</p>
+<p>共识算法就是保证一个集群的多台机器协同工作，在遇到请求时，数据能够保持一致。即使遇到机器宕机，整个系<strong>统仍然能够对外保持</strong>服务的可用性。</p>
+<p>Raft 将共识问题分解三个子问题：</p>
+<ol>
+<li><strong>Leader election 领导选举</strong>：有且仅有一个 leader 节点，如果 leader 宕机，通过选举机制选出新的 leader；</li>
+<li><strong>Log replication 日志复制</strong>：leader 从客户端接收数据更新/删除请求，然后日志复制到 follower 节点，从而保证集群数据的一致性；</li>
+<li><strong>Safety 安全性</strong>：通过安全性原则来处理一些特殊 case，保证 Raft 算法的完备性；</li>
+</ol>
+<p>所以，Raft 算法核心流程可以归纳为：</p>
+<ul>
+<li>首先选出 leader，leader 节点负责接收外部的数据更新/删除请求；</li>
+<li>然后日志复制到其他 follower 节点，同时通过安全性的准则来保证整个日志复制的一致性；</li>
+<li>如果遇到 leader 故障，followers 会重新发起选举出新的 leader；</li>
+</ul>
+<h2 id="5-2-5-8"><a href="#5-2-5-8" class="headerlink" title="5.2-5.8"></a>5.2-5.8</h2><h3 id="A-Secure-File-Sharing-System-Based-on-IPFS-and-Blockchain"><a href="#A-Secure-File-Sharing-System-Based-on-IPFS-and-Blockchain" class="headerlink" title="A Secure File Sharing System Based on IPFS and Blockchain"></a>A Secure File Sharing System Based on IPFS and Blockchain</h3><p><a href="E:\lzx\zotero\storage\5WAV27X3\2020_A Secure File Sharing System Based on IPFS and Blockchain_Huang et al.pdf" target="_blank" rel="noopener">原文</a></p>
+<p><img src="%E5%91%A8%E6%8A%A5/image-20220505153510618.png" alt="image-20220505153510618"></p>
+<ul>
+<li>方法比较常规，为了实现访问控制，在IPFS和Blockchain的基础上增加了IPFS_proxy，一个分布式的访问控制和密钥管理系统。这里的文件共享是面向群组的。1用户共享文件前创建群组，IPFS_proxy使用group_key加密文件，只有群组中的user才能获取group key解密文件，以这种方式实现访问控制。user获取group key的方式是key wrapping，即proxy使用user的公钥加密group key，user使用私钥解密获取。</li>
+<li>只要知道group_id就可以加入并获取所有文件，这似乎不是一个很好的设计，而且想要将用户从群组中踢出，需要更新group key、通知所有user，re-encrypt所有文件，上链，这个过程太过复杂。而且如何从IPFS上删除原有的数据？</li>
+</ul>
+<h3 id="A-Blockchain-Based-Decentralized-Federated-Learning-Framework-with-Committee-Consensus"><a href="#A-Blockchain-Based-Decentralized-Federated-Learning-Framework-with-Committee-Consensus" class="headerlink" title="A Blockchain-Based Decentralized Federated Learning Framework with Committee Consensus"></a>A Blockchain-Based Decentralized Federated Learning Framework with Committee Consensus</h3><p><a href="E:\lzx\zotero\storage\3NSGHRER\2021_A Blockchain-Based Decentralized Federated Learning Framework with Committee_Li et al.pdf" target="_blank" rel="noopener">原文</a></p>
+<p>模型存储模式、训练过程和新的委员会共识。</p>
+<p><img src="%E5%91%A8%E6%8A%A5/image-20220507230338609.png" alt="image-20220507230338609"></p>
+<p><img src="%E5%91%A8%E6%8A%A5/image-20220507225830343.png" alt="image-20220507225830343"></p>
+<h4 id="出发点："><a href="#出发点：" class="headerlink" title="出发点："></a>出发点：</h4><ol>
+<li>FL服务器中心化带来的问题，如单点故障、泄露隐私问题</li>
+<li>无法处理恶意节点投毒问题</li>
+</ol>
+<p>创新点：</p>
+<ol>
+<li>委员会共识</li>
+</ol>
+<p>共识机制：选举委员会节点，委员会成员对节点上传的梯度值打分，中位数作为最终得分，根据最终得分选举下一轮委员会成员</p>
+<ol>
+<li><strong>高效率</strong>:只有少数节点验证更新，而不是广播到每个节点并达成协议。</li>
+<li><strong>K-fold交叉验证</strong>:委员会成员不参加本次本地培训。因此，我们将委员会的本地数据作为验证集。随着每一轮委员会成员的交替，验证集也会发生变化。在此设置下，实现了对FL的k-fold交叉验证。</li>
+<li><strong>反恶意</strong>:根据验证分数，智能合约将选出相应性能较好的节点，组成下一轮培训的新委员会。这意味着所选的本地数据分布是群居的，节点不是恶意的。</li>
+</ol>
+<p>存储优化：删除旧节点    ————》 信任问题</p>
+<p>激励机制：根据节点提交更新的分数分配奖励</p>
+<p>安全性：委员会成员中恶意节点数量小于一半</p>
+<p>模型训练：</p>
+<ul>
+<li>两个问题：<ul>
+<li>各个节点所有的数据可能不是独立同分布的  ——》每一轮训练需要足够多的更新以使得全局模型的泛化能力最大化。</li>
+<li>节点不能保证随时在线  ——》节点主动获取更新模型进行训练</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>委员会共识中委员会的概念并不是首创，像EOS中的DPOS中就有委员会的概念</li>
+<li>存储优化的概念中本聪在比特币的白皮书中就有初步构想。</li>
+<li>每一轮更新上链数据量大。</li>
+</ol>
+<p><img src="%E5%91%A8%E6%8A%A5/image-20220508111607556.png" alt="image-20220508111607556"></p>
+<p><strong>基于竞争的共识机制首先在链上追加区块，然后达成共识。相反，基于通信的共识机制在附加块之前达成一致。</strong></p>
+<h2 id="5-9-5-15"><a href="#5-9-5-15" class="headerlink" title="5.9-5.15"></a>5.9-5.15</h2><p>阅读《Hyperledger Fabric技术内幕：架构设计与实现原理》，学习hyperldger Fabric源码并尝试复现北交硕士论文《基于可验证随机函数的hyperledger fabric共识机制优化》</p>
+<h3 id="Hyperledger-Fabric1-x-共识机制源码"><a href="#Hyperledger-Fabric1-x-共识机制源码" class="headerlink" title="Hyperledger Fabric1.x  共识机制源码"></a>Hyperledger Fabric1.x  共识机制源码</h3><ol>
+<li><code>core\endorser\endorser.go</code> 是背书节点相关处理逻辑代码，其中<code>ProcessProposal</code> 函数为公开对外提供的处理提案函数</li>
+</ol>
+<p>首先，<code>validation.ValidateProposalMessage()</code> 函数做如下四件事情：</p>
+<ol>
+<li>检测生成签名的证书有效性，提案message、header可以正确解析时，证书有效</li>
+<li>验证证书可信</li>
+<li>验证签名有效性</li>
+<li>检测重放攻击</li>
+</ol>
+<p>待整理····</p>
+<h3 id="其他概念"><a href="#其他概念" class="headerlink" title="其他概念"></a>其他概念</h3><h4 id="1、LSCC-Lifecycle-System-Chaincode"><a href="#1、LSCC-Lifecycle-System-Chaincode" class="headerlink" title="1、LSCC: Lifecycle System Chaincode"></a>1、LSCC: Lifecycle System Chaincode</h4><p>This system chaincode is used for managing the lifecycle of chaincode. It is used for install, instantiate (实例) and update chaincode. When we install chaincode, the process goes through LSCC</p>
+<h4 id="2、ESCC-Endorsement-System-Chaincode"><a href="#2、ESCC-Endorsement-System-Chaincode" class="headerlink" title="2、ESCC: Endorsement System Chaincode"></a>2、ESCC: Endorsement System Chaincode</h4><p>This system chaincode is used to endorse (赞同) the transaction by digitally signing the response.<br>The client sends the transaction proposal to invoke chaincode function at the endorsement phase (相) . client sign proposal with his credential (凭据) and send to endorsement peers. First endorsing (赞同) peer simulate transaction and verify if the client is authorized (授权) to invoke transaction on the channel. The endorsement peer executes the chaincode and creates a read/write(R/W) set. Transaction result includes response value, read set and write set. Then endorsement peer call ESCC and sign this transaction response with peer identity (身份) and send back to client.</p>
+<h4 id="3、VSCC-Validation-System-Chaincode"><a href="#3、VSCC-Validation-System-Chaincode" class="headerlink" title="3、VSCC: Validation System Chaincode"></a>3、VSCC: Validation System Chaincode</h4><p>This is used to validate the transaction against its endorsement policy.<br>A Validation system chaincode evaluates (评价) endorsements in the transaction against the endorsement policy specified (指定) for the chaincode. If the endorsement policy is not satisfied, then that transaction is marked invalid.<br>When all peers get a block from the orderer, first they verify orderer’s signature on the block. Every block is decoded and all the transaction goes through VSCC before performing MVCC validation. VSCC validates endorsements in the transaction against endorsement policy specified (指定) for chaincode. If the endorsement policy fails to satisfy, then the transaction is marked as invalid.<br>Note: MVCC - Multiversion Concurrency Control — It ensures that the version of keys read by transaction during the endorsement phase (相) is the same as the current state in a local ledger at commit time. It is performed on all valid transactions in the block which is validated by VSCC. If the read set version does not match (比赛) , the transaction is marked as invalid. MVCC is not chaincode, it’s a mechanism (机制) to avoid the double-spending problem in Hyperledger fabric</p>
+<h4 id="4、CSCC-Configuration-system-Chaincode"><a href="#4、CSCC-Configuration-system-Chaincode" class="headerlink" title="4、CSCC: Configuration system Chaincode"></a>4、CSCC: Configuration system Chaincode</h4><p>This chaincode is used to manage channel configuration. When we create a channel, update channel, the process goes through the configuration system chaincode. Actually it validates the channel creation/updation.</p>
+<h4 id="5、QSCC-Query-System-Chaincode"><a href="#5、QSCC-Query-System-Chaincode" class="headerlink" title="5、QSCC: Query System Chaincode"></a>5、QSCC: Query System Chaincode</h4><p>This Chaincode runs in all peer and provide ledger API like getTransactionByTransactionID, getBlockByBlockNumber, GetBlockByTxID, GetChainInfo, GetBlockByTxID.</p>
+<p>Hope this article will help you. It’s basic information about the system chaincodes.</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢支持 ！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="Javen 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Javen 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Javen</li>
+  <li>
+  <strong>修改时间： </strong>2022-05-13 21:51:26</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://www.shmily.today/周报.html" title>https://www.shmily.today/周报.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    
+    
+    
+
+    <footer class="post-footer">
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hyperledger-fabric-源码阅读.html" rel="next" title="hyperledger fabric 源码阅读">
+                <i class="fa fa-chevron-left"></i> hyperledger fabric 源码阅读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+     
+  
+
+  
+    <div class="comments" id="comments">
+    </div>
+    
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Javen">
+            
+              <p class="site-author-name" itemprop="name">Javen</p>
+              <p class="site-description motion-element" itemprop="description">柔而不弱，强而不悍<br>阳光下像个孩子<br>风雨里像个大人</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+          
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/Zosien" title="GitHub &rarr; https://github.com/Zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/zosien" title="微博 &rarr; https://weibo.com/zosien" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/wechat.png" title="微信 &rarr; /images/wechat.png"><i class="fa fa-fw fa-wechat"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/images/qq.jpg" title="QQ &rarr; /images/qq.jpg"><i class="fa fa-fw fa-qq"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:1562248279@qq.com" title="E-Mail &rarr; mailto:1562248279@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+
+          
+            
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-18-4-24"><span class="nav-number">1.</span> <span class="nav-text">4.18 - 4.24</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Power-of-Tau"><span class="nav-number">1.1.</span> <span class="nav-text">Power of Tau</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remix"><span class="nav-number">1.2.</span> <span class="nav-text">remix</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ethereum"><span class="nav-number">1.3.</span> <span class="nav-text">ethereum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成的智能合约如下："><span class="nav-number">1.4.</span> <span class="nav-text">生成的智能合约如下：</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#4-25-5-1"><span class="nav-number"></span> <span class="nav-text">4.25 - 5.1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gossip协议"><span class="nav-number">1.</span> <span class="nav-text">Gossip协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据更新的三种方法："><span class="nav-number">1.1.</span> <span class="nav-text">数据更新的三种方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gossip协议的模拟过程"><span class="nav-number">1.2.</span> <span class="nav-text">Gossip协议的模拟过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Raft"><span class="nav-number">2.</span> <span class="nav-text">Raft</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-5-8"><span class="nav-number"></span> <span class="nav-text">5.2-5.8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Secure-File-Sharing-System-Based-on-IPFS-and-Blockchain"><span class="nav-number">1.</span> <span class="nav-text">A Secure File Sharing System Based on IPFS and Blockchain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Blockchain-Based-Decentralized-Federated-Learning-Framework-with-Committee-Consensus"><span class="nav-number">2.</span> <span class="nav-text">A Blockchain-Based Decentralized Federated Learning Framework with Committee Consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#出发点："><span class="nav-number">2.1.</span> <span class="nav-text">出发点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-9-5-15"><span class="nav-number"></span> <span class="nav-text">5.9-5.15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hyperledger-Fabric1-x-共识机制源码"><span class="nav-number">1.</span> <span class="nav-text">Hyperledger Fabric1.x  共识机制源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他概念"><span class="nav-number">2.</span> <span class="nav-text">其他概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、LSCC-Lifecycle-System-Chaincode"><span class="nav-number">2.1.</span> <span class="nav-text">1、LSCC: Lifecycle System Chaincode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、ESCC-Endorsement-System-Chaincode"><span class="nav-number">2.2.</span> <span class="nav-text">2、ESCC: Endorsement System Chaincode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、VSCC-Validation-System-Chaincode"><span class="nav-number">2.3.</span> <span class="nav-text">3、VSCC: Validation System Chaincode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、CSCC-Configuration-system-Chaincode"><span class="nav-number">2.4.</span> <span class="nav-text">4、CSCC: Configuration system Chaincode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、QSCC-Query-System-Chaincode"><span class="nav-number">2.5.</span> <span class="nav-text">5、QSCC: Query System Chaincode</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"><font color="white" face="STLiti">Copyright &nbsp;</font><font color="white">&copy;</font> <font color="white" face="STLiti">2018 - </font><font color="white" face="STLiti"><span itemprop="copyrightYear">2022</span></font>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder" style="font-family:STLiti;color:white;">LZX . All Rights Reserved.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <font color="white" face="STLiti"><span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
+    </span><span class="post-meta-divider">|</span></font>
+    <font color="white" face="STLiti">
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">88.6k</span>字,</span>
+    <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
+    </font>
+  
+
+  
+    <font color="white" face="STLiti"><span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次
+    </span></font>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div style="font-family:STLiti;display:inline-block;height:20px;line-height:20px;">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43030402000254" ><img src="/images/gov.png" style="float:left;"/>湘公网安备 43030402000254号</a>
+        <span class="post-meta-divider" style="color: #555;">|</span><span><a href="http://www.miitbeian.gov.cn" target="_blank">湘ICP备18020535号</a></sapn>
+        </div> -->
+        
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+<!--console.log-->
+
+<!--此处为建站时间 -->
+<script>
+  var now = new Date(); 
+  function createtime() { 
+      var grt= new Date("05/28/2019 20:01:01");
+      now.setTime(now.getTime()+250); 
+      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+      document.getElementById("timeDate").innerHTML =dnum+"&thinsp;天"; 
+      document.getElementById("times").innerHTML = hnum + "&thinsp;时" + mnum + "&thinsp;分" + snum + "&thinsp;秒"; 
+  } 
+setInterval("createtime()",250);
+</script>
+
+<!--知乎卡片链接-->
+<script type="text/javascript" src="/js/src/linkcard.js"></script>
+
+<!--夜间模式-->
+<script type="text/javascript" src="/js/src/night.js"></script>
+<div class="cover"></div>
+
+<!--崩溃欺骗-->
+<!-- <script type="text/javascript" src="/js/src/crash_cheat.js"></script> -->
+
+<!--input特效-->
+<script src="/js/src/activate-power-mode.js"></script>
+<script>
+POWERMODE.colorful = true; // make power mode colorful
+POWERMODE.shake = false; // turn off shake
+document.body.addEventListener('input', POWERMODE);
+</script>
+
+<!-- 鼠标点击特效 -->
+
+ <script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+  
+  
+  
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'nBqcJNgT4JDUb4G29LREPoiY-gzGzoHsz',
+        appKey: '3GRto2sfPhCf8DQnPl68r3RI',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!填写邮箱能很快收到我的回复喔！',
+        avatar:'monsterid',
+        meta:guest,
+        pageSize:'15' || 10,
+        visitor: true
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/browser/pangu.min.js"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('manual', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      
+        background-color: #1b1b1b;
+        color: #b0b0b0;
+        border: 1px solid #b0b0b0;
+        border-radius: 3px;
+      
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 9px;
+      top: 4px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1;
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
