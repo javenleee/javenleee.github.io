@@ -158,6 +158,42 @@
       </tags>
   </entry>
   <entry>
+    <title>An Update on Integrating Zcash on Ethereum (ZoE)</title>
+    <url>/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</url>
+    <content><![CDATA[<p>原文地址：<a href="https://blog.ethereum.org/2017/01/19/update-integrating-zcash-ethereum/" target="_blank" rel="noopener">An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog</a></p>
+<p>​    以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了<a href="[An Update on Integrating Zcash on Ethereum (ZoE">Zcash blog</a> - Electric Coin Company](<a href="https://electriccoin.co/blog/zcash-eth/" target="_blank" rel="noopener">https://electriccoin.co/blog/zcash-eth/</a>)) ，由Ariel Gabizon（Zcash）和Christian Reitwiessner（Ethereum）共同撰写。</p>
+<p>​    以太坊灵活的智能合约接口支持各种各样的应用程序，其中许多可能尚未被构思出来。当增加了隐私保护的能力，这种支持应用程序的可能性会大大增加。例如，你可以想象一下，通过智能合约在区块链上的选举或者拍卖，结果可以被任何区块链上的观察者验证，但是个人投票或竞标情况不会被披露。另一个可能的场景可能涉及到可选择的披露，用户拥有能力来证明他在某一个城市但是不暴露确切的位置。在Ethereum上增加这种能力的关键是零知识简洁非交互知识论证（zero-knowledge succinct non-interactive arguments of knowledge，zk-SNARKs）——这正是Zcash底层的加密引擎。</p>
+<p>​    Zcash公司的代号为炼金术项目的目标之一时实现以太坊和Zcash的直接去中心化交易。连接这两种区块链和技术（一种侧重于可编程性，另一种侧重于隐私），是促进需要两者的应用程序开发的自然方式。</p>
+<p>​    作为Zcash/Ethereum技术合作的一部分，Zcash的Ariel Gabizon几周前访问了位于柏林的以太坊中心Christian Reitwiessner。此次访问的重点是使用Solidity编写的zk-SNARK验证器的概念实现证明，该验证器基于为以太坊C++客户端实现的预编译以太坊合约。这项工作实现了初期的ZoE，其中zk-SNARK预编译合约是为Parity（以太坊Rust客户端）编写。我们的更新包括增加了微小的加密原语（椭圆曲线乘法、加法和配对）并在Solidity中实现了其余部分，所有的这些都提供了更大的灵活性并且允许使用各种zk-SNARK结构而无需硬分叉。详细信息将在稍后公布，我们在以太坊区块链的测试网络上成功验证了一个真实的隐私保护Zcash交易，从而测试了新代码。</p>
+<p>​    验证只花了42毫秒，这表明这种预编译合约可以添加，并且使用它们花费的gas可以相当的实惠。</p>
+<h2 id="What-can-be-done-with-such-a-system"><a href="#What-can-be-done-with-such-a-system" class="headerlink" title="What can be done with such a system"></a>What can be done with such a system</h2><p>​    Zcash系统可以在以太坊上重复使用，来创建shielded custom tokens，这样的tokens已经支持许多应用比如投票或者简单的盲目拍卖，参与者在不知道其他人出价的情况下出价竞标。</p>
+<p>​    如果要尝试编译概念证明，可以使用以下命令，如果需要帮助，参阅<a href="https://gitter.im/ethereum/privacy-tech" target="_blank" rel="noopener">https://gitter.im/ethereum/privacy-tech</a> </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/scipr-lab/libsnark.git</span><br><span class="line"><span class="built_in">cd</span> libsnark</span><br><span class="line">sudo PREFIX=/usr/<span class="built_in">local</span> make NO_PROCPS=1 NO_GTEST=1 NO_DOCS=1 \</span><br><span class="line">   CURVE=ALT_BN128 \</span><br><span class="line">   FEATUREFLAGS=<span class="string">"-DBINARY_OUTPUT=1 -DMONTGOMERY_OUTPUT=1 \</span></span><br><span class="line"><span class="string">   -DNO_PT_COMPRESSION=1"</span> \</span><br><span class="line">   lib install</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snark https://github.com/ethereum/cpp-ethereum.git</span><br><span class="line"><span class="built_in">cd</span> cpp-ethereum</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . -DEVMJIT=0 -DETHASHCL=0 &amp;&amp; make eth</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snarks https://github.com/ethereum/solidity.git</span><br><span class="line"><span class="built_in">cd</span> solidity</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . &amp;&amp; make soltest</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">./cpp-ethereum/eth/eth --<span class="built_in">test</span> -d /tmp/<span class="built_in">test</span></span><br><span class="line"><span class="comment"># And on a second terminal:</span></span><br><span class="line">./solidity/<span class="built_in">test</span>/soltest -t <span class="string">"*/snark"</span> -- --ipcpath   /tmp/<span class="built_in">test</span>/geth.ipc  --show-messages</span><br></pre></td></tr></table></figure>
+<p>​    我们还讨论了将zk-SNARK集成到以太坊区块链中的各个方面，现在进行扩展</p>
+<h2 id="Deciding-what-precompiled-contracts-to-define"><a href="#Deciding-what-precompiled-contracts-to-define" class="headerlink" title="Deciding what precompiled contracts to define"></a>Deciding what precompiled contracts to define</h2><p>​    回想一下，SNARK是一些属性的简短证明，向以太坊添加隐私功能所需要的是能够验证此类证明的客户端。</p>
+<p>​    在所有最近的构造中，验证过程仅仅包括对椭圆曲线的操作。具体来说，验证者需要对椭圆曲线组进行标量乘法和加法，并且可能还需要称为双线性配对的更重的操作。</p>
+<p>​    如在此处所说，直接在EVM上实现这些操作成本太高，因此，我们希望实现执行这些操作的预编译合约。现在，有争论的问题是：这些预编译的合约应该达到什么程度的通用性。</p>
+<p>​    SNARK的安全级别对应于曲线的参数。粗略来说，曲线阶数越大，嵌入度就越大，基于曲线的SNARK就越安全。另一方面，这些数量越大，自然地，在相应曲线上的成本就越高，因此，使用SNARK的合约设计者可能希望根据他们自己所需要的效率/安全权衡来选择参数。这种权衡是实现高度通用性的预编译合约的一个原因，合约设计者可以从大量曲线中进行选择。实际上，我们一开始的目标是高度通用性，曲线的描述作为合约输入的一部分给出，在这种情况下，智能合约将能够在任何椭圆曲线组中执行加法。</p>
+<p>​    这种方法的一个复杂之处是将gas消耗分配给操作，你必须仅仅通过曲线的描述在不能访问特定实现的情况下，评估在该曲线上的组操作在最坏情况下的成本有多大。一种不大通用的方法是允许给定族中的所有曲线。我们注意到在使用Barreto-Naehrig(NG)曲线族时，可以大致评估给定曲线参数的配对操作的成本，因为所有这种曲线都支持特定类型的最佳Ate配对。下面是预编译如何工作以及gas消耗是如何计算的：</p>
+<p>​    我们从这场辩论中学到了很多，但最终，我们决定在这个概念证明中保持简洁：我们选择为Zcash中正在使用的特定曲线实现合约。我们通过使用在libsnark函数库中相应函数的包装器来做到这一点，Zcash也是这么做的。</p>
+<p>​    注意，我们可以简单地为Zcash当前使用的整个SNARK验证函数使用一个包装器，正如上面提到的早期ZoE项目所做的。然而，明确定义椭圆曲线操作的优势是能够使用各种SNARK结构，同样，所有这些结构都具有通过前面提到的三个椭圆曲线操作的某种组合来工作的验证器。</p>
+<h2 id="Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications"><a href="#Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications" class="headerlink" title="Reusing the Zcash setup for new anonymous tokens and other applications"></a>Reusing the Zcash setup for new anonymous tokens and other applications</h2><p>​    你可能已经听说，<strong>使用SNARKs需要一个复杂的setup阶段，在这个阶段，构建所谓的系统公共参数。我们每次想要对特定电路使用SNARKs时，这些公共参数都需要以一种安全的方式生成，这大大阻碍了SNARKs 的使用。</strong>简化这个setup阶段是我们考虑过的一个重要的目标，但是到目前为止还没有任何成功。</p>
+<p>​    好消息是，想要发行支持隐私保护交易token的人可以简单地<strong>重复使用Zcash早已安全生成的公共参数。它能被重复使用因为这个用来验证隐私保护交易的电路并不是固有地与一种货币或者区块链绑定。</strong>相反，其显式输入之一是包含所有有效票据的Merkle树根。因此可以根据人们希望使用的货币来更改此输入。而且，如果很容易开启一个新的匿名token，你已经可以完成许多乍一看不像token的任务。例如，假设我们希望进行匿名选举以在他们两个选项中选择一个首选选项。我们可以为投票发行一个匿名的自定义token，并且向每个投票方发送一枚硬币。因为没有挖矿，因此不可能以任何其他方式生成tokens。现在每一方根据他们的投票将他们的硬币发送到两个地址之一。最终余额较大的地址对应选举结果。</p>
+<h2 id="Other-application"><a href="#Other-application" class="headerlink" title="Other application"></a>Other application</h2><p>​    下面是一个非基于令牌的系统，他构建起来相当简单，并允许选择性揭露。例如，你可以定期将包含你的物理物质的加密信息发送到区块链（可能带有其他人的签名以防止欺骗）。如果你为每条消息使用不同的密钥，你只能在特定的时间通过公开你的密钥来揭露你的位置。然后，使用zk-SNARKs，你还可以证明你在某个区域，而不透露你的确切位置。在zk-SNARK中你解密你的位置并检查它是否在该区域内。由于零知识属性，每个人可以验证该检查，但没有人能够检索到你的实际位置。</p>
+<h2 id="The-work-ahead"><a href="#The-work-ahead" class="headerlink" title="The work ahead"></a>The work ahead</h2><p>​    实现上述功能——在以太坊区块链上创建匿名token并验证Zcash交易——需要使用solidity实现Zcash使用的其他元素</p>
+<p>​    对于第一个功能，我们必须实现由Zcash网络上节点执行的任务例如更新note commitment tree</p>
+<p>​    对于第二个功能呢，我们需要实现Zcash使用的equihash工作证明算法。否则，可以验证交易本身是有效的，但是我们不知道这笔交易是否实际集成到Zcash区块链中</p>
+<p>​    幸运的是，这样的实现已经完成，然而，他的效率需要提高才能在实际应用中使用。</p>
+]]></content>
+      <categories>
+        <category>零知识证明</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+        <tag>零知识证明</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>An Empirical Analysis of Privacy in the Lightning Network</title>
     <url>/An-Empirical-Analysis-of-Privacy-in-the-Lightning-Network.html</url>
     <content><![CDATA[<hr>
@@ -267,42 +303,6 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
       </tags>
   </entry>
   <entry>
-    <title>An Update on Integrating Zcash on Ethereum (ZoE)</title>
-    <url>/An-Update-on-Integrating-Zcash-on-Ethereum-ZoE.html</url>
-    <content><![CDATA[<p>原文地址：<a href="https://blog.ethereum.org/2017/01/19/update-integrating-zcash-ethereum/" target="_blank" rel="noopener">An Update on Integrating Zcash on Ethereum (ZoE) | Ethereum Foundation Blog</a></p>
-<p>​    以太坊研发团队成员和Zcash公司正在合作一个研究项目，旨在解决区块链中可编程性和隐私性的结合问题。这篇联合文章同时发在了<a href="[An Update on Integrating Zcash on Ethereum (ZoE">Zcash blog</a> - Electric Coin Company](<a href="https://electriccoin.co/blog/zcash-eth/" target="_blank" rel="noopener">https://electriccoin.co/blog/zcash-eth/</a>)) ，由Ariel Gabizon（Zcash）和Christian Reitwiessner（Ethereum）共同撰写。</p>
-<p>​    以太坊灵活的智能合约接口支持各种各样的应用程序，其中许多可能尚未被构思出来。当增加了隐私保护的能力，这种支持应用程序的可能性会大大增加。例如，你可以想象一下，通过智能合约在区块链上的选举或者拍卖，结果可以被任何区块链上的观察者验证，但是个人投票或竞标情况不会被披露。另一个可能的场景可能涉及到可选择的披露，用户拥有能力来证明他在某一个城市但是不暴露确切的位置。在Ethereum上增加这种能力的关键是零知识简洁非交互知识论证（zero-knowledge succinct non-interactive arguments of knowledge，zk-SNARKs）——这正是Zcash底层的加密引擎。</p>
-<p>​    Zcash公司的代号为炼金术项目的目标之一时实现以太坊和Zcash的直接去中心化交易。连接这两种区块链和技术（一种侧重于可编程性，另一种侧重于隐私），是促进需要两者的应用程序开发的自然方式。</p>
-<p>​    作为Zcash/Ethereum技术合作的一部分，Zcash的Ariel Gabizon几周前访问了位于柏林的以太坊中心Christian Reitwiessner。此次访问的重点是使用Solidity编写的zk-SNARK验证器的概念实现证明，该验证器基于为以太坊C++客户端实现的预编译以太坊合约。这项工作实现了初期的ZoE，其中zk-SNARK预编译合约是为Parity（以太坊Rust客户端）编写。我们的更新包括增加了微小的加密原语（椭圆曲线乘法、加法和配对）并在Solidity中实现了其余部分，所有的这些都提供了更大的灵活性并且允许使用各种zk-SNARK结构而无需硬分叉。详细信息将在稍后公布，我们在以太坊区块链的测试网络上成功验证了一个真实的隐私保护Zcash交易，从而测试了新代码。</p>
-<p>​    验证只花了42毫秒，这表明这种预编译合约可以添加，并且使用它们花费的gas可以相当的实惠。</p>
-<h2 id="What-can-be-done-with-such-a-system"><a href="#What-can-be-done-with-such-a-system" class="headerlink" title="What can be done with such a system"></a>What can be done with such a system</h2><p>​    Zcash系统可以在以太坊上重复使用，来创建shielded custom tokens，这样的tokens已经支持许多应用比如投票或者简单的盲目拍卖，参与者在不知道其他人出价的情况下出价竞标。</p>
-<p>​    如果要尝试编译概念证明，可以使用以下命令，如果需要帮助，参阅<a href="https://gitter.im/ethereum/privacy-tech" target="_blank" rel="noopener">https://gitter.im/ethereum/privacy-tech</a> </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/scipr-lab/libsnark.git</span><br><span class="line"><span class="built_in">cd</span> libsnark</span><br><span class="line">sudo PREFIX=/usr/<span class="built_in">local</span> make NO_PROCPS=1 NO_GTEST=1 NO_DOCS=1 \</span><br><span class="line">   CURVE=ALT_BN128 \</span><br><span class="line">   FEATUREFLAGS=<span class="string">"-DBINARY_OUTPUT=1 -DMONTGOMERY_OUTPUT=1 \</span></span><br><span class="line"><span class="string">   -DNO_PT_COMPRESSION=1"</span> \</span><br><span class="line">   lib install</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snark https://github.com/ethereum/cpp-ethereum.git</span><br><span class="line"><span class="built_in">cd</span> cpp-ethereum</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . -DEVMJIT=0 -DETHASHCL=0 &amp;&amp; make eth</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">git <span class="built_in">clone</span> --recursive -b snarks https://github.com/ethereum/solidity.git</span><br><span class="line"><span class="built_in">cd</span> solidity</span><br><span class="line">./scripts/install_deps.sh &amp;&amp; cmake . &amp;&amp; make soltest</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">./cpp-ethereum/eth/eth --<span class="built_in">test</span> -d /tmp/<span class="built_in">test</span></span><br><span class="line"><span class="comment"># And on a second terminal:</span></span><br><span class="line">./solidity/<span class="built_in">test</span>/soltest -t <span class="string">"*/snark"</span> -- --ipcpath   /tmp/<span class="built_in">test</span>/geth.ipc  --show-messages</span><br></pre></td></tr></table></figure>
-<p>​    我们还讨论了将zk-SNARK集成到以太坊区块链中的各个方面，现在进行扩展</p>
-<h2 id="Deciding-what-precompiled-contracts-to-define"><a href="#Deciding-what-precompiled-contracts-to-define" class="headerlink" title="Deciding what precompiled contracts to define"></a>Deciding what precompiled contracts to define</h2><p>​    回想一下，SNARK是一些属性的简短证明，向以太坊添加隐私功能所需要的是能够验证此类证明的客户端。</p>
-<p>​    在所有最近的构造中，验证过程仅仅包括对椭圆曲线的操作。具体来说，验证者需要对椭圆曲线组进行标量乘法和加法，并且可能还需要称为双线性配对的更重的操作。</p>
-<p>​    如在此处所说，直接在EVM上实现这些操作成本太高，因此，我们希望实现执行这些操作的预编译合约。现在，有争论的问题是：这些预编译的合约应该达到什么程度的通用性。</p>
-<p>​    SNARK的安全级别对应于曲线的参数。粗略来说，曲线阶数越大，嵌入度就越大，基于曲线的SNARK就越安全。另一方面，这些数量越大，自然地，在相应曲线上的成本就越高，因此，使用SNARK的合约设计者可能希望根据他们自己所需要的效率/安全权衡来选择参数。这种权衡是实现高度通用性的预编译合约的一个原因，合约设计者可以从大量曲线中进行选择。实际上，我们一开始的目标是高度通用性，曲线的描述作为合约输入的一部分给出，在这种情况下，智能合约将能够在任何椭圆曲线组中执行加法。</p>
-<p>​    这种方法的一个复杂之处是将gas消耗分配给操作，你必须仅仅通过曲线的描述在不能访问特定实现的情况下，评估在该曲线上的组操作在最坏情况下的成本有多大。一种不大通用的方法是允许给定族中的所有曲线。我们注意到在使用Barreto-Naehrig(NG)曲线族时，可以大致评估给定曲线参数的配对操作的成本，因为所有这种曲线都支持特定类型的最佳Ate配对。下面是预编译如何工作以及gas消耗是如何计算的：</p>
-<p>​    我们从这场辩论中学到了很多，但最终，我们决定在这个概念证明中保持简洁：我们选择为Zcash中正在使用的特定曲线实现合约。我们通过使用在libsnark函数库中相应函数的包装器来做到这一点，Zcash也是这么做的。</p>
-<p>​    注意，我们可以简单地为Zcash当前使用的整个SNARK验证函数使用一个包装器，正如上面提到的早期ZoE项目所做的。然而，明确定义椭圆曲线操作的优势是能够使用各种SNARK结构，同样，所有这些结构都具有通过前面提到的三个椭圆曲线操作的某种组合来工作的验证器。</p>
-<h2 id="Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications"><a href="#Reusing-the-Zcash-setup-for-new-anonymous-tokens-and-other-applications" class="headerlink" title="Reusing the Zcash setup for new anonymous tokens and other applications"></a>Reusing the Zcash setup for new anonymous tokens and other applications</h2><p>​    你可能已经听说，<strong>使用SNARKs需要一个复杂的setup阶段，在这个阶段，构建所谓的系统公共参数。我们每次想要对特定电路使用SNARKs时，这些公共参数都需要以一种安全的方式生成，这大大阻碍了SNARKs 的使用。</strong>简化这个setup阶段是我们考虑过的一个重要的目标，但是到目前为止还没有任何成功。</p>
-<p>​    好消息是，想要发行支持隐私保护交易token的人可以简单地<strong>重复使用Zcash早已安全生成的公共参数。它能被重复使用因为这个用来验证隐私保护交易的电路并不是固有地与一种货币或者区块链绑定。</strong>相反，其显式输入之一是包含所有有效票据的Merkle树根。因此可以根据人们希望使用的货币来更改此输入。而且，如果很容易开启一个新的匿名token，你已经可以完成许多乍一看不像token的任务。例如，假设我们希望进行匿名选举以在他们两个选项中选择一个首选选项。我们可以为投票发行一个匿名的自定义token，并且向每个投票方发送一枚硬币。因为没有挖矿，因此不可能以任何其他方式生成tokens。现在每一方根据他们的投票将他们的硬币发送到两个地址之一。最终余额较大的地址对应选举结果。</p>
-<h2 id="Other-application"><a href="#Other-application" class="headerlink" title="Other application"></a>Other application</h2><p>​    下面是一个非基于令牌的系统，他构建起来相当简单，并允许选择性揭露。例如，你可以定期将包含你的物理物质的加密信息发送到区块链（可能带有其他人的签名以防止欺骗）。如果你为每条消息使用不同的密钥，你只能在特定的时间通过公开你的密钥来揭露你的位置。然后，使用zk-SNARKs，你还可以证明你在某个区域，而不透露你的确切位置。在zk-SNARK中你解密你的位置并检查它是否在该区域内。由于零知识属性，每个人可以验证该检查，但没有人能够检索到你的实际位置。</p>
-<h2 id="The-work-ahead"><a href="#The-work-ahead" class="headerlink" title="The work ahead"></a>The work ahead</h2><p>​    实现上述功能——在以太坊区块链上创建匿名token并验证Zcash交易——需要使用solidity实现Zcash使用的其他元素</p>
-<p>​    对于第一个功能，我们必须实现由Zcash网络上节点执行的任务例如更新note commitment tree</p>
-<p>​    对于第二个功能呢，我们需要实现Zcash使用的equihash工作证明算法。否则，可以验证交易本身是有效的，但是我们不知道这笔交易是否实际集成到Zcash区块链中</p>
-<p>​    幸运的是，这样的实现已经完成，然而，他的效率需要提高才能在实际应用中使用。</p>
-]]></content>
-      <categories>
-        <category>零知识证明</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-        <tag>零知识证明</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</title>
     <url>/Arrays%E7%B1%BB%E4%B8%AD%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%B2%A1%E6%89%BE%E5%88%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%94%E5%9B%9E-(low+1).html</url>
     <content><![CDATA[<h1 id="Java-中-Arrays类中的binarySearch0方法中，没找到target为什么返回-low-1"><a href="#Java-中-Arrays类中的binarySearch0方法中，没找到target为什么返回-low-1" class="headerlink" title="Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)"></a>Java 中 Arrays类中的binarySearch0方法中，没找到target为什么返回-(low+1)</h1><p>Arrays类中的binarySearch方法源码如下：</p>
@@ -344,6 +344,35 @@ Pr_S^{fail} = Pr[L=4|fail,\ell \ge 4] + \sum_{\ell=5}^{20}Pr[L-\ell|fail] \cdot 
 <li>PBFT（Practical Byzantine Fault Tolerance）</li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>MySQL中的utf8和utf8mb4</title>
+    <url>/MySql%E4%B8%AD%E7%9A%84utf8%E5%92%8Cutf8mb4.html</url>
+    <content><![CDATA[<h3 id="MySQL中utf8和utf8mb4"><a href="#MySQL中utf8和utf8mb4" class="headerlink" title="MySQL中utf8和utf8mb4"></a>MySQL中utf8和utf8mb4</h3><p>开始之前先回顾一下UTF-8和Unicode的概念</p>
+<p>UTF-8？ 来自百度百科的定义</p>
+<blockquote>
+<p>UTF-8（8位元，Universal Character Set/Unicode Transformation Format）是针对Unicode的一种可变长度字符编码。它可以用来表示Unicode标准中的任何字符，而且其编码中的第一个字节仍与<a href="https://baike.baidu.com/item/ASCII/309296" target="_blank" rel="noopener">ASCII</a>相容，使得原来处理ASCII字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为<a href="https://baike.baidu.com/item/电子邮件/111106" target="_blank" rel="noopener">电子邮件</a>、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
+</blockquote>
+<p>那么什么是Unicode呢？</p>
+<blockquote>
+<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p>
+</blockquote>
+<p>通俗点讲：早期针对英语设计的ASCII码并不能支持其他语言，各国为了把各自的语言文字输入进计算机来处理，制定了自己的编码规范（如中国的gb2312），而这就导致了同样的数据通过不同的编码打开时的乱码问题。而为了统一所有的语言文字，Unicode应运而生，他把所有的语言统一到一套编码里，解决了乱码的问题，UTF-8是Unicode的一种字符集转换格式（Unicode Transformation Format），也就是怎么将Unicode定义的数字转换成程序数据。UTF-8即以8位也就是一个字节为单位对Unicode进行编码，是Unicode的一种实现方式，除了 UTF-8，还有UTF-16，UTF-32 等都可以实现 Unicode，但是 UTF-8 相对而言是用的最为广泛的。</p>
+<p>UTF-8编码的特点是对不同范围的字符使用不同长度的编码，如英文字符“A”只需要8位，则用一个字节，汉字多用三个字节，而极少使用的语言字符则使用4字节编码。每个字符最多用4个字节来编码，这样做就节省空间。</p>
+<p>在MySQL中，utf8字符集最大字符长度为3字节，如果遇到4字节的宽字符就会出现插入异常的情况，像emoji表情和很多不常用的汉字都无法使用MySQL的utf8字符集，为了弥补这个缺陷，MySQL在5.5.3版本增加了utf8mb4字符集，mb4就是most byte 4，专门用来兼容4字节的Unicode。也就是说：在MySQL中utf8mb4才是真正的UTF-8，是utf8的超集。</p>
+<p>要在MySQL中使用4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本之后才支持，为了获得更好的兼容，最好使用utf8mb4而不是utf8，对于char类型数据来说，utf8mb4会多消耗一些空间（每个字符多占用一个字节），MySQL官方建议，可以使用varchar来替代char</p>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://ourmysql.com/archives/1402" target="_blank" rel="noopener">http://ourmysql.com/archives/1402</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
+        <tag>MySQL</tag>
+      </tags>
   </entry>
   <entry>
     <title>How to bootstrap snarky blockchain</title>
@@ -482,6 +511,102 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       </tags>
   </entry>
   <entry>
+    <title>PHP+MySQL乱码问题总结</title>
+    <url>/PHP-MySQL%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html</url>
+    <content><![CDATA[<p>在可视化数据库管理软件创建数据库时，会要求我们选择字符集和排序规则，那么什么是字符集和排序规则，我们又该如何选择呢？</p>
+<h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><ul>
+<li>字符（charset）：字符指类字形单位或符号，包括字母、数字、运算符号、标点符号和其他符号，以及一些功能性符号。如‘A’，‘B’</li>
+<li>给定一系列字符，对每个字符赋予一个数值，用该数值来代表对应字符，这一数值就是该字符的编码（Encoding）</li>
+<li>从一种二进制编码到某类字符符号的映射叫字符集（Charset set），如{0=&gt;’A’,1=&gt;’B’}</li>
+<li>排序规则（也叫校对、字符序）是指在同一字符集内的排序规则（比较规则），确定排序规则后，才能在一个字符集上定义什么是等价的字符，以及字符间的大小关系。</li>
+<li>字符集和排序规则之间是一个1对n的关系，一个字符集有多个排序规则， 一个排序规则之对应一个字符集。</li>
+</ul>
+<h5 id="选择使用"><a href="#选择使用" class="headerlink" title="选择使用"></a>选择使用</h5><p>我们可以在数据库中使用<code>SHOW CHARACTER SET</code> 查看目前版本数据库支持的字符集、默认排序规则以及最大长度（这里也可以验证上篇文章说的utf8是最长3字节的字符编码，而utf8mb4最长4字节）。</p>
+<p>为了获得更好的兼容，字符集我们一般选择utf8mb4 </p>
+<p>排序规则名称遵从命名惯例，以字符序对应的字符集名称开头；以_ci(case insensitive表示大小写不敏感)、_cs(case sensitive表示大小写敏感)或_bin(表示以字符串编码的二进制来比较大小)，因此，选择排序规则要考虑的一个问题是，是否以大小写敏感的方式比较字符串，或者是以字符串编码的二进制值来比较大小。大小写敏感和二进制排序规则的不同在于：二进制排序规则直接使用字符的字节进行比较，而大小写敏感的排序规则在多字节字符集时有更复杂的比较规则。</p>
+<p>排序规则一般选择utf8mb4默认的utf8mb4_0900_ai_ci</p>
+<p>我们选择的这两项分别对应数据库的character_set_database和collation_database这两个变量，实际上，MySQL里还有其他一些关于编码的变量，我们可以通过<code>show variables like &#39;%character%&#39;</code> 查看字符集变量，使用<code>show variables like &#39;%collation%&#39;</code> 查看排序规则变量，在MySQL8.0版本中，字符集和排序规则变量如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%character%'</span> <span class="comment">--这是在navicat环境下</span></span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Variable_name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>character_set_client</td>
+<td>utf8mb4</td>
+</tr>
+<tr>
+<td>character_set_connection</td>
+<td>utf8mb4</td>
+</tr>
+<tr>
+<td>character_set_database</td>
+<td>utf8</td>
+</tr>
+<tr>
+<td>character_set_filesystem</td>
+<td>binary</td>
+</tr>
+<tr>
+<td>character_set_results</td>
+<td>utf8mb4</td>
+</tr>
+<tr>
+<td>character_set_server</td>
+<td>utf8mb4</td>
+</tr>
+<tr>
+<td>character_set_system</td>
+<td>utf8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>character_set_client变量是客户端请求数据的编码方式，</li>
+<li>character_set_connect变量是客户端服务端连接通信使用的编码方式，</li>
+<li>character_set_database就是我们创建数据库时选择的编码方式，如果创建数据库是没有指定，则根据character_set_server来指定</li>
+<li>character_set_filesystem文件系统编码</li>
+<li>character_set_results服务端查询结果使用的编码方式</li>
+<li>character_set_server数据库服务器的编码方式</li>
+<li>character_set_system这是个只读数据，总是utf8</li>
+</ul>
+<p>其中，character_set_client、character_set_connection、character_set_results在每次客户端连接服务器时，都会根据客户端的要求来改变，如在navicat中默认是utf8mb4，如果使用cmd连接MySQL执行上面的命令，那么这几个变量的值应该是gbk（如果没有调整的话）。当然我们也可以自己指定以我们要求的编码方式连接数据库</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql -u root -p pw <span class="comment">--default-character-set=latin1</span></span><br></pre></td></tr></table></figure>
+<p>指定以latin1编码连接数据库，那么这三个值就是latin1，也可以再登陆后使用set names utf8来改变。</p>
+<p>在客户端与数据库交互时，他们可能使用不同的字符集，这时服务端会进行必要的翻译和转换工作，首先服务端总是假设客户端是按照character_set_client设置的字符集来发送数据和SQL语句的，当服务器接收到客户端的数据时，先将其转换成character_set_connection，然后处理sql语句，产生的结果从character_set_connection转换成character_set_results，然后发回客户端。所以最基本的一点是要保证三个字符集是兼容的，这样才能避免通信时出现问题。如果三者不兼容，可能会出现错误甚至是安全问题。</p>
+<p>你以为这样就能解决乱码问题了？</p>
+<p>为什么会出现乱码呢？</p>
+<p>这里我们根据乱码出现的位置分为几种情况：</p>
+<ol>
+<li>往数据库存数据乱码</li>
+<li>数据库数据正常，显示乱码</li>
+</ol>
+<p>对于第一种情况，往往是数据库选择的字符集不支持存入的数据。如character_set_database是latin1,而存入的数据是汉字，那么自然会乱码。</p>
+<p>第二种情况可能是character_set_connection和character_set_results不兼容导致的，当然最基本的，如果整个网页都乱码的话，可能是php文件编码和设置的meta charset不兼容导致的。</p>
+<p>所以在确保character_set_database支持的情况下，在PHP环境中，连接完数据库之后，使用mysql-&gt;set_charset(’utf8mb4‘)函数指定三个字符集为utf8mb4（PHP手册中不推荐使用mysql-&gt;query(“set names utf8”)方法），这样就保证了连接通信正确，基本就不会出现乱码了。</p>
+<p>参考：</p>
+<ul>
+<li><a href="http://ourmysql.com/archives/314" target="_blank" rel="noopener">http://ourmysql.com/archives/314</a></li>
+<li><a href="https://www.cnblogs.com/digdeep/p/5228199.html" target="_blank" rel="noopener">https://www.cnblogs.com/digdeep/p/5228199.html</a></li>
+<li>高性能MySQL（第3版）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
+        <tag>MySQL</tag>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mermaid从入门到如图</title>
     <url>/Mermaid%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html</url>
     <content><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
@@ -603,131 +728,6 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       </categories>
       <tags>
         <tag>Mermaid</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL中的utf8和utf8mb4</title>
-    <url>/MySql%E4%B8%AD%E7%9A%84utf8%E5%92%8Cutf8mb4.html</url>
-    <content><![CDATA[<h3 id="MySQL中utf8和utf8mb4"><a href="#MySQL中utf8和utf8mb4" class="headerlink" title="MySQL中utf8和utf8mb4"></a>MySQL中utf8和utf8mb4</h3><p>开始之前先回顾一下UTF-8和Unicode的概念</p>
-<p>UTF-8？ 来自百度百科的定义</p>
-<blockquote>
-<p>UTF-8（8位元，Universal Character Set/Unicode Transformation Format）是针对Unicode的一种可变长度字符编码。它可以用来表示Unicode标准中的任何字符，而且其编码中的第一个字节仍与<a href="https://baike.baidu.com/item/ASCII/309296" target="_blank" rel="noopener">ASCII</a>相容，使得原来处理ASCII字符的软件无须或只进行少部份修改后，便可继续使用。因此，它逐渐成为<a href="https://baike.baidu.com/item/电子邮件/111106" target="_blank" rel="noopener">电子邮件</a>、网页及其他存储或传送文字的应用中，优先采用的编码。</p>
-</blockquote>
-<p>那么什么是Unicode呢？</p>
-<blockquote>
-<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准，包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p>
-</blockquote>
-<p>通俗点讲：早期针对英语设计的ASCII码并不能支持其他语言，各国为了把各自的语言文字输入进计算机来处理，制定了自己的编码规范（如中国的gb2312），而这就导致了同样的数据通过不同的编码打开时的乱码问题。而为了统一所有的语言文字，Unicode应运而生，他把所有的语言统一到一套编码里，解决了乱码的问题，UTF-8是Unicode的一种字符集转换格式（Unicode Transformation Format），也就是怎么将Unicode定义的数字转换成程序数据。UTF-8即以8位也就是一个字节为单位对Unicode进行编码，是Unicode的一种实现方式，除了 UTF-8，还有UTF-16，UTF-32 等都可以实现 Unicode，但是 UTF-8 相对而言是用的最为广泛的。</p>
-<p>UTF-8编码的特点是对不同范围的字符使用不同长度的编码，如英文字符“A”只需要8位，则用一个字节，汉字多用三个字节，而极少使用的语言字符则使用4字节编码。每个字符最多用4个字节来编码，这样做就节省空间。</p>
-<p>在MySQL中，utf8字符集最大字符长度为3字节，如果遇到4字节的宽字符就会出现插入异常的情况，像emoji表情和很多不常用的汉字都无法使用MySQL的utf8字符集，为了弥补这个缺陷，MySQL在5.5.3版本增加了utf8mb4字符集，mb4就是most byte 4，专门用来兼容4字节的Unicode。也就是说：在MySQL中utf8mb4才是真正的UTF-8，是utf8的超集。</p>
-<p>要在MySQL中使用4字节长度的UTF-8字符，需要使用utf8mb4字符集，但只有5.5.3版本之后才支持，为了获得更好的兼容，最好使用utf8mb4而不是utf8，对于char类型数据来说，utf8mb4会多消耗一些空间（每个字符多占用一个字节），MySQL官方建议，可以使用varchar来替代char</p>
-<p>参考资料：</p>
-<ul>
-<li><a href="http://ourmysql.com/archives/1402" target="_blank" rel="noopener">http://ourmysql.com/archives/1402</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>编码</tag>
-        <tag>MySQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP+MySQL乱码问题总结</title>
-    <url>/PHP-MySQL%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98.html</url>
-    <content><![CDATA[<p>在可视化数据库管理软件创建数据库时，会要求我们选择字符集和排序规则，那么什么是字符集和排序规则，我们又该如何选择呢？</p>
-<h5 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h5><ul>
-<li>字符（charset）：字符指类字形单位或符号，包括字母、数字、运算符号、标点符号和其他符号，以及一些功能性符号。如‘A’，‘B’</li>
-<li>给定一系列字符，对每个字符赋予一个数值，用该数值来代表对应字符，这一数值就是该字符的编码（Encoding）</li>
-<li>从一种二进制编码到某类字符符号的映射叫字符集（Charset set），如{0=&gt;’A’,1=&gt;’B’}</li>
-<li>排序规则（也叫校对、字符序）是指在同一字符集内的排序规则（比较规则），确定排序规则后，才能在一个字符集上定义什么是等价的字符，以及字符间的大小关系。</li>
-<li>字符集和排序规则之间是一个1对n的关系，一个字符集有多个排序规则， 一个排序规则之对应一个字符集。</li>
-</ul>
-<h5 id="选择使用"><a href="#选择使用" class="headerlink" title="选择使用"></a>选择使用</h5><p>我们可以在数据库中使用<code>SHOW CHARACTER SET</code> 查看目前版本数据库支持的字符集、默认排序规则以及最大长度（这里也可以验证上篇文章说的utf8是最长3字节的字符编码，而utf8mb4最长4字节）。</p>
-<p>为了获得更好的兼容，字符集我们一般选择utf8mb4 </p>
-<p>排序规则名称遵从命名惯例，以字符序对应的字符集名称开头；以_ci(case insensitive表示大小写不敏感)、_cs(case sensitive表示大小写敏感)或_bin(表示以字符串编码的二进制来比较大小)，因此，选择排序规则要考虑的一个问题是，是否以大小写敏感的方式比较字符串，或者是以字符串编码的二进制值来比较大小。大小写敏感和二进制排序规则的不同在于：二进制排序规则直接使用字符的字节进行比较，而大小写敏感的排序规则在多字节字符集时有更复杂的比较规则。</p>
-<p>排序规则一般选择utf8mb4默认的utf8mb4_0900_ai_ci</p>
-<p>我们选择的这两项分别对应数据库的character_set_database和collation_database这两个变量，实际上，MySQL里还有其他一些关于编码的变量，我们可以通过<code>show variables like &#39;%character%&#39;</code> 查看字符集变量，使用<code>show variables like &#39;%collation%&#39;</code> 查看排序规则变量，在MySQL8.0版本中，字符集和排序规则变量如下：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%character%'</span> <span class="comment">--这是在navicat环境下</span></span><br></pre></td></tr></table></figure>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Variable_name</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>character_set_client</td>
-<td>utf8mb4</td>
-</tr>
-<tr>
-<td>character_set_connection</td>
-<td>utf8mb4</td>
-</tr>
-<tr>
-<td>character_set_database</td>
-<td>utf8</td>
-</tr>
-<tr>
-<td>character_set_filesystem</td>
-<td>binary</td>
-</tr>
-<tr>
-<td>character_set_results</td>
-<td>utf8mb4</td>
-</tr>
-<tr>
-<td>character_set_server</td>
-<td>utf8mb4</td>
-</tr>
-<tr>
-<td>character_set_system</td>
-<td>utf8</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>character_set_client变量是客户端请求数据的编码方式，</li>
-<li>character_set_connect变量是客户端服务端连接通信使用的编码方式，</li>
-<li>character_set_database就是我们创建数据库时选择的编码方式，如果创建数据库是没有指定，则根据character_set_server来指定</li>
-<li>character_set_filesystem文件系统编码</li>
-<li>character_set_results服务端查询结果使用的编码方式</li>
-<li>character_set_server数据库服务器的编码方式</li>
-<li>character_set_system这是个只读数据，总是utf8</li>
-</ul>
-<p>其中，character_set_client、character_set_connection、character_set_results在每次客户端连接服务器时，都会根据客户端的要求来改变，如在navicat中默认是utf8mb4，如果使用cmd连接MySQL执行上面的命令，那么这几个变量的值应该是gbk（如果没有调整的话）。当然我们也可以自己指定以我们要求的编码方式连接数据库</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">mysql -u root -p pw <span class="comment">--default-character-set=latin1</span></span><br></pre></td></tr></table></figure>
-<p>指定以latin1编码连接数据库，那么这三个值就是latin1，也可以再登陆后使用set names utf8来改变。</p>
-<p>在客户端与数据库交互时，他们可能使用不同的字符集，这时服务端会进行必要的翻译和转换工作，首先服务端总是假设客户端是按照character_set_client设置的字符集来发送数据和SQL语句的，当服务器接收到客户端的数据时，先将其转换成character_set_connection，然后处理sql语句，产生的结果从character_set_connection转换成character_set_results，然后发回客户端。所以最基本的一点是要保证三个字符集是兼容的，这样才能避免通信时出现问题。如果三者不兼容，可能会出现错误甚至是安全问题。</p>
-<p>你以为这样就能解决乱码问题了？</p>
-<p>为什么会出现乱码呢？</p>
-<p>这里我们根据乱码出现的位置分为几种情况：</p>
-<ol>
-<li>往数据库存数据乱码</li>
-<li>数据库数据正常，显示乱码</li>
-</ol>
-<p>对于第一种情况，往往是数据库选择的字符集不支持存入的数据。如character_set_database是latin1,而存入的数据是汉字，那么自然会乱码。</p>
-<p>第二种情况可能是character_set_connection和character_set_results不兼容导致的，当然最基本的，如果整个网页都乱码的话，可能是php文件编码和设置的meta charset不兼容导致的。</p>
-<p>所以在确保character_set_database支持的情况下，在PHP环境中，连接完数据库之后，使用mysql-&gt;set_charset(’utf8mb4‘)函数指定三个字符集为utf8mb4（PHP手册中不推荐使用mysql-&gt;query(“set names utf8”)方法），这样就保证了连接通信正确，基本就不会出现乱码了。</p>
-<p>参考：</p>
-<ul>
-<li><a href="http://ourmysql.com/archives/314" target="_blank" rel="noopener">http://ourmysql.com/archives/314</a></li>
-<li><a href="https://www.cnblogs.com/digdeep/p/5228199.html" target="_blank" rel="noopener">https://www.cnblogs.com/digdeep/p/5228199.html</a></li>
-<li>高性能MySQL（第3版）</li>
-</ul>
-]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>编码</tag>
-        <tag>MySQL</tag>
-        <tag>PHP</tag>
       </tags>
   </entry>
   <entry>
@@ -1094,42 +1094,6 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       </categories>
       <tags>
         <tag>IPFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode-11.盛最多水的容器</title>
-    <url>/leetcode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8.html</url>
-    <content><![CDATA[<p>给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
-<p>说明：你不能倾斜容器。</p>
-<p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. 盛最多水的容器 - 力扣（LeetCode） (leetcode-cn.com)</a></p>
-<p>双指针，l、r分别初始化为0和数组长度减一</p>
-<p>首先给出计算盛水量的计算公式：area = (r-l)* Math.min(height[l], height[r])，即长度较小的一边乘以两边之间的距离。</p>
-<p>下一步是确定下一个容器，由公式我们知道，不管如何移动l、r，<code>r-l</code> 一定是减小的，因此，要使得area变大，只能让min变大，因此，应该移动较小的一边。那么总体的思路就是：初始化双指针指向两边，计算盛水量，然后移动较小的一边，重复上面的过程。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = height.length;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">            <span class="keyword">int</span> area = (r-l)*Math.min(height[l],height[r]);</span><br><span class="line">            ans = Math.max(ans,area);</span><br><span class="line">            <span class="keyword">if</span>(height[l] &gt; height[r])&#123;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>leetcode-1109-航班预定统计</title>
-    <url>/leetcode-1109-%E8%88%AA%E7%8F%AD%E9%A2%84%E5%AE%9A%E7%BB%9F%E8%AE%A1.html</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/corporate-flight-bookings/" target="_blank" rel="noopener">1109. 航班预订统计 - 力扣（LeetCode） (leetcode-cn.com)</a></p>
-<h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><blockquote>
-<p>这里有 n 个航班，它们分别从 1 到 n 进行编号。</p>
-<p>有一份航班预订表 bookings ，表中第 i 条预订记录 bookings[i] = [firsti, lasti, seatsi] 意味着在从 firsti 到 lasti （包含 firsti 和 lasti ）的 每个航班 上预订了 seatsi 个座位。</p>
-<p>请你返回一个长度为 n 的数组 answer，里面的元素是每个航班预定的座位总数。</p>
-</blockquote>
-<p>一条预定记录也就是一个区间的增量，解题的最简单的想法就是将这些增量相加，得到总的答案，但是考虑的数据范围，最大可达$10^8$ ，因此这个方法不现实，而是采用<strong>差分</strong>的方法解决。</p>
-<h3 id="差分："><a href="#差分：" class="headerlink" title="差分："></a>差分：</h3><p>差分与前缀和相对应，对于数组 [1,2,2,4]，其差分数组为 [1,1,0,2]，差分数组的第 <code>i</code> 个数即为原数组的第 <code>i</code> 个元素减去第<code>i-1</code> 个元素所得的差值，也就是说我们对差分数组求前缀和即可得到原数组。</p>
-<p>那么，对原数组一个区间的增量，在差分数组上的反应是，只有起始位置和最后一个位置的后一个位置值改变，剩余中间位置的值不变，例如对数组<code>arr = [1,2,2,4]</code> ，其差分数组<code>diff = [1,1,0,2]</code>，若在位序[1,3]增加5，原数组变为<code>arr = [6,7,7,4]</code>，而差分数组变为<code>diff = [6,1,0,-3]</code> 。而所有的增加完成最后求原数组时，只需对操作差分数组<code>arr[i] = diff[i-1] + diff[i]</code> 。可以看到，只需借助差分数组，一次遍历就可以得到最终答案。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] corpFlightBookings(<span class="keyword">int</span>[][] bookings, <span class="keyword">int</span> n) &#123;</span><br><span class="line">    	<span class="keyword">int</span>[] diff = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] book : bookings)&#123;</span><br><span class="line">            diff[book[<span class="number">0</span>] - <span class="number">1</span>] += book[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span>( book[<span class="number">1</span>] &lt; n)&#123;</span><br><span class="line">                diff[book[<span class="number">1</span>]] -= book[<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            diff[i] += diff[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> diff;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析:"></a>复杂度分析:</h3><p>时间复杂度：O(n+m)，其中 n 为要求的数组长度，m 为预定记录的数量。我们需要对于每一条预定记录处理一次差分数组，并最后对差分数组求前缀和。</p>
-<p>空间复杂度：O(1)。我们只需要常数的空间保存若干变量，<strong>注意返回值不计入空间复杂度</strong>。</p>
-]]></content>
-      <categories>
-        <category>算法与数据结构</category>
-      </categories>
-      <tags>
-        <tag>差分</tag>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -1684,29 +1648,39 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       </tags>
   </entry>
   <entry>
-    <title>leetcode 111.二叉树的最小深度</title>
-    <url>/leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6.html</url>
-    <content><![CDATA[<p>给定一个二叉树，找出其最小深度。</p>
-<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
-<p><strong>说明：</strong>叶子节点是指没有子节点的节点。</p>
-<p><img src="leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6/image-20210915190518140.png" alt="image-20210915190518140"></p>
-<p>可以想到使用广度优先搜索的方法，遍历整棵树。</p>
-<p>当我们找到一个叶子节点时，直接返回这个叶子节点的深度。广度优先搜索的性质保证了最先搜索到的叶子节点的深度一定最小。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="keyword">int</span> depth = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>( !queue.isEmpty() )&#123;</span><br><span class="line">            <span class="keyword">int</span> n = queue.size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.left == <span class="keyword">null</span> &amp;&amp; node.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> depth;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            depth++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度和空间复杂度：O(N)。</p>
-<p>结合leetcode 752转盘锁，可以总结BFS算法的核心代码及应用场景。</p>
-<p>对于知道起点、终点，求解问题含最短、最小、最少等字眼，可以考虑使用BFS。如本题起点是树根节点，终点是叶子节点，求最小深度；转盘锁问题，起点是0000，重点是target，求最少旋转次数。</p>
-<p>BFS会一层一层的遍历问题树或者图，类似树的层次遍历，需要一个队列。在图中，为了防止重复遍历，往往需要一个visited数组，树一般不需要。</p>
-<p>他的优点是时间复杂度较小，在找到最小后一定会停止，但相应的，需要队列，空间复杂度较大。</p>
-<p>BFS核心代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">BFS</span><span class="params">(Node start, Node target)</span></span>&#123;</span><br><span class="line">    Deque&lt;Node&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    HashSet&lt;Node&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">    queue.offer(start);</span><br><span class="line">    visited.add(start);</span><br><span class="line">    <span class="keyword">while</span>( !queue.isEmpty() )&#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        <span class="comment">// 向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">            Node node = queue.poll();</span><br><span class="line">            <span class="comment">// 到达终点，直接返回</span></span><br><span class="line">            <span class="keyword">if</span>(node = target)&#123;</span><br><span class="line">                <span class="keyword">return</span> step;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 遍历过，跳过</span></span><br><span class="line">            <span class="keyword">if</span>(visited.contains(node))&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将相邻节点加入队列，以便下次遍历</span></span><br><span class="line">            <span class="comment">// adj()表示node的所有相邻节点</span></span><br><span class="line">            <span class="keyword">for</span>(Node x : node.adj())&#123;</span><br><span class="line">                queue.offer(x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 加入已遍历集合</span></span><br><span class="line">            visited.add(node);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 更新遍历步数</span></span><br><span class="line">        step++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 找不到重点，返回默认值或者异常值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上便是BFS的核心代码，无非是确定终点，更新队列，更新次数。</p>
+    <title>leetcode-11.盛最多水的容器</title>
+    <url>/leetcode-11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8.html</url>
+    <content><![CDATA[<p>给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>说明：你不能倾斜容器。</p>
+<p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. 盛最多水的容器 - 力扣（LeetCode） (leetcode-cn.com)</a></p>
+<p>双指针，l、r分别初始化为0和数组长度减一</p>
+<p>首先给出计算盛水量的计算公式：area = (r-l)* Math.min(height[l], height[r])，即长度较小的一边乘以两边之间的距离。</p>
+<p>下一步是确定下一个容器，由公式我们知道，不管如何移动l、r，<code>r-l</code> 一定是减小的，因此，要使得area变大，只能让min变大，因此，应该移动较小的一边。那么总体的思路就是：初始化双指针指向两边，计算盛水量，然后移动较小的一边，重复上面的过程。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = height.length;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(l &lt; r)&#123;</span><br><span class="line">            <span class="keyword">int</span> area = (r-l)*Math.min(height[l],height[r]);</span><br><span class="line">            ans = Math.max(ans,area);</span><br><span class="line">            <span class="keyword">if</span>(height[l] &gt; height[r])&#123;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>leetcode-1109-航班预定统计</title>
+    <url>/leetcode-1109-%E8%88%AA%E7%8F%AD%E9%A2%84%E5%AE%9A%E7%BB%9F%E8%AE%A1.html</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problems/corporate-flight-bookings/" target="_blank" rel="noopener">1109. 航班预订统计 - 力扣（LeetCode） (leetcode-cn.com)</a></p>
+<h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><blockquote>
+<p>这里有 n 个航班，它们分别从 1 到 n 进行编号。</p>
+<p>有一份航班预订表 bookings ，表中第 i 条预订记录 bookings[i] = [firsti, lasti, seatsi] 意味着在从 firsti 到 lasti （包含 firsti 和 lasti ）的 每个航班 上预订了 seatsi 个座位。</p>
+<p>请你返回一个长度为 n 的数组 answer，里面的元素是每个航班预定的座位总数。</p>
+</blockquote>
+<p>一条预定记录也就是一个区间的增量，解题的最简单的想法就是将这些增量相加，得到总的答案，但是考虑的数据范围，最大可达$10^8$ ，因此这个方法不现实，而是采用<strong>差分</strong>的方法解决。</p>
+<h3 id="差分："><a href="#差分：" class="headerlink" title="差分："></a>差分：</h3><p>差分与前缀和相对应，对于数组 [1,2,2,4]，其差分数组为 [1,1,0,2]，差分数组的第 <code>i</code> 个数即为原数组的第 <code>i</code> 个元素减去第<code>i-1</code> 个元素所得的差值，也就是说我们对差分数组求前缀和即可得到原数组。</p>
+<p>那么，对原数组一个区间的增量，在差分数组上的反应是，只有起始位置和最后一个位置的后一个位置值改变，剩余中间位置的值不变，例如对数组<code>arr = [1,2,2,4]</code> ，其差分数组<code>diff = [1,1,0,2]</code>，若在位序[1,3]增加5，原数组变为<code>arr = [6,7,7,4]</code>，而差分数组变为<code>diff = [6,1,0,-3]</code> 。而所有的增加完成最后求原数组时，只需对操作差分数组<code>arr[i] = diff[i-1] + diff[i]</code> 。可以看到，只需借助差分数组，一次遍历就可以得到最终答案。</p>
+<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] corpFlightBookings(<span class="keyword">int</span>[][] bookings, <span class="keyword">int</span> n) &#123;</span><br><span class="line">    	<span class="keyword">int</span>[] diff = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span>[] book : bookings)&#123;</span><br><span class="line">            diff[book[<span class="number">0</span>] - <span class="number">1</span>] += book[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span>( book[<span class="number">1</span>] &lt; n)&#123;</span><br><span class="line">                diff[book[<span class="number">1</span>]] -= book[<span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            diff[i] += diff[i-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> diff;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析:"></a>复杂度分析:</h3><p>时间复杂度：O(n+m)，其中 n 为要求的数组长度，m 为预定记录的数量。我们需要对于每一条预定记录处理一次差分数组，并最后对差分数组求前缀和。</p>
+<p>空间复杂度：O(1)。我们只需要常数的空间保存若干变量，<strong>注意返回值不计入空间复杂度</strong>。</p>
 ]]></content>
       <categories>
-        <category>BFS</category>
+        <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>BFS</tag>
+        <tag>差分</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -1735,6 +1709,39 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
       </tags>
   </entry>
   <entry>
+    <title>leetcode 111.二叉树的最小深度</title>
+    <url>/leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6.html</url>
+    <content><![CDATA[<p>给定一个二叉树，找出其最小深度。</p>
+<p>最小深度是从根节点到最近叶子节点的最短路径上的节点数量。</p>
+<p><strong>说明：</strong>叶子节点是指没有子节点的节点。</p>
+<p><img src="leetcode-111-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6/image-20210915190518140.png" alt="image-20210915190518140"></p>
+<p>可以想到使用广度优先搜索的方法，遍历整棵树。</p>
+<p>当我们找到一个叶子节点时，直接返回这个叶子节点的深度。广度优先搜索的性质保证了最先搜索到的叶子节点的深度一定最小。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="keyword">int</span> depth = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>( !queue.isEmpty() )&#123;</span><br><span class="line">            <span class="keyword">int</span> n = queue.size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(node.left != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.right != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.offer(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.left == <span class="keyword">null</span> &amp;&amp; node.right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> depth;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            depth++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度和空间复杂度：O(N)。</p>
+<p>结合leetcode 752转盘锁，可以总结BFS算法的核心代码及应用场景。</p>
+<p>对于知道起点、终点，求解问题含最短、最小、最少等字眼，可以考虑使用BFS。如本题起点是树根节点，终点是叶子节点，求最小深度；转盘锁问题，起点是0000，重点是target，求最少旋转次数。</p>
+<p>BFS会一层一层的遍历问题树或者图，类似树的层次遍历，需要一个队列。在图中，为了防止重复遍历，往往需要一个visited数组，树一般不需要。</p>
+<p>他的优点是时间复杂度较小，在找到最小后一定会停止，但相应的，需要队列，空间复杂度较大。</p>
+<p>BFS核心代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">BFS</span><span class="params">(Node start, Node target)</span></span>&#123;</span><br><span class="line">    Deque&lt;Node&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    HashSet&lt;Node&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> step = <span class="number">0</span>;</span><br><span class="line">    queue.offer(start);</span><br><span class="line">    visited.add(start);</span><br><span class="line">    <span class="keyword">while</span>( !queue.isEmpty() )&#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        <span class="comment">// 向四周扩散</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)&#123;</span><br><span class="line">            Node node = queue.poll();</span><br><span class="line">            <span class="comment">// 到达终点，直接返回</span></span><br><span class="line">            <span class="keyword">if</span>(node = target)&#123;</span><br><span class="line">                <span class="keyword">return</span> step;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 遍历过，跳过</span></span><br><span class="line">            <span class="keyword">if</span>(visited.contains(node))&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 将相邻节点加入队列，以便下次遍历</span></span><br><span class="line">            <span class="comment">// adj()表示node的所有相邻节点</span></span><br><span class="line">            <span class="keyword">for</span>(Node x : node.adj())&#123;</span><br><span class="line">                queue.offer(x);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 加入已遍历集合</span></span><br><span class="line">            visited.add(node);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 更新遍历步数</span></span><br><span class="line">        step++;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">// 找不到重点，返回默认值或者异常值</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上便是BFS的核心代码，无非是确定终点，更新队列，更新次数。</p>
+]]></content>
+      <categories>
+        <category>BFS</category>
+      </categories>
+      <tags>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>leetcode 162.寻找峰值</title>
+    <url>/leetcode-162-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC.html</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = board.length, w = board[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">boolean</span>[][] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[h][w];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; j++) &#123;</span><br><span class="line">                <span class="keyword">boolean</span> flag = check(board, visited, i, j, word, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">boolean</span>[][] visited, <span class="keyword">int</span> i, <span class="keyword">int</span> j, String s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (board[i][j] != s.charAt(k)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k == s.length() - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] directions = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : directions) &#123;</span><br><span class="line">            <span class="keyword">int</span> newi = i + dir[<span class="number">0</span>], newj = j + dir[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (newi &gt;= <span class="number">0</span> &amp;&amp; newi &lt; board.length &amp;&amp; newj &gt;= <span class="number">0</span> &amp;&amp; newj &lt; board[<span class="number">0</span>].length) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!visited[newi][newj]) &#123;</span><br><span class="line">                    <span class="keyword">boolean</span> flag = check(board, visited, newi, newj, s, k + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                        result = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[i][j] = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>79</p>
+]]></content>
+  </entry>
+  <entry>
     <title>leetcode-1637-两点之间不包含任何点的最宽垂直面积</title>
     <url>/leetcode-1637-%E4%B8%A4%E7%82%B9%E4%B9%8B%E9%97%B4%E4%B8%8D%E5%8C%85%E5%90%AB%E4%BB%BB%E4%BD%95%E7%82%B9%E7%9A%84%E6%9C%80%E5%AE%BD%E5%9E%82%E7%9B%B4%E9%9D%A2%E7%A7%AF.html</url>
     <content><![CDATA[<p>给你 n 个二维平面上的点 points ，其中 points[i] = [xi, yi] ，请你返回两点之间内部不包含任何点的 最宽垂直面积 的宽度。</p>
@@ -1747,29 +1754,6 @@ R := {(ProveUpd(S(\tau),p),p) | \tau \in T,p \in P}</script><p>我们在[22,附�
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode 162.寻找峰值</title>
-    <url>/leetcode-162-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC.html</url>
-    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">exist</span><span class="params">(<span class="keyword">char</span>[][] board, String word)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> h = board.length, w = board[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">boolean</span>[][] visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[h][w];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; w; j++) &#123;</span><br><span class="line">                <span class="keyword">boolean</span> flag = check(board, visited, i, j, word, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">boolean</span>[][] visited, <span class="keyword">int</span> i, <span class="keyword">int</span> j, String s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (board[i][j] != s.charAt(k)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (k == s.length() - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[i][j] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span>[][] directions = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, -<span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;-<span class="number">1</span>, <span class="number">0</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] dir : directions) &#123;</span><br><span class="line">            <span class="keyword">int</span> newi = i + dir[<span class="number">0</span>], newj = j + dir[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (newi &gt;= <span class="number">0</span> &amp;&amp; newi &lt; board.length &amp;&amp; newj &gt;= <span class="number">0</span> &amp;&amp; newj &lt; board[<span class="number">0</span>].length) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!visited[newi][newj]) &#123;</span><br><span class="line">                    <span class="keyword">boolean</span> flag = check(board, visited, newi, newj, s, k + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                        result = <span class="keyword">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        visited[i][j] = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>79</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>leetcode 220.存在重复元素</title>
-    <url>/leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0.html</url>
-    <content><![CDATA[<h2 id="220-存在重复元素"><a href="#220-存在重复元素" class="headerlink" title="220.存在重复元素"></a>220.存在重复元素</h2><p>给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) &lt;= t ，同时又满足 abs(i - j) &lt;= k 。</p>
-<p>如果存在则返回 true，不存在返回 false。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 滑动窗口+有序集合</span></span><br><span class="line"><span class="comment">// 空间复杂度O(min(n,k))，需要维护一颗min(n,k)个节点的查找树，空间复杂度为O(min(n,k))</span></span><br><span class="line"><span class="comment">// 时间复杂度O(nlog(min(n,k))),对于一个有min(n,k)个节点的二叉查找树，每次插入删除的时间复杂度为O(log(min(n,k)))，n个元素每个元素至多被插入和删除一次。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        TreeSet&lt;Long&gt; set = <span class="keyword">new</span> TreeSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.length;i++)&#123;</span><br><span class="line">            <span class="comment">// ceiling函数，返回一个大于等于给定参数的最小元素。</span></span><br><span class="line">            <span class="comment">// long强制转换防止整型溢出</span></span><br><span class="line">            Long n = set.ceiling((<span class="keyword">long</span>)nums[i] - (<span class="keyword">long</span>)t);</span><br><span class="line">            <span class="keyword">if</span>( n != <span class="keyword">null</span> &amp;&amp; n &lt;= (<span class="keyword">long</span>)nums[i] + (<span class="keyword">long</span>)t)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            set.add((<span class="keyword">long</span>)nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(set.size() &gt; k)&#123;</span><br><span class="line">                set.remove((<span class="keyword">long</span>)nums[i-k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 法二，桶排序：设置桶大小为t+1，若在滑动窗口内的两元素出现在同一个桶中，则两元素符合条件，否则，若存在相邻桶中，需要继续验证其差的绝对值是否小于t，若成立，则两元素也符合条件。</span></span><br><span class="line"><span class="comment">// 通过将int范围内的整数x通过x = (t+1)*a+b (0&lt;=b&lt;=t)来映射到桶a中</span></span><br><span class="line"><span class="comment">// 时间复杂度O(n),n个元素最多需要插入、删除一次，哈希表插入、删除的时间复杂度是O(1)</span></span><br><span class="line"><span class="comment">// 空间复杂度O(min(n,k))，哈希表最多存储min(n,k)个元素</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="comment">// 因为相邻桶需要再次验证其值是否符合条件，因此需要使用map存放桶以及具体值</span></span><br><span class="line">        Map&lt;Long, Long&gt; map = <span class="keyword">new</span> HashMap&lt;Long, Long&gt;();</span><br><span class="line">        <span class="keyword">long</span> w = (<span class="keyword">long</span>) t + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">long</span> id = getID(nums[i], w);</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id - <span class="number">1</span>) &amp;&amp; Math.abs(nums[i] - map.get(id - <span class="number">1</span>)) &lt; w) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id + <span class="number">1</span>) &amp;&amp; Math.abs(nums[i] - map.get(id + <span class="number">1</span>)) &lt; w) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(id, (<span class="keyword">long</span>) nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= k) &#123;</span><br><span class="line">                map.remove(getID(nums[i - k], w));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 求x对应的桶</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getID</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> x / w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (x + <span class="number">1</span>) / w - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
         <tag>算法</tag>
       </tags>
   </entry>
@@ -1808,32 +1792,19 @@ dp=\begin{cases}
       </tags>
   </entry>
   <entry>
-    <title>leetcode 416.分割等和子集</title>
-    <url>/leetcode-416-%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86.html</url>
-    <content><![CDATA[<p>LeetCode第416题</p>
-<p>难度：中等</p>
-<p>给你一个<strong>只包含正整数的非空数组nums</strong> 。请你判断是否可以将这个数组分割成两个子集， 使得两个子集的元素<strong>和相等</strong>。</p>
-<p>背包问题</p>
-<p>基本想法是：遍历数组，求出所有元素的和，然后判断是否能构成一个一半的背包。</p>
-<p>法一：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 奇数，因为数组只有正整数，不可能等分</span></span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 只需要找一个子集，他的和是原数组和的一半</span></span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// dp数组表示：考虑到nums中前i+1个数字时，dp[i][j]表示能否找到一个子集和为j</span></span><br><span class="line">        <span class="comment">// 和最大需要target，因此开辟target-1个空间</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][target+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 第一行单独处理，nums[0]可以填充，因此对应为true</span></span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target)&#123;</span><br><span class="line">	        dp[<span class="number">0</span>][nums[<span class="number">0</span>]] = <span class="keyword">true</span>;        </span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// 后面每行根据上一行填充</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;= target; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j &lt; nums[i])&#123;</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j] || dp[i-<span class="number">1</span>][j-nums[i]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[i][target])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[len-<span class="number">1</span>][target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>法二：</p>
-<p>因为dp数组只用到了当前行和上一行，因此dp数组可以简化为只有两行的二维数组甚至简化为一维数组，下面是简化成一维数组的方法：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[target+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target)&#123;</span><br><span class="line">            dp[nums[<span class="number">0</span>]] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="comment">// 必须从后往前更新，因为后面的需要依赖前面的，先把前面的改了，后面的就错了</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = target; j&gt;=<span class="number">0</span> &amp;&amp; j&gt;=nums[i]; j--)&#123;</span><br><span class="line">                <span class="comment">// dp[j]表示背包不考虑当前值，因此不变</span></span><br><span class="line">                <span class="comment">// dp[j-nums[i]]表示考虑nums[i]，因此要更新</span></span><br><span class="line">                dp[j] = dp[j] || dp[j-nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[target])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>法三：还有更巧妙的方法，通过前面两种方法可以看的出来，更新dp的过程实际上是将当前位置的值向后移动nums[i]个位置的过程，移动完成后，最后目标值的结果为true，则可以分割。</p>
-<p>同样的思想，其实可以通过位运算解决，开辟一个有target+1个长度的byte数组bit，bit[0]置1，当前数组为1的位置表示在这个时刻，数组可以组成的值，我们只需要遍历nums数组，每次向左移动nums[i]个位置，并与上一数组做与运算，留下所有为1的位置，最后target的值是否为1就表示是否可以分割。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] bits = <span class="keyword">new</span> <span class="keyword">byte</span>[target+<span class="number">1</span>];</span><br><span class="line">        bits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">int</span> pos = target - num;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = pos; i &gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">                <span class="comment">// 这里不能写成 bits[i+num] = bits[i+num] | bits[i]</span></span><br><span class="line">                <span class="comment">// 因为两个byte运算的结果是int，需要强制转换</span></span><br><span class="line">                bits[i+num] |= bits[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(bits[target] == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上所有代码都可以通过leetcode测试。</p>
+    <title>leetcode 220.存在重复元素</title>
+    <url>/leetcode-220-%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0.html</url>
+    <content><![CDATA[<h2 id="220-存在重复元素"><a href="#220-存在重复元素" class="headerlink" title="220.存在重复元素"></a>220.存在重复元素</h2><p>给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) &lt;= t ，同时又满足 abs(i - j) &lt;= k 。</p>
+<p>如果存在则返回 true，不存在返回 false。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 滑动窗口+有序集合</span></span><br><span class="line"><span class="comment">// 空间复杂度O(min(n,k))，需要维护一颗min(n,k)个节点的查找树，空间复杂度为O(min(n,k))</span></span><br><span class="line"><span class="comment">// 时间复杂度O(nlog(min(n,k))),对于一个有min(n,k)个节点的二叉查找树，每次插入删除的时间复杂度为O(log(min(n,k)))，n个元素每个元素至多被插入和删除一次。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        TreeSet&lt;Long&gt; set = <span class="keyword">new</span> TreeSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.length;i++)&#123;</span><br><span class="line">            <span class="comment">// ceiling函数，返回一个大于等于给定参数的最小元素。</span></span><br><span class="line">            <span class="comment">// long强制转换防止整型溢出</span></span><br><span class="line">            Long n = set.ceiling((<span class="keyword">long</span>)nums[i] - (<span class="keyword">long</span>)t);</span><br><span class="line">            <span class="keyword">if</span>( n != <span class="keyword">null</span> &amp;&amp; n &lt;= (<span class="keyword">long</span>)nums[i] + (<span class="keyword">long</span>)t)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            set.add((<span class="keyword">long</span>)nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(set.size() &gt; k)&#123;</span><br><span class="line">                set.remove((<span class="keyword">long</span>)nums[i-k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 法二，桶排序：设置桶大小为t+1，若在滑动窗口内的两元素出现在同一个桶中，则两元素符合条件，否则，若存在相邻桶中，需要继续验证其差的绝对值是否小于t，若成立，则两元素也符合条件。</span></span><br><span class="line"><span class="comment">// 通过将int范围内的整数x通过x = (t+1)*a+b (0&lt;=b&lt;=t)来映射到桶a中</span></span><br><span class="line"><span class="comment">// 时间复杂度O(n),n个元素最多需要插入、删除一次，哈希表插入、删除的时间复杂度是O(1)</span></span><br><span class="line"><span class="comment">// 空间复杂度O(min(n,k))，哈希表最多存储min(n,k)个元素</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="comment">// 因为相邻桶需要再次验证其值是否符合条件，因此需要使用map存放桶以及具体值</span></span><br><span class="line">        Map&lt;Long, Long&gt; map = <span class="keyword">new</span> HashMap&lt;Long, Long&gt;();</span><br><span class="line">        <span class="keyword">long</span> w = (<span class="keyword">long</span>) t + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">long</span> id = getID(nums[i], w);</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id - <span class="number">1</span>) &amp;&amp; Math.abs(nums[i] - map.get(id - <span class="number">1</span>)) &lt; w) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(id + <span class="number">1</span>) &amp;&amp; Math.abs(nums[i] - map.get(id + <span class="number">1</span>)) &lt; w) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(id, (<span class="keyword">long</span>) nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= k) &#123;</span><br><span class="line">                map.remove(getID(nums[i - k], w));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 求x对应的桶</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getID</span><span class="params">(<span class="keyword">long</span> x, <span class="keyword">long</span> w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> x / w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (x + <span class="number">1</span>) / w - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>leetcode</category>
         <category>算法</category>
-        <category>动态规划</category>
       </categories>
       <tags>
         <tag>leetcode</tag>
         <tag>算法</tag>
-        <tag>动态规划</tag>
       </tags>
   </entry>
   <entry>
@@ -1874,6 +1845,35 @@ dp=\begin{cases}
       </tags>
   </entry>
   <entry>
+    <title>leetcode 416.分割等和子集</title>
+    <url>/leetcode-416-%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86.html</url>
+    <content><![CDATA[<p>LeetCode第416题</p>
+<p>难度：中等</p>
+<p>给你一个<strong>只包含正整数的非空数组nums</strong> 。请你判断是否可以将这个数组分割成两个子集， 使得两个子集的元素<strong>和相等</strong>。</p>
+<p>背包问题</p>
+<p>基本想法是：遍历数组，求出所有元素的和，然后判断是否能构成一个一半的背包。</p>
+<p>法一：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 奇数，因为数组只有正整数，不可能等分</span></span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 只需要找一个子集，他的和是原数组和的一半</span></span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// dp数组表示：考虑到nums中前i+1个数字时，dp[i][j]表示能否找到一个子集和为j</span></span><br><span class="line">        <span class="comment">// 和最大需要target，因此开辟target-1个空间</span></span><br><span class="line">        <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[len][target+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 第一行单独处理，nums[0]可以填充，因此对应为true</span></span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target)&#123;</span><br><span class="line">	        dp[<span class="number">0</span>][nums[<span class="number">0</span>]] = <span class="keyword">true</span>;        </span><br><span class="line">        &#125;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="comment">// 后面每行根据上一行填充</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;= target; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j &lt; nums[i])&#123;</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = dp[i-<span class="number">1</span>][j] || dp[i-<span class="number">1</span>][j-nums[i]];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[i][target])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[len-<span class="number">1</span>][target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>法二：</p>
+<p>因为dp数组只用到了当前行和上一行，因此dp数组可以简化为只有两行的二维数组甚至简化为一维数组，下面是简化成一维数组的方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span>[] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[target+<span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= target)&#123;</span><br><span class="line">            dp[nums[<span class="number">0</span>]] = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;len;i++)&#123;</span><br><span class="line">            <span class="comment">// 必须从后往前更新，因为后面的需要依赖前面的，先把前面的改了，后面的就错了</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = target; j&gt;=<span class="number">0</span> &amp;&amp; j&gt;=nums[i]; j--)&#123;</span><br><span class="line">                <span class="comment">// dp[j]表示背包不考虑当前值，因此不变</span></span><br><span class="line">                <span class="comment">// dp[j-nums[i]]表示考虑nums[i]，因此要更新</span></span><br><span class="line">                dp[j] = dp[j] || dp[j-nums[i]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(dp[target])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[target];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>法三：还有更巧妙的方法，通过前面两种方法可以看的出来，更新dp的过程实际上是将当前位置的值向后移动nums[i]个位置的过程，移动完成后，最后目标值的结果为true，则可以分割。</p>
+<p>同样的思想，其实可以通过位运算解决，开辟一个有target+1个长度的byte数组bit，bit[0]置1，当前数组为1的位置表示在这个时刻，数组可以组成的值，我们只需要遍历nums数组，每次向左移动nums[i]个位置，并与上一数组做与运算，留下所有为1的位置，最后target的值是否为1就表示是否可以分割。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">canPartition</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            sum += num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((sum &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> target = sum &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">byte</span>[] bits = <span class="keyword">new</span> <span class="keyword">byte</span>[target+<span class="number">1</span>];</span><br><span class="line">        bits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="keyword">int</span> pos = target - num;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = pos; i &gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">                <span class="comment">// 这里不能写成 bits[i+num] = bits[i+num] | bits[i]</span></span><br><span class="line">                <span class="comment">// 因为两个byte运算的结果是int，需要强制转换</span></span><br><span class="line">                bits[i+num] |= bits[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(bits[target] == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上所有代码都可以通过leetcode测试。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+        <category>算法</category>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode 447.回旋镖的数量</title>
     <url>/leetcode-447-%E5%9B%9E%E6%97%8B%E9%95%96%E7%9A%84%E6%95%B0%E9%87%8F.html</url>
     <content><![CDATA[<p>根据题目描述，可以每次确定一个顶点i，统计其他各点到i点距离及其对应数量。若有n个距离i相等的点，则对应的回旋镖数量为n*(n-1)</p>
@@ -1888,6 +1888,27 @@ dp=\begin{cases}
       <tags>
         <tag>leetcode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>leetcode-474.一和零</title>
+    <url>/leetcode-474-%E4%B8%80%E5%92%8C%E9%9B%B6.html</url>
+    <content><![CDATA[<p>给你一个二进制字符串数组 strs 和两个整数 m 和 n 。</p>
+<p>请你找出并返回 strs 的最大子集的长度，该子集中 最多 有 m 个 0 和 n 个 1 。</p>
+<p>如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。</p>
+<blockquote>
+<p>输入：strs = [“10”, “0001”, “111001”, “1”, “0”], m = 5, n = 3<br>输出：4<br>解释：最多有 5 个 0 和 3 个 1 的最大子集是 {“10”,”0001”,”1”,”0”} ，因此答案是 4 。<br>其他满足题意但较小的子集包括 {“0001”,”1”} 和 {“10”,”1”,”0”} 。{“111001”} 不满足题意，因为它含 4 个 1 ，大于 n 的值 3 。</p>
+</blockquote>
+<p>注意是子集不是子串。</p>
+<p>动态规划，和经典的背包问题很相似，但是经典的背包问题只有一种容量，但是在本题中，有0和1两种容量，因此可以使用三维的动态规划。</p>
+<p>定义三维数组dp，dp[k][i][j]表示在前k个字符串中，使用i个0和j个1能包含的最大子集数。因此dp转移函数如下：</p>
+<script type="math/tex; mode=display">
+dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
+    dp\left[ k-1 \right] \left[ i \right] \left[ j \right] ,\ i\ <\ zero\ ||\ j\ <\ one\\
+    \max \left( dp\left[ k-1 \right] \left[ i \right] \left[ j \right] ,\ 1+dp\left[ k-1 \right] \left[ i-zero \right] \left[ j-one \right] \right) ,\ i\ >\ zero\ \&\&\ m\ >\ one\\
+\end{array} \right.</script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxForm</span><span class="params">(String[] strs,<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length  = strs.length;</span><br><span class="line">        <span class="keyword">int</span>[][][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[length+<span class="number">1</span>][m+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] zerosOnes = getZerosOnes(strs[i-<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> zeros = zerosOnes[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> ones = zerosOnes[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; k++)&#123;</span><br><span class="line">                    dp[i][j][k] = dp[i-<span class="number">1</span>][j][k];</span><br><span class="line">                    <span class="keyword">if</span>(j &gt;= zeros &amp;&amp; k &gt;= ones)&#123;</span><br><span class="line">                        dp[i][j][k] = Math.max(dp[i][j][k],dp[i-<span class="number">1</span>][j-zeros][k-ones]+<span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[length][m][n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getZerosOnes(String s)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            num[s.charAt(i)-<span class="string">'0'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，当前行的修改只与上一行有关，因此可以将三维数组改为二维数组，因为后面数据的修改需要用到前面的数据，因此每次从后往前修改数据。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxForm</span><span class="params">(String[] strs,<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> length = strs.length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] zerosOnes = getZerosOnes(strs[i-<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> zero = zerosOnes[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> one = zerosOnes[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= zero; j--)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = n; k &gt;= one; k--)&#123;</span><br><span class="line">                    dp[j][k] = Math.max(<span class="number">1</span>+dp[j-zero][k-one],dp[j][k]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getZerosOnes(String s)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            res[s.charAt(i)-<span class="string">'0'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title>leetcode 51.N皇后</title>
@@ -1941,27 +1962,6 @@ dp=\begin{cases}
       </tags>
   </entry>
   <entry>
-    <title>leetcode-474.一和零</title>
-    <url>/leetcode-474-%E4%B8%80%E5%92%8C%E9%9B%B6.html</url>
-    <content><![CDATA[<p>给你一个二进制字符串数组 strs 和两个整数 m 和 n 。</p>
-<p>请你找出并返回 strs 的最大子集的长度，该子集中 最多 有 m 个 0 和 n 个 1 。</p>
-<p>如果 x 的所有元素也是 y 的元素，集合 x 是集合 y 的 子集 。</p>
-<blockquote>
-<p>输入：strs = [“10”, “0001”, “111001”, “1”, “0”], m = 5, n = 3<br>输出：4<br>解释：最多有 5 个 0 和 3 个 1 的最大子集是 {“10”,”0001”,”1”,”0”} ，因此答案是 4 。<br>其他满足题意但较小的子集包括 {“0001”,”1”} 和 {“10”,”1”,”0”} 。{“111001”} 不满足题意，因为它含 4 个 1 ，大于 n 的值 3 。</p>
-</blockquote>
-<p>注意是子集不是子串。</p>
-<p>动态规划，和经典的背包问题很相似，但是经典的背包问题只有一种容量，但是在本题中，有0和1两种容量，因此可以使用三维的动态规划。</p>
-<p>定义三维数组dp，dp[k][i][j]表示在前k个字符串中，使用i个0和j个1能包含的最大子集数。因此dp转移函数如下：</p>
-<script type="math/tex; mode=display">
-dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
-    dp\left[ k-1 \right] \left[ i \right] \left[ j \right] ,\ i\ <\ zero\ ||\ j\ <\ one\\
-    \max \left( dp\left[ k-1 \right] \left[ i \right] \left[ j \right] ,\ 1+dp\left[ k-1 \right] \left[ i-zero \right] \left[ j-one \right] \right) ,\ i\ >\ zero\ \&\&\ m\ >\ one\\
-\end{array} \right.</script><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxForm</span><span class="params">(String[] strs,<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length  = strs.length;</span><br><span class="line">        <span class="keyword">int</span>[][][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[length+<span class="number">1</span>][m+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] zerosOnes = getZerosOnes(strs[i-<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> zeros = zerosOnes[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> ones = zerosOnes[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt;= n; k++)&#123;</span><br><span class="line">                    dp[i][j][k] = dp[i-<span class="number">1</span>][j][k];</span><br><span class="line">                    <span class="keyword">if</span>(j &gt;= zeros &amp;&amp; k &gt;= ones)&#123;</span><br><span class="line">                        dp[i][j][k] = Math.max(dp[i][j][k],dp[i-<span class="number">1</span>][j-zeros][k-ones]+<span class="number">1</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[length][m][n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getZerosOnes(String s)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            num[s.charAt(i)-<span class="string">'0'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到，当前行的修改只与上一行有关，因此可以将三维数组改为二维数组，因为后面数据的修改需要用到前面的数据，因此每次从后往前修改数据。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxForm</span><span class="params">(String[] strs,<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> length = strs.length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[m+<span class="number">1</span>][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span>[] zerosOnes = getZerosOnes(strs[i-<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> zero = zerosOnes[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> one = zerosOnes[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= zero; j--)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = n; k &gt;= one; k--)&#123;</span><br><span class="line">                    dp[j][k] = Math.max(<span class="number">1</span>+dp[j-zero][k-one],dp[j][k]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getZerosOnes(String s)&#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++)&#123;</span><br><span class="line">            res[s.charAt(i)-<span class="string">'0'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>/leetcode-71-%E7%AE%80%E5%8C%96%E8%B7%AF%E5%BE%84.html</url>
     <content><![CDATA[<hr>
@@ -2009,24 +2009,6 @@ dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
         <tag>BFS</tag>
         <tag>Leetcode</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/leetcode.html</url>
-    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
-<li>荷兰国旗问题</li>
-</ol>
-<h3 id="寻找下标三元组"><a href="#寻找下标三元组" class="headerlink" title="寻找下标三元组"></a>寻找下标三元组</h3><p>给定数组arr，判断是否存在 <code>i , j ,k</code> ，使得 <code>arr[i] &lt; arr[j] &lt; arr[k]</code> </p>
-<p>法一：暴力</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || arr.length &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; arr.length &amp;&amp; arr[j] &gt; arr[i]; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; arr.length &amp;&amp; arr[k] &gt; arr[j]; k++)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>法二：保证第二个数尽可能小，第二个数越小，找到的可能性越大。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// m 指已经遍历的最小的数字， i 是遍历的下标， j 是已经找到的 arr[i] &lt; arr[j] 的尽量小的arr[j]的下标</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = arr[<span class="number">0</span>], <span class="keyword">int</span> i = <span class="number">1</span>, j = -<span class="number">1</span>; i &lt; arr.length; i++ )&#123;</span><br><span class="line">            <span class="comment">// j != -1 表示已经找到了一个 (i, j)&amp;(arr[i] &lt; arr[j]), 如果又找到了arr[k] &gt; arr[j]直接返回true </span></span><br><span class="line">            <span class="keyword">if</span>(j &gt; <span class="number">0</span> &amp;&amp; arr[i] &gt; arr[j])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 更新 m 和 j</span></span><br><span class="line">            <span class="keyword">if</span>( m &lt; arr[i])&#123;</span><br><span class="line">                <span class="keyword">if</span>( j == -<span class="number">1</span> || arr[i] &lt; arr[j])&#123;</span><br><span class="line">                    j = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                m = arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="数组作为特殊map"><a href="#数组作为特殊map" class="headerlink" title="数组作为特殊map"></a>数组作为特殊map</h3><h4 id="找到所有重复的数"><a href="#找到所有重复的数" class="headerlink" title="找到所有重复的数"></a>找到所有重复的数</h4><p>一个正整数数组nums（非空，非null）里面的数的范围在<code>[1, nums.length - 1]</code> 之间，这个数组里的所有数要么只出现一次，要么出现两次，返回所有出现两次的数。<strong>希望只遍历一次，且常数级额外空间。</strong></p>
-<p>tips：计数的思想，但是不能有额外的存储空间，因此<strong>利用数组里面数的范围固定这一特点，遍历时对于当前<code>temp = nums[i]</code> ，对nums[temp-1]取反表示已经找到过一次，如果nums[temp-1]为负值，则加入结果中</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="comment">// 可能num已经被取反了，因此需要取绝对值</span></span><br><span class="line">            <span class="keyword">int</span> idx = Math.abs(num) - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(num[idx] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                list.add(idx+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            nums[idx] = -<span class="number">1</span> * nums[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>leetcode.287</p>
-<p>leetcode.1637</p>
-]]></content>
   </entry>
   <entry>
     <title>leetcode 881.救生艇</title>
@@ -2122,6 +2104,24 @@ dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
       <tags>
         <tag>Linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/leetcode.html</url>
+    <content><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ol>
+<li>荷兰国旗问题</li>
+</ol>
+<h3 id="寻找下标三元组"><a href="#寻找下标三元组" class="headerlink" title="寻找下标三元组"></a>寻找下标三元组</h3><p>给定数组arr，判断是否存在 <code>i , j ,k</code> ，使得 <code>arr[i] &lt; arr[j] &lt; arr[k]</code> </p>
+<p>法一：暴力</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || arr.length &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; arr.length &amp;&amp; arr[j] &gt; arr[i]; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = j + <span class="number">1</span>; k &lt; arr.length &amp;&amp; arr[k] &gt; arr[j]; k++)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>法二：保证第二个数尽可能小，第二个数越小，找到的可能性越大。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// m 指已经遍历的最小的数字， i 是遍历的下标， j 是已经找到的 arr[i] &lt; arr[j] 的尽量小的arr[j]的下标</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> m = arr[<span class="number">0</span>], <span class="keyword">int</span> i = <span class="number">1</span>, j = -<span class="number">1</span>; i &lt; arr.length; i++ )&#123;</span><br><span class="line">            <span class="comment">// j != -1 表示已经找到了一个 (i, j)&amp;(arr[i] &lt; arr[j]), 如果又找到了arr[k] &gt; arr[j]直接返回true </span></span><br><span class="line">            <span class="keyword">if</span>(j &gt; <span class="number">0</span> &amp;&amp; arr[i] &gt; arr[j])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 更新 m 和 j</span></span><br><span class="line">            <span class="keyword">if</span>( m &lt; arr[i])&#123;</span><br><span class="line">                <span class="keyword">if</span>( j == -<span class="number">1</span> || arr[i] &lt; arr[j])&#123;</span><br><span class="line">                    j = i;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                m = arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数组作为特殊map"><a href="#数组作为特殊map" class="headerlink" title="数组作为特殊map"></a>数组作为特殊map</h3><h4 id="找到所有重复的数"><a href="#找到所有重复的数" class="headerlink" title="找到所有重复的数"></a>找到所有重复的数</h4><p>一个正整数数组nums（非空，非null）里面的数的范围在<code>[1, nums.length - 1]</code> 之间，这个数组里的所有数要么只出现一次，要么出现两次，返回所有出现两次的数。<strong>希望只遍历一次，且常数级额外空间。</strong></p>
+<p>tips：计数的思想，但是不能有额外的存储空间，因此<strong>利用数组里面数的范围固定这一特点，遍历时对于当前<code>temp = nums[i]</code> ，对nums[temp-1]取反表示已经找到过一次，如果nums[temp-1]为负值，则加入结果中</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">func</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">            <span class="comment">// 可能num已经被取反了，因此需要取绝对值</span></span><br><span class="line">            <span class="keyword">int</span> idx = Math.abs(num) - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(num[idx] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                list.add(idx+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            nums[idx] = -<span class="number">1</span> * nums[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>leetcode.287</p>
+<p>leetcode.1637</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -2257,22 +2257,6 @@ dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
 ]]></content>
   </entry>
   <entry>
-    <title>位运算</title>
-    <url>/%E4%BD%8D%E8%BF%90%E7%AE%97.html</url>
-    <content><![CDATA[<h2 id="如何不使用三方变量实现数据交换"><a href="#如何不使用三方变量实现数据交换" class="headerlink" title="如何不使用三方变量实现数据交换"></a>如何不使用三方变量实现数据交换</h2><p>使用位运算亦或操作</p>
-<p>原理：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">a ^ a = <span class="number">0</span></span><br><span class="line">a ^ <span class="number">0</span> = a</span><br></pre></td></tr></table></figure>
-<p>因此：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = a ^ b;  <span class="comment">// b = a ^ b ^ b  ====&gt; a</span></span><br><span class="line">a = a ^ b;  <span class="comment">// a = a ^ b ^ a  ====&gt; b</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>位运算</category>
-      </categories>
-      <tags>
-        <tag>位运算</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>买面粉</title>
     <url>/%E4%B9%B0%E9%9D%A2%E7%B2%89.html</url>
     <content><![CDATA[<p><strong>题目描述</strong></p>
@@ -2291,6 +2275,286 @@ dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>位运算</title>
+    <url>/%E4%BD%8D%E8%BF%90%E7%AE%97.html</url>
+    <content><![CDATA[<h2 id="如何不使用三方变量实现数据交换"><a href="#如何不使用三方变量实现数据交换" class="headerlink" title="如何不使用三方变量实现数据交换"></a>如何不使用三方变量实现数据交换</h2><p>使用位运算亦或操作</p>
+<p>原理：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">a ^ a = <span class="number">0</span></span><br><span class="line">a ^ <span class="number">0</span> = a</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">10</span>;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = a ^ b;  <span class="comment">// b = a ^ b ^ b  ====&gt; a</span></span><br><span class="line">a = a ^ b;  <span class="comment">// a = a ^ b ^ a  ====&gt; b</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>位运算</category>
+      </categories>
+      <tags>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字典序全排列</title>
+    <url>/%E5%AD%97%E5%85%B8%E5%BA%8F%E5%85%A8%E6%8E%92%E5%88%97.html</url>
+    <content><![CDATA[<blockquote>
+<p>i题目描述</p>
+<blockquote>
+<p>要求计算从1到N的N个整数所能构成的所有排列，并按照字典顺序依次输出。</p>
+</blockquote>
+<p>输入格式</p>
+<blockquote>
+<p>输入为一组整数，每行为一个整数N，N&lt;8，结尾行为0。</p>
+</blockquote>
+<p>输出格式</p>
+<blockquote>
+<p>对每一个输入N，按照字典序输出1到N的所有排列，数字中间用空格隔开，每个排列的输出占一行。</p>
+</blockquote>
+<p>输入样例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 2</span><br><span class="line">&gt; 3</span><br><span class="line">&gt; 0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>输出样例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 1 2 </span><br><span class="line">&gt; 2 1 </span><br><span class="line">&gt; 1 2 3 </span><br><span class="line">&gt; 1 3 2 </span><br><span class="line">&gt; 2 1 3 </span><br><span class="line">&gt; 2 3 1 </span><br><span class="line">&gt; 3 1 2 </span><br><span class="line">&gt; 3 2 1 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>全排列问题一般使用的方法都是回溯，但是一般的回溯不是按照字典序输出全排列，所以这个特殊一点。</p>
+<p>一般的全排列，对当前位置的选择是按照顺序与后面的元素交换，然后继续选择下一层。</p>
+<p>举个例子，n = 4个数，普通的全排列初始序列为<code>1 2 3 4</code>，当前排列到 k = 2，也就是  1 2 ···，回溯选择k = 2 的第二个值的时候，是按照2 与 3交换，k = 3，排列下一层，再次回溯回来后， 2 与 4交换然后排列下一层，因此它做不到按字典序输出。</p>
+<p>按字典序输出做法的基本思想是：选择当前层 <code>k</code> 的值的时候，是选择一个最小的并且前面 <code>k</code> 前的<code>k-1</code> 个位置没有使用到的值，因为每次选择的都是最小的，因此他能够按照字典序输出。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 当前要确定第k个位置的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">permutation</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 全部排列结束，输出</span></span><br><span class="line">    <span class="keyword">if</span>( k == n)</span><br><span class="line">    &#123;</span><br><span class="line">        print(arr,n);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从0到n-1循环，找到一个最小没有使用过的数字</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 标志位</span></span><br><span class="line">        <span class="keyword">int</span> isok = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 遍历前k-1个位置，查看当前i是否使用过</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 如果前面某一个值 使用过 i+1，则标记isok为 0</span></span><br><span class="line">            <span class="keyword">if</span>(arr[j] == i+<span class="number">1</span>) <span class="comment">// i是序号，i+1是对应值</span></span><br><span class="line">            &#123;</span><br><span class="line">                isok = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果前k-1位都没有使用i+1，那么当前第k位可以选择i+1，然后继续下一层。</span></span><br><span class="line">        <span class="keyword">if</span>(isok)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[k] = i+<span class="number">1</span>;</span><br><span class="line">            permutation(arr,k+<span class="number">1</span>,n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> arr[n+<span class="number">1</span>];</span><br><span class="line">        permutation(arr,<span class="number">0</span>,n);	<span class="comment">// dfs</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html</url>
+    <content><![CDATA[<ol>
+<li><p>欧拉定理</p>
+<p>欧拉定理（也称费马-欧拉定理或欧拉$\varphi$函数定理）是一个关于同余的性质。若<code>n,a</code>为正整数，且<code>n,a</code>互素（即<code>gcd(a,n) = 1</code>），则$\alpha^{\varphi(n)} \equiv 1 (mod\ n)$, 即$\alpha^{\varphi(n)}$ 与 1 在 模n下同余；$\varphi(n)$ 为欧拉函数。欧拉定理得名于瑞士数学家莱昂哈德欧拉。</p>
+</li>
+<li><p>欧拉函数</p>
+<p>对正整数n，欧拉函数$\varphi(n)$ 是小于等于n的正整数中与n互质的数的数目。例如$\varphi(8) = 4$， 因为 1，3，5，7均与8互质。</p>
+<p>若<code>n</code>有标准分解$ n = p_1^{k_1} p_2^{k_2}···p_r^{k_r}$ ，其中各$p_i$ 为互异的质因子，各$k_i$ 为质因子的次数，则欧拉函数在该处的值为$\varphi(n) = p_1^{k_1-1} p_2^{k_2-1}···p_r^{k_r-1}(p_1 - 1)(p_2 - 1)····(p_r - 1)$</p>
+</li>
+<li><p>费马小定理</p>
+<p>若p为质数，a为任意正整数，那么$a^p - a$ 可被p整除。</p>
+<p>若p为质数，a与p互质，那么$a^{p-1} \equiv 1 (mod\ p)$ </p>
+</li>
+</ol>
+<h2 id="paillier加密"><a href="#paillier加密" class="headerlink" title="paillier加密"></a>paillier加密</h2><p>基于复合剩余类的困难问题，该加密是一种同态加密，满足加法和数乘同态。</p>
+<h4 id="密钥生成"><a href="#密钥生成" class="headerlink" title="密钥生成"></a>密钥生成</h4><ol>
+<li><p>随机选择两个大质数p和q满足<code>gcd(pq,(p-1)(q-1)) = 1</code> 。这个属性是保证两个质数长度相等。</p>
+</li>
+<li><p>计算 <code>n = pq</code> 和 <code>λ = lcm(p-1,q-1)</code> 。</p>
+</li>
+<li><p>选择随机整数g，$g \in \mathbb{Z}^*_{n^2}$ </p>
+</li>
+<li><p>通过检查模逆元 $\mu = (L(g^\lambda mod n ^ 2))^{-1} mod n$ 存在，使得满足n整除g的阶。其中，函数<code>L</code> 定义为 $L(x) = \frac{x-1}{n}$ 。</p>
+<p>注意 $\frac{a}{b}$ 并不表示b的模逆元模乘a次，而是a除以b的商，即满足$a \ge vb, v\ge 0$ 的最大<code>v</code>值。  </p>
+</li>
+</ol>
+<p>​    <strong>公钥：(n, g)</strong></p>
+<p>​    <strong>私钥：(λ, u)</strong></p>
+<p>​    如果使用相等长度的<code>p,q</code> ，那么以上生成密钥的一个简单变种是：$g = n + 1, \lambda = \varphi(n), and\ \mu = \varphi(n)^{-1} mod\ n, where\ \varphi(n) = (p-1)(q-1)$ </p>
+<h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><ol>
+<li>待加密消息m满足 $0 \le m \lt n$</li>
+<li>选择随机数r满足$0\lt r \lt n$ </li>
+<li>计算密文：$c = g^m r^n\ mod\ n^2$</li>
+</ol>
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><ol>
+<li>待解密密文c满足$c \in \mathbb{Z}^*_{n^2} $</li>
+<li>计算原文： $m = L(c^\lambda \ mod \ n^2) · \mu \ mod \ n$ </li>
+</ol>
+<h3 id="shannon-cipher-香农密码"><a href="#shannon-cipher-香农密码" class="headerlink" title="shannon cipher 香农密码"></a>shannon cipher 香农密码</h3><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>symmetric encryption: 对称加密</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message \ plaintext</td>
+<td>原文 m</td>
+<td></td>
+</tr>
+<tr>
+<td>ciphertext</td>
+<td>密文 c</td>
+<td></td>
+</tr>
+<tr>
+<td>key space \ message space\ ciphertext space</td>
+<td>密钥空间 $\mathcal{K}$ 、明文空间$\mathcal{M}$、密文空间$\mathcal{C}$</td>
+<td></td>
+</tr>
+<tr>
+<td>encryption</td>
+<td>加密</td>
+<td></td>
+</tr>
+<tr>
+<td>decryption</td>
+<td>解密</td>
+<td></td>
+</tr>
+<tr>
+<td>symmetric encryption</td>
+<td>对称加密</td>
+<td></td>
+</tr>
+<tr>
+<td>public-key encryption</td>
+<td>公钥加密（非对称加密）</td>
+<td></td>
+</tr>
+<tr>
+<td>digital signatures</td>
+<td>数字签名</td>
+<td></td>
+</tr>
+<tr>
+<td>message integrity</td>
+<td>消息完整性</td>
+</tr>
+</tbody>
+</table>
+</div>
+]]></content>
+  </entry>
+  <entry>
+    <title>有向图是否存在环？</title>
+    <url>/%E6%9C%89%E5%90%91%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F.html</url>
+    <content><![CDATA[<blockquote>
+<p>t题目描述</p>
+<blockquote>
+<p>写程序判断有向图是否存在环。有向图的输入用n个二元组表示(u,v)，表示从u到v有一条有向边，起点是u，终点是v。</p>
+</blockquote>
+<p>输入格式</p>
+<blockquote>
+<p>输入包括多组测试数据，每组测试数据首先是正整数n和m，表示有向图有n个节点（编号从1到n），m条有向边，接下来是m行，每行为两个正整数u和v，用空格隔开，表示从节点u到节点v有一条有向边，u和v都大于等于1且小于等于n<br>最后一行为0 0，表示测试数据结束<br>有向图的节点个数不超过100个，边的个数不超过1000</p>
+</blockquote>
+<p>输出格式</p>
+<blockquote>
+<p>如果该有向图存在环，输出YES，否则输出NO</p>
+</blockquote>
+<p>输入样例</p>
+<blockquote>
+<p>11 10<br>1 2<br>2 3<br>4 3<br>5 4<br>6 5<br>3 9<br>10 9<br>9 11<br>7 8<br>8 11<br>2 2<br>1 2<br>2 1<br>3 3<br>1 2<br>2 3<br>3 1<br>0 0</p>
+</blockquote>
+<p>输出样例</p>
+<blockquote>
+<p>NO<br>YES<br>YES</p>
+</blockquote>
+</blockquote>
+<p>判断有向图是否存在环，有两种解决方法：</p>
+<ol>
+<li>拓扑排序</li>
+<li>DFS</li>
+</ol>
+<p>首先说拓扑排序，百度是这么说拓扑排序的。</p>
+<blockquote>
+<p>对一个<a href="https://baike.baidu.com/item/有向无环图/10972513" target="_blank" rel="noopener">有向无环图</a>(Directed Acyclic Graph简称DAG)G进行拓扑排序，是将G中所有顶点排成一个线性序列，使得图中任意一对顶点u和v，若边<u,v>∈E(G)，则u在线性序列中出现在v之前。通常，这样的线性序列称为满足拓扑次序(Topological Order)的序列，简称拓扑序列。简单的说，由某个集合上的一个<a href="https://baike.baidu.com/item/偏序/2439087" target="_blank" rel="noopener">偏序</a>得到该集合上的一个<a href="https://baike.baidu.com/item/全序/10577699" target="_blank" rel="noopener">全序</a>，这个操作称之为拓扑排序。</u,v></p>
+</blockquote>
+<p>操作的步骤是，重复执行：每次取入度为0的节点，从节点集合中删除，同时删除与之相关的边，更新剩余节点的入度。</p>
+<p>删除所有入度为0的节点后，如果节点集合中仍有节点存在，那么他们一定能构成环，因为<strong>对于环中的所有节点，它至少有一个入度</strong>。</p>
+<p>因此这是一个判断有向图有无环的方法。</p>
+<p>另外一个方法是深度优先搜索DFS，大概的思想是，对于一个没有访问过的节点i，我们访问它相邻的节点j。如果相邻节点j被标记为正在被访问，那么说明当前能够构成一个环，直接返回true，如果相邻节点j没有被访问，那么标记为正在被访问，继续访问j的相邻节点，如果j已经访问过，说明不能构成环，返回false。大体思想就是这样。下面是代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// 二维数组存储图</span></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="comment">// 访问标记</span></span><br><span class="line"><span class="keyword">int</span> visited[<span class="number">110</span>];</span><br><span class="line"><span class="keyword">bool</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 如果当前节点正在被访问，表示找到了一个环，i是其中一个节点，那么返回true</span></span><br><span class="line">    <span class="keyword">if</span>(visited[i] == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(visited[i] == <span class="number">1</span>) <span class="comment">// 当前节点已经在前面访问过，不可能构成环，直接返回false</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他情况就是没有访问过，标记正在访问</span></span><br><span class="line">    visited[i] = <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果有一条i-》j的边</span></span><br><span class="line">        <span class="keyword">if</span>(arr[i][j] == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(j))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果前面没有return true，则表示i的所有相邻边都不能构成环，把i标记为已访问，返回false</span></span><br><span class="line">    visited[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m))</span><br><span class="line">    &#123;</span><br><span class="line">        ans=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> ( m == <span class="number">0</span> &amp;&amp; n == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">            arr[x][y] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 外层循环，确保所有节点都访问过</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 当前节点没有被访问</span></span><br><span class="line">            <span class="keyword">if</span>(visited[i] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 深度优先遍历当前节点</span></span><br><span class="line">                ans=dfs(i);</span><br><span class="line">                <span class="comment">// 如果找到环，输出yes，break</span></span><br><span class="line">                <span class="keyword">if</span>(ans)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ans 为false表示没有找到环，循环结束，输出no</span></span><br><span class="line">        <span class="keyword">if</span>(!ans)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(visited,<span class="number">0</span>,<span class="keyword">sizeof</span>(visited));</span><br><span class="line">        <span class="built_in">memset</span>(arr,<span class="number">0</span>,<span class="keyword">sizeof</span>(arr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>DFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>多线程实现方式</title>
+    <url>/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html</url>
+    <content><![CDATA[<h3 id="实现多线程方式"><a href="#实现多线程方式" class="headerlink" title="实现多线程方式"></a>实现多线程方式</h3><ol>
+<li>继承Thread类<ol>
+<li>自定义类继承Thread</li>
+<li>重写run方法</li>
+<li>创建对象</li>
+<li>启动线程</li>
+</ol>
+</li>
+<li>实现Runnable<ol>
+<li>定义一个类实现接口</li>
+<li>类中重写run方法</li>
+<li>创建对象</li>
+<li>创建Thread类对象，将自定义类对象作为构造方法的参数传入</li>
+<li>启动线程</li>
+</ol>
+</li>
+<li>callable 和future<ol>
+<li>自定义类实现callable接口</li>
+<li>重写call方法</li>
+<li>实例化自定义类</li>
+<li>创建future实现类FutureTask对象，将自定义类对象作为构造方法参数传入</li>
+<li>创建Thread类对象，将FutureTask对象作为构造方法参数传入</li>
+<li>启动线程</li>
+</ol>
+</li>
+</ol>
+<p>run方法不开启线程，相当于普通方法的调用</p>
+<h3 id="任务拒接策略："><a href="#任务拒接策略：" class="headerlink" title="任务拒接策略："></a>任务拒接策略：</h3><ol>
+<li>ThreadPoolExecutor.AbortPolicy()：丢弃任务并抛出RejectedExecutionException异常，是默认策略</li>
+<li>ThreadPoolExecutor.DiscardPolicy()，丢弃任务不抛出异常</li>
+<li>ThreadPoolExecutor.DiscardOldestPolicy()：丢弃等待最久的任务并把当前任务加入队列。</li>
+<li>ThreadPoolExecutor.CallerRunsPolicy()：调用任务的run方法绕过线程池直接执行。</li>
+</ol>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>强制线程在每次使用共享数据时查看最新值，而不是数据副本。使用在变量前。</p>
+<p>他不会保证原子性</p>
+<h3 id="Synchronize"><a href="#Synchronize" class="headerlink" title="Synchronize"></a>Synchronize</h3><ol>
+<li>线程获得锁对象</li>
+<li>清空线程变量副本</li>
+<li>从共享变量中拷贝最新值到变量副本中</li>
+<li>执行代码</li>
+<li>将修改后变量副本的值赋值给共享数据</li>
+<li>释放锁</li>
+</ol>
+<p>可以保证原子性</p>
+<h3 id="AtomicInteger类"><a href="#AtomicInteger类" class="headerlink" title="AtomicInteger类"></a>AtomicInteger类</h3><p>实现原子性的高效方式</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>多线程</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>毕设项目bug总结</title>
+    <url>/%E6%AF%95%E8%AE%BE%E9%A1%B9%E7%9B%AEbug%E6%80%BB%E7%BB%93.html</url>
+    <content><![CDATA[<p>[toc]</p>
+<h2 id="Content-type-39-multipart-form-data-boundary-685456864425903977582571-charset-UTF-8-39-not-supported"><a href="#Content-type-39-multipart-form-data-boundary-685456864425903977582571-charset-UTF-8-39-not-supported" class="headerlink" title="Content type &#39;multipart/form-data;boundary=--------------------------685456864425903977582571;charset=UTF-8&#39; not supported]"></a><code>Content type &#39;multipart/form-data;boundary=--------------------------685456864425903977582571;charset=UTF-8&#39; not supported]</code></h2><p>开发完接口后使用postman测试，发现报上面错误，刚开始以为是跨域不支持，后来发现不是。</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>是接口controller参数使用了<code>@RequestBody</code>注解，它要求必须通过实体对象传参，不能通过form-data表单提交的方式进行传参。</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
+<li>postman请求时改成json方式提交</li>
+<li>去掉接口的<code>@RequestBody</code>注解</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Springboot</category>
+        <category>fabric</category>
+      </categories>
+      <tags>
+        <tag>Springboot</tag>
+        <tag>fabric</tag>
       </tags>
   </entry>
   <entry>
@@ -2408,270 +2672,6 @@ dp\left[ k \right] \left[ i \right] \left[ j \right] \left\{ \begin{array}{l}
 <h4 id="5、QSCC-Query-System-Chaincode"><a href="#5、QSCC-Query-System-Chaincode" class="headerlink" title="5、QSCC: Query System Chaincode"></a>5、QSCC: Query System Chaincode</h4><p>This Chaincode runs in all peer and provide ledger API like getTransactionByTransactionID, getBlockByBlockNumber, GetBlockByTxID, GetChainInfo, GetBlockByTxID.</p>
 <p>Hope this article will help you. It’s basic information about the system chaincodes.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>多线程实现方式</title>
-    <url>/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95.html</url>
-    <content><![CDATA[<h3 id="实现多线程方式"><a href="#实现多线程方式" class="headerlink" title="实现多线程方式"></a>实现多线程方式</h3><ol>
-<li>继承Thread类<ol>
-<li>自定义类继承Thread</li>
-<li>重写run方法</li>
-<li>创建对象</li>
-<li>启动线程</li>
-</ol>
-</li>
-<li>实现Runnable<ol>
-<li>定义一个类实现接口</li>
-<li>类中重写run方法</li>
-<li>创建对象</li>
-<li>创建Thread类对象，将自定义类对象作为构造方法的参数传入</li>
-<li>启动线程</li>
-</ol>
-</li>
-<li>callable 和future<ol>
-<li>自定义类实现callable接口</li>
-<li>重写call方法</li>
-<li>实例化自定义类</li>
-<li>创建future实现类FutureTask对象，将自定义类对象作为构造方法参数传入</li>
-<li>创建Thread类对象，将FutureTask对象作为构造方法参数传入</li>
-<li>启动线程</li>
-</ol>
-</li>
-</ol>
-<p>run方法不开启线程，相当于普通方法的调用</p>
-<h3 id="任务拒接策略："><a href="#任务拒接策略：" class="headerlink" title="任务拒接策略："></a>任务拒接策略：</h3><ol>
-<li>ThreadPoolExecutor.AbortPolicy()：丢弃任务并抛出RejectedExecutionException异常，是默认策略</li>
-<li>ThreadPoolExecutor.DiscardPolicy()，丢弃任务不抛出异常</li>
-<li>ThreadPoolExecutor.DiscardOldestPolicy()：丢弃等待最久的任务并把当前任务加入队列。</li>
-<li>ThreadPoolExecutor.CallerRunsPolicy()：调用任务的run方法绕过线程池直接执行。</li>
-</ol>
-<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>强制线程在每次使用共享数据时查看最新值，而不是数据副本。使用在变量前。</p>
-<p>他不会保证原子性</p>
-<h3 id="Synchronize"><a href="#Synchronize" class="headerlink" title="Synchronize"></a>Synchronize</h3><ol>
-<li>线程获得锁对象</li>
-<li>清空线程变量副本</li>
-<li>从共享变量中拷贝最新值到变量副本中</li>
-<li>执行代码</li>
-<li>将修改后变量副本的值赋值给共享数据</li>
-<li>释放锁</li>
-</ol>
-<p>可以保证原子性</p>
-<h3 id="AtomicInteger类"><a href="#AtomicInteger类" class="headerlink" title="AtomicInteger类"></a>AtomicInteger类</h3><p>实现原子性的高效方式</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>多线程</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>多线程</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html</url>
-    <content><![CDATA[<ol>
-<li><p>欧拉定理</p>
-<p>欧拉定理（也称费马-欧拉定理或欧拉$\varphi$函数定理）是一个关于同余的性质。若<code>n,a</code>为正整数，且<code>n,a</code>互素（即<code>gcd(a,n) = 1</code>），则$\alpha^{\varphi(n)} \equiv 1 (mod\ n)$, 即$\alpha^{\varphi(n)}$ 与 1 在 模n下同余；$\varphi(n)$ 为欧拉函数。欧拉定理得名于瑞士数学家莱昂哈德欧拉。</p>
-</li>
-<li><p>欧拉函数</p>
-<p>对正整数n，欧拉函数$\varphi(n)$ 是小于等于n的正整数中与n互质的数的数目。例如$\varphi(8) = 4$， 因为 1，3，5，7均与8互质。</p>
-<p>若<code>n</code>有标准分解$ n = p_1^{k_1} p_2^{k_2}···p_r^{k_r}$ ，其中各$p_i$ 为互异的质因子，各$k_i$ 为质因子的次数，则欧拉函数在该处的值为$\varphi(n) = p_1^{k_1-1} p_2^{k_2-1}···p_r^{k_r-1}(p_1 - 1)(p_2 - 1)····(p_r - 1)$</p>
-</li>
-<li><p>费马小定理</p>
-<p>若p为质数，a为任意正整数，那么$a^p - a$ 可被p整除。</p>
-<p>若p为质数，a与p互质，那么$a^{p-1} \equiv 1 (mod\ p)$ </p>
-</li>
-</ol>
-<h2 id="paillier加密"><a href="#paillier加密" class="headerlink" title="paillier加密"></a>paillier加密</h2><p>基于复合剩余类的困难问题，该加密是一种同态加密，满足加法和数乘同态。</p>
-<h4 id="密钥生成"><a href="#密钥生成" class="headerlink" title="密钥生成"></a>密钥生成</h4><ol>
-<li><p>随机选择两个大质数p和q满足<code>gcd(pq,(p-1)(q-1)) = 1</code> 。这个属性是保证两个质数长度相等。</p>
-</li>
-<li><p>计算 <code>n = pq</code> 和 <code>λ = lcm(p-1,q-1)</code> 。</p>
-</li>
-<li><p>选择随机整数g，$g \in \mathbb{Z}^*_{n^2}$ </p>
-</li>
-<li><p>通过检查模逆元 $\mu = (L(g^\lambda mod n ^ 2))^{-1} mod n$ 存在，使得满足n整除g的阶。其中，函数<code>L</code> 定义为 $L(x) = \frac{x-1}{n}$ 。</p>
-<p>注意 $\frac{a}{b}$ 并不表示b的模逆元模乘a次，而是a除以b的商，即满足$a \ge vb, v\ge 0$ 的最大<code>v</code>值。  </p>
-</li>
-</ol>
-<p>​    <strong>公钥：(n, g)</strong></p>
-<p>​    <strong>私钥：(λ, u)</strong></p>
-<p>​    如果使用相等长度的<code>p,q</code> ，那么以上生成密钥的一个简单变种是：$g = n + 1, \lambda = \varphi(n), and\ \mu = \varphi(n)^{-1} mod\ n, where\ \varphi(n) = (p-1)(q-1)$ </p>
-<h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><ol>
-<li>待加密消息m满足 $0 \le m \lt n$</li>
-<li>选择随机数r满足$0\lt r \lt n$ </li>
-<li>计算密文：$c = g^m r^n\ mod\ n^2$</li>
-</ol>
-<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><ol>
-<li>待解密密文c满足$c \in \mathbb{Z}^*_{n^2} $</li>
-<li>计算原文： $m = L(c^\lambda \ mod \ n^2) · \mu \ mod \ n$ </li>
-</ol>
-<h3 id="shannon-cipher-香农密码"><a href="#shannon-cipher-香农密码" class="headerlink" title="shannon cipher 香农密码"></a>shannon cipher 香农密码</h3><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>symmetric encryption: 对称加密</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>message \ plaintext</td>
-<td>原文 m</td>
-<td></td>
-</tr>
-<tr>
-<td>ciphertext</td>
-<td>密文 c</td>
-<td></td>
-</tr>
-<tr>
-<td>key space \ message space\ ciphertext space</td>
-<td>密钥空间 $\mathcal{K}$ 、明文空间$\mathcal{M}$、密文空间$\mathcal{C}$</td>
-<td></td>
-</tr>
-<tr>
-<td>encryption</td>
-<td>加密</td>
-<td></td>
-</tr>
-<tr>
-<td>decryption</td>
-<td>解密</td>
-<td></td>
-</tr>
-<tr>
-<td>symmetric encryption</td>
-<td>对称加密</td>
-<td></td>
-</tr>
-<tr>
-<td>public-key encryption</td>
-<td>公钥加密（非对称加密）</td>
-<td></td>
-</tr>
-<tr>
-<td>digital signatures</td>
-<td>数字签名</td>
-<td></td>
-</tr>
-<tr>
-<td>message integrity</td>
-<td>消息完整性</td>
-</tr>
-</tbody>
-</table>
-</div>
-]]></content>
-  </entry>
-  <entry>
-    <title>字典序全排列</title>
-    <url>/%E5%AD%97%E5%85%B8%E5%BA%8F%E5%85%A8%E6%8E%92%E5%88%97.html</url>
-    <content><![CDATA[<blockquote>
-<p>i题目描述</p>
-<blockquote>
-<p>要求计算从1到N的N个整数所能构成的所有排列，并按照字典顺序依次输出。</p>
-</blockquote>
-<p>输入格式</p>
-<blockquote>
-<p>输入为一组整数，每行为一个整数N，N&lt;8，结尾行为0。</p>
-</blockquote>
-<p>输出格式</p>
-<blockquote>
-<p>对每一个输入N，按照字典序输出1到N的所有排列，数字中间用空格隔开，每个排列的输出占一行。</p>
-</blockquote>
-<p>输入样例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 2</span><br><span class="line">&gt; 3</span><br><span class="line">&gt; 0</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>输出样例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 1 2 </span><br><span class="line">&gt; 2 1 </span><br><span class="line">&gt; 1 2 3 </span><br><span class="line">&gt; 1 3 2 </span><br><span class="line">&gt; 2 1 3 </span><br><span class="line">&gt; 2 3 1 </span><br><span class="line">&gt; 3 1 2 </span><br><span class="line">&gt; 3 2 1 </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>全排列问题一般使用的方法都是回溯，但是一般的回溯不是按照字典序输出全排列，所以这个特殊一点。</p>
-<p>一般的全排列，对当前位置的选择是按照顺序与后面的元素交换，然后继续选择下一层。</p>
-<p>举个例子，n = 4个数，普通的全排列初始序列为<code>1 2 3 4</code>，当前排列到 k = 2，也就是  1 2 ···，回溯选择k = 2 的第二个值的时候，是按照2 与 3交换，k = 3，排列下一层，再次回溯回来后， 2 与 4交换然后排列下一层，因此它做不到按字典序输出。</p>
-<p>按字典序输出做法的基本思想是：选择当前层 <code>k</code> 的值的时候，是选择一个最小的并且前面 <code>k</code> 前的<code>k-1</code> 个位置没有使用到的值，因为每次选择的都是最小的，因此他能够按照字典序输出。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 当前要确定第k个位置的值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">permutation</span><span class="params">(<span class="keyword">int</span> *arr, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 全部排列结束，输出</span></span><br><span class="line">    <span class="keyword">if</span>( k == n)</span><br><span class="line">    &#123;</span><br><span class="line">        print(arr,n);</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 从0到n-1循环，找到一个最小没有使用过的数字</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 标志位</span></span><br><span class="line">        <span class="keyword">int</span> isok = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 遍历前k-1个位置，查看当前i是否使用过</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 如果前面某一个值 使用过 i+1，则标记isok为 0</span></span><br><span class="line">            <span class="keyword">if</span>(arr[j] == i+<span class="number">1</span>) <span class="comment">// i是序号，i+1是对应值</span></span><br><span class="line">            &#123;</span><br><span class="line">                isok = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果前k-1位都没有使用i+1，那么当前第k位可以选择i+1，然后继续下一层。</span></span><br><span class="line">        <span class="keyword">if</span>(isok)</span><br><span class="line">        &#123;</span><br><span class="line">            arr[k] = i+<span class="number">1</span>;</span><br><span class="line">            permutation(arr,k+<span class="number">1</span>,n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> arr[n+<span class="number">1</span>];</span><br><span class="line">        permutation(arr,<span class="number">0</span>,n);	<span class="comment">// dfs</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>回溯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>有向图是否存在环？</title>
-    <url>/%E6%9C%89%E5%90%91%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F.html</url>
-    <content><![CDATA[<blockquote>
-<p>t题目描述</p>
-<blockquote>
-<p>写程序判断有向图是否存在环。有向图的输入用n个二元组表示(u,v)，表示从u到v有一条有向边，起点是u，终点是v。</p>
-</blockquote>
-<p>输入格式</p>
-<blockquote>
-<p>输入包括多组测试数据，每组测试数据首先是正整数n和m，表示有向图有n个节点（编号从1到n），m条有向边，接下来是m行，每行为两个正整数u和v，用空格隔开，表示从节点u到节点v有一条有向边，u和v都大于等于1且小于等于n<br>最后一行为0 0，表示测试数据结束<br>有向图的节点个数不超过100个，边的个数不超过1000</p>
-</blockquote>
-<p>输出格式</p>
-<blockquote>
-<p>如果该有向图存在环，输出YES，否则输出NO</p>
-</blockquote>
-<p>输入样例</p>
-<blockquote>
-<p>11 10<br>1 2<br>2 3<br>4 3<br>5 4<br>6 5<br>3 9<br>10 9<br>9 11<br>7 8<br>8 11<br>2 2<br>1 2<br>2 1<br>3 3<br>1 2<br>2 3<br>3 1<br>0 0</p>
-</blockquote>
-<p>输出样例</p>
-<blockquote>
-<p>NO<br>YES<br>YES</p>
-</blockquote>
-</blockquote>
-<p>判断有向图是否存在环，有两种解决方法：</p>
-<ol>
-<li>拓扑排序</li>
-<li>DFS</li>
-</ol>
-<p>首先说拓扑排序，百度是这么说拓扑排序的。</p>
-<blockquote>
-<p>对一个<a href="https://baike.baidu.com/item/有向无环图/10972513" target="_blank" rel="noopener">有向无环图</a>(Directed Acyclic Graph简称DAG)G进行拓扑排序，是将G中所有顶点排成一个线性序列，使得图中任意一对顶点u和v，若边<u,v>∈E(G)，则u在线性序列中出现在v之前。通常，这样的线性序列称为满足拓扑次序(Topological Order)的序列，简称拓扑序列。简单的说，由某个集合上的一个<a href="https://baike.baidu.com/item/偏序/2439087" target="_blank" rel="noopener">偏序</a>得到该集合上的一个<a href="https://baike.baidu.com/item/全序/10577699" target="_blank" rel="noopener">全序</a>，这个操作称之为拓扑排序。</u,v></p>
-</blockquote>
-<p>操作的步骤是，重复执行：每次取入度为0的节点，从节点集合中删除，同时删除与之相关的边，更新剩余节点的入度。</p>
-<p>删除所有入度为0的节点后，如果节点集合中仍有节点存在，那么他们一定能构成环，因为<strong>对于环中的所有节点，它至少有一个入度</strong>。</p>
-<p>因此这是一个判断有向图有无环的方法。</p>
-<p>另外一个方法是深度优先搜索DFS，大概的思想是，对于一个没有访问过的节点i，我们访问它相邻的节点j。如果相邻节点j被标记为正在被访问，那么说明当前能够构成一个环，直接返回true，如果相邻节点j没有被访问，那么标记为正在被访问，继续访问j的相邻节点，如果j已经访问过，说明不能构成环，返回false。大体思想就是这样。下面是代码：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// 二维数组存储图</span></span><br><span class="line"><span class="keyword">int</span> arr[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="comment">// 访问标记</span></span><br><span class="line"><span class="keyword">int</span> visited[<span class="number">110</span>];</span><br><span class="line"><span class="keyword">bool</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 如果当前节点正在被访问，表示找到了一个环，i是其中一个节点，那么返回true</span></span><br><span class="line">    <span class="keyword">if</span>(visited[i] == <span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(visited[i] == <span class="number">1</span>) <span class="comment">// 当前节点已经在前面访问过，不可能构成环，直接返回false</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 其他情况就是没有访问过，标记正在访问</span></span><br><span class="line">    visited[i] = <span class="number">-1</span>;</span><br><span class="line">    <span class="comment">// 遍历所有节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 如果有一条i-》j的边</span></span><br><span class="line">        <span class="keyword">if</span>(arr[i][j] == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(j))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果前面没有return true，则表示i的所有相邻边都不能构成环，把i标记为已访问，返回false</span></span><br><span class="line">    visited[i] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m))</span><br><span class="line">    &#123;</span><br><span class="line">        ans=<span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> ( m == <span class="number">0</span> &amp;&amp; n == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> x,y;</span><br><span class="line">        <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">            arr[x][y] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 外层循环，确保所有节点都访问过</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 当前节点没有被访问</span></span><br><span class="line">            <span class="keyword">if</span>(visited[i] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 深度优先遍历当前节点</span></span><br><span class="line">                ans=dfs(i);</span><br><span class="line">                <span class="comment">// 如果找到环，输出yes，break</span></span><br><span class="line">                <span class="keyword">if</span>(ans)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ans 为false表示没有找到环，循环结束，输出no</span></span><br><span class="line">        <span class="keyword">if</span>(!ans)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(visited,<span class="number">0</span>,<span class="keyword">sizeof</span>(visited));</span><br><span class="line">        <span class="built_in">memset</span>(arr,<span class="number">0</span>,<span class="keyword">sizeof</span>(arr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>DFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>毕设项目bug总结</title>
-    <url>/%E6%AF%95%E8%AE%BE%E9%A1%B9%E7%9B%AEbug%E6%80%BB%E7%BB%93.html</url>
-    <content><![CDATA[<p>[toc]</p>
-<h2 id="Content-type-39-multipart-form-data-boundary-685456864425903977582571-charset-UTF-8-39-not-supported"><a href="#Content-type-39-multipart-form-data-boundary-685456864425903977582571-charset-UTF-8-39-not-supported" class="headerlink" title="Content type &#39;multipart/form-data;boundary=--------------------------685456864425903977582571;charset=UTF-8&#39; not supported]"></a><code>Content type &#39;multipart/form-data;boundary=--------------------------685456864425903977582571;charset=UTF-8&#39; not supported]</code></h2><p>开发完接口后使用postman测试，发现报上面错误，刚开始以为是跨域不支持，后来发现不是。</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>是接口controller参数使用了<code>@RequestBody</code>注解，它要求必须通过实体对象传参，不能通过form-data表单提交的方式进行传参。</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ol>
-<li>postman请求时改成json方式提交</li>
-<li>去掉接口的<code>@RequestBody</code>注解</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Springboot</category>
-        <category>fabric</category>
-      </categories>
-      <tags>
-        <tag>Springboot</tag>
-        <tag>fabric</tag>
-      </tags>
   </entry>
   <entry>
     <title>素数筛</title>
@@ -2817,57 +2817,6 @@ c = q(h_1,h_2,...,h_N)</script><h3 id="解码器"><a href="#解码器" class="he
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/%E8%93%9D%E6%A1%A5%E6%9D%AF.html</url>
-    <content><![CDATA[<ol>
-<li>在nextInt()后面使用nextLine()后出错，因为nextInt()遇到回车就停止了，而换行符留在缓冲区内，因此nextInt()后的第一个nextLine()读入了换行符。解决方式：在nextInt()后面加一行nextLine()读取换行符</li>
-<li>基本数据类型 int long等都是不对称的，如int~[-2^31, 2^31-1]，对负数求相反数时会移除，因此需要转为long再继续。</li>
-</ol>
-<h3 id="闰年判断"><a href="#闰年判断" class="headerlink" title="闰年判断"></a>闰年判断</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">year % <span class="number">400</span> == <span class="number">0</span> || year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p>能被400整除 </p>
-<p>或者</p>
-<p>能被4整除但不能被100整除</p>
-<h3 id="进制转化"><a href="#进制转化" class="headerlink" title="进制转化"></a>进制转化</h3><ol>
-<li><p>十进制 —-&gt; 2 8 16 其他进制</p>
-<p><code>public static String toBinaryString(int i)</code></p>
-<p><code>public static String toOctalString(int i)</code></p>
-<p><code>public static String toHexString(int i)</code></p>
-<p><code>public static String toString(int i, int radix)</code></p>
-<p>这个函数有一个限制，即<code>radix &gt;= 2 &amp;&amp; radix &lt;= 36</code>，且使用字符表示时用的是小写字母。</p>
-</li>
-<li><p>其他进制转十进制</p>
-<p><code>public static int parseInt(String s, int radix) throws NumberFormatException</code></p>
-<p>同样限制<code>radix &gt;= 2 &amp;&amp; radix &lt;= 36</code>。可能因为字母只有26个。</p>
-</li>
-</ol>
-<h3 id="字符串排序"><a href="#字符串排序" class="headerlink" title="字符串排序"></a>字符串排序</h3><p>​    compareTo(String s)</p>
-<p>java 位宽输出</p>
-<p>并查集 ： HDU1232， POJ1988， POJ1182， POJ1703</p>
-<p>前缀和：数列的平方和，</p>
-<p>Lucas卢卡斯定理</p>
-<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> n, <span class="keyword">long</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; m &gt; <span class="number">0</span>; m &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>((m &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            res *= n;</span><br><span class="line">        &#125;</span><br><span class="line">        n *= n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ol>
-<li><p>求逆元</p>
-<p>（x±y）% q = (x % q ± y % q) % q</p>
-<p>​    x<em>y % q = (x % q \</em> y % q) % q</p>
-<p>加减乘对取余是封闭的，但是除法不支持，那么如何计算( x / y) % q呢？  利用<strong>费马小定理</strong></p>
-<p><img src="%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20220121213622020.png" alt="image-20220121213622020"></p>
-</li>
-<li></li>
-</ol>
-<h3 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h3><ol>
-<li>n个数的入栈出栈序列数</li>
-<li></li>
-</ol>
-<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p>key word： 线性表，连续若干个节点 ， 和</p>
-<p>leetcode.1004 最大连续1的个数III</p>
-<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>leetcode.1004 最大连续1的个数III</p>
-<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>特殊情况处理 <code>dummy.next = head</code></p>
-<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>路径压缩</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x != root[x])</span><br><span class="line">        root[x] = find(root[x]);</span><br><span class="line">    <span class="keyword">return</span> root[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
     <title>装箱与拆箱</title>
     <url>/%E8%A3%85%E7%AE%B1%E4%B8%8E%E6%8B%86%E7%AE%B1.html</url>
     <content><![CDATA[<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>8种基本数据类型，char,byte,short , int , long ,float ,double , boolean</p>
@@ -2948,6 +2897,57 @@ c = q(h_1,h_2,...,h_N)</script><h3 id="解码器"><a href="#解码器" class="he
         <tag>源码</tag>
         <tag>面试题</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/%E8%93%9D%E6%A1%A5%E6%9D%AF.html</url>
+    <content><![CDATA[<ol>
+<li>在nextInt()后面使用nextLine()后出错，因为nextInt()遇到回车就停止了，而换行符留在缓冲区内，因此nextInt()后的第一个nextLine()读入了换行符。解决方式：在nextInt()后面加一行nextLine()读取换行符</li>
+<li>基本数据类型 int long等都是不对称的，如int~[-2^31, 2^31-1]，对负数求相反数时会移除，因此需要转为long再继续。</li>
+</ol>
+<h3 id="闰年判断"><a href="#闰年判断" class="headerlink" title="闰年判断"></a>闰年判断</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">year % <span class="number">400</span> == <span class="number">0</span> || year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>能被400整除 </p>
+<p>或者</p>
+<p>能被4整除但不能被100整除</p>
+<h3 id="进制转化"><a href="#进制转化" class="headerlink" title="进制转化"></a>进制转化</h3><ol>
+<li><p>十进制 —-&gt; 2 8 16 其他进制</p>
+<p><code>public static String toBinaryString(int i)</code></p>
+<p><code>public static String toOctalString(int i)</code></p>
+<p><code>public static String toHexString(int i)</code></p>
+<p><code>public static String toString(int i, int radix)</code></p>
+<p>这个函数有一个限制，即<code>radix &gt;= 2 &amp;&amp; radix &lt;= 36</code>，且使用字符表示时用的是小写字母。</p>
+</li>
+<li><p>其他进制转十进制</p>
+<p><code>public static int parseInt(String s, int radix) throws NumberFormatException</code></p>
+<p>同样限制<code>radix &gt;= 2 &amp;&amp; radix &lt;= 36</code>。可能因为字母只有26个。</p>
+</li>
+</ol>
+<h3 id="字符串排序"><a href="#字符串排序" class="headerlink" title="字符串排序"></a>字符串排序</h3><p>​    compareTo(String s)</p>
+<p>java 位宽输出</p>
+<p>并查集 ： HDU1232， POJ1988， POJ1182， POJ1703</p>
+<p>前缀和：数列的平方和，</p>
+<p>Lucas卢卡斯定理</p>
+<h3 id="快速幂"><a href="#快速幂" class="headerlink" title="快速幂"></a>快速幂</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">pow</span><span class="params">(<span class="keyword">double</span> n, <span class="keyword">long</span> m)</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; m &gt; <span class="number">0</span>; m &gt;&gt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>((m &amp; <span class="number">1</span>) == <span class="number">1</span>)&#123;</span><br><span class="line">            res *= n;</span><br><span class="line">        &#125;</span><br><span class="line">        n *= n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><ol>
+<li><p>求逆元</p>
+<p>（x±y）% q = (x % q ± y % q) % q</p>
+<p>​    x<em>y % q = (x % q \</em> y % q) % q</p>
+<p>加减乘对取余是封闭的，但是除法不支持，那么如何计算( x / y) % q呢？  利用<strong>费马小定理</strong></p>
+<p><img src="%E8%93%9D%E6%A1%A5%E6%9D%AF/image-20220121213622020.png" alt="image-20220121213622020"></p>
+</li>
+<li></li>
+</ol>
+<h3 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h3><ol>
+<li>n个数的入栈出栈序列数</li>
+<li></li>
+</ol>
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p>key word： 线性表，连续若干个节点 ， 和</p>
+<p>leetcode.1004 最大连续1的个数III</p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>leetcode.1004 最大连续1的个数III</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>特殊情况处理 <code>dummy.next = head</code></p>
+<h2 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h2><p>路径压缩</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x != root[x])</span><br><span class="line">        root[x] = find(root[x]);</span><br><span class="line">    <span class="keyword">return</span> root[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -3146,6 +3146,27 @@ c = q(h_1,h_2,...,h_N)</script><h3 id="解码器"><a href="#解码器" class="he
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试题17.14.最小k个数</title>
+    <url>/%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html</url>
+    <content><![CDATA[<p>@</p>
+<p>法一：直接排序，然后取前K个值，时间复杂度：O(n*logn)，排序算法的时间复杂度。空间复杂度：O(logn)，排序递归栈的空间。</p>
+<p>法二：使用堆，可以建立一个小根堆，遍历数组初始化小根堆，然后每次取出头元素，也就是最小的元素，然后调整堆，再次获取第二小元素，这样可以保证最小K个数的顺序，但相应的，需要的时间复杂度和空间复杂度较大。</p>
+<p>​    时间复杂度：O（n*logn），其中建立堆的时间复杂度是O（n），每次调整的时间复杂度是O(n*logn)，因此总时间是O（n*logn）</p>
+<p>法三：本题不需要按照顺序返回最小的K个数，因此可以使用大根堆，建立一个K个元素的大根堆，遍历数组，若当前元素大于树根的值，则删除树根，添加当前元素。最后，堆中剩余的元素就是最小的K个数。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] smallestK(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="keyword">int</span> len = arr.length;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; stack = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer i1, Integer i2)</span></span>&#123;</span><br><span class="line">                <span class="keyword">return</span> i2-i1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">            stack.offer(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(stack.peek() &gt; arr[i])&#123;</span><br><span class="line">                stack.poll;</span><br><span class="line">                stack.offer(arr[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">            res[i] = stack.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有根据快排思想做题，但是还没搞懂······</p>
+<p>以上代码通过测试。</p>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -3378,27 +3399,6 @@ c = q(h_1,h_2,...,h_N)</script><h3 id="解码器"><a href="#解码器" class="he
       </categories>
       <tags>
         <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试题17.14.最小k个数</title>
-    <url>/%E9%9D%A2%E8%AF%95%E9%A2%9817-14-%E6%9C%80%E5%B0%8Fk%E4%B8%AA%E6%95%B0.html</url>
-    <content><![CDATA[<p>@</p>
-<p>法一：直接排序，然后取前K个值，时间复杂度：O(n*logn)，排序算法的时间复杂度。空间复杂度：O(logn)，排序递归栈的空间。</p>
-<p>法二：使用堆，可以建立一个小根堆，遍历数组初始化小根堆，然后每次取出头元素，也就是最小的元素，然后调整堆，再次获取第二小元素，这样可以保证最小K个数的顺序，但相应的，需要的时间复杂度和空间复杂度较大。</p>
-<p>​    时间复杂度：O（n*logn），其中建立堆的时间复杂度是O（n），每次调整的时间复杂度是O(n*logn)，因此总时间是O（n*logn）</p>
-<p>法三：本题不需要按照顺序返回最小的K个数，因此可以使用大根堆，建立一个K个元素的大根堆，遍历数组，若当前元素大于树根的值，则删除树根，添加当前元素。最后，堆中剩余的元素就是最小的K个数。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] smallestK(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> k)&#123;</span><br><span class="line">        <span class="keyword">int</span> len = arr.length;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;Integer&gt; stack = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer i1, Integer i2)</span></span>&#123;</span><br><span class="line">                <span class="keyword">return</span> i2-i1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">            stack.offer(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = k; i &lt; len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(stack.peek() &gt; arr[i])&#123;</span><br><span class="line">                stack.poll;</span><br><span class="line">                stack.offer(arr[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">            res[i] = stack.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>还有根据快排思想做题，但是还没搞懂······</p>
-<p>以上代码通过测试。</p>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
 </search>
