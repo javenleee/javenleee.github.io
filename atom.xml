@@ -40,7 +40,7 @@
     <link href="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB.html"/>
     <id>https://www.shmily.today/hyperledger-fabric-源码阅读.html</id>
     <published>2022-04-15T07:45:09.000Z</published>
-    <updated>2022-09-04T07:23:11.992Z</updated>
+    <updated>2022-09-07T11:21:59.612Z</updated>
     
     <summary type="html">
     
@@ -52,6 +52,10 @@
     
     </summary>
     
+      <category term="区块链源码" scheme="https://www.shmily.today/categories/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="区块链" scheme="https://www.shmily.today/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
   </entry>
   
@@ -119,27 +123,6 @@
   
   <entry>
     <title></title>
-    <link href="https://www.shmily.today/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html"/>
-    <id>https://www.shmily.today/数学基础.html</id>
-    <published>2022-03-24T02:23:59.804Z</published>
-    <updated>2022-04-01T05:58:35.664Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;欧拉定理&lt;/p&gt;
-&lt;p&gt;欧拉定理（也称费马-欧拉定理或欧拉$\varphi$函数定理）是一个关于同余的性质。若&lt;code&gt;n,a&lt;/code&gt;为正整数，且&lt;code&gt;n,a&lt;/code&gt;互素（即&lt;code&gt;gcd(a,n) = 1&lt;/code&gt;），则$\a
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
     <link href="https://www.shmily.today/leetcode.html"/>
     <id>https://www.shmily.today/leetcode.html</id>
     <published>2022-03-23T13:03:29.387Z</published>
@@ -176,9 +159,9 @@
       <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="差分" scheme="https://www.shmily.today/tags/%E5%B7%AE%E5%88%86/"/>
-    
       <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="差分" scheme="https://www.shmily.today/tags/%E5%B7%AE%E5%88%86/"/>
     
   </entry>
   
@@ -198,29 +181,9 @@
       <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
-    
       <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
     
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/%E8%93%9D%E6%A1%A5%E6%9D%AF.html"/>
-    <id>https://www.shmily.today/蓝桥杯.html</id>
-    <published>2022-01-18T12:22:31.445Z</published>
-    <updated>2022-03-30T12:13:48.136Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;在nextInt()后面使用nextLine()后出错，因为nextInt()遇到回车就停止了，而换行符留在缓冲区内，因此nextInt()后的第一个nextLine()读入了换行符。解决方式：在nextInt()后面加一行nextLine()读取换行符&lt;/li
-      
-    
-    </summary>
-    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
     
   </entry>
   
@@ -370,6 +333,46 @@
   </entry>
   
   <entry>
+    <title>自然语言处理项目</title>
+    <link href="https://www.shmily.today/%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA.html"/>
+    <id>https://www.shmily.today/聊天机器人.html</id>
+    <published>2021-11-20T13:09:04.000Z</published>
+    <updated>2022-09-07T11:18:15.781Z</updated>
+    
+    <summary type="html">
+    
+      NLP课程大作业，聊天机器人
+    
+    </summary>
+    
+      <category term="NLP" scheme="https://www.shmily.today/categories/NLP/"/>
+    
+    
+      <category term="NLP" scheme="https://www.shmily.today/tags/NLP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>蓝桥杯整理</title>
+    <link href="https://www.shmily.today/%E8%93%9D%E6%A1%A5%E6%9D%AF.html"/>
+    <id>https://www.shmily.today/蓝桥杯.html</id>
+    <published>2021-11-20T13:09:04.000Z</published>
+    <updated>2022-09-07T11:17:02.934Z</updated>
+    
+    <summary type="html">
+    
+      2022蓝桥杯赛前整理
+    
+    </summary>
+    
+      <category term="Java" scheme="https://www.shmily.today/categories/Java/"/>
+    
+    
+      <category term="数据结构与算法" scheme="https://www.shmily.today/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>字典序全排列</title>
     <link href="https://www.shmily.today/%E5%AD%97%E5%85%B8%E5%BA%8F%E5%85%A8%E6%8E%92%E5%88%97.html"/>
     <id>https://www.shmily.today/字典序全排列.html</id>
@@ -414,22 +417,27 @@
   </entry>
   
   <entry>
-    <title>神奇炸弹</title>
-    <link href="https://www.shmily.today/%E7%A5%9E%E5%A5%87%E7%82%B8%E5%BC%B9.html"/>
-    <id>https://www.shmily.today/神奇炸弹.html</id>
+    <title>区块链数学基础</title>
+    <link href="https://www.shmily.today/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80.html"/>
+    <id>https://www.shmily.today/数学基础.html</id>
     <published>2021-11-13T13:26:32.000Z</published>
-    <updated>2021-11-13T14:18:54.443Z</updated>
+    <updated>2022-09-07T11:20:22.526Z</updated>
     
     <summary type="html">
     
-      一种新型的炸弹，可以摧毁一个边长为R的正方形内的所有的目标。现在地图上有n个目标，用整数xi,yi(0&lt;=xi,yi&lt;=5000)表示目标在地图上的位置，每个目标都有一个价值0&lt;vi&lt;100。激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆破范围，即那个边长为R的正方形的边必须和x，y轴平行。若目标位于爆破正方形的边上，该目标将不会被摧毁。现在你的任务是计算一颗炸弹最多能炸掉地图上总价值为多少的目标。
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;欧拉定理&lt;/p&gt;
+&lt;p&gt;欧拉定理（也称费马-欧拉定理或欧拉$\varphi$函数定理）是一个关于同余的性质。若&lt;code&gt;n,a&lt;/code&gt;为正整数，且&lt;code&gt;n,a&lt;/code&gt;互素（即&lt;code&gt;gcd(a,n) = 1&lt;/code&gt;），则$\a
+      
     
     </summary>
     
-      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="区块链" scheme="https://www.shmily.today/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
     
-      <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+      <category term="区块链" scheme="https://www.shmily.today/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
   </entry>
   
