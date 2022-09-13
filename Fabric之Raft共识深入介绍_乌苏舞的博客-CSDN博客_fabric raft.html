@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/x-oss-process=image.9.jpeg">
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjAzNTc1MS04ZDZjMTJmZDQ1MGMzYTJmLmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50Lw.jpeg">
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjAzNTc1MS03NWQ1NTllZWU3ZThiYjE0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50Lw.jpeg">
-<meta property="og:updated_time" content="2022-09-13T03:28:24.785Z">
+<meta property="og:updated_time" content="2022-09-13T04:20:32.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fabric之Raft共识深入介绍">
 <meta name="twitter:description" content="Fabric之Raft共识深入介绍">
@@ -634,26 +634,6 @@
         <h1 id="Fabric之Raft共识深入介绍-乌苏舞的博客-CSDN博客-fabric-raft"><a href="#Fabric之Raft共识深入介绍-乌苏舞的博客-CSDN博客-fabric-raft" class="headerlink" title="Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft"></a>Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft</h1><blockquote>
 <h2 id="Excerpt"><a href="#Excerpt" class="headerlink" title="Excerpt"></a>Excerpt</h2><p>目录1 介绍… 32 复制状态机… 43 Raft算法产生的背景… 64 为了可理解性的设计… 75 Raft设计原理… 85.1 Raft基础… 95.2 领导人选举… 115.3 日志复制… 125.4 安全性… 165.4.1 选举限制…. 175.4.2 提交之前任期内的日志条目…. 175.4.3…</p>
 </blockquote>
-<hr>
-<p>目录</p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956124" target="_blank" rel="noopener">1 介绍… 3</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956125" target="_blank" rel="noopener">2 复制状态机… 4</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956126" target="_blank" rel="noopener">3 Raft算法产生的背景… 6</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956127" target="_blank" rel="noopener">4 为了可理解性的设计… 7</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956128" target="_blank" rel="noopener">5 Raft设计原理… 8</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956129" target="_blank" rel="noopener">5.1 Raft基础… 9</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956130" target="_blank" rel="noopener">5.2 领导人选举… 11</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956131" target="_blank" rel="noopener">5.3 日志复制… 12</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956132" target="_blank" rel="noopener">5.4 安全性… 16</a></strong></p>
-<p><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956133" target="_blank" rel="noopener">5.4.1 选举限制…. 17</a></p>
-<p><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956134" target="_blank" rel="noopener">5.4.2 提交之前任期内的日志条目…. 17</a></p>
-<p><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956135" target="_blank" rel="noopener">5.4.3 安全性论证…. 19</a></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956136" target="_blank" rel="noopener">5.5 跟随者和候选人崩溃… 21</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956137" target="_blank" rel="noopener">5.6 时间和可用性… 21</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956138" target="_blank" rel="noopener">6 集群成员变化… 22</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956139" target="_blank" rel="noopener">7 日志压缩… 26</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956140" target="_blank" rel="noopener">8 Hyperledger Fabric为何选择Raft 27</a></strong></p>
-<p><strong><a href="https://blog.csdn.net/w365904/article/details/98617752?spm=1001.2014.3001.5502#_Toc14956141" target="_blank" rel="noopener">8.1 Raft排序和kafka排序的对比… 27</a></strong></p>
 <h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><p>Raft算法是一种为了管理复制日志的一致性算法。它提供了和Paxos算法相同的功能和性能，但是它的算法结构和Paxos不同，使得Raft算法更加容易理解并且更容易构建实际的系统。为了提升可理解性，Raft将一致性算法分解成了几个关键模块，例如领导人选举、日志复制和安全性。同时它通过实施一个更强的一致性来减少需要考虑的状态的数量。Raft算法比Paxos 算法更加容易学习。Raft 算法还包括一个新的机制来允许集群成员的动态改变，它利用重叠的大多数来保证安全性。</p>
 <p>一致性算法就是允许一组机器像一个整体一样工作，即使其中一些机器出现故障也能够继续工作下去。其中，Paxos算法统治着一致性算法这一领域：绝大多数的实现都是基于 Paxos 或者受其影响。</p>
 <p>但不幸的是，尽管有很多工作都在尝试降低它的复杂性，但是 Paxos 算法依然十分难以理解。并且，Paxos 自身的算法结构需要进行大幅的修改才能够应用到实际的系统中。</p>
@@ -877,7 +857,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>乌苏舞</li>
   <li>
-  <strong>修改时间： </strong>2022-09-13 11:28:24</li>
+  <strong>修改时间： </strong>2022-09-13 12:20:32</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html" title="Fabric之Raft共识深入介绍">https://www.shmily.today/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html</a>
@@ -1279,7 +1259,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">102.5k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">102.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
