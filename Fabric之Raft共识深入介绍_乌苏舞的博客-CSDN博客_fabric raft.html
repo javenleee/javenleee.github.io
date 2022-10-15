@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/x-oss-process=image.9.jpeg">
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjAzNTc1MS04ZDZjMTJmZDQ1MGMzYTJmLmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50Lw.jpeg">
 <meta property="og:image" content="https://www.shmily.today/Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjAzNTc1MS03NWQ1NTllZWU3ZThiYjE0LmpwZz9pbWFnZU1vZ3IyL2F1dG8tb3JpZW50Lw.jpeg">
-<meta property="og:updated_time" content="2022-09-13T04:20:32.295Z">
+<meta property="og:updated_time" content="2022-09-13T15:04:25.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fabric之Raft共识深入介绍">
 <meta name="twitter:description" content="Fabric之Raft共识深入介绍">
@@ -382,6 +382,18 @@
          
          
            <li>
+             <a href="/区块链确定性指南-译.html" title="区块链确定性指南(译)" target="_blank">区块链确定性指南(译)</a>
+           </li>
+         
+           <li>
+             <a href="/区块链相关期刊会议.html" title="区块链相关期刊会议" target="_blank">区块链相关期刊会议</a>
+           </li>
+         
+           <li>
+             <a href="/区块链方向相关顶会.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html" title="Fabric之Raft共识深入介绍" target="_blank">Fabric之Raft共识深入介绍</a>
            </li>
          
@@ -391,10 +403,6 @@
          
            <li>
              <a href="/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读" target="_blank">hyperledger fabric 源码阅读</a>
-           </li>
-         
-           <li>
-             <a href="/snarkjs & circom.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -418,10 +426,6 @@
            </li>
          
            <li>
-             <a href="/zk papers.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/BlockChain.html" title target="_blank"></a>
            </li>
          
@@ -435,10 +439,6 @@
          
            <li>
              <a href="/leetcode-474-一和零.html" title="leetcode-474.一和零" target="_blank">leetcode-474.一和零</a>
-           </li>
-         
-           <li>
-             <a href="/leetcode-695-岛屿的最大面积.html" title="leetcode 695.岛屿的最大面积" target="_blank">leetcode 695.岛屿的最大面积</a>
            </li>
          
        </ul>
@@ -646,7 +646,7 @@
 <li>成员关系调整：Raft使用一种共同一致的方法来处理集群成员变换的问题，在这种方法下，处于调整过程中的两种不同的配置集群中大多数机器会有重叠，这就使得集群在成员变换的时候依然可以继续工作。</li>
 </ul>
 <p>Raft算法不论是作为实践项目的基础都是要比Paxos 或者其他一致性算法要优异的。它比其他算法更加简单，更加容易理解；它的算法描述足以实现一个现实的系统；它有好多开源的实现并且在很多公司里使用；它的安全性已经被证明；它的效率和其他算法比起来也不相上下。</p>
-<h2 id="2-复制状态机"><a href="#2-复制状态机" class="headerlink" title="2 复制状态机"></a>2 复制<a href="https://so.csdn.net/so/search?q=%E7%8A%B6%E6%80%81%E6%9C%BA&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">状态机</a></h2><p>一致性算法是从复制状态机的背景下提出的。在这种方法中，一组服务器上的状态机产生相同状态的副本，并且在一些机器宕掉的情况下也可以继续运行。复制状态机在分布式系统中被用于解决很多容错的问题。例如，大规模的系统中通常都有一个集群领导者，像 GFS、HDFS 和 RAMCloud，典型应用就是一个独立的的复制状态机去管理领导选举和存储配置信息并且在领导人宕机的情况下也要存活下来。比如 Chubby 和 ZooKeeper。</p>
+<h2 id="2-复制状态机"><a href="#2-复制状态机" class="headerlink" title="2 复制状态机"></a>2 复制状态机</h2><p>一致性算法是从复制状态机的背景下提出的。在这种方法中，一组服务器上的状态机产生相同状态的副本，并且在一些机器宕掉的情况下也可以继续运行。复制状态机在分布式系统中被用于解决很多容错的问题。例如，大规模的系统中通常都有一个集群领导者，像 GFS、HDFS 和 RAMCloud，典型应用就是一个独立的的复制状态机去管理领导选举和存储配置信息并且在领导人宕机的情况下也要存活下来。比如 Chubby 和 ZooKeeper。</p>
 <p>复制状态机的结构：一致性算法管理着来自客户端指令的复制日志。状态机从日志中处理相同顺序的相同指令，所以产生的结果也是相同的。如下图1：</p>
 <p><img src="Fabric%E4%B9%8BRaft%E5%85%B1%E8%AF%86%E6%B7%B1%E5%85%A5%E4%BB%8B%E7%BB%8D_%E4%B9%8C%E8%8B%8F%E8%88%9E%E7%9A%84%E5%8D%9A%E5%AE%A2-CSDN%E5%8D%9A%E5%AE%A2_fabric%20raft/x-oss-process=image.jpeg" alt></p>
 <p>图1</p>
@@ -781,7 +781,7 @@
 <p>图 10：一个服务器用新的快照替换了从 1 到 5 的条目，快照值存储了当前的状态。快照中包含了最后的索引位置和任期号。</p>
 <p>图 10 展示了 Raft 中快照的基础思想。每个服务器独立的创建快照，只包括已经被提交的日志。主要的工作包括将状态机的状态写入到快照中。Raft 也包含一些少量的元数据到快照中：最后被包含索引指的是被快照取代的最后的条目在日志中的索引值（状态机最后应用的日志），最后被包含的任期指的是该条目的任期号。保留这些数据是为了支持快照后紧接着的第一个条目的附加日志请求时的一致性检查，因为这个条目需要前一日志条目的索引值和任期号。为了支持集群成员更新，快照中也将最后的一次配置作为最后一个条目存下来。一旦服务器完成一次快照，他就可以删除最后索引位置之前的所有日志和快照了。</p>
 <p>尽管通常服务器都是独立的创建快照，但是领导人必须偶尔的发送快照给一些落后的跟随者。这通常发生在当领导人已经丢弃了下一条需要发送给跟随者的日志条目的时候。幸运的是这种情况不是常规操作：一个与领导人保持同步的跟随者通常都会有这个条目。然而一个运行非常缓慢的跟随者或者新加入集群的服务器将不会有这个条目。这时让这个跟随者更新到最新的状态的方式就是通过网络把快照发送给他们。</p>
-<h2 id="8-Hyperledger-Fabric为何选择Raft"><a href="#8-Hyperledger-Fabric为何选择Raft" class="headerlink" title="8 Hyperledger Fabric为何选择Raft"></a>8 Hyperledger Fabric为何选择Raft</h2><p>Hyperledger Fabric在1.4.1版本以前，Hyperledger Fabric的核心共识算法通过kafka集群实现，简单来说，就是通过kafka对所有交易信息进行排序（如果系统存在多个channel，则对每个channel分别排序），Hyperledger <a href="https://so.csdn.net/so/search?q=Fabric&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">Fabric</a>为何选择Raft主要从以下说明：</p>
+<h2 id="8-Hyperledger-Fabric为何选择Raft"><a href="#8-Hyperledger-Fabric为何选择Raft" class="headerlink" title="8 Hyperledger Fabric为何选择Raft"></a>8 Hyperledger Fabric为何选择Raft</h2><p>Hyperledger Fabric在1.4.1版本以前，Hyperledger Fabric的核心共识算法通过kafka集群实现，简单来说，就是通过kafka对所有交易信息进行排序（如果系统存在多个channel，则对每个channel分别排序），Hyperledger Fabric为何选择Raft主要从以下说明：</p>
 <h2 id="8-1-Raft排序和kafka排序的对比"><a href="#8-1-Raft排序和kafka排序的对比" class="headerlink" title="8.1 Raft排序和kafka排序的对比"></a>8.1 Raft排序和kafka排序的对比</h2><p>从提供服务的视角来看，基于Raft和kafka的排序服务是类似的，他们都是基于CFT（crash fault tolerant）模型的排序服务，并且都使用了主从节点的设置。但是Raft比kafka有以下优势：</p>
 <ol>
 <li>kafka和zookeeper的设计不适用于大型网络。它们的设计是CFT模型，但局限于运行的比较紧密的主机上。也就是说，需要有一个组织专门运行kafka集群。鉴于此，当有多个组织使用基于kafka排序服务的时候，其实没有实现去中心化，因为所有的节点连接的都是由一个组织单独控制的kafka集群。如果使用Raft算法，每个组织可以贡献排序节点，共同组成排序服务，可以更好的去中心化。</li>
@@ -857,7 +857,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>乌苏舞</li>
   <li>
-  <strong>修改时间： </strong>2022-09-13 12:20:32</li>
+  <strong>修改时间： </strong>2022-09-13 23:04:25</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html" title="Fabric之Raft共识深入介绍">https://www.shmily.today/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html</a>
@@ -901,6 +901,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/区块链方向相关顶会.html" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -980,7 +984,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1259,7 +1263,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">102.3k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">106.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

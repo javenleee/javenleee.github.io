@@ -108,19 +108,19 @@
 
 
 
-  <meta name="description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。  common 通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。  core 大部分核心实现代码都在本">
+  <meta name="description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。如果想更换其它加密算法，只要在这个模块里将接口重新继承一下并完成相关的代码即可。  cmd 命令行与Fabric交互  common 通用功能模块。包括常用的">
 <meta name="keywords" content="区块链,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hyperledger fabric 源码阅读">
 <meta property="og:url" content="https://www.shmily.today/hyperledger-fabric-源码阅读.html">
 <meta property="og:site_name" content="blog">
-<meta property="og:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。  common 通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。  core 大部分核心实现代码都在本">
+<meta property="og:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。如果想更换其它加密算法，只要在这个模块里将接口重新继承一下并完成相关的代码即可。  cmd 命令行与Fabric交互  common 通用功能模块。包括常用的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/image-20220415154651468.png">
-<meta property="og:updated_time" content="2022-09-07T11:21:59.612Z">
+<meta property="og:updated_time" content="2022-10-12T07:05:19.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hyperledger fabric 源码阅读">
-<meta name="twitter:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。  common 通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。  core 大部分核心实现代码都在本">
+<meta name="twitter:description" content="sfabric v2.2 目录结构  bccsp（Blockchain Crypto Service Provider） 区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。如果想更换其它加密算法，只要在这个模块里将接口重新继承一下并完成相关的代码即可。  cmd 命令行与Fabric交互  common 通用功能模块。包括常用的">
 <meta name="twitter:image" content="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/image-20220415154651468.png">
 
 
@@ -371,6 +371,18 @@
          
          
            <li>
+             <a href="/区块链确定性指南-译.html" title="区块链确定性指南(译)" target="_blank">区块链确定性指南(译)</a>
+           </li>
+         
+           <li>
+             <a href="/区块链相关期刊会议.html" title="区块链相关期刊会议" target="_blank">区块链相关期刊会议</a>
+           </li>
+         
+           <li>
+             <a href="/区块链方向相关顶会.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html" title="Fabric之Raft共识深入介绍" target="_blank">Fabric之Raft共识深入介绍</a>
            </li>
          
@@ -380,10 +392,6 @@
          
            <li>
              <a href="/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读" target="_blank">hyperledger fabric 源码阅读</a>
-           </li>
-         
-           <li>
-             <a href="/snarkjs & circom.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -407,10 +415,6 @@
            </li>
          
            <li>
-             <a href="/zk papers.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/BlockChain.html" title target="_blank"></a>
            </li>
          
@@ -424,10 +428,6 @@
          
            <li>
              <a href="/leetcode-474-一和零.html" title="leetcode-474.一和零" target="_blank">leetcode-474.一和零</a>
-           </li>
-         
-           <li>
-             <a href="/leetcode-695-岛屿的最大面积.html" title="leetcode 695.岛屿的最大面积" target="_blank">leetcode 695.岛屿的最大面积</a>
            </li>
          
        </ul>
@@ -622,7 +622,10 @@
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/image-20220415154651468.png" alt="image-20220415154651468"></p>
 <ol>
 <li><p>bccsp（Blockchain Crypto Service Provider）</p>
-<p>区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。</p>
+<p>区块链加密服务提供者，提供一些密码学相关操作的实现。包括 Hash、签名、校验、加解密等。主要支持 MSP 的相关调用。如果想更换其它加密算法，只要在这个模块里将接口重新继承一下并完成相关的代码即可。</p>
+</li>
+<li><p>cmd</p>
+<p>命令行与Fabric交互</p>
 </li>
 <li><p>common</p>
 <p>通用功能模块。包括常用的配置config、加密签名crypto、ledger设置，工具包含协议设置等。</p>
@@ -641,16 +644,28 @@
 </li>
 <li><p>orderer</p>
 </li>
+<li><p>internal</p>
+</li>
 </ol>
-<p>internal/peer/chaincode/invoke.go ===&gt; chaincodeInvoke()  ——&gt; ChaincodeInvokeOrQuery</p>
-<p>internal/peer/chaincode/common.go -&gt; ChaincodeInvokeOrQuery() 调用 processproposals</p>
-<p>internal/peer/chaincode/common.go -&gt; InitCmdFactory() 初始化 endorserclient</p>
+<h2 id="1、LSCC-Lifecycle-System-Chaincode"><a href="#1、LSCC-Lifecycle-System-Chaincode" class="headerlink" title="1、LSCC: Lifecycle System Chaincode"></a>1、LSCC: Lifecycle System Chaincode</h2><p>This system chaincode is used for managing the lifecycle of chaincode. It is used for install, instantiate (实例) and update chaincode. When we install chaincode, the process goes through LSCC</p>
+<h2 id="2、ESCC-Endorsement-System-Chaincode"><a href="#2、ESCC-Endorsement-System-Chaincode" class="headerlink" title="2、ESCC: Endorsement System Chaincode"></a>2、ESCC: Endorsement System Chaincode</h2><p>This system chaincode is used to endorse the transaction by digitally signing the response.<br>The client sends the transaction proposal to invoke chaincode function at the endorsement phase (相) . client sign proposal with his credential (凭据) and send to endorsement peers. First endorsing peer simulate transaction and verify if the client is authorized (授权) to invoke transaction on the channel. The endorsement peer executes the chaincode and creates a read/write(R/W) set. Transaction result includes response value, read set and write set. Then endorsement peer call ESCC and sign this transaction response with peer identity (身份) and send back to client.</p>
+<h2 id="3、VSCC-Validation-System-Chaincode"><a href="#3、VSCC-Validation-System-Chaincode" class="headerlink" title="3、VSCC: Validation System Chaincode"></a>3、VSCC: Validation System Chaincode</h2><p>This is used to validate the transaction against its endorsement policy.<br>A Validation system chaincode evaluates (评价) endorsements in the transaction against the endorsement policy specified (指定) for the chaincode. If the endorsement policy is not satisfied, then that transaction is marked invalid.<br>When all peers get a block from the orderer, first they verify orderer’s signature on the block. Every block is decoded and all the transaction goes through VSCC before performing MVCC validation. VSCC validates endorsements in the transaction against endorsement policy specified (指定) for chaincode. If the endorsement policy fails to satisfy, then the transaction is marked as invalid.<br>Note: MVCC - Multiversion Concurrency Control — It ensures that the version of keys read by transaction during the endorsement phase (相) is the same as the current state in a local ledger at commit time. It is performed on all valid transactions in the block which is validated by VSCC. If the read set version does not match (比赛) , the transaction is marked as invalid. MVCC is not chaincode, it’s a mechanism (机制) to avoid the double-spending problem in Hyperledger fabric</p>
+<h2 id="4、CSCC-Configuration-system-Chaincode"><a href="#4、CSCC-Configuration-system-Chaincode" class="headerlink" title="4、CSCC: Configuration system Chaincode"></a>4、CSCC: Configuration system Chaincode</h2><p>This chaincode is used to manage channel configuration. When we create a channel, update channel, the process goes through the configuration system chaincode. Actually it validates the channel creation/updation.</p>
+<h2 id="5、QSCC-Query-System-Chaincode"><a href="#5、QSCC-Query-System-Chaincode" class="headerlink" title="5、QSCC: Query System Chaincode"></a>5、QSCC: Query System Chaincode</h2><p>This Chaincode runs in all peer and provide ledger API like getTransactionByTransactionID, getBlockByBlockNumber, GetBlockByTxID, GetChainInfo, GetBlockByTxID.</p>
+<p>Hope this article will help you. It’s basic information about the system chaincodes.</p>
+<hr>
+<hr>
+<p>internal/peer/chaincode/invoke.go ===&gt; chaincodeInvoke() ——&gt; <strong>InitCmdFactory()</strong> ——-&gt; validatePeerConnectionParameters()将背书节点加入到peerAddresses，然后初始化构造endorseClients 和 deliverClients 切片</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// InitCmdFactory init the ChaincodeCmdFactory with default clients</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitCmdFactory</span><span class="params">(cmdName <span class="keyword">string</span>, isEndorserRequired, isOrdererRequired <span class="keyword">bool</span>, cryptoProvider bccsp.BCCSP)</span> <span class="params">(*ChaincodeCmdFactory, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> err error</span><br><span class="line">	<span class="keyword">var</span> endorserClients []pb.EndorserClient</span><br><span class="line">	<span class="keyword">var</span> deliverClients []pb.DeliverClient</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> isEndorserRequired &#123;</span><br><span class="line">		<span class="keyword">if</span> err = validatePeerConnectionParameters(cmdName); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessage(err, <span class="string">"error validating peer connection parameters"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 循环peerAddresses, 添加endorser Client</span></span><br><span class="line">		<span class="keyword">for</span> i, address := <span class="keyword">range</span> peerAddresses &#123;</span><br><span class="line">			<span class="keyword">var</span> tlsRootCertFile <span class="keyword">string</span></span><br><span class="line">			<span class="keyword">if</span> tlsRootCertFiles != <span class="literal">nil</span> &#123;</span><br><span class="line">				tlsRootCertFile = tlsRootCertFiles[i]</span><br><span class="line">			&#125;</span><br><span class="line">			endorserClient, err := common.GetEndorserClientFnc(address, tlsRootCertFile)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessagef(err, <span class="string">"error getting endorser client for %s"</span>, cmdName)</span><br><span class="line">			&#125;</span><br><span class="line">			endorserClients = <span class="built_in">append</span>(endorserClients, endorserClient)</span><br><span class="line">			deliverClient, err := common.GetPeerDeliverClientFnc(address, tlsRootCertFile)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessagef(err, <span class="string">"error getting deliver client for %s"</span>, cmdName)</span><br><span class="line">			&#125;</span><br><span class="line">			deliverClients = <span class="built_in">append</span>(deliverClients, deliverClient)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(endorserClients) == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">"no endorser clients retrieved - this might indicate a bug"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	certificate, err := common.GetCertificateFnc()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessage(err, <span class="string">"error getting client certificate"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	signer, err := common.GetDefaultSignerFnc()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessage(err, <span class="string">"error getting default signer"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> broadcastClient common.BroadcastClient</span><br><span class="line">	<span class="keyword">if</span> isOrdererRequired &#123;</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(common.OrderingEndpoint) == <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(endorserClients) == <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">"orderer is required, but no ordering endpoint or endorser client supplied"</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			endorserClient := endorserClients[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            </span><br><span class="line">			<span class="comment">// 返回有效的一系列排序节点</span></span><br><span class="line">			orderingEndpoints, err := common.GetOrdererEndpointOfChainFnc(channelID, signer, endorserClient, cryptoProvider)</span><br><span class="line">			<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessagef(err, <span class="string">"error getting channel (%s) orderer endpoint"</span>, channelID)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(orderingEndpoints) == <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">nil</span>, errors.Errorf(<span class="string">"no orderer endpoints retrieved for channel %s, pass orderer endpoint with -o flag instead"</span>, channelID)</span><br><span class="line">			&#125;</span><br><span class="line">			logger.Infof(<span class="string">"Retrieved channel (%s) orderer endpoint: %s"</span>, channelID, orderingEndpoints[<span class="number">0</span>])</span><br><span class="line">			<span class="comment">// override viper env</span></span><br><span class="line">			viper.Set(<span class="string">"orderer.address"</span>, orderingEndpoints[<span class="number">0</span>])</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		broadcastClient, err = common.GetBroadcastClientFnc()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span>, errors.WithMessage(err, <span class="string">"error getting broadcast client"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &amp;ChaincodeCmdFactory&#123;</span><br><span class="line">		EndorserClients: endorserClients,</span><br><span class="line">		DeliverClients:  deliverClients,</span><br><span class="line">		Signer:          signer,</span><br><span class="line">		BroadcastClient: broadcastClient,</span><br><span class="line">		Certificate:     certificate,</span><br><span class="line">	&#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  ——&gt; ChaincodeInvokeOrQuery</p>
+<p>internal/peer/chaincode/common.go ====&gt; ChaincodeInvokeOrQuery() 调用 processproposals()</p>
+<p>internal/peer/chaincode/common.go ====&gt; processProposals() 将签名好的proposal 发送给所有背书节点并收集背书结果，</p>
 <p>peer</p>
 <h3 id="consensus"><a href="#consensus" class="headerlink" title="consensus"></a>consensus</h3><p>internal/peer/node/start.go  processproposal</p>
 <h4 id="endorsement"><a href="#endorsement" class="headerlink" title="endorsement"></a>endorsement</h4><p>github.com/hyperledger/fabric-protos-go/peer/peer.pb.go 中定义了endorser 服务的接口</p>
 <p>internal/peer/chaincode/invoke.go  chaincodeInvoke ——-&gt; chaincodeinvokeorquery -&gt;</p>
 <p>internal/peer/chaincode/common.go  processProposals方法调用了各个endorser的ProcessProposal方法</p>
-<p>core/endorser/endorser.go   ProcessProposal函数入口， preprocess初步检验双花交易和ACL，然后模拟执行</p>
+<p>core/endorser/endorser.go   ProcessProposal函数入口， preprocess初步检验双花交易和ACL，ProcessProposalSuccessfullyOrError里模拟执行SimulateProposal</p>
 <h4 id="order"><a href="#order" class="headerlink" title="order"></a>order</h4><p>orderer/common/server/server.go 里定义了 两个 order节点的两个服务 Broadcast 和 Deliver，分别是排序服务前后消息处理逻辑</p>
 <p>orderer/common/broadcast/broadcast.go   handle方法实现了broadcast逻辑， 在 processMessage方法中，调用了排序服务的order方法，交由排序服务排序后返回。</p>
 <p>以solo为例，orderer/consensus/solo/consensus.go 的order方法将接收到的消息发送到 sendchan通道中，主函数从通道中接收消息，然后调用blockcutter的order将队列中的交易分割中区块提交。</p>
@@ -710,7 +725,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Javen</li>
   <li>
-  <strong>修改时间： </strong>2022-09-07 19:21:59</li>
+  <strong>修改时间： </strong>2022-10-12 15:05:19</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读">https://www.shmily.today/hyperledger-fabric-源码阅读.html</a>
@@ -741,8 +756,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/snarkjs & circom.html" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/买面粉.html" rel="next" title="买面粉">
+                <i class="fa fa-chevron-left"></i> 买面粉
               </a>
             
           </div>
@@ -833,7 +848,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1060,7 +1075,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#s"><span class="nav-number">1.</span> <span class="nav-text">s</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number"></span> <span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#consensus"><span class="nav-number">1.</span> <span class="nav-text">consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#endorsement"><span class="nav-number">1.1.</span> <span class="nav-text">endorsement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">1.2.</span> <span class="nav-text">order</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#s"><span class="nav-number">1.</span> <span class="nav-text">s</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number"></span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、LSCC-Lifecycle-System-Chaincode"><span class="nav-number"></span> <span class="nav-text">1、LSCC: Lifecycle System Chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、ESCC-Endorsement-System-Chaincode"><span class="nav-number"></span> <span class="nav-text">2、ESCC: Endorsement System Chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、VSCC-Validation-System-Chaincode"><span class="nav-number"></span> <span class="nav-text">3、VSCC: Validation System Chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、CSCC-Configuration-system-Chaincode"><span class="nav-number"></span> <span class="nav-text">4、CSCC: Configuration system Chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、QSCC-Query-System-Chaincode"><span class="nav-number"></span> <span class="nav-text">5、QSCC: Query System Chaincode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#consensus"><span class="nav-number">1.</span> <span class="nav-text">consensus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#endorsement"><span class="nav-number">1.1.</span> <span class="nav-text">endorsement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order"><span class="nav-number">1.2.</span> <span class="nav-text">order</span></a></li></ol></li></ol></li></div>
             
 
           </div>
@@ -1112,7 +1127,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">102.3k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">106.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   

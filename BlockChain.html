@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="blog">
 <meta property="og:description" content="Hyperledger Fabric解决重放攻击的方式：  Hyperledger fabric 中，采用了一种混合式解决办法。那就是，用户在交易中加入 nonce 值，该 nonce 值的生成方法根据该交易是否保持匿名有关，交易匿名指交易被 Tcert 签名，非匿名指交易被 Ecert 签名。更具体的： 用户使用他们的 Ecert 提交一笔交易的时候，在交易中包含的 nonce 值，是他们用相同">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-31T09:36:48.718Z">
+<meta property="og:updated_time" content="2022-09-27T07:32:40.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blog">
 <meta name="twitter:description" content="Hyperledger Fabric解决重放攻击的方式：  Hyperledger fabric 中，采用了一种混合式解决办法。那就是，用户在交易中加入 nonce 值，该 nonce 值的生成方法根据该交易是否保持匿名有关，交易匿名指交易被 Tcert 签名，非匿名指交易被 Ecert 签名。更具体的： 用户使用他们的 Ecert 提交一笔交易的时候，在交易中包含的 nonce 值，是他们用相同">
@@ -368,6 +368,18 @@
          
          
            <li>
+             <a href="/区块链确定性指南-译.html" title="区块链确定性指南(译)" target="_blank">区块链确定性指南(译)</a>
+           </li>
+         
+           <li>
+             <a href="/区块链相关期刊会议.html" title="区块链相关期刊会议" target="_blank">区块链相关期刊会议</a>
+           </li>
+         
+           <li>
+             <a href="/区块链方向相关顶会.html" title target="_blank"></a>
+           </li>
+         
+           <li>
              <a href="/Fabric之Raft共识深入介绍_乌苏舞的博客-CSDN博客_fabric raft.html" title="Fabric之Raft共识深入介绍" target="_blank">Fabric之Raft共识深入介绍</a>
            </li>
          
@@ -377,10 +389,6 @@
          
            <li>
              <a href="/hyperledger-fabric-源码阅读.html" title="hyperledger fabric 源码阅读" target="_blank">hyperledger fabric 源码阅读</a>
-           </li>
-         
-           <li>
-             <a href="/snarkjs & circom.html" title target="_blank"></a>
            </li>
          
            <li>
@@ -404,10 +412,6 @@
            </li>
          
            <li>
-             <a href="/zk papers.html" title target="_blank"></a>
-           </li>
-         
-           <li>
              <a href="/BlockChain.html" title target="_blank"></a>
            </li>
          
@@ -421,10 +425,6 @@
          
            <li>
              <a href="/leetcode-474-一和零.html" title="leetcode-474.一和零" target="_blank">leetcode-474.一和零</a>
-           </li>
-         
-           <li>
-             <a href="/leetcode-695-岛屿的最大面积.html" title="leetcode 695.岛屿的最大面积" target="_blank">leetcode 695.岛屿的最大面积</a>
            </li>
          
        </ul>
@@ -608,6 +608,7 @@
 <h2 id="共识算法"><a href="#共识算法" class="headerlink" title="共识算法"></a>共识算法</h2><ol>
 <li>PBFT（Practical Byzantine Fault Tolerance）</li>
 </ol>
+<h3 id="为什么PBFT算法只能容忍（n-1-3个作恶节点？"><a href="#为什么PBFT算法只能容忍（n-1-3个作恶节点？" class="headerlink" title="为什么PBFT算法只能容忍（n-1)/3个作恶节点？"></a>为什么<code>PBFT</code>算法只能容忍<code>（n-1)/3</code>个作恶节点？</h3><p>​    节点总数是<code>n</code>，其中作恶节点有<code>f</code>，那么剩下的正确节点为<code>n - f</code>，意味着只要收到<code>n - f</code>个消息就能做出决定，但是这<code>n - f</code>个消息有可能由<code>f</code>个是由作恶节点冒充的，那么正确的消息就是<code>n - f - f</code>个，为了多数一致，正确消息必须占多数，也就是<code>n - f - f &gt; f</code>但是节点必须是整数个，所以n最少是<code>3f+1</code>个。<br>  或者可以这样理解，假定<code>f</code>个节点是故障节点，<code>f</code>个节点是作恶，那么达成一致需要的正确节点最少就是<code>f+1</code>个，当然这是最坏的情况，如果故障节点集合和拜占庭节点集合有重复，可以不需要<code>f+1</code>个正确节点，但是为了保证最坏的情况算法还能正常运行，所以必须保证正确节点数量是<code>f+1</code>个。</p>
 
       
     </div>
@@ -661,7 +662,7 @@
   <li class="post-copyright-author">
     <strong>本文作者： </strong>Javen</li>
   <li>
-  <strong>修改时间： </strong>2021-12-31 17:36:48</li>
+  <strong>修改时间： </strong>2022-09-27 15:32:40</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     <a href="https://www.shmily.today/BlockChain.html" title>https://www.shmily.today/BlockChain.html</a>
@@ -696,8 +697,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/zk papers.html" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/leetcode-1524-和为奇数的子数组数目.html" rel="prev" title="leetcode-1524-和为奇数的子数组数目">
+                leetcode-1524-和为奇数的子数组数目 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -778,7 +779,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1005,7 +1006,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperledger-Fabric"><span class="nav-number">1.</span> <span class="nav-text">Hyperledger Fabric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共识算法"><span class="nav-number">2.</span> <span class="nav-text">共识算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperledger-Fabric"><span class="nav-number">1.</span> <span class="nav-text">Hyperledger Fabric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#共识算法"><span class="nav-number">2.</span> <span class="nav-text">共识算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么PBFT算法只能容忍（n-1-3个作恶节点？"><span class="nav-number">2.1.</span> <span class="nav-text">为什么PBFT算法只能容忍（n-1)/3个作恶节点？</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1057,7 +1058,7 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>人次
     </span><span class="post-meta-divider">|</span></font>
     <font color="white" face="STLiti">
-    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">102.3k</span>字,</span>
+    <span title="总字数"><i class="fa fa-edit"></i>&ensp;<span class="post-count">106.3k</span>字,</span>
     <span id="timeDate" title="网站运行时间">载入天数...</span><span id="times" title="网站运行时间">载入时分秒...</span><span class="post-meta-divider">|</span>
     </font>
   
