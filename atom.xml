@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2022-10-15T09:26:47.928Z</updated>
+  <updated>2022-10-15T12:12:56.186Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -21,18 +21,18 @@
     <link href="https://www.shmily.today/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%8C%87%E5%8D%97-%E8%AF%91.html"/>
     <id>https://www.shmily.today/区块链确定性指南-译.html</id>
     <published>2022-10-15T03:37:34.000Z</published>
-    <updated>2022-10-15T09:26:47.928Z</updated>
+    <updated>2022-10-15T12:12:56.186Z</updated>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;d&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.smsunarto.com/blog/guide-to-finality&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文：Practical Guide to Finality (smsuna
-      
+      这篇文章讲了bitcoin的概率确定性，PBFT的即时确定性，ethereum2.0的multi-slot确定性，以及rollup的确定性，最后分析了确定性重要的原因。
     
     </summary>
     
+      <category term="blockchain" scheme="https://www.shmily.today/categories/blockchain/"/>
+    
+    
+      <category term="blockchain" scheme="https://www.shmily.today/tags/blockchain/"/>
     
   </entry>
   
