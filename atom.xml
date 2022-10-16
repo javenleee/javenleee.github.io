@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.shmily.today/"/>
-  <updated>2022-10-15T12:12:56.186Z</updated>
+  <updated>2022-10-15T12:15:50.100Z</updated>
   <id>https://www.shmily.today/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.shmily.today/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%8C%87%E5%8D%97-%E8%AF%91.html"/>
     <id>https://www.shmily.today/区块链确定性指南-译.html</id>
     <published>2022-10-15T03:37:34.000Z</published>
-    <updated>2022-10-15T12:12:56.186Z</updated>
+    <updated>2022-10-15T12:15:50.100Z</updated>
     
     <summary type="html">
     
@@ -54,37 +54,6 @@
 &lt;tr&gt;
 &lt;th&gt;缩写&lt;/th&gt;
 
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://www.shmily.today/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%96%B9%E5%90%91%E7%9B%B8%E5%85%B3%E9%A1%B6%E4%BC%9A.html"/>
-    <id>https://www.shmily.today/区块链方向相关顶会.html</id>
-    <published>2022-09-27T09:23:31.926Z</published>
-    <updated>2022-09-27T09:26:09.279Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;div class=&quot;table-container&quot;&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;缩写&lt;/th&gt;
-&lt;th&gt;全称&lt;/th&gt;
-&lt;th&gt;介绍&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;ICDE&lt;/td&gt;
-&lt;td&gt;Interna
       
     
     </summary>
@@ -140,7 +109,7 @@
     <link href="https://www.shmily.today/hyperledger-fabric-%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB.html"/>
     <id>https://www.shmily.today/hyperledger-fabric-源码阅读.html</id>
     <published>2022-04-15T07:45:09.000Z</published>
-    <updated>2022-10-12T07:05:19.435Z</updated>
+    <updated>2022-10-16T05:36:14.566Z</updated>
     
     <summary type="html">
     
@@ -237,9 +206,9 @@
       <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="差分" scheme="https://www.shmily.today/tags/%E5%B7%AE%E5%88%86/"/>
-    
       <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
+    
+      <category term="差分" scheme="https://www.shmily.today/tags/%E5%B7%AE%E5%88%86/"/>
     
   </entry>
   
@@ -259,9 +228,9 @@
       <category term="算法与数据结构" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
-    
       <category term="前缀和" scheme="https://www.shmily.today/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+      <category term="leetcode" scheme="https://www.shmily.today/tags/leetcode/"/>
     
   </entry>
   
@@ -448,6 +417,28 @@
       <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="回溯" scheme="https://www.shmily.today/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>有向图是否存在环？</title>
+    <link href="https://www.shmily.today/%E6%9C%89%E5%90%91%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%8E%AF%EF%BC%9F.html"/>
+    <id>https://www.shmily.today/有向图是否存在环？.html</id>
+    <published>2021-11-15T14:03:55.000Z</published>
+    <updated>2021-11-15T14:37:24.069Z</updated>
+    
+    <summary type="html">
+    
+      写程序判断有向图是否存在环。有向图的输入用n个二元组表示(u,v)，表示从u到v有一条有向边，起点是u，终点是v。
+    
+    </summary>
+    
+      <category term="算法" scheme="https://www.shmily.today/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="https://www.shmily.today/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="DFS" scheme="https://www.shmily.today/tags/DFS/"/>
     
   </entry>
   
